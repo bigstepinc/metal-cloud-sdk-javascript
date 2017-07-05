@@ -47,6 +47,11 @@ async function runCLICommand(strCommand)
 	fs.writeFileSync("package.json", JSON.stringify(objPackageJSON, undefined, "  "));
 
 	console.log("Building.");
+
+	throw new Error(path.resolve("./node_modules/.bin/webpack"));
+	
+	console.log(path.resolve("./node_modules/.bin/webpack"));
+
 	await runCLICommand(path.resolve("./node_modules/.bin/webpack"));
 	
 	console.log("Done.");
