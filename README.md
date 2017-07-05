@@ -1,4 +1,4 @@
-# metal-cloud-sdk-javascript
+# Metal Cloud SDK
 SDK for the Metal Cloud infrastructure.
 
 This library is tested in __browsers__ (>= IE10) and in __Node.js__ (>=7.8).
@@ -6,6 +6,7 @@ This library is tested in __browsers__ (>= IE10) and in __Node.js__ (>=7.8).
 ## Branches
 If you are an user, you should use the branch with the highest version number.
 The `dev_master` branch is used internally for development.
+
 __The `master` branch is empty.__
 
 ## Install
