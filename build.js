@@ -46,12 +46,9 @@ async function runCLICommand(strCommand)
 	objPackageJSON.version = arrVersionParts.join(".");
 	fs.writeFileSync("package.json", JSON.stringify(objPackageJSON, undefined, "  "));
 
-	console.log("Building.");
-
 	throw new Error(path.resolve("./node_modules/.bin/webpack"));
-	
-	console.log(path.resolve("./node_modules/.bin/webpack"));
 
+	console.log("Building.");
 	await runCLICommand(path.resolve("./node_modules/.bin/webpack"));
 	
 	console.log("Done.");
