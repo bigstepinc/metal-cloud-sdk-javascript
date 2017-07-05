@@ -5,15 +5,15 @@ const path = require("path");
 
 // Avoiding "DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code."
 // by actually doing the respective exit with non-zero code.
-// This allows the watcher to restart this process.
-process.on(
-	"unhandledRejection", 
-	async (reason, promise) => 
-	{
-		console.log("Unhandled Rejection at: Promise", promise, "reason", reason);
-		process.exit(1);
-	}
-);
+// This allows the watcher to restart this processThis allows the watcher to restart this process.
+// process.on(
+// 	"unhandledRejection", 
+// 	async (reason, promise) => 
+// 	{
+// 		console.log("Unhandled Rejection at: Promise", promise, "reason", reason);
+// 		process.exit(1);
+// 	}
+// );
 
 
 async function runCLICommand(strCommand)
