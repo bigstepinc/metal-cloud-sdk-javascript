@@ -204,6 +204,19 @@ class DriveArrayOperation extends ObjectBase
 	}
 
 	/**
+	 * The ContainerArray ID to which the Drive array belongs.
+	 */
+	get container_array_id()
+	{
+		return this._container_array_id || null;
+	}
+
+	set container_array_id(container_array_id)
+	{
+		this._container_array_id = container_array_id;
+	}
+
+	/**
 	 * ISO 8601 timestamp which holds the date and time when the Drive array was
 	 * edited. Example format: 2013-11-29T13:00:01Z.
 	 */

@@ -165,6 +165,19 @@ class DriveArray extends ObjectBase
 	}
 
 	/**
+	 * The ContainerArray ID to which the Drive array is attached.
+	 */
+	get container_array_id()
+	{
+		return this._container_array_id || null;
+	}
+
+	set container_array_id(container_array_id)
+	{
+		this._container_array_id = container_array_id;
+	}
+
+	/**
 	 * The status of the Drive array.
 	 */
 	get drive_array_service_status()
@@ -201,6 +214,20 @@ class DriveArray extends ObjectBase
 	set cluster_id(cluster_id)
 	{
 		this._cluster_id = cluster_id;
+	}
+
+	/**
+	 * If not null, then the InstanceArray is part of the specified
+	 * ContainerCluster.
+	 */
+	get container_cluster_id()
+	{
+		return this._container_cluster_id || null;
+	}
+
+	set container_cluster_id(container_cluster_id)
+	{
+		this._container_cluster_id = container_cluster_id;
 	}
 
 	/**

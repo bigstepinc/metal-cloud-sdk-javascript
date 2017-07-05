@@ -39,7 +39,7 @@ class ContainerArrayActionExecuteCommand extends ObjectBase
 	 */
 	get action_command()
 	{
-		return this._action_command || null;
+		return this._action_command || [];
 	}
 
 	set action_command(action_command)

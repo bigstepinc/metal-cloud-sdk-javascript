@@ -101,6 +101,19 @@ class Drive extends ObjectBase
 	}
 
 	/**
+	 * Represents the associated container's ID.
+	 */
+	get container_id()
+	{
+		return this._container_id || null;
+	}
+
+	set container_id(container_id)
+	{
+		this._container_id = container_id;
+	}
+
+	/**
 	 * Represents the capacity of the Drive.
 	 */
 	get drive_size_mbytes()

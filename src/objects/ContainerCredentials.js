@@ -1,13 +1,13 @@
 const ObjectBase = require('./ObjectBase');
 
 /**
- * SharedDrive credentials.
+ * Information needed to connect to the Container.
  *
  * @class
  * @extends ObjectBase
  */
 module.exports = 
-class SharedDriveCredentials extends ObjectBase
+class ContainerCredentials extends ObjectBase
 {
 	constructor()
 	{
@@ -24,6 +24,19 @@ class SharedDriveCredentials extends ObjectBase
 				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
 			}
 		}
+	}
+
+	/**
+	 * The schema type
+	 */
+	get type()
+	{
+		return this._type || null;
+	}
+
+	set type(type)
+	{
+		this._type = type;
 	}
 
 	/**
