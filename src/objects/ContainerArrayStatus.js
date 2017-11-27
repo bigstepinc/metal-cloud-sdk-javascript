@@ -1,16 +1,15 @@
 const ObjectBase = require('./ObjectBase');
 
 /**
- * ContainerArray action that executes a command on the Containers to asses
- * their readiness or liveness.
+ * A ContainerArrayStatus contains the status of the ContainerArray.
  *
  * @class
  * @extends ObjectBase
  */
 module.exports = 
-class ContainerArrayActionExecuteCommand extends ObjectBase
+class ContainerArrayStatus extends ObjectBase
 {
-	constructor(action_command)
+	constructor()
 	{
 		super();
 
@@ -25,26 +24,32 @@ class ContainerArrayActionExecuteCommand extends ObjectBase
 				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
 			}
 		}
-
-		if(action_command === undefined || action_command === null)
-			throw new Error("Invalid param in ContainerArrayActionExecuteCommand constructor.");
-
-		this._action_command = action_command;
 	}
 
 	/**
-	 * Command to execute on the Containers. The command is not executed using a
-	 * shell and the root of each Container (/) is used as working directory. An
-	 * exit status of 0 is treated as healthy and non-zero as unhealthy
+	 * The number of running containers.
 	 */
-	get action_command()
+	get status_containers_running()
 	{
-		return this._action_command || [];
+		return this._status_containers_running || null;
 	}
 
-	set action_command(action_command)
+	set status_containers_running(status_containers_running)
 	{
-		this._action_command = action_command;
+		this._status_containers_running = status_containers_running;
+	}
+
+	/**
+	 * The number of running containers that passed the readiness check.
+	 */
+	get status_containers_ready()
+	{
+		return this._status_containers_ready || null;
+	}
+
+	set status_containers_ready(status_containers_ready)
+	{
+		this._status_containers_ready = status_containers_ready;
 	}
 
 	/**
@@ -68,7 +73,7 @@ class ContainerArrayActionExecuteCommand extends ObjectBase
 	static get JSONRequired()
 	{
 		return [
-			"action_command"
+
 		];
 	}
 };

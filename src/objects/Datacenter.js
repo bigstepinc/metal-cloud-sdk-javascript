@@ -109,7 +109,7 @@ class Datacenter extends ObjectBase
 	 */
 	get datacenter_type()
 	{
-		return this._datacenter_type || "bsi_metal";
+		return this._datacenter_type || "metal_cloud";
 	}
 
 	set datacenter_type(datacenter_type)
@@ -129,6 +129,20 @@ class Datacenter extends ObjectBase
 	set datacenter_created_timestamp(datacenter_created_timestamp)
 	{
 		this._datacenter_created_timestamp = datacenter_created_timestamp;
+	}
+
+	/**
+	 * True for datacenters which are under construction, beeing phased out, are to
+	 * be avoided temporarily, or no longer exist.
+	 */
+	get datacenter_hidden()
+	{
+		return this._datacenter_hidden || false;
+	}
+
+	set datacenter_hidden(datacenter_hidden)
+	{
+		this._datacenter_hidden = datacenter_hidden;
 	}
 
 	/**

@@ -1,15 +1,16 @@
 const ObjectBase = require('./ObjectBase');
 
 /**
- * Details about the Instance object specific to Couchbase. The information
- * presented here is obtained by interrogating the Couchbase API. Backward
- * compatibility object will not be ensured when the underlying Couchbase API changes.
+ * Details about the Instance object specific to MySQLPercona. The information
+ * presented here is obtained by interrogating the MySQLPercona API. Backward
+ * compatibility object will not be ensured when the underlying MySQLPercona
+ * API changes.
  *
  * @class
  * @extends ObjectBase
  */
 module.exports = 
-class AppCouchbaseInstance extends ObjectBase
+class AppMysqlPerconaInstance extends ObjectBase
 {
 	constructor()
 	{
@@ -94,7 +95,7 @@ class AppCouchbaseInstance extends ObjectBase
 	}
 
 	/**
-	 * The version of the Couchbase software.
+	 * The version of the MySQLPercona software.
 	 */
 	get version()
 	{
@@ -156,19 +157,6 @@ class AppCouchbaseInstance extends ObjectBase
 	set instance_label(instance_label)
 	{
 		this._instance_label = instance_label;
-	}
-
-	/**
-	 * The status of the instance.
-	 */
-	get instance_service_status()
-	{
-		return this._instance_service_status || null;
-	}
-
-	set instance_service_status(instance_service_status)
-	{
-		this._instance_service_status = instance_service_status;
 	}
 
 	/**

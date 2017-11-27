@@ -55,6 +55,19 @@ class AppMapRInstance extends ObjectBase
 	}
 
 	/**
+	 * The status of the instance.
+	 */
+	get instance_service_status()
+	{
+		return this._instance_service_status || null;
+	}
+
+	set instance_service_status(instance_service_status)
+	{
+		this._instance_service_status = instance_service_status;
+	}
+
+	/**
 	 * The subdomain of the node
 	 */
 	get instance_hostname()

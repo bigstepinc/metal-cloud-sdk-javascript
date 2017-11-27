@@ -12,7 +12,7 @@ const ObjectBase = require('./ObjectBase');
 module.exports = 
 class ContainerArrayInterfaceOperation extends ObjectBase
 {
-	constructor(container_array_interface_change_id)
+	constructor(container_array_interface_id, container_array_interface_change_id)
 	{
 		super();
 
@@ -28,9 +28,15 @@ class ContainerArrayInterfaceOperation extends ObjectBase
 			}
 		}
 
-		if(container_array_interface_change_id === undefined || container_array_interface_change_id === null)
-			throw new Error("Invalid param in ContainerArrayInterfaceOperation constructor.");
+		for(let index = 0; index < 2; index++)
+		{
+			let arg = arguments[index];
 
+			if(arg === undefined || arg === null)
+				throw new Error("Invalid params in ContainerArrayInterfaceOperation constructor.");
+		}
+
+		this._container_array_interface_id = container_array_interface_id;
 		this._container_array_interface_change_id = container_array_interface_change_id;
 	}
 
@@ -191,6 +197,7 @@ class ContainerArrayInterfaceOperation extends ObjectBase
 	static get JSONRequired()
 	{
 		return [
+			"container_array_interface_id",
 			"container_array_interface_change_id"
 		];
 	}

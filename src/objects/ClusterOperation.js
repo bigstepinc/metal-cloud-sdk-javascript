@@ -123,6 +123,19 @@ class ClusterOperation extends ObjectBase
 	}
 
 	/**
+	 * Cluster services as assigned to each instance
+	 */
+	get cluster_service_assignment()
+	{
+		return this._cluster_service_assignment || {};
+	}
+
+	set cluster_service_assignment(cluster_service_assignment)
+	{
+		this._cluster_service_assignment = cluster_service_assignment;
+	}
+
+	/**
 	 * This property helps ensure that edit operations don’t overwrite other,
 	 * more recent changes made to the same object. It gets updated automatically
 	 * after each successful edit operation.

@@ -130,6 +130,19 @@ class Cluster extends ObjectBase
 	}
 
 	/**
+	 * Cluster services as assigned to each instance
+	 */
+	get cluster_service_assignment()
+	{
+		return this._cluster_service_assignment || {};
+	}
+
+	set cluster_service_assignment(cluster_service_assignment)
+	{
+		this._cluster_service_assignment = cluster_service_assignment;
+	}
+
+	/**
 	 * Specifies if the cluster will be automatically managed or not.
 	 */
 	get cluster_automatic_management()

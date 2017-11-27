@@ -135,7 +135,7 @@ class BSI extends JSONRPC.Client
 	}
 
 	
-	// 226 functions available on endpoint.
+	// 230 functions available on endpoint.
 
 	cluster_create(strInfrastructureID, objCluster)
 	{
@@ -767,12 +767,12 @@ class BSI extends JSONRPC.Client
 		return this.rpc("monitoring_instance_measurement_value_get", Array.prototype.slice.call(arguments));
 	}
 
-	monitoring_instance_measurements_get_for_instance(nInstanceID, bIgnoreVirtualEthernetInterfaces = false)
+	monitoring_instance_measurements_get_for_instance(strInstanceID, bIgnoreVirtualEthernetInterfaces = false)
 	{
 		return this.rpc("monitoring_instance_measurements_get_for_instance", Array.prototype.slice.call(arguments));
 	}
 
-	monitoring_instance_measurements_rendering_get(nInstanceID, arrMeasurements, objRenderingOptions = [], bEncodeBase64 = true)
+	monitoring_instance_measurements_rendering_get(strInstanceID, arrMeasurements, objRenderingOptions = [], bEncodeBase64 = true)
 	{
 		return this.rpc("monitoring_instance_measurements_rendering_get", Array.prototype.slice.call(arguments));
 	}
@@ -782,7 +782,7 @@ class BSI extends JSONRPC.Client
 		return this.rpc("monitoring_instance_interface_measurements_rendering_get", Array.prototype.slice.call(arguments));
 	}
 
-	monitoring_network_measurements_rendering_get(nNetworkID, strNetworkTrafficType, arrMeasurements, objRenderingOptions = [], bEncodeBase64 = true)
+	monitoring_network_measurements_rendering_get(strNetworkID, strNetworkTrafficType, arrMeasurements, objRenderingOptions = [], bEncodeBase64 = true)
 	{
 		return this.rpc("monitoring_network_measurements_rendering_get", Array.prototype.slice.call(arguments));
 	}
@@ -802,7 +802,7 @@ class BSI extends JSONRPC.Client
 		return this.rpc("server_type_get", Array.prototype.slice.call(arguments));
 	}
 
-	server_type_available_server_count(strUserIDOwner, strDatacenterName, nServerTypeID, nMaximumResults)
+	server_type_available_server_count(strUserIDOwner, strDatacenterName, strServerTypeID, nMaximumResults)
 	{
 		return this.rpc("server_type_available_server_count", Array.prototype.slice.call(arguments));
 	}
@@ -897,7 +897,7 @@ class BSI extends JSONRPC.Client
 		return this.rpc("container_array_get", Array.prototype.slice.call(arguments));
 	}
 
-	container_array_edit(strContainerArrayID, objContainerArrayOperation)
+	container_array_edit(strContainerArrayID, objContainerArrayOperation, bKeepDetachingDrives = null)
 	{
 		return this.rpc("container_array_edit", Array.prototype.slice.call(arguments));
 	}
@@ -977,14 +977,9 @@ class BSI extends JSONRPC.Client
 		return this.rpc("container_platform_container_arrays", Array.prototype.slice.call(arguments));
 	}
 
-	container_array_containers(strContainerArrayID, arrContainerLabels = null, bReturnFinishedContainers = true)
+	container_array_containers(strContainerArrayID)
 	{
 		return this.rpc("container_array_containers", Array.prototype.slice.call(arguments));
-	}
-
-	container_array_containers_kill(strContainerArrayID, arrContainerLabels = null)
-	{
-		return this.rpc("container_array_containers_kill", Array.prototype.slice.call(arguments));
 	}
 
 	cluster_password_change(strClusterID, strNewPassword)
@@ -997,19 +992,9 @@ class BSI extends JSONRPC.Client
 		return this.rpc("cluster_public_key_get", Array.prototype.slice.call(arguments));
 	}
 
-	container_platform_information(strContainerPlatformID)
-	{
-		return this.rpc("container_platform_information", Array.prototype.slice.call(arguments));
-	}
-
 	drive_snapshot_get(strSnapshotID)
 	{
 		return this.rpc("drive_snapshot_get", Array.prototype.slice.call(arguments));
-	}
-
-	container_array_completed_task_log(strContainerArrayID, strContainerLabel, strFileName, nReadLength)
-	{
-		return this.rpc("container_array_completed_task_log", Array.prototype.slice.call(arguments));
 	}
 
 	instance_public_key_get(strInstanceID)
@@ -1090,11 +1075,6 @@ class BSI extends JSONRPC.Client
 	subnet_create_from_owned_subnet_pool(strNetworkID, objSubnet)
 	{
 		return this.rpc("subnet_create_from_owned_subnet_pool", Array.prototype.slice.call(arguments));
-	}
-
-	container_platform_hosts_cleanup(strContainerPlatformID)
-	{
-		return this.rpc("container_platform_hosts_cleanup", Array.prototype.slice.call(arguments));
 	}
 
 	user_authenticator_has(strUserID)
@@ -1265,6 +1245,46 @@ class BSI extends JSONRPC.Client
 	secure_gateway_authorize_resource(strResourceUrl)
 	{
 		return this.rpc("secure_gateway_authorize_resource", Array.prototype.slice.call(arguments));
+	}
+
+	container_get(strContainerID)
+	{
+		return this.rpc("container_get", Array.prototype.slice.call(arguments));
+	}
+
+	containers(strInfrastructureID)
+	{
+		return this.rpc("containers", Array.prototype.slice.call(arguments));
+	}
+
+	container_logs(strContainerID, strTimestampSince = null, nLimitBytes = null)
+	{
+		return this.rpc("container_logs", Array.prototype.slice.call(arguments));
+	}
+
+	container_drives(strContainerID)
+	{
+		return this.rpc("container_drives", Array.prototype.slice.call(arguments));
+	}
+
+	container_array_shared_drives(strContainerArrayID)
+	{
+		return this.rpc("container_array_shared_drives", Array.prototype.slice.call(arguments));
+	}
+
+	cluster_app(strClusterID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
+	{
+		return this.rpc("cluster_app", Array.prototype.slice.call(arguments));
+	}
+
+	container_array_drive_arrays(strContainerArrayID)
+	{
+		return this.rpc("container_array_drive_arrays", Array.prototype.slice.call(arguments));
+	}
+
+	container_cluster_app(strContainerClusterID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
+	{
+		return this.rpc("container_cluster_app", Array.prototype.slice.call(arguments));
 	}
 
 

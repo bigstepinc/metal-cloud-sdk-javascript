@@ -2,7 +2,7 @@ module.exports =
 class Constants
 {
 		/**
-		 * Metal Cloud, API v2.11
+		 * Metal Cloud, API v2.13
 		 */
 	
 	
@@ -108,6 +108,16 @@ class Constants
 		}
 	
 		/**
+		 * Percona MySQL cluster.See
+		 * https://www.percona.com/software/mysql-database/percona-xtradb-cluster for
+		 * information on this software.
+		 */
+		static get CLUSTER_TYPE_MYSQL_PERCONA()
+		{
+			return "mysql_percona";
+		}
+	
+		/**
 		 * SaaS cluster of type Splunk.See http://www.splunk.com/ for information on
 		 * this software.
 		 */
@@ -193,6 +203,33 @@ class Constants
 		}
 	
 		/**
+		 * ContainerArray execute command action.ContainerArray action that executes a
+		 * given command.
+		 */
+		static get CONTAINER_ARRAY_ACTION_EXECUTE_COMMAND()
+		{
+			return "execute_command";
+		}
+	
+		/**
+		 * ContainerArray HTTP get action.ContainerArray action that makes a HTTP get
+		 * request.
+		 */
+		static get CONTAINER_ARRAY_ACTION_HTTP_GET()
+		{
+			return "http_get";
+		}
+	
+		/**
+		 * ContainerArray TCP socket action.ContainerArray action that opens a TCP
+		 * connection to a given port.
+		 */
+		static get CONTAINER_ARRAY_ACTION_TCP_SOCKET()
+		{
+			return "tcp_socket";
+		}
+	
+		/**
 		 * SAN ContainerArray interface.ContainerArray interface index reserved for SAN
 		 * networks.
 		 */
@@ -215,6 +252,14 @@ class Constants
 		static get CONTAINER_ARRAY_INTERFACE_INDEX_2()
 		{
 			return 2;
+		}
+	
+		/**
+		 * Elasticsearch container cluster type.
+		 */
+		static get CONTAINER_CLUSTER_TYPE_ELASTICSEARCH()
+		{
+			return "elasticsearch";
 		}
 	
 		/**
@@ -304,6 +349,48 @@ class Constants
 		static get CONTAINER_STATUS_NONE()
 		{
 			return "none";
+		}
+	
+		/**
+		 * Container failed phase.The Container has failed.
+		 */
+		static get CONTAINER_STATUS_PHASE_FAILED()
+		{
+			return "failed";
+		}
+	
+		/**
+		 * Container pending phase.The Container has been created and awaits scheduling
+		 * and execution.
+		 */
+		static get CONTAINER_STATUS_PHASE_PENDING()
+		{
+			return "pending";
+		}
+	
+		/**
+		 * Container running phase.Container is running.
+		 */
+		static get CONTAINER_STATUS_PHASE_RUNNING()
+		{
+			return "running";
+		}
+	
+		/**
+		 * Container succeeded phase.The Container has been executed successfully.
+		 */
+		static get CONTAINER_STATUS_PHASE_SUCCEEDED()
+		{
+			return "succeeded";
+		}
+	
+		/**
+		 * Container unknown phase.The Container state phase could not be retrieved due
+		 * to internal errors.
+		 */
+		static get CONTAINER_STATUS_PHASE_UNKNOWN()
+		{
+			return "unknown";
 		}
 	
 		/**
@@ -559,6 +646,14 @@ class Constants
 		}
 	
 		/**
+		 * Microsoft minimum number of processors for two core license pack.
+		 */
+		static get LICENSE_MICROSOFT_PROCESSOR_MIN_COUNT()
+		{
+			return 8;
+		}
+	
+		/**
 		 * License Type None.
 		 */
 		static get LICENSE_TYPE_NONE()
@@ -572,6 +667,38 @@ class Constants
 		static get LICENSE_TYPE_WINDOWS_SERVER()
 		{
 			return "windows_server";
+		}
+	
+		/**
+		 * License type Windows Server Standard.
+		 */
+		static get LICENSE_TYPE_WINDOWS_SERVER_STANDARD()
+		{
+			return "windows_server_standard";
+		}
+	
+		/**
+		 * Demand license utilization.
+		 */
+		static get LICENSE_UTILIZATION_TYPE_DEMAND()
+		{
+			return "demand";
+		}
+	
+		/**
+		 * License Utilization Type None.
+		 */
+		static get LICENSE_UTILIZATION_TYPE_NONE()
+		{
+			return "none";
+		}
+	
+		/**
+		 * Subscribe license utilization.
+		 */
+		static get LICENSE_UTILIZATION_TYPE_SUBSCRIPTION()
+		{
+			return "subscription";
 		}
 	
 		/**
@@ -772,6 +899,14 @@ class Constants
 		static get OPERATION_TYPE_SUSPEND()
 		{
 			return "suspend";
+		}
+	
+		/**
+		 * Prices key for private datacenters default prices.
+		 */
+		static get PRICES_PRIVATE_DATACENTER_KEY()
+		{
+			return "private-dc-default";
 		}
 	
 		/**
@@ -1018,6 +1153,22 @@ class Constants
 		}
 	
 		/**
+		 * Shared drive - connection type "connected".
+		 */
+		static get SHARED_DRIVE_CONNECTED_CONTAINER_ARRAY()
+		{
+			return "connected_container_array";
+		}
+	
+		/**
+		 * Shared drive - connection type "disconnected".
+		 */
+		static get SHARED_DRIVE_DISCONNECTED_CONTAINER_ARRAY()
+		{
+			return "disconnected_container_array";
+		}
+	
+		/**
 		 * Shared drive connection type "will be connected".When an instance array or a
 		 * container array is attached to a shared drive, this type of connection will
 		 * be made.
@@ -1025,6 +1176,14 @@ class Constants
 		static get SHARED_DRIVE_WILL_BE_CONNECTED()
 		{
 			return "will_be_connected";
+		}
+	
+		/**
+		 * Shared drive connection type "will be connected".
+		 */
+		static get SHARED_DRIVE_WILL_BE_CONNECTED_CONTAINER_ARRAY()
+		{
+			return "will_be_connected_container_array";
 		}
 	
 		/**
@@ -1036,6 +1195,14 @@ class Constants
 		static get SHARED_DRIVE_WILL_BE_DISCONNECTED()
 		{
 			return "will_be_disconnected";
+		}
+	
+		/**
+		 * Shared drive - connection type "will_be_disconnected".
+		 */
+		static get SHARED_DRIVE_WILL_BE_DISCONNECTED_CONTAINER_ARRAY()
+		{
+			return "will_be_disconnected_container_array";
 		}
 	
 		/**
@@ -1252,6 +1419,33 @@ class Constants
 		static get USER_TYPE_BILLABLE()
 		{
 			return "billable";
+		}
+	
+		/**
+		 * Volume template deprecation status deprecated allow expand.Volume template
+		 * deprecation status deprecated allow expand
+		 */
+		static get VOLUME_TEMPLATE_DEPRECATION_STATUS_DEPRECATED_ALLOW_EXPAND()
+		{
+			return "deprecated_allow_expand";
+		}
+	
+		/**
+		 * Volume template deprecation status deprecated deny provision.Volume template
+		 * deprecation status deprecated deny provision
+		 */
+		static get VOLUME_TEMPLATE_DEPRECATION_STATUS_DEPRECATED_DENY_PROVISION()
+		{
+			return "deprecated_deny_provision";
+		}
+	
+		/**
+		 * Volume template deprecation status not deprecated.Volume template
+		 * deprecation status not deprecated
+		 */
+		static get VOLUME_TEMPLATE_DEPRECATION_STATUS_NOT_DEPRECATED()
+		{
+			return "not_deprecated";
 		}
 	
 		/**

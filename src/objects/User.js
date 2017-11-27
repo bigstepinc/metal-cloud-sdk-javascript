@@ -374,6 +374,33 @@ class User extends ObjectBase
 	}
 
 	/**
+	 * Used to group users based on their brand.
+	 */
+	get user_brand()
+	{
+		return this._user_brand || null;
+	}
+
+	set user_brand(user_brand)
+	{
+		this._user_brand = user_brand;
+	}
+
+	/**
+	 * Determines if the user is a brand manager. Direct delegates will be asigned
+	 * to the same brand.
+	 */
+	get user_is_brand_manager()
+	{
+		return this._user_is_brand_manager || false;
+	}
+
+	set user_is_brand_manager(user_is_brand_manager)
+	{
+		this._user_is_brand_manager = user_is_brand_manager;
+	}
+
+	/**
 	 * The schema type
 	 */
 	get type()

@@ -165,6 +165,19 @@ class DriveArray extends ObjectBase
 	}
 
 	/**
+	 * The ContainerArray ID to which the Drive array is attached.
+	 */
+	get container_array_id()
+	{
+		return this._container_array_id || null;
+	}
+
+	set container_array_id(container_array_id)
+	{
+		this._container_array_id = container_array_id;
+	}
+
+	/**
 	 * The status of the Drive array.
 	 */
 	get drive_array_service_status()
@@ -201,6 +214,20 @@ class DriveArray extends ObjectBase
 	set cluster_id(cluster_id)
 	{
 		this._cluster_id = cluster_id;
+	}
+
+	/**
+	 * If not null, then the InstanceArray is part of the specified
+	 * ContainerCluster.
+	 */
+	get container_cluster_id()
+	{
+		return this._container_cluster_id || null;
+	}
+
+	set container_cluster_id(container_cluster_id)
+	{
+		this._container_cluster_id = container_cluster_id;
 	}
 
 	/**
@@ -255,6 +282,19 @@ class DriveArray extends ObjectBase
 	set drive_array_updated_timestamp(drive_array_updated_timestamp)
 	{
 		this._drive_array_updated_timestamp = drive_array_updated_timestamp;
+	}
+
+	/**
+	 * License utilization type for the license.
+	 */
+	get license_utilization_type()
+	{
+		return this._license_utilization_type || "subscription";
+	}
+
+	set license_utilization_type(license_utilization_type)
+	{
+		this._license_utilization_type = license_utilization_type;
 	}
 
 	/**

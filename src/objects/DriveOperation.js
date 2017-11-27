@@ -176,6 +176,19 @@ class DriveOperation extends ObjectBase
 	}
 
 	/**
+	 * The ID of the Drive's associated container.
+	 */
+	get container_id()
+	{
+		return this._container_id || null;
+	}
+
+	set container_id(container_id)
+	{
+		this._container_id = container_id;
+	}
+
+	/**
 	 * Represents the volume template.
 	 */
 	get template_id_origin()

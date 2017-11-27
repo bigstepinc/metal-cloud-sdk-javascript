@@ -5,7 +5,7 @@ module.exports =
 class EventTypes
 {
 	/**
-	 * Metal Cloud, API v2.11
+	 * Metal Cloud, API v2.13
 	 */
 
 
@@ -33,6 +33,19 @@ class EventTypes
 	static get AUTHENTICATOR_REMOVED()
 	{
 		return 252;
+	}
+
+	/**
+	 * Deploy Agent VLAN Configuration finished.
+	 * Severity: success.
+	 *
+	 * Deploy Agent VLAN Configuration finished.
+	 *
+	 * @returns {number}
+	 */
+	static get BSI_AGENT_DEPLOY_CONFIGURATION_FINISHED()
+	{
+		return 384;
 	}
 
 	/**
@@ -721,6 +734,19 @@ class EventTypes
 	}
 
 	/**
+	 * Data Lake has promotion.
+	 * Severity: info.
+	 *
+	 * Data Lake has a promotion.
+	 *
+	 * @returns {number}
+	 */
+	static get DATA_LAKE_HAS_PROMOTION()
+	{
+		return 299;
+	}
+
+	/**
 	 * DataLake started.
 	 * Severity: info.
 	 *
@@ -845,6 +871,19 @@ class EventTypes
 	}
 
 	/**
+	 * Drive attached to Container.
+	 * Severity: info.
+	 *
+	 * A Drive has been successfully attached to a Container.
+	 *
+	 * @returns {number}
+	 */
+	static get DRIVE_ATTACHED_CONTAINER()
+	{
+		return 328;
+	}
+
+	/**
 	 * Drive attached to Instance.
 	 * Severity: info.
 	 *
@@ -896,6 +935,19 @@ class EventTypes
 	static get DRIVE_DEPLOYED()
 	{
 		return 32;
+	}
+
+	/**
+	 * Drive detached from Container.
+	 * Severity: info.
+	 *
+	 * A Drive has been successfully detached from a Container.
+	 *
+	 * @returns {number}
+	 */
+	static get DRIVE_DETACHED_CONTAINER()
+	{
+		return 329;
 	}
 
 	/**
@@ -1034,6 +1086,20 @@ class EventTypes
 	}
 
 	/**
+	 * Infrastructure deploy blocker triggered.
+	 * Severity: warning.
+	 *
+	 * An infrastructure deploy blocker was triggered and it blocked the deployment
+	 * of the infrastructure.
+	 *
+	 * @returns {number}
+	 */
+	static get INFRASTRUCTURE_DEPLOY_BLOCKER_TRIGGERED()
+	{
+		return 323;
+	}
+
+	/**
 	 * Infrastructure deploy started.
 	 * Severity: info.
 	 *
@@ -1098,6 +1164,46 @@ class EventTypes
 	static get INFRASTRUCTURE_EDITED()
 	{
 		return 159;
+	}
+
+	/**
+	 * Infrastructure experimental priority set.
+	 * Severity: info.
+	 *
+	 * The experimental priority of the infrastructure is set.
+	 *
+	 * @returns {number}
+	 */
+	static get INFRASTRUCTURE_EXPERIMENTAL_PRIORITY_SET()
+	{
+		return 296;
+	}
+
+	/**
+	 * Infrastructure instances info.
+	 * Severity: info.
+	 *
+	 * Internal info for all instances of the Infrastructure was returned.
+	 *
+	 * @returns {number}
+	 */
+	static get INFRASTRUCTURE_INSTANCES_INFO()
+	{
+		return 297;
+	}
+
+	/**
+	 * Infrastructure public design member is set.
+	 * Severity: info.
+	 *
+	 * The infrastructure was made a member of public designs. Public designs
+	 * members are locked by default.
+	 *
+	 * @returns {number}
+	 */
+	static get INFRASTRUCTURE_PUBLIC_DESIGNS_MEMBER_SET()
+	{
+		return 295;
 	}
 
 	/**
@@ -1695,6 +1801,58 @@ class EventTypes
 	}
 
 	/**
+	 * Resource reservation created.
+	 * Severity: info.
+	 *
+	 * A new resource reservation was created.
+	 *
+	 * @returns {number}
+	 */
+	static get RESOURCE_RESERVATION_CREATED()
+	{
+		return 331;
+	}
+
+	/**
+	 * Resource reservation deleted.
+	 * Severity: info.
+	 *
+	 * The resource reservation was deleted.
+	 *
+	 * @returns {number}
+	 */
+	static get RESOURCE_RESERVATION_DELETED()
+	{
+		return 330;
+	}
+
+	/**
+	 * Resource reservation edited.
+	 * Severity: info.
+	 *
+	 * A resource reservation was edited.
+	 *
+	 * @returns {number}
+	 */
+	static get RESOURCE_RESERVATION_EDITED()
+	{
+		return 332;
+	}
+
+	/**
+	 * Server type reservation cancelled.
+	 * Severity: info.
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get SERVE()
+	{
+		return 364;
+	}
+
+	/**
 	 * Server hot swap.
 	 * Severity: important.
 	 *
@@ -1705,6 +1863,58 @@ class EventTypes
 	static get SERVER_SWAPPED()
 	{
 		return 151;
+	}
+
+	/**
+	 * Server type reservation cancelled.
+	 * Severity: info.
+	 *
+	 * A server type reservation has been cancelled.
+	 *
+	 * @returns {number}
+	 */
+	static get SERVER_TYPE_RESERVATION_CANCELLED()
+	{
+		return 365;
+	}
+
+	/**
+	 * Server type reservation ownership changed.
+	 * Severity: info.
+	 *
+	 * The ownership of a server type reservation has been changed.
+	 *
+	 * @returns {number}
+	 */
+	static get SERVER_TYPE_RESERVATION_OWNERSHIP_CHANGED()
+	{
+		return 367;
+	}
+
+	/**
+	 * Server type reservation reactivated.
+	 * Severity: info.
+	 *
+	 * A server type reservation has been reactivated.
+	 *
+	 * @returns {number}
+	 */
+	static get SERVER_TYPE_RESERVATION_REACTIVATED()
+	{
+		return 366;
+	}
+
+	/**
+	 * A SharedDrive was connected to a ContainerArray.
+	 * Severity: info.
+	 *
+	 * A SharedDrive was connected to a ContainerArray.
+	 *
+	 * @returns {number}
+	 */
+	static get SHARED_DRIVE_CONNECTED_TO_CONTAINER_ARRAY()
+	{
+		return 361;
 	}
 
 	/**
@@ -1759,6 +1969,19 @@ class EventTypes
 	static get SHARED_DRIVE_DEPLOYED()
 	{
 		return 163;
+	}
+
+	/**
+	 * A SharedDrive was disconnected from a ContainerArray.
+	 * Severity: info.
+	 *
+	 * A SharedDrive was disconnected from a ContainerArray.
+	 *
+	 * @returns {number}
+	 */
+	static get SHARED_DRIVE_DISCONNECTED_FROM_CONTAINER_ARRAY()
+	{
+		return 362;
 	}
 
 	/**
@@ -1817,6 +2040,19 @@ class EventTypes
 	}
 
 	/**
+	 * A SharedDrive will be connected to a ContainerArray.
+	 * Severity: info.
+	 *
+	 * The SharedDrive will be connected to a ContainerArray.
+	 *
+	 * @returns {number}
+	 */
+	static get SHARED_DRIVE_WILL_BE_CONNECTED_TO_CONTAINER_ARRAY()
+	{
+		return 359;
+	}
+
+	/**
 	 * A SharedDrive will be connected to an InstanceArray.
 	 * Severity: info.
 	 *
@@ -1827,6 +2063,19 @@ class EventTypes
 	static get SHARED_DRIVE_WILL_BE_CONNECTED_TO_INSTANCE_ARRAY()
 	{
 		return 178;
+	}
+
+	/**
+	 * A SharedDrive will be disconnected from a ContainerArray.
+	 * Severity: info.
+	 *
+	 * A SharedDrive will be disconnected from a ContainerArray.
+	 *
+	 * @returns {number}
+	 */
+	static get SHARED_DRIVE_WILL_BE_DISCONNECTED_FROM_CONTAINER_ARRAY()
+	{
+		return 360;
 	}
 
 	/**
@@ -1866,6 +2115,71 @@ class EventTypes
 	static get SNAPSHOT_DELETED()
 	{
 		return 184;
+	}
+
+	/**
+	 * Storage pool created.
+	 * Severity: info.
+	 *
+	 * A new storage pool was created.
+	 *
+	 * @returns {number}
+	 */
+	static get STORAGE_POOL_CREATED()
+	{
+		return 333;
+	}
+
+	/**
+	 * Storage pool deleted.
+	 * Severity: info.
+	 *
+	 * A storage pool was deleted.
+	 *
+	 * @returns {number}
+	 */
+	static get STORAGE_POOL_DELETED()
+	{
+		return 334;
+	}
+
+	/**
+	 * Storage pool experimental set.
+	 * Severity: info.
+	 *
+	 * The storage_pool_is_experimental was updated.
+	 *
+	 * @returns {number}
+	 */
+	static get STORAGE_POOL_EXPERIMENTAL_SET()
+	{
+		return 335;
+	}
+
+	/**
+	 * Storage Pool IQN Cleaned.
+	 * Severity: info.
+	 *
+	 * The iscsi initiators that are no longer used in storage was deleted.
+	 *
+	 * @returns {number}
+	 */
+	static get STORAGE_POOL_IQN_CLEANED()
+	{
+		return 336;
+	}
+
+	/**
+	 * Storage Pool Maintenance Set.
+	 * Severity: info.
+	 *
+	 * The flag storage_pool_in_maintenance was set.
+	 *
+	 * @returns {number}
+	 */
+	static get STORAGE_POOL_MAINTENANCE_SET()
+	{
+		return 337;
 	}
 
 	/**
@@ -1951,6 +2265,58 @@ class EventTypes
 	}
 
 	/**
+	 * OOB subnet created.
+	 * Severity: info.
+	 *
+	 * An OOB subnet has been successfully created.
+	 *
+	 * @returns {number}
+	 */
+	static get SUBNET_OOB_CREATED()
+	{
+		return 379;
+	}
+
+	/**
+	 * OOB subnet deleted.
+	 * Severity: info.
+	 *
+	 * An OOB subnet has been successfully deleted.
+	 *
+	 * @returns {number}
+	 */
+	static get SUBNET_OOB_DELETED()
+	{
+		return 380;
+	}
+
+	/**
+	 * Subnet pool created.
+	 * Severity: info.
+	 *
+	 * A subnet pool has been successfully created.
+	 *
+	 * @returns {number}
+	 */
+	static get SUBNET_POOL_CREATED()
+	{
+		return 377;
+	}
+
+	/**
+	 * Subnet pool deleted.
+	 * Severity: info.
+	 *
+	 * A subnet pool has been successfully deleted.
+	 *
+	 * @returns {number}
+	 */
+	static get SUBNET_POOL_DELETED()
+	{
+		return 378;
+	}
+
+	/**
 	 * Subnet started.
 	 * Severity: info.
 	 *
@@ -1976,6 +2342,32 @@ class EventTypes
 	static get SUBNET_STOPPED()
 	{
 		return 100;
+	}
+
+	/**
+	 * Switch device network allocated primary subnet.
+	 * Severity: info.
+	 *
+	 * Primary WAN IPv4 subnet was allocated for a network from the infrastructure switches.
+	 *
+	 * @returns {number}
+	 */
+	static get SWITCH_DEVICE_NETWORK_ALLOCATED_PRIMARY_SUBNET()
+	{
+		return 338;
+	}
+
+	/**
+	 * User access level set.
+	 * Severity: info.
+	 *
+	 * The access level for a user has been changed.
+	 *
+	 * @returns {number}
+	 */
+	static get USER_ACCESS_LEVEL_SET()
+	{
+		return 368;
 	}
 
 	/**
@@ -2084,6 +2476,32 @@ class EventTypes
 	static get USER_PASSWORD_CHANGED()
 	{
 		return 111;
+	}
+
+	/**
+	 * Promotion added to user.
+	 * Severity: info.
+	 *
+	 * A promotion has been added to the user.
+	 *
+	 * @returns {number}
+	 */
+	static get USER_PROMOTION_ADD()
+	{
+		return 318;
+	}
+
+	/**
+	 * Promotion removed from user.
+	 * Severity: info.
+	 *
+	 * A promotion has been removed from the user.
+	 *
+	 * @returns {number}
+	 */
+	static get USER_REMOVE_PROMOTION()
+	{
+		return 319;
 	}
 
 	/**

@@ -67,6 +67,20 @@ class InfrastructureDeployOverview extends ObjectBase
 	}
 
 	/**
+	 * Infrastructure elements such as InstanceArrays or ContainerArrays and their
+	 * children which will be temporarily powered off or restarted.
+	 */
+	get downtime()
+	{
+		return this._downtime || [];
+	}
+
+	set downtime(downtime)
+	{
+		this._downtime = downtime;
+	}
+
+	/**
 	 * Infrastructure elements which are swapping, allocating or deallocating
 	 * servers, allocating or expanding disk space, etc.
 	 */

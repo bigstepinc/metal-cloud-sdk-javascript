@@ -41,7 +41,7 @@ class UserLimits extends ObjectBase
 	}
 
 	/**
-	 * The maximum number of server reservations.
+	 * The maximum number of server reservations (limit for the quantity param).
 	 */
 	get server_type_reservation_max_quantity()
 	{
@@ -51,6 +51,19 @@ class UserLimits extends ObjectBase
 	set server_type_reservation_max_quantity(server_type_reservation_max_quantity)
 	{
 		this._server_type_reservation_max_quantity = server_type_reservation_max_quantity;
+	}
+
+	/**
+	 * The maximum number of server reservations.
+	 */
+	get server_type_reservation_max_count()
+	{
+		return this._server_type_reservation_max_count || null;
+	}
+
+	set server_type_reservation_max_count(server_type_reservation_max_count)
+	{
+		this._server_type_reservation_max_count = server_type_reservation_max_count;
 	}
 
 	/**
@@ -150,6 +163,19 @@ class UserLimits extends ObjectBase
 	}
 
 	/**
+	 * 1 if a Mysql cluster is allowed on a infrastructure, 0 otherwise
+	 */
+	get infrastructure_cluster_mysql_allowed()
+	{
+		return this._infrastructure_cluster_mysql_allowed || null;
+	}
+
+	set infrastructure_cluster_mysql_allowed(infrastructure_cluster_mysql_allowed)
+	{
+		this._infrastructure_cluster_mysql_allowed = infrastructure_cluster_mysql_allowed;
+	}
+
+	/**
 	 * 1 if a PostgreSQL container cluster is allowed on a infrastructure, 0
 	 * otherwise
 	 */
@@ -191,16 +217,16 @@ class UserLimits extends ObjectBase
 
 	/**
 	 * The maximum number of Container Arrays that can be created on a single
-	 * Infrastructure.
+	 * ContainerPlatform.
 	 */
-	get infrastructure_container_array_max_count()
+	get container_platform_container_array_max_count()
 	{
-		return this._infrastructure_container_array_max_count || null;
+		return this._container_platform_container_array_max_count || null;
 	}
 
-	set infrastructure_container_array_max_count(infrastructure_container_array_max_count)
+	set container_platform_container_array_max_count(container_platform_container_array_max_count)
 	{
-		this._infrastructure_container_array_max_count = infrastructure_container_array_max_count;
+		this._container_platform_container_array_max_count = container_platform_container_array_max_count;
 	}
 
 	/**
@@ -397,6 +423,75 @@ class UserLimits extends ObjectBase
 	set instance_array_drive_arrays_max_count(instance_array_drive_arrays_max_count)
 	{
 		this._instance_array_drive_arrays_max_count = instance_array_drive_arrays_max_count;
+	}
+
+	/**
+	 * The minimum number of Drive Arrays that can be attached to an Instance Array
+	 * at any given time.
+	 */
+	get container_array_drive_arrays_min_count()
+	{
+		return this._container_array_drive_arrays_min_count || null;
+	}
+
+	set container_array_drive_arrays_min_count(container_array_drive_arrays_min_count)
+	{
+		this._container_array_drive_arrays_min_count = container_array_drive_arrays_min_count;
+	}
+
+	/**
+	 * The maximum number of Drive Arrays that can be attached to an Instance Array
+	 * at any given time.
+	 */
+	get container_array_drive_arrays_max_count()
+	{
+		return this._container_array_drive_arrays_max_count || null;
+	}
+
+	set container_array_drive_arrays_max_count(container_array_drive_arrays_max_count)
+	{
+		this._container_array_drive_arrays_max_count = container_array_drive_arrays_max_count;
+	}
+
+	/**
+	 * The minimum number of Drive Arrays that can be attached to an Instance Array
+	 * at any given time.
+	 */
+	get container_array_containers_min_count()
+	{
+		return this._container_array_containers_min_count || null;
+	}
+
+	set container_array_containers_min_count(container_array_containers_min_count)
+	{
+		this._container_array_containers_min_count = container_array_containers_min_count;
+	}
+
+	/**
+	 * The maximum number of Drive Arrays that can be attached to an Instance Array
+	 * at any given time.
+	 */
+	get container_array_containers_max_count()
+	{
+		return this._container_array_containers_max_count || null;
+	}
+
+	set container_array_containers_max_count(container_array_containers_max_count)
+	{
+		this._container_array_containers_max_count = container_array_containers_max_count;
+	}
+
+	/**
+	 * The maximum number of Secrets that can asociated with a container array.
+	 */
+	get container_array_secrets_max_count()
+	{
+		return this._container_array_secrets_max_count || null;
+	}
+
+	set container_array_secrets_max_count(container_array_secrets_max_count)
+	{
+		this._container_array_secrets_max_count = container_array_secrets_max_count;
 	}
 
 	/**

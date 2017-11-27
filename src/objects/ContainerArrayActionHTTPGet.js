@@ -76,7 +76,7 @@ class ContainerArrayActionHTTPGet extends ObjectBase
 	 */
 	get action_scheme()
 	{
-		return this._action_scheme || "http";
+		return this._action_scheme || "HTTP";
 	}
 
 	set action_scheme(action_scheme)

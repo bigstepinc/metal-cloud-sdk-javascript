@@ -8,7 +8,7 @@ const path = require("path");
 // This allows the watcher to restart this process.
 process.on(
 	"unhandledRejection", 
-	async (reason, promise) => 
+	(reason, promise) => 
 	{
 		console.log("Unhandled Rejection at: Promise", promise, "reason", reason);
 		process.exit(1);
@@ -16,12 +16,13 @@ process.on(
 );
 
 
-async function runCLICommand(strCommand)
+function runCLICommand(strCommand)
 {
 	const processCommand = exec(strCommand);
 	processCommand.stdout.pipe(process.stdout);
 	processCommand.stderr.pipe(process.stderr);
-	return new Promise(async (fnResolve, fnReject) => {
+
+	return new Promise((fnResolve, fnReject) => {
 		processCommand.on("error", fnReject);
 		processCommand.on("exit", (nCode) => {
 			if(nCode === 0)
@@ -37,7 +38,7 @@ async function runCLICommand(strCommand)
 }
 
 
-(async () => {
+(() => {
 	const objPackageJSON = JSON.parse(fs.readFileSync("package.json"));
 
 	const arrVersionParts = objPackageJSON.version.split(".");
@@ -47,7 +48,8 @@ async function runCLICommand(strCommand)
 	fs.writeFileSync("package.json", JSON.stringify(objPackageJSON, undefined, "  "));
 
 	console.log("Building.");
-	await runCLICommand(path.resolve("./node_modules/.bin/webpack"));
-	
-	console.log("Done.");
+
+	runCLICommand(path.resolve("./node_modules/.bin/webpack"))
+		.then(() => console.log("Done."));
 })();
+

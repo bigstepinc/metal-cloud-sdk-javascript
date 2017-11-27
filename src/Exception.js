@@ -15,7 +15,7 @@ class Exception extends ExtendableError
 	}
 
 	/**
-	 * Metal Cloud, API v2.11
+	 * Metal Cloud, API v2.13
 	 */
 
 	/**
@@ -29,6 +29,19 @@ class Exception extends ExtendableError
 	static get API_KEY_MISMATCH()
 	{
 		return 272;
+	}
+
+	/**
+	 * API key not set.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get API_KEY_NOT_FOUND()
+	{
+		return 322;
 	}
 
 	/**
@@ -194,16 +207,14 @@ class Exception extends ExtendableError
 	}
 
 	/**
-	 * Datacenter name invalid.
+	 * Datacenter not found.
 	 * @public
 	 *
-	 * This error is thrown when a provided datacenter name is invalid. API calls
-	 * that receive this error should obtain a list of active datacenters and
-	 * choose one of the available options.
+	 * .
 	 *
 	 * @returns {number}
 	 */
-	static get DATACENTER_NAME_INVALID()
+	static get DATACENTER_NOT_FOUND()
 	{
 		return 269;
 	}
@@ -1475,6 +1486,19 @@ class Exception extends ExtendableError
 	static get NOT_IMPLEMENTED()
 	{
 		return 3;
+	}
+
+	/**
+	 * Nothing to update.
+	 * @public
+	 *
+	 * Generic error code for when an update does not produce any results.
+	 *
+	 * @returns {number}
+	 */
+	static get NOTHING_TO_UPDATE()
+	{
+		return 324;
 	}
 
 	/**
@@ -2889,6 +2913,19 @@ class Exception extends ExtendableError
 	}
 
 	/**
+	 * Volume template is deprecated and cannot be provisioned.
+	 * @public
+	 *
+	 * Volume template is deprecated and cannot be provisioned.
+	 *
+	 * @returns {number}
+	 */
+	static get VOLUME_TEMPLATE_DEPRECATED()
+	{
+		return 323;
+	}
+
+	/**
 	 * VPLS instance not found.
 	 * @private
 	 *
@@ -2992,6 +3029,7 @@ Exception.arrPrivateErrorConstantNames = [
  */
 Exception.arrPublicErrorConstantNames = [
 	Exception.API_KEY_MISMATCH,
+	Exception.API_KEY_NOT_FOUND,
 	Exception.AUTHENTICATOR_OTP_REJECTED,
 	Exception.CLUSTER_INSTANCE_ARRAY_HAS_NO_WAN_INTERFACE,
 	Exception.CLUSTER_MIXING_NOT_ALLOWED,
@@ -3001,7 +3039,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.CONTAINER_PLATFORM_NOT_ENOUGH_RESOURCES,
 	Exception.CONTAINER_PLATFORM_NOT_ENOUGH_SPACE_FOR_PERSISTENT_DIRECTORIES,
 	Exception.DATA_LOSS_NOT_CONFIRMED,
-	Exception.DATACENTER_NAME_INVALID,
+	Exception.DATACENTER_NOT_FOUND,
 	Exception.DISK_TYPE_INVALID,
 	Exception.DNS_LABEL_RESERVED,
 	Exception.DOMAIN_LABEL_ALREADY_IN_USE,
@@ -3068,6 +3106,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.NOT_AUTHENTICATED,
 	Exception.NOT_AUTHORIZED,
 	Exception.NOT_IMPLEMENTED,
+	Exception.NOTHING_TO_UPDATE,
 	Exception.OBJECT_IS_INVALID,
 	Exception.PARAM_TYPE_MISMATCH,
 	Exception.PARAM_VALUE_INVALID,
@@ -3131,7 +3170,8 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.USER_SSH_KEY_NOT_FOUND,
 	Exception.USER_SSH_KEYS_MAXIMUM_COUNT_EXCEEDED,
 	Exception.USER_SUSPENDED,
-	Exception.USER_TEST_CREDENTIALS_EMAIL_MISMATCH
+	Exception.USER_TEST_CREDENTIALS_EMAIL_MISMATCH,
+	Exception.VOLUME_TEMPLATE_DEPRECATED
 ];
 
 module.exports = Exception;

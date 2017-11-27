@@ -30,16 +30,16 @@ class AppElasticsearchInstance extends ObjectBase
 	}
 
 	/**
-	 * The HQ plugin interface URL.
+	 * The user interface URL.
 	 */
-	get hq_url()
+	get ui_url()
 	{
-		return this._hq_url || null;
+		return this._ui_url || null;
 	}
 
-	set hq_url(hq_url)
+	set ui_url(ui_url)
 	{
-		this._hq_url = hq_url;
+		this._ui_url = ui_url;
 	}
 
 	/**

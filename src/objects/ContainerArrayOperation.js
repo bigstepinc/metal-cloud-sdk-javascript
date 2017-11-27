@@ -12,7 +12,7 @@ const ObjectBase = require('./ObjectBase');
 module.exports = 
 class ContainerArrayOperation extends ObjectBase
 {
-	constructor(container_array_label, container_array_change_id)
+	constructor(container_array_change_id, container_array_label)
 	{
 		super();
 
@@ -36,34 +36,38 @@ class ContainerArrayOperation extends ObjectBase
 				throw new Error("Invalid params in ContainerArrayOperation constructor.");
 		}
 
-		this._container_array_label = container_array_label;
 		this._container_array_change_id = container_array_change_id;
+		this._container_array_label = container_array_label;
 	}
 
 	/**
-	 * The status of the deploy process.
+	 * The ID of the ContainerArray which can be used instead of the
+	 * container_array_label or container_array_subdomain when calling the API
+	 * functions. It is automatically generated and cannot be edited.
 	 */
-	get container_array_deploy_status()
+	get container_array_id()
 	{
-		return this._container_array_deploy_status || null;
+		return this._container_array_id || null;
 	}
 
-	set container_array_deploy_status(container_array_deploy_status)
+	set container_array_id(container_array_id)
 	{
-		this._container_array_deploy_status = container_array_deploy_status;
+		this._container_array_id = container_array_id;
 	}
 
 	/**
-	 * The operation applied to the ContainerArray.
+	 * This property helps ensure that edit operations don't overwrite other, more
+	 * recent changes made to the same object. It gets updated automatically after
+	 * each successful edit operation.
 	 */
-	get container_array_deploy_type()
+	get container_array_change_id()
 	{
-		return this._container_array_deploy_type || null;
+		return this._container_array_change_id || null;
 	}
 
-	set container_array_deploy_type(container_array_deploy_type)
+	set container_array_change_id(container_array_change_id)
 	{
-		this._container_array_deploy_type = container_array_deploy_type;
+		this._container_array_change_id = container_array_change_id;
 	}
 
 	/**
@@ -96,35 +100,47 @@ class ContainerArrayOperation extends ObjectBase
 	}
 
 	/**
-	 * The ID of the ContainerArray which can be used instead of the
-	 * container_array_label or container_array_subdomain when calling the API
-	 * functions. It is automatically generated and cannot be edited.
+	 * The operation applied to the ContainerArray.
 	 */
-	get container_array_id()
+	get container_array_deploy_type()
 	{
-		return this._container_array_id || null;
+		return this._container_array_deploy_type || null;
 	}
 
-	set container_array_id(container_array_id)
+	set container_array_deploy_type(container_array_deploy_type)
 	{
-		this._container_array_id = container_array_id;
+		this._container_array_deploy_type = container_array_deploy_type;
 	}
 
 	/**
-	 * The number of Container products to be created on the ContainerArray.
+	 * The status of the deploy process.
 	 */
-	get container_array_container_count()
+	get container_array_deploy_status()
 	{
-		return this._container_array_container_count || null;
+		return this._container_array_deploy_status || null;
 	}
 
-	set container_array_container_count(container_array_container_count)
+	set container_array_deploy_status(container_array_deploy_status)
 	{
-		this._container_array_container_count = container_array_container_count;
+		this._container_array_deploy_status = container_array_deploy_status;
 	}
 
 	/**
-	 * The minimum RAM capacity of each container.
+	 * All ContainerArrayInterfaceOperation objects.
+	 */
+	get container_array_interfaces()
+	{
+		return this._container_array_interfaces || [];
+	}
+
+	set container_array_interfaces(container_array_interfaces)
+	{
+		this._container_array_interfaces = container_array_interfaces;
+	}
+
+	/**
+	 * The resource requirements in terms of RAM for a Container of the
+	 * ContainerArray.
 	 */
 	get container_array_ram_mbytes()
 	{
@@ -137,7 +153,8 @@ class ContainerArrayOperation extends ObjectBase
 	}
 
 	/**
-	 * The minimum cores of a CPU.
+	 * The resource requirements in terms of CPU cores for a Container of the
+	 * ContainerArray.
 	 */
 	get container_array_processor_core_count()
 	{
@@ -147,6 +164,177 @@ class ContainerArrayOperation extends ObjectBase
 	set container_array_processor_core_count(container_array_processor_core_count)
 	{
 		this._container_array_processor_core_count = container_array_processor_core_count;
+	}
+
+	/**
+	 * The number of Containers of the ContainerArray.
+	 */
+	get container_array_container_count()
+	{
+		return this._container_array_container_count || null;
+	}
+
+	set container_array_container_count(container_array_container_count)
+	{
+		this._container_array_container_count = container_array_container_count;
+	}
+
+	/**
+	 * The Docker image of the ContainerArray.
+	 */
+	get container_array_application_image()
+	{
+		return this._container_array_application_image || "bigstepinc/hello-world";
+	}
+
+	set container_array_application_image(container_array_application_image)
+	{
+		this._container_array_application_image = container_array_application_image;
+	}
+
+	/**
+	 * Container entrypoint command override for the ContainerArray.
+	 */
+	get container_array_entrypoint_command_override()
+	{
+		return this._container_array_entrypoint_command_override || [];
+	}
+
+	set container_array_entrypoint_command_override(container_array_entrypoint_command_override)
+	{
+		this._container_array_entrypoint_command_override = container_array_entrypoint_command_override;
+	}
+
+	/**
+	 * Container entrypoint arguments for the ContainerArray.
+	 */
+	get container_array_entrypoint_args()
+	{
+		return this._container_array_entrypoint_args || [];
+	}
+
+	set container_array_entrypoint_args(container_array_entrypoint_args)
+	{
+		this._container_array_entrypoint_args = container_array_entrypoint_args;
+	}
+
+	/**
+	 * The ContainerArrayEnvironmentVariable objects of the ContainerArray.
+	 */
+	get container_array_environment_variables()
+	{
+		return this._container_array_environment_variables || [];
+	}
+
+	set container_array_environment_variables(container_array_environment_variables)
+	{
+		this._container_array_environment_variables = container_array_environment_variables;
+	}
+
+	/**
+	 * ContainerArrayConfigMap object.
+	 */
+	get container_array_config_map()
+	{
+		return this._container_array_config_map || null;
+	}
+
+	set container_array_config_map(container_array_config_map)
+	{
+		this._container_array_config_map = container_array_config_map;
+	}
+
+	/**
+	 * The ContainerArrayPortMapping objects of the ContainerArray.
+	 */
+	get container_array_port_mappings()
+	{
+		return this._container_array_port_mappings || [];
+	}
+
+	set container_array_port_mappings(container_array_port_mappings)
+	{
+		this._container_array_port_mappings = container_array_port_mappings;
+	}
+
+	/**
+	 * The ContainerArraySecret objects of the ContainerArray.
+	 */
+	get container_array_secrets()
+	{
+		return this._container_array_secrets || [];
+	}
+
+	set container_array_secrets(container_array_secrets)
+	{
+		this._container_array_secrets = container_array_secrets;
+	}
+
+	/**
+	 * The ContainerArrayVolatileVolume objects of the ContainerArray.
+	 */
+	get container_array_volatile_volumes()
+	{
+		return this._container_array_volatile_volumes || [];
+	}
+
+	set container_array_volatile_volumes(container_array_volatile_volumes)
+	{
+		this._container_array_volatile_volumes = container_array_volatile_volumes;
+	}
+
+	/**
+	 * The ContainerArrayPersistentVolume objects of the ContainerArray.
+	 */
+	get container_array_persistent_volumes()
+	{
+		return this._container_array_persistent_volumes || [];
+	}
+
+	set container_array_persistent_volumes(container_array_persistent_volumes)
+	{
+		this._container_array_persistent_volumes = container_array_persistent_volumes;
+	}
+
+	/**
+	 * ContainerArrayReadinessCheck object that asseses the readiness of the
+	 * ContainerArray Containers.
+	 */
+	get container_array_readiness_check()
+	{
+		return this._container_array_readiness_check || null;
+	}
+
+	set container_array_readiness_check(container_array_readiness_check)
+	{
+		this._container_array_readiness_check = container_array_readiness_check;
+	}
+
+	/**
+	 * ContainerArrayLivenessCheck object that asseses the liveness of the
+	 * ContainerArray Containers.
+	 */
+	get container_array_liveness_check()
+	{
+		return this._container_array_liveness_check || null;
+	}
+
+	set container_array_liveness_check(container_array_liveness_check)
+	{
+		this._container_array_liveness_check = container_array_liveness_check;
+	}
+
+	/**
+	 * Reserved for GUI users.
+	 */
+	get container_array_gui_settings_json()
+	{
+		return this._container_array_gui_settings_json || null;
+	}
+
+	set container_array_gui_settings_json(container_array_gui_settings_json)
+	{
+		this._container_array_gui_settings_json = container_array_gui_settings_json;
 	}
 
 	/**
@@ -164,181 +352,6 @@ class ContainerArrayOperation extends ObjectBase
 	}
 
 	/**
-	 * All ContainerArrayInterfaceOperation objects with indexes 0 and 1.
-	 */
-	get container_array_interfaces()
-	{
-		return this._container_array_interfaces || [];
-	}
-
-	set container_array_interfaces(container_array_interfaces)
-	{
-		this._container_array_interfaces = container_array_interfaces;
-	}
-
-	/**
-	 * The application image on Docker server that will be installed on the
-	 * Container.
-	 */
-	get container_array_application_image()
-	{
-		return this._container_array_application_image || "bigstepinc/hello-world";
-	}
-
-	set container_array_application_image(container_array_application_image)
-	{
-		this._container_array_application_image = container_array_application_image;
-	}
-
-	/**
-	 * The command that is executed when the Containers are deployed.
-	 */
-	get container_entrypoint_command_override()
-	{
-		return this._container_entrypoint_command_override || null;
-	}
-
-	set container_entrypoint_command_override(container_entrypoint_command_override)
-	{
-		this._container_entrypoint_command_override = container_entrypoint_command_override;
-	}
-
-	/**
-	 * An array of strings that represents an alternative mode of specifying the
-	 * command to run.
-	 */
-	get container_entrypoint_args()
-	{
-		return this._container_entrypoint_args || [];
-	}
-
-	set container_entrypoint_args(container_entrypoint_args)
-	{
-		this._container_entrypoint_args = container_entrypoint_args;
-	}
-
-	/**
-	 * A list of services upon which this application depends.
-	 */
-	get container_dependencies()
-	{
-		return this._container_dependencies || [];
-	}
-
-	set container_dependencies(container_dependencies)
-	{
-		this._container_dependencies = container_dependencies;
-	}
-
-	/**
-	 * ContainerURIs are archived assets that get downloaded before a Container is
-	 * instantiated.
-	 */
-	get container_uris()
-	{
-		return this._container_uris || [];
-	}
-
-	set container_uris(container_uris)
-	{
-		this._container_uris = container_uris;
-	}
-
-	/**
-	 * A list of parameters received in the key/value format, used to configure the
-	 * docker image.
-	 */
-	get container_parameters()
-	{
-		return this._container_parameters || [];
-	}
-
-	set container_parameters(container_parameters)
-	{
-		this._container_parameters = container_parameters;
-	}
-
-	/**
-	 * All ContainerEnvironmentVariable objects defined for the ContainerArray
-	 * application.
-	 */
-	get container_environment_variables()
-	{
-		return this._container_environment_variables || [];
-	}
-
-	set container_environment_variables(container_environment_variables)
-	{
-		this._container_environment_variables = container_environment_variables;
-	}
-
-	/**
-	 * All ContainerVolume objects defined for the ContainerArray application.
-	 */
-	get container_volumes()
-	{
-		return this._container_volumes || [];
-	}
-
-	set container_volumes(container_volumes)
-	{
-		this._container_volumes = container_volumes;
-	}
-
-	/**
-	 * All ContainerVolume objects that represent persistent volumes defined for
-	 * the ContainerArray application.
-	 */
-	get container_persistent_volumes()
-	{
-		return this._container_persistent_volumes || [];
-	}
-
-	set container_persistent_volumes(container_persistent_volumes)
-	{
-		this._container_persistent_volumes = container_persistent_volumes;
-	}
-
-	/**
-	 * All ContainerHealthcheck objects defined for the ContainerArray application.
-	 */
-	get container_healthchecks()
-	{
-		return this._container_healthchecks || [];
-	}
-
-	set container_healthchecks(container_healthchecks)
-	{
-		this._container_healthchecks = container_healthchecks;
-	}
-
-	/**
-	 * All ContainerPortMapping objects defined for the ContainerArray application.
-	 */
-	get container_port_mappings()
-	{
-		return this._container_port_mappings || [];
-	}
-
-	set container_port_mappings(container_port_mappings)
-	{
-		this._container_port_mappings = container_port_mappings;
-	}
-
-	/**
-	 * Reserved for GUI users.
-	 */
-	get container_array_gui_settings_json()
-	{
-		return this._container_array_gui_settings_json || null;
-	}
-
-	set container_array_gui_settings_json(container_array_gui_settings_json)
-	{
-		this._container_array_gui_settings_json = container_array_gui_settings_json;
-	}
-
-	/**
 	 * The schema type.
 	 */
 	get type()
@@ -352,21 +365,6 @@ class ContainerArrayOperation extends ObjectBase
 	}
 
 	/**
-	 * This property helps ensure that edit operations don't overwrite other, more
-	 * recent changes made to the same object. It gets updated automatically after
-	 * each successful edit operation.
-	 */
-	get container_array_change_id()
-	{
-		return this._container_array_change_id || null;
-	}
-
-	set container_array_change_id(container_array_change_id)
-	{
-		this._container_array_change_id = container_array_change_id;
-	}
-
-	/**
 	 * The required JSON fields for deserialization.
 	 *
 	 * @returns {Array}
@@ -374,8 +372,8 @@ class ContainerArrayOperation extends ObjectBase
 	static get JSONRequired()
 	{
 		return [
-			"container_array_label",
-			"container_array_change_id"
+			"container_array_change_id",
+			"container_array_label"
 		];
 	}
 };

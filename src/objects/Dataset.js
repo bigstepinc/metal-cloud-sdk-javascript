@@ -40,6 +40,19 @@ class Dataset extends ObjectBase
 	}
 
 	/**
+	 * The change ID (version) of the dataset
+	 */
+	get dataset_change_id()
+	{
+		return this._dataset_change_id || null;
+	}
+
+	set dataset_change_id(dataset_change_id)
+	{
+		this._dataset_change_id = dataset_change_id;
+	}
+
+	/**
 	 * Long description for what the dataset contains
 	 */
 	get dataset_description()
@@ -53,6 +66,19 @@ class Dataset extends ObjectBase
 	}
 
 	/**
+	 * The commercial license for the dataset
+	 */
+	get dataset_license_type()
+	{
+		return this._dataset_license_type || null;
+	}
+
+	set dataset_license_type(dataset_license_type)
+	{
+		this._dataset_license_type = dataset_license_type;
+	}
+
+	/**
 	 * List of tags representative for the dataset.
 	 */
 	get dataset_tags()
@@ -63,6 +89,32 @@ class Dataset extends ObjectBase
 	set dataset_tags(dataset_tags)
 	{
 		this._dataset_tags = dataset_tags;
+	}
+
+	/**
+	 * The URL for the topmost dataset directory
+	 */
+	get dataset_url()
+	{
+		return this._dataset_url || null;
+	}
+
+	set dataset_url(dataset_url)
+	{
+		this._dataset_url = dataset_url;
+	}
+
+	/**
+	 * The datacenter in which the dataset is available
+	 */
+	get dataset_datacenter()
+	{
+		return this._dataset_datacenter || null;
+	}
+
+	set dataset_datacenter(dataset_datacenter)
+	{
+		this._dataset_datacenter = dataset_datacenter;
 	}
 
 	/**
@@ -89,19 +141,6 @@ class Dataset extends ObjectBase
 	set dataset_maintainer_display_name(dataset_maintainer_display_name)
 	{
 		this._dataset_maintainer_display_name = dataset_maintainer_display_name;
-	}
-
-	/**
-	 * The maintainer's user ID.
-	 */
-	get dataset_maintainer_user_id()
-	{
-		return this._dataset_maintainer_user_id || null;
-	}
-
-	set dataset_maintainer_user_id(dataset_maintainer_user_id)
-	{
-		this._dataset_maintainer_user_id = dataset_maintainer_user_id;
 	}
 
 	/**
@@ -146,20 +185,6 @@ class Dataset extends ObjectBase
 	}
 
 	/**
-	 * The webhdfs URL of the dataset's directory. Example:
-	 * 'webhdfs://n59962-data-lake01-lab-master-bucharest.integration.bigstep.io:14000/data_lake/dl9006'
-	 */
-	get dataset_datalake_path()
-	{
-		return this._dataset_datalake_path || null;
-	}
-
-	set dataset_datalake_path(dataset_datalake_path)
-	{
-		this._dataset_datalake_path = dataset_datalake_path;
-	}
-
-	/**
 	 * The dataset size(for all formats), in megabytes.
 	 */
 	get dataset_size_mbytes()
@@ -173,16 +198,17 @@ class Dataset extends ObjectBase
 	}
 
 	/**
-	 * The ID of the parent datalake
+	 * A dataset being published makes it available to users other than the
+	 * maintainer
 	 */
-	get dataset_datalake_id()
+	get dataset_published()
 	{
-		return this._dataset_datalake_id || null;
+		return this._dataset_published || false;
 	}
 
-	set dataset_datalake_id(dataset_datalake_id)
+	set dataset_published(dataset_published)
 	{
-		this._dataset_datalake_id = dataset_datalake_id;
+		this._dataset_published = dataset_published;
 	}
 
 	/**

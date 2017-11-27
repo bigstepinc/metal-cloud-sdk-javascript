@@ -1,16 +1,15 @@
 const ObjectBase = require('./ObjectBase');
 
 /**
- * A ContainerEnvironmentVariable is a key value pair that gets added to the
- * environment variables of the Container process to start.
+ * Information about the ContainerCluster's Containers and its application.
  *
  * @class
  * @extends ObjectBase
  */
 module.exports = 
-class ContainerEnvironmentVariable extends ObjectBase
+class ContainerClusterApp extends ObjectBase
 {
-	constructor(key, value)
+	constructor(container_cluster_app)
 	{
 		super();
 
@@ -26,46 +25,27 @@ class ContainerEnvironmentVariable extends ObjectBase
 			}
 		}
 
-		for(let index = 0; index < 2; index++)
-		{
-			let arg = arguments[index];
+		if(container_cluster_app === undefined || container_cluster_app === null)
+			throw new Error("Invalid param in ContainerClusterApp constructor.");
 
-			if(arg === undefined || arg === null)
-				throw new Error("Invalid params in ContainerEnvironmentVariable constructor.");
-		}
-
-		this._key = key;
-		this._value = value;
+		this._container_cluster_app = container_cluster_app;
 	}
 
 	/**
-	 * The key name.
+	 * The ContainerCluster's Containers and application information.
 	 */
-	get key()
+	get container_cluster_app()
 	{
-		return this._key || null;
+		return this._container_cluster_app || null;
 	}
 
-	set key(key)
+	set container_cluster_app(container_cluster_app)
 	{
-		this._key = key;
-	}
-
-	/**
-	 * The value defined for the key.
-	 */
-	get value()
-	{
-		return this._value || null;
-	}
-
-	set value(value)
-	{
-		this._value = value;
+		this._container_cluster_app = container_cluster_app;
 	}
 
 	/**
-	 * The schema type.
+	 * The schema type
 	 */
 	get type()
 	{
@@ -85,8 +65,7 @@ class ContainerEnvironmentVariable extends ObjectBase
 	static get JSONRequired()
 	{
 		return [
-			"key",
-			"value"
+			"container_cluster_app"
 		];
 	}
 };

@@ -204,6 +204,19 @@ class DriveArrayOperation extends ObjectBase
 	}
 
 	/**
+	 * The ContainerArray ID to which the Drive array belongs.
+	 */
+	get container_array_id()
+	{
+		return this._container_array_id || null;
+	}
+
+	set container_array_id(container_array_id)
+	{
+		this._container_array_id = container_array_id;
+	}
+
+	/**
 	 * ISO 8601 timestamp which holds the date and time when the Drive array was
 	 * edited. Example format: 2013-11-29T13:00:01Z.
 	 */
@@ -228,6 +241,19 @@ class DriveArrayOperation extends ObjectBase
 	set drive_array_gui_settings_json(drive_array_gui_settings_json)
 	{
 		this._drive_array_gui_settings_json = drive_array_gui_settings_json;
+	}
+
+	/**
+	 * License utilization type for the license.
+	 */
+	get license_utilization_type()
+	{
+		return this._license_utilization_type || "subscription";
+	}
+
+	set license_utilization_type(license_utilization_type)
+	{
+		this._license_utilization_type = license_utilization_type;
 	}
 
 	/**

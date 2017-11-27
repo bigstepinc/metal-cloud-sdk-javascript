@@ -214,6 +214,32 @@ class InfrastructureOperation extends ObjectBase
 	}
 
 	/**
+	 * The subnet pool used on this infrastructure to allocate private IPs
+	 */
+	get subnet_pool_lan()
+	{
+		return this._subnet_pool_lan || null;
+	}
+
+	set subnet_pool_lan(subnet_pool_lan)
+	{
+		this._subnet_pool_lan = subnet_pool_lan;
+	}
+
+	/**
+	 * Contains the blacklisted LAN IP ranges on the infrastructure.
+	 */
+	get infrastructure_blacklisted_lan_ip_ranges()
+	{
+		return this._infrastructure_blacklisted_lan_ip_ranges || [];
+	}
+
+	set infrastructure_blacklisted_lan_ip_ranges(infrastructure_blacklisted_lan_ip_ranges)
+	{
+		this._infrastructure_blacklisted_lan_ip_ranges = infrastructure_blacklisted_lan_ip_ranges;
+	}
+
+	/**
 	 * The required JSON fields for deserialization.
 	 *
 	 * @returns {Array}

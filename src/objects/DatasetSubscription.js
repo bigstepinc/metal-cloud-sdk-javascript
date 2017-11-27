@@ -1,16 +1,15 @@
 const ObjectBase = require('./ObjectBase');
 
 /**
- * ContainerArray action that executes a command on the Containers to asses
- * their readiness or liveness.
+ * A subscription to a Dataset.
  *
  * @class
  * @extends ObjectBase
  */
 module.exports = 
-class ContainerArrayActionExecuteCommand extends ObjectBase
+class DatasetSubscription extends ObjectBase
 {
-	constructor(action_command)
+	constructor()
 	{
 		super();
 
@@ -25,26 +24,45 @@ class ContainerArrayActionExecuteCommand extends ObjectBase
 				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
 			}
 		}
-
-		if(action_command === undefined || action_command === null)
-			throw new Error("Invalid param in ContainerArrayActionExecuteCommand constructor.");
-
-		this._action_command = action_command;
 	}
 
 	/**
-	 * Command to execute on the Containers. The command is not executed using a
-	 * shell and the root of each Container (/) is used as working directory. An
-	 * exit status of 0 is treated as healthy and non-zero as unhealthy
+	 * The Dataset for which the subscription was created.
 	 */
-	get action_command()
+	get dataset()
 	{
-		return this._action_command || [];
+		return this._dataset || null;
 	}
 
-	set action_command(action_command)
+	set dataset(dataset)
 	{
-		this._action_command = action_command;
+		this._dataset = dataset;
+	}
+
+	/**
+	 * The ID of the user that owns the dataset subscription.
+	 */
+	get user_id()
+	{
+		return this._user_id || null;
+	}
+
+	set user_id(user_id)
+	{
+		this._user_id = user_id;
+	}
+
+	/**
+	 * The ID of the dataset subscription.
+	 */
+	get dataset_subscription_id()
+	{
+		return this._dataset_subscription_id || null;
+	}
+
+	set dataset_subscription_id(dataset_subscription_id)
+	{
+		this._dataset_subscription_id = dataset_subscription_id;
 	}
 
 	/**
@@ -68,7 +86,7 @@ class ContainerArrayActionExecuteCommand extends ObjectBase
 	static get JSONRequired()
 	{
 		return [
-			"action_command"
+
 		];
 	}
 };

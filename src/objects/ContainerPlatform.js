@@ -172,7 +172,7 @@ class ContainerPlatform extends ObjectBase
 	 */
 	get container_platform_firewall_managed()
 	{
-		return this._container_platform_firewall_managed || false;
+		return this._container_platform_firewall_managed || true;
 	}
 
 	set container_platform_firewall_managed(container_platform_firewall_managed)
@@ -245,6 +245,19 @@ class ContainerPlatform extends ObjectBase
 	set container_platform_change_id(container_platform_change_id)
 	{
 		this._container_platform_change_id = container_platform_change_id;
+	}
+
+	/**
+	 * Contains the resource report of the ContainerPlatform.
+	 */
+	get container_platform_resource_report()
+	{
+		return this._container_platform_resource_report || null;
+	}
+
+	set container_platform_resource_report(container_platform_resource_report)
+	{
+		this._container_platform_resource_report = container_platform_resource_report;
 	}
 
 	/**

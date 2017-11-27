@@ -91,7 +91,7 @@ class HardwareConfiguration extends ObjectBase
 	}
 
 	/**
-	 * The minumim of total GHz of the instance.
+	 * The minumim of total MHz of the instance.
 	 */
 	get instance_array_total_mhz()
 	{

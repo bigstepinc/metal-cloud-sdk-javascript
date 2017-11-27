@@ -178,6 +178,20 @@ class NetworkOperation extends ObjectBase
 	}
 
 	/**
+	 * This property specify whether the allocation of the private IPS is done
+	 * automatically or manually.
+	 */
+	get network_lan_autoallocate_ips()
+	{
+		return this._network_lan_autoallocate_ips || false;
+	}
+
+	set network_lan_autoallocate_ips(network_lan_autoallocate_ips)
+	{
+		this._network_lan_autoallocate_ips = network_lan_autoallocate_ips;
+	}
+
+	/**
 	 * The required JSON fields for deserialization.
 	 *
 	 * @returns {Array}

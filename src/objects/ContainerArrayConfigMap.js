@@ -1,13 +1,13 @@
 const ObjectBase = require('./ObjectBase');
 
 /**
- * SharedDrive credentials.
+ * ContainerArray config map resource.
  *
  * @class
  * @extends ObjectBase
  */
 module.exports = 
-class SharedDriveCredentials extends ObjectBase
+class ContainerArrayConfigMap extends ObjectBase
 {
 	constructor()
 	{
@@ -24,6 +24,32 @@ class SharedDriveCredentials extends ObjectBase
 				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
 			}
 		}
+	}
+
+	/**
+	 * ContainerArray config map values
+	 */
+	get config_map_data()
+	{
+		return this._config_map_data || [];
+	}
+
+	set config_map_data(config_map_data)
+	{
+		this._config_map_data = config_map_data;
+	}
+
+	/**
+	 * The schema type.
+	 */
+	get type()
+	{
+		return this._type || null;
+	}
+
+	set type(type)
+	{
+		this._type = type;
 	}
 
 	/**
