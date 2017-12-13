@@ -40,6 +40,19 @@ class Dataset extends ObjectBase
 	}
 
 	/**
+	 * The owner's user ID.
+	 */
+	get user_id_owner()
+	{
+		return this._user_id_owner || null;
+	}
+
+	set user_id_owner(user_id_owner)
+	{
+		this._user_id_owner = user_id_owner;
+	}
+
+	/**
 	 * The change ID (version) of the dataset
 	 */
 	get dataset_change_id()
@@ -50,6 +63,19 @@ class Dataset extends ObjectBase
 	set dataset_change_id(dataset_change_id)
 	{
 		this._dataset_change_id = dataset_change_id;
+	}
+
+	/**
+	 * The name of the dataset
+	 */
+	get dataset_name()
+	{
+		return this._dataset_name || null;
+	}
+
+	set dataset_name(dataset_name)
+	{
+		this._dataset_name = dataset_name;
 	}
 
 	/**

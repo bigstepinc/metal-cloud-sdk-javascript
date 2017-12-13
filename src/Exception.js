@@ -257,11 +257,16 @@ class Exception extends ExtendableError
 	 *
 	 * When creating or editing an Infrastructure element a custom label can be
 	 * provided for ease of use. The label of a product cannot be one of these
-	 * reserved keywords: "clusters","drive-arrays","drives","infrastructures",
-	 * "instance-arrays","instances","ips","networks","data-lakes","shared-drives",
-	 * "snapshots","drive-snapshots","subnets","volume-templates", or "if0" to
-	 * "if100". API calls that receive this error should change the initial label
-	 * and attempt the operation again.
+	 * reserved keywords: "snapshots", "drive-snapshots", "volume-templates",
+	 * "drive-templates", "shared-drive-templates", "instance-licenses", "licenses",
+	 *  "license-contracts", "license-instalments", "infrastructures", "clusters",
+	 * "instance-arrays", "instance-array-interfaces", "instances",
+	 * "instance-interfaces", "instance-licenses", "drive-arrays", "drives",
+	 * "networks", "subnets", "ips", "shared-drives", "data-lakes",
+	 * "container-platforms", "container-clusters", "container-arrays",
+	 * "container-array-interfaces", "containers", "container-interfaces",
+	 * "drive-arrays", "drives", or "if0" to "if100". API calls that receive this
+	 * error should change the initial label and attempt the operation again.
 	 *
 	 * @returns {number}
 	 */

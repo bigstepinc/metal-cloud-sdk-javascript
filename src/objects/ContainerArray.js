@@ -113,6 +113,35 @@ class ContainerArray extends ObjectBase
 	}
 
 	/**
+	 * Automatically created based on container_array_id. It is a unique reference
+	 * to the ContainerArray object to be used within the ContainerPlatform network.
+	 */
+	get container_array_subdomain_internal()
+	{
+		return this._container_array_subdomain_internal || null;
+	}
+
+	set container_array_subdomain_internal(container_array_subdomain_internal)
+	{
+		this._container_array_subdomain_internal = container_array_subdomain_internal;
+	}
+
+	/**
+	 * Automatically created based on container_array_id. It is a unique reference
+	 * to the load balancer of the ContainerArray object to be used within the
+	 * ContainerPlatform network.
+	 */
+	get container_array_load_balancer_subdomain_internal()
+	{
+		return this._container_array_load_balancer_subdomain_internal || null;
+	}
+
+	set container_array_load_balancer_subdomain_internal(container_array_load_balancer_subdomain_internal)
+	{
+		this._container_array_load_balancer_subdomain_internal = container_array_load_balancer_subdomain_internal;
+	}
+
+	/**
 	 * The status of the ContainerArray.
 	 */
 	get container_array_service_status()

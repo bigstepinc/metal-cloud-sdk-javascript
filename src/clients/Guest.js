@@ -6,11 +6,11 @@ ClientBase.Objects = require("../objects");
 ClientBase.Utils = require("../Utils");
 
 /**
- * Class representing the BSI Client.
+ * Class representing the Guest Client.
  * @extends JSONRPC.Client
  */
 module.exports =
-class BSI extends JSONRPC.Client
+class Guest extends JSONRPC.Client
 {
 	/**
 	 * @param {string} strEndpointURL
@@ -33,7 +33,7 @@ class BSI extends JSONRPC.Client
 	{
 		this.addPlugin(new ClientBase.ExceptionFilter(true));
 
-		if(BSI.arrFunctions === undefined || BSI.arrFunctions === null)
+		if(Guest.arrFunctions === undefined || Guest.arrFunctions === null)
 		{
 			this._initMemberRPCFunctions(await this.rpcFunctions());
 		}
@@ -50,7 +50,7 @@ class BSI extends JSONRPC.Client
 
 		for(let strFunctionName of this.arrFunctions)
 		{
-			BSI.prototype[strFunctionName] = function() {
+			Guest.prototype[strFunctionName] = function() {
 				return this.rpc(strFunctionName, [].slice.call(arguments));
 			};
 		}
@@ -115,13 +115,13 @@ class BSI extends JSONRPC.Client
 	 */
 	static singletonInit(strEndpointURL)
 	{
-		if(BSI.singleton)
+		if(Guest.singleton)
 		{
-			throw new Error("BSI singleton already initialized.");
+			throw new Error("Guest singleton already initialized.");
 		}
 
 		return new Promise(async (resolve) => {
-			BSI.singleton = await new BSI(strEndpointURL);
+			Guest.singleton = await new Guest(strEndpointURL);
 			resolve(this);
 		});
 	}
@@ -135,7 +135,7 @@ class BSI extends JSONRPC.Client
 	}
 
 	
-	// 230 functions available on endpoint.
+	// 249 functions available on endpoint.
 
 	cluster_create(strInfrastructureID, objCluster)
 	{
@@ -245,11 +245,6 @@ class BSI extends JSONRPC.Client
 	infrastructure_user_limits(strInfrastructureID)
 	{
 		return this.rpc("infrastructure_user_limits", Array.prototype.slice.call(arguments));
-	}
-
-	infrastructure_gui_settings_save(strInfrastructureID, objGUIProductSettings, arrPropertyNames)
-	{
-		return this.rpc("infrastructure_gui_settings_save", Array.prototype.slice.call(arguments));
 	}
 
 	instance_edit(strInstanceID, objInstanceOperation)
@@ -417,7 +412,7 @@ class BSI extends JSONRPC.Client
 		return this.rpc("resource_utilization_detailed", Array.prototype.slice.call(arguments));
 	}
 
-	server_type_reservation_create(strUserID, objReservation)
+	server_type_reservation_create(strUserID, objReservation, nQuantity = 1)
 	{
 		return this.rpc("server_type_reservation_create", Array.prototype.slice.call(arguments));
 	}
@@ -530,6 +525,11 @@ class BSI extends JSONRPC.Client
 	drive_detach_instance(strDriveID)
 	{
 		return this.rpc("drive_detach_instance", Array.prototype.slice.call(arguments));
+	}
+
+	instance_drives(strInstanceID)
+	{
+		return this.rpc("instance_drives", Array.prototype.slice.call(arguments));
 	}
 
 	drive_snapshot_create(strDriveID)
@@ -702,39 +702,14 @@ class BSI extends JSONRPC.Client
 		return this.rpc("user_logout", Array.prototype.slice.call(arguments));
 	}
 
-	user_gui_settings_save(strUserID, objGUIUserSettings, arrPropertyNames)
-	{
-		return this.rpc("user_gui_settings_save", Array.prototype.slice.call(arguments));
-	}
-
 	throw_error(nErrorCode)
 	{
 		return this.rpc("throw_error", Array.prototype.slice.call(arguments));
 	}
 
-	cluster_gui_settings_save(strClusterID, objGUIProductSettings, arrPropertyNames)
-	{
-		return this.rpc("cluster_gui_settings_save", Array.prototype.slice.call(arguments));
-	}
-
-	event_counters(strInfrastructureID)
-	{
-		return this.rpc("event_counters", Array.prototype.slice.call(arguments));
-	}
-
 	infrastructure_get(strInfrastructureID)
 	{
 		return this.rpc("infrastructure_get", Array.prototype.slice.call(arguments));
-	}
-
-	infrastructure_hang_until_touched(nInfrastructureID, strKnownValue)
-	{
-		return this.rpc("infrastructure_hang_until_touched", Array.prototype.slice.call(arguments));
-	}
-
-	instance_interface_ips(nInstanceInterfaceID)
-	{
-		return this.rpc("instance_interface_ips", Array.prototype.slice.call(arguments));
 	}
 
 	instance_get(strInstanceID)
@@ -747,44 +722,9 @@ class BSI extends JSONRPC.Client
 		return this.rpc("instance_array_get", Array.prototype.slice.call(arguments));
 	}
 
-	instance_array_gui_settings_save(strInstanceArrayID, objGUIProductSettings, arrPropertyNames)
-	{
-		return this.rpc("instance_array_gui_settings_save", Array.prototype.slice.call(arguments));
-	}
-
 	subnet_get(strSubnetID)
 	{
 		return this.rpc("subnet_get", Array.prototype.slice.call(arguments));
-	}
-
-	data_lake_gui_settings_save(strDataLakeID, objGUIProductSettings, arrPropertyNames)
-	{
-		return this.rpc("data_lake_gui_settings_save", Array.prototype.slice.call(arguments));
-	}
-
-	monitoring_instance_measurement_value_get(nInstanceMeasurementID)
-	{
-		return this.rpc("monitoring_instance_measurement_value_get", Array.prototype.slice.call(arguments));
-	}
-
-	monitoring_instance_measurements_get_for_instance(strInstanceID, bIgnoreVirtualEthernetInterfaces = false)
-	{
-		return this.rpc("monitoring_instance_measurements_get_for_instance", Array.prototype.slice.call(arguments));
-	}
-
-	monitoring_instance_measurements_rendering_get(strInstanceID, arrMeasurements, objRenderingOptions = [], bEncodeBase64 = true)
-	{
-		return this.rpc("monitoring_instance_measurements_rendering_get", Array.prototype.slice.call(arguments));
-	}
-
-	monitoring_instance_interface_measurements_rendering_get(nInstanceInterfaceID, arrMeasurements, objRenderingOptions = [], bEncodeBase64 = true)
-	{
-		return this.rpc("monitoring_instance_interface_measurements_rendering_get", Array.prototype.slice.call(arguments));
-	}
-
-	monitoring_network_measurements_rendering_get(strNetworkID, strNetworkTrafficType, arrMeasurements, objRenderingOptions = [], bEncodeBase64 = true)
-	{
-		return this.rpc("monitoring_network_measurements_rendering_get", Array.prototype.slice.call(arguments));
 	}
 
 	network_get(strNetworkID)
@@ -792,29 +732,14 @@ class BSI extends JSONRPC.Client
 		return this.rpc("network_get", Array.prototype.slice.call(arguments));
 	}
 
-	network_gui_settings_save(strNetworkID, objGUIProductSettings, arrPropertyNames)
-	{
-		return this.rpc("network_gui_settings_save", Array.prototype.slice.call(arguments));
-	}
-
 	server_type_get(strServerTypeID)
 	{
 		return this.rpc("server_type_get", Array.prototype.slice.call(arguments));
 	}
 
-	server_type_available_server_count(strUserIDOwner, strDatacenterName, strServerTypeID, nMaximumResults)
-	{
-		return this.rpc("server_type_available_server_count", Array.prototype.slice.call(arguments));
-	}
-
 	shared_drive_get(strSharedDriveID)
 	{
 		return this.rpc("shared_drive_get", Array.prototype.slice.call(arguments));
-	}
-
-	shared_drive_gui_settings_save(strSharedDriveID, objGUIProductSettings, arrPropertyNames)
-	{
-		return this.rpc("shared_drive_gui_settings_save", Array.prototype.slice.call(arguments));
 	}
 
 	drive_get(strDriveID)
@@ -825,11 +750,6 @@ class BSI extends JSONRPC.Client
 	drive_array_get(strDriveArrayID)
 	{
 		return this.rpc("drive_array_get", Array.prototype.slice.call(arguments));
-	}
-
-	drive_array_gui_settings_save(strDriveArrayID, objGUIProductSettings, arrPropertyNames)
-	{
-		return this.rpc("drive_array_gui_settings_save", Array.prototype.slice.call(arguments));
 	}
 
 	volume_template_get(strVolumeTemplateID)
@@ -847,19 +767,9 @@ class BSI extends JSONRPC.Client
 		return this.rpc("user_authenticate_password_encrypted", Array.prototype.slice.call(arguments));
 	}
 
-	transport_request_public_key(bGenerateNewIfNotFound = true)
+	user_authenticate_guest()
 	{
-		return this.rpc("transport_request_public_key", Array.prototype.slice.call(arguments));
-	}
-
-	user_email_to_user_id(strLoginEmail)
-	{
-		return this.rpc("user_email_to_user_id", Array.prototype.slice.call(arguments));
-	}
-
-	instance_drives(strInstanceID)
-	{
-		return this.rpc("instance_drives", Array.prototype.slice.call(arguments));
+		return this.rpc("user_authenticate_guest", Array.prototype.slice.call(arguments));
 	}
 
 	infrastructure_deploy_blockers(strInfrastructureID)
@@ -962,16 +872,6 @@ class BSI extends JSONRPC.Client
 		return this.rpc("container_platform_suspend", Array.prototype.slice.call(arguments));
 	}
 
-	container_array_gui_settings_save(strContainerArrayID, objGUIProductSettings, arrPropertyNames)
-	{
-		return this.rpc("container_array_gui_settings_save", Array.prototype.slice.call(arguments));
-	}
-
-	container_platform_gui_settings_save(strContainerPlatformID, objGUIProductSettings, arrPropertyNames)
-	{
-		return this.rpc("container_platform_gui_settings_save", Array.prototype.slice.call(arguments));
-	}
-
 	container_platform_container_arrays(strContainerPlatformID, arrContainerArrayIDs = null)
 	{
 		return this.rpc("container_platform_container_arrays", Array.prototype.slice.call(arguments));
@@ -1017,11 +917,6 @@ class BSI extends JSONRPC.Client
 		return this.rpc("query_structured", Array.prototype.slice.call(arguments));
 	}
 
-	resource_utilization_summary_start_timestamp_default(strUserID)
-	{
-		return this.rpc("resource_utilization_summary_start_timestamp_default", Array.prototype.slice.call(arguments));
-	}
-
 	cluster_automatic_management_status_set(strClusterID, bStatus)
 	{
 		return this.rpc("cluster_automatic_management_status_set", Array.prototype.slice.call(arguments));
@@ -1047,16 +942,6 @@ class BSI extends JSONRPC.Client
 		return this.rpc("server_types_match_hardware_configuration", Array.prototype.slice.call(arguments));
 	}
 
-	infrastructure_public_designs()
-	{
-		return this.rpc("infrastructure_public_designs", Array.prototype.slice.call(arguments));
-	}
-
-	server_type_available_server_count_batch(strUserIDOwner, strDatacenterName, arrServerTypeIDs, nMaximumResults, bIncludeReservedForUser = false, nInstanceArrayID = null)
-	{
-		return this.rpc("server_type_available_server_count_batch", Array.prototype.slice.call(arguments));
-	}
-
 	user_server_type_reservations_unused(strUserID, strDatacenterName)
 	{
 		return this.rpc("user_server_type_reservations_unused", Array.prototype.slice.call(arguments));
@@ -1072,9 +957,9 @@ class BSI extends JSONRPC.Client
 		return this.rpc("user_franchise_get", Array.prototype.slice.call(arguments));
 	}
 
-	subnet_create_from_owned_subnet_pool(strNetworkID, objSubnet)
+	server_types_datacenter(strDatacenterName)
 	{
-		return this.rpc("subnet_create_from_owned_subnet_pool", Array.prototype.slice.call(arguments));
+		return this.rpc("server_types_datacenter", Array.prototype.slice.call(arguments));
 	}
 
 	user_authenticator_has(strUserID)
@@ -1082,74 +967,9 @@ class BSI extends JSONRPC.Client
 		return this.rpc("user_authenticator_has", Array.prototype.slice.call(arguments));
 	}
 
-	server_types_datacenter(strDatacenterName)
-	{
-		return this.rpc("server_types_datacenter", Array.prototype.slice.call(arguments));
-	}
-
 	prices_history(bExcludeFuturePrices = false, bOnlyActivePrices = false)
 	{
 		return this.rpc("prices_history", Array.prototype.slice.call(arguments));
-	}
-
-	container_cluster_create(strInfrastructureID, objContainerCluster)
-	{
-		return this.rpc("container_cluster_create", Array.prototype.slice.call(arguments));
-	}
-
-	container_cluster_get(strContainerClusterID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
-	{
-		return this.rpc("container_cluster_get", Array.prototype.slice.call(arguments));
-	}
-
-	container_cluster_edit(strContainerClusterID, objContainerClusterOperation)
-	{
-		return this.rpc("container_cluster_edit", Array.prototype.slice.call(arguments));
-	}
-
-	container_cluster_stop(strContainerClusterID)
-	{
-		return this.rpc("container_cluster_stop", Array.prototype.slice.call(arguments));
-	}
-
-	container_cluster_start(strContainerClusterID)
-	{
-		return this.rpc("container_cluster_start", Array.prototype.slice.call(arguments));
-	}
-
-	container_cluster_delete(strContainerClusterID)
-	{
-		return this.rpc("container_cluster_delete", Array.prototype.slice.call(arguments));
-	}
-
-	container_clusters(strInfrastructureID, arrContainerClusterIDs = null)
-	{
-		return this.rpc("container_clusters", Array.prototype.slice.call(arguments));
-	}
-
-	container_cluster_suspend(strContainerClusterID)
-	{
-		return this.rpc("container_cluster_suspend", Array.prototype.slice.call(arguments));
-	}
-
-	container_cluster_automatic_management_status_set(strContainerClusterID, bStatus)
-	{
-		return this.rpc("container_cluster_automatic_management_status_set", Array.prototype.slice.call(arguments));
-	}
-
-	container_cluster_gui_settings_save(strContainerClusterID, objGUIProductSettings, arrPropertyNames)
-	{
-		return this.rpc("container_cluster_gui_settings_save", Array.prototype.slice.call(arguments));
-	}
-
-	user_prices_history(strUserID, bExcludeFuturePrices = false, bOnlyActivePrices = false)
-	{
-		return this.rpc("user_prices_history", Array.prototype.slice.call(arguments));
-	}
-
-	user_prices(strUserID)
-	{
-		return this.rpc("user_prices", Array.prototype.slice.call(arguments));
 	}
 
 	fs_create(strFSURL, strType, strPermission = null)
@@ -1202,6 +1022,61 @@ class BSI extends JSONRPC.Client
 		return this.rpc("fs_write", Array.prototype.slice.call(arguments));
 	}
 
+	container_cluster_create(strInfrastructureID, objContainerCluster)
+	{
+		return this.rpc("container_cluster_create", Array.prototype.slice.call(arguments));
+	}
+
+	container_cluster_get(strContainerClusterID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
+	{
+		return this.rpc("container_cluster_get", Array.prototype.slice.call(arguments));
+	}
+
+	container_cluster_edit(strContainerClusterID, objContainerClusterOperation)
+	{
+		return this.rpc("container_cluster_edit", Array.prototype.slice.call(arguments));
+	}
+
+	container_cluster_stop(strContainerClusterID)
+	{
+		return this.rpc("container_cluster_stop", Array.prototype.slice.call(arguments));
+	}
+
+	container_cluster_start(strContainerClusterID)
+	{
+		return this.rpc("container_cluster_start", Array.prototype.slice.call(arguments));
+	}
+
+	container_cluster_delete(strContainerClusterID)
+	{
+		return this.rpc("container_cluster_delete", Array.prototype.slice.call(arguments));
+	}
+
+	container_clusters(strInfrastructureID, arrContainerClusterIDs = null)
+	{
+		return this.rpc("container_clusters", Array.prototype.slice.call(arguments));
+	}
+
+	container_cluster_suspend(strContainerClusterID)
+	{
+		return this.rpc("container_cluster_suspend", Array.prototype.slice.call(arguments));
+	}
+
+	container_cluster_automatic_management_status_set(strContainerClusterID, bStatus)
+	{
+		return this.rpc("container_cluster_automatic_management_status_set", Array.prototype.slice.call(arguments));
+	}
+
+	user_prices_history(strUserID, bExcludeFuturePrices = false, bOnlyActivePrices = false, bExpandWithPrivateDatacenters = true)
+	{
+		return this.rpc("user_prices_history", Array.prototype.slice.call(arguments));
+	}
+
+	user_prices(strUserID)
+	{
+		return this.rpc("user_prices", Array.prototype.slice.call(arguments));
+	}
+
 	fs_download_url(strFSURL)
 	{
 		return this.rpc("fs_download_url", Array.prototype.slice.call(arguments));
@@ -1215,6 +1090,136 @@ class BSI extends JSONRPC.Client
 	user_limits(strUserID)
 	{
 		return this.rpc("user_limits", Array.prototype.slice.call(arguments));
+	}
+
+	transport_request_public_key(bGenerateNewIfNotFound = true)
+	{
+		return this.rpc("transport_request_public_key", Array.prototype.slice.call(arguments));
+	}
+
+	cluster_gui_settings_save(strClusterID, objGUIProductSettings, arrPropertyNames)
+	{
+		return this.rpc("cluster_gui_settings_save", Array.prototype.slice.call(arguments));
+	}
+
+	container_array_gui_settings_save(strContainerArrayID, objGUIProductSettings, arrPropertyNames)
+	{
+		return this.rpc("container_array_gui_settings_save", Array.prototype.slice.call(arguments));
+	}
+
+	container_cluster_gui_settings_save(strContainerClusterID, objGUIProductSettings, arrPropertyNames)
+	{
+		return this.rpc("container_cluster_gui_settings_save", Array.prototype.slice.call(arguments));
+	}
+
+	container_platform_gui_settings_save(strContainerPlatformID, objGUIProductSettings, arrPropertyNames)
+	{
+		return this.rpc("container_platform_gui_settings_save", Array.prototype.slice.call(arguments));
+	}
+
+	data_lake_gui_settings_save(strDataLakeID, objGUIProductSettings, arrPropertyNames)
+	{
+		return this.rpc("data_lake_gui_settings_save", Array.prototype.slice.call(arguments));
+	}
+
+	event_counters(strInfrastructureID)
+	{
+		return this.rpc("event_counters", Array.prototype.slice.call(arguments));
+	}
+
+	infrastructure_gui_settings_save(strInfrastructureID, objGUIProductSettings, arrPropertyNames)
+	{
+		return this.rpc("infrastructure_gui_settings_save", Array.prototype.slice.call(arguments));
+	}
+
+	infrastructure_hang_until_touched(nInfrastructureID, strKnownValue)
+	{
+		return this.rpc("infrastructure_hang_until_touched", Array.prototype.slice.call(arguments));
+	}
+
+	infrastructure_public_designs()
+	{
+		return this.rpc("infrastructure_public_designs", Array.prototype.slice.call(arguments));
+	}
+
+	instance_interface_ips(nInstanceInterfaceID)
+	{
+		return this.rpc("instance_interface_ips", Array.prototype.slice.call(arguments));
+	}
+
+	instance_array_gui_settings_save(strInstanceArrayID, objGUIProductSettings, arrPropertyNames)
+	{
+		return this.rpc("instance_array_gui_settings_save", Array.prototype.slice.call(arguments));
+	}
+
+	subnet_create_from_owned_subnet_pool(strNetworkID, objSubnet)
+	{
+		return this.rpc("subnet_create_from_owned_subnet_pool", Array.prototype.slice.call(arguments));
+	}
+
+	monitoring_instance_measurement_value_get(nInstanceMeasurementID)
+	{
+		return this.rpc("monitoring_instance_measurement_value_get", Array.prototype.slice.call(arguments));
+	}
+
+	monitoring_instance_measurements_get_for_instance(strInstanceID, bIgnoreVirtualEthernetInterfaces = false)
+	{
+		return this.rpc("monitoring_instance_measurements_get_for_instance", Array.prototype.slice.call(arguments));
+	}
+
+	monitoring_instance_measurements_rendering_get(strInstanceID, arrMeasurements, objRenderingOptions = [], bEncodeBase64 = true)
+	{
+		return this.rpc("monitoring_instance_measurements_rendering_get", Array.prototype.slice.call(arguments));
+	}
+
+	monitoring_instance_interface_measurements_rendering_get(nInstanceInterfaceID, arrMeasurements, objRenderingOptions = [], bEncodeBase64 = true)
+	{
+		return this.rpc("monitoring_instance_interface_measurements_rendering_get", Array.prototype.slice.call(arguments));
+	}
+
+	monitoring_network_measurements_rendering_get(strNetworkID, strNetworkTrafficType, arrMeasurements, objRenderingOptions = [], bEncodeBase64 = true)
+	{
+		return this.rpc("monitoring_network_measurements_rendering_get", Array.prototype.slice.call(arguments));
+	}
+
+	network_gui_settings_save(strNetworkID, objGUIProductSettings, arrPropertyNames)
+	{
+		return this.rpc("network_gui_settings_save", Array.prototype.slice.call(arguments));
+	}
+
+	resource_utilization_summary_start_timestamp_default(strUserID)
+	{
+		return this.rpc("resource_utilization_summary_start_timestamp_default", Array.prototype.slice.call(arguments));
+	}
+
+	server_type_available_server_count(strUserIDOwner, strDatacenterName, strServerTypeID, nMaximumResults)
+	{
+		return this.rpc("server_type_available_server_count", Array.prototype.slice.call(arguments));
+	}
+
+	server_type_available_server_count_batch(strUserIDOwner, strDatacenterName, arrServerTypeIDs, nMaximumResults, bIncludeReservedForUser = false, nInstanceArrayID = null)
+	{
+		return this.rpc("server_type_available_server_count_batch", Array.prototype.slice.call(arguments));
+	}
+
+	shared_drive_gui_settings_save(strSharedDriveID, objGUIProductSettings, arrPropertyNames)
+	{
+		return this.rpc("shared_drive_gui_settings_save", Array.prototype.slice.call(arguments));
+	}
+
+	drive_array_gui_settings_save(strDriveArrayID, objGUIProductSettings, arrPropertyNames)
+	{
+		return this.rpc("drive_array_gui_settings_save", Array.prototype.slice.call(arguments));
+	}
+
+	user_gui_settings_save(strUserID, objGUIUserSettings, arrPropertyNames)
+	{
+		return this.rpc("user_gui_settings_save", Array.prototype.slice.call(arguments));
+	}
+
+	user_email_to_user_id(strLoginEmail)
+	{
+		return this.rpc("user_email_to_user_id", Array.prototype.slice.call(arguments));
 	}
 
 	instance_monitoring_data_get(nInstanceID, nGranularityMinutes = 1, strTimestampStart = null, strTimestampEnd = null)
@@ -1232,19 +1237,19 @@ class BSI extends JSONRPC.Client
 		return this.rpc("container_platform_monitoring_data_get", Array.prototype.slice.call(arguments));
 	}
 
-	license_type_for_volume_template(strVolumeTemplateID)
-	{
-		return this.rpc("license_type_for_volume_template", Array.prototype.slice.call(arguments));
-	}
-
 	data_lake_core_site_conf_download_url(strUserID, nDataLakeID)
 	{
 		return this.rpc("data_lake_core_site_conf_download_url", Array.prototype.slice.call(arguments));
 	}
 
-	secure_gateway_authorize_resource(strResourceUrl)
+	dataset_get(publishedDatasetID)
 	{
-		return this.rpc("secure_gateway_authorize_resource", Array.prototype.slice.call(arguments));
+		return this.rpc("dataset_get", Array.prototype.slice.call(arguments));
+	}
+
+	cluster_app(strClusterID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
+	{
+		return this.rpc("cluster_app", Array.prototype.slice.call(arguments));
 	}
 
 	container_get(strContainerID)
@@ -1262,6 +1267,26 @@ class BSI extends JSONRPC.Client
 		return this.rpc("container_logs", Array.prototype.slice.call(arguments));
 	}
 
+	container_array_drive_arrays(strContainerArrayID)
+	{
+		return this.rpc("container_array_drive_arrays", Array.prototype.slice.call(arguments));
+	}
+
+	container_cluster_app(strContainerClusterID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
+	{
+		return this.rpc("container_cluster_app", Array.prototype.slice.call(arguments));
+	}
+
+	drive_attach_container(strDriveID, strContainerID)
+	{
+		return this.rpc("drive_attach_container", Array.prototype.slice.call(arguments));
+	}
+
+	drive_detach_container(strDriveID)
+	{
+		return this.rpc("drive_detach_container", Array.prototype.slice.call(arguments));
+	}
+
 	container_drives(strContainerID)
 	{
 		return this.rpc("container_drives", Array.prototype.slice.call(arguments));
@@ -1272,19 +1297,89 @@ class BSI extends JSONRPC.Client
 		return this.rpc("container_array_shared_drives", Array.prototype.slice.call(arguments));
 	}
 
-	cluster_app(strClusterID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
+	dataset_create(strUserID, objDataset)
 	{
-		return this.rpc("cluster_app", Array.prototype.slice.call(arguments));
+		return this.rpc("dataset_create", Array.prototype.slice.call(arguments));
 	}
 
-	container_array_drive_arrays(strContainerArrayID)
+	dataset_edit(nDatasetID, objChangedDataset)
 	{
-		return this.rpc("container_array_drive_arrays", Array.prototype.slice.call(arguments));
+		return this.rpc("dataset_edit", Array.prototype.slice.call(arguments));
 	}
 
-	container_cluster_app(strContainerClusterID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
+	dataset_delete(nDatasetID)
 	{
-		return this.rpc("container_cluster_app", Array.prototype.slice.call(arguments));
+		return this.rpc("dataset_delete", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_subscription_create(nDatasetID, strUserID)
+	{
+		return this.rpc("dataset_subscription_create", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_subscription_delete(nDatasetSubscriptionID)
+	{
+		return this.rpc("dataset_subscription_delete", Array.prototype.slice.call(arguments));
+	}
+
+	user_dataset_subscriptions(strUserID)
+	{
+		return this.rpc("user_dataset_subscriptions", Array.prototype.slice.call(arguments));
+	}
+
+	datacenter_get(strUserID = null, strDatacenterName)
+	{
+		return this.rpc("datacenter_get", Array.prototype.slice.call(arguments));
+	}
+
+	infrastructure_overview_children_products(strInfrastructureID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
+	{
+		return this.rpc("infrastructure_overview_children_products", Array.prototype.slice.call(arguments));
+	}
+
+	user_get_brand(nUserID)
+	{
+		return this.rpc("user_get_brand", Array.prototype.slice.call(arguments));
+	}
+
+	license_types_for_volume_template(strVolumeTemplateID)
+	{
+		return this.rpc("license_types_for_volume_template", Array.prototype.slice.call(arguments));
+	}
+
+	published_datasets_updated(strMaintainerUserID)
+	{
+		return this.rpc("published_datasets_updated", Array.prototype.slice.call(arguments));
+	}
+
+	datacenter_datasets(strDatacenterLabel)
+	{
+		return this.rpc("datacenter_datasets", Array.prototype.slice.call(arguments));
+	}
+
+	user_datasets_managed(strMaintainerUserID)
+	{
+		return this.rpc("user_datasets_managed", Array.prototype.slice.call(arguments));
+	}
+
+	datastore_publishers()
+	{
+		return this.rpc("datastore_publishers", Array.prototype.slice.call(arguments));
+	}
+
+	datastore_publisher_create(nPublisherUserID)
+	{
+		return this.rpc("datastore_publisher_create", Array.prototype.slice.call(arguments));
+	}
+
+	datastore_publisher_delete(nDatastorePublisherID)
+	{
+		return this.rpc("datastore_publisher_delete", Array.prototype.slice.call(arguments));
+	}
+
+	support_ticket_options(strUserLanguage)
+	{
+		return this.rpc("support_ticket_options", Array.prototype.slice.call(arguments));
 	}
 
 

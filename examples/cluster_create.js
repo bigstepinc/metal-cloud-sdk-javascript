@@ -1,15 +1,20 @@
-const BSI = require("../index");
-const BSIClient = require("./client_init");
+const MetalCloud = require("metal-cloud-sdk");
+const JSONRPC = require("jsonrpc-bidirectional");
 
 (async () => {
 
-	const bsi = await new BSIClient();
+	const strEndpointURL = "https://fullmetal.bigstep.com/api/";
+	const strAPIKey = "00:pl34s3c0pyth34p1k3yfr0mth3bs14dm1n1nt3rf4c3"; // the API key can be found in the interface myBigstep > Metal Cloud > API
 
-	// Create a cluster object
-	let objCluster = new BSI.Objects.Cluster("cloudera");
+	const api = await new MetalCloud.Clients.API(strEndpointURL);
+	api.addPlugin(new JSONRPC.Plugins.Client.SignatureAdd(strAPIKey));
 
-	objCluster = await bsi.cluster_create(
-		"my-infrastructure",
+	// Create a Cluster object
+	const strClusterType = MetalCloud.Constants.CLUSTER_TYPE_CLOUDERA;
+	let objCluster = new MetalCloud.Objects.Cluster(strClusterType);
+
+	objCluster = await api.cluster_create(
+		"my-infrastructure", // Change to the label of your infrastructure
 		objCluster
 	);
 
