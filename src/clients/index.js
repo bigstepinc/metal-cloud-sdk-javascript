@@ -1,9 +1,9 @@
 const objExports = {};
 
-objExports.BSI = require('./BSI');
-objExports.BSIGuest = require('./BSIGuest');
+objExports.API = require('./API');
 objExports.Docs = require('./Docs');
-objExports.VanillaHostedScripts = require('./VanillaHostedScripts');
+objExports.ExtendedAPI = require('./ExtendedAPI');
+objExports.Guest = require('./Guest');
 
 
 module.exports = objExports;

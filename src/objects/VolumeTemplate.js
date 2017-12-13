@@ -158,6 +158,19 @@ class VolumeTemplate extends ObjectBase
 	}
 
 	/**
+	 * The deprecation status of the volume template.
+	 */
+	get volume_template_deprecation_status()
+	{
+		return this._volume_template_deprecation_status || "not_deprecated";
+	}
+
+	set volume_template_deprecation_status(volume_template_deprecation_status)
+	{
+		this._volume_template_deprecation_status = volume_template_deprecation_status;
+	}
+
+	/**
 	 * The schema type.
 	 */
 	get type()

@@ -9,7 +9,7 @@ const ObjectBase = require('./ObjectBase');
 module.exports = 
 class ServerTypeReservation extends ObjectBase
 {
-	constructor()
+	constructor(user_id, server_type_id, datacenter_name)
 	{
 		super();
 
@@ -24,10 +24,22 @@ class ServerTypeReservation extends ObjectBase
 				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
 			}
 		}
+
+		for(let index = 0; index < 3; index++)
+		{
+			let arg = arguments[index];
+
+			if(arg === undefined || arg === null)
+				throw new Error("Invalid params in ServerTypeReservation constructor.");
+		}
+
+		this._user_id = user_id;
+		this._server_type_id = server_type_id;
+		this._datacenter_name = datacenter_name;
 	}
 
 	/**
-	 * Represents the user ID who has the reservation.
+	 * The user who owns and pays for the reservation.
 	 */
 	get user_id()
 	{
@@ -54,11 +66,12 @@ class ServerTypeReservation extends ObjectBase
 	}
 
 	/**
-	 * Number of months in a reservation cycle.
+	 * Contract period size, which gets renewed automatically if this reservation
+	 * is recurring.
 	 */
 	get resource_reservation_cycle_months()
 	{
-		return this._resource_reservation_cycle_months || null;
+		return this._resource_reservation_cycle_months || 12;
 	}
 
 	set resource_reservation_cycle_months(resource_reservation_cycle_months)
@@ -67,11 +80,11 @@ class ServerTypeReservation extends ObjectBase
 	}
 
 	/**
-	 * Number of months in a reservation installment cycle.
+	 * Billing cycle in months.
 	 */
 	get resource_reservation_installment_cycle_months()
 	{
-		return this._resource_reservation_installment_cycle_months || null;
+		return this._resource_reservation_installment_cycle_months || 1;
 	}
 
 	set resource_reservation_installment_cycle_months(resource_reservation_installment_cycle_months)
@@ -288,7 +301,9 @@ class ServerTypeReservation extends ObjectBase
 	static get JSONRequired()
 	{
 		return [
-
+			"user_id",
+			"server_type_id",
+			"datacenter_name"
 		];
 	}
 };

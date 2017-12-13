@@ -293,14 +293,6 @@ class Constants
 		}
 	
 		/**
-		 * Container accepted phase.The Container has not been created or scheduled yet.
-		 */
-		static get CONTAINER_STATE_PHASE_ACCEPTED()
-		{
-			return "accepted";
-		}
-	
-		/**
 		 * Container failed phase.The Container has failed.
 		 */
 		static get CONTAINER_STATE_PHASE_FAILED()
@@ -331,14 +323,6 @@ class Constants
 		static get CONTAINER_STATE_PHASE_SUCCEEDED()
 		{
 			return "succeeded";
-		}
-	
-		/**
-		 * Container terminated phase.The Container has been terminated.
-		 */
-		static get CONTAINER_STATE_PHASE_TERMINATED()
-		{
-			return "terminated";
 		}
 	
 		/**

@@ -1,13 +1,13 @@
 const ObjectBase = require('./ObjectBase');
 
 /**
- * A ContainerArrayState contains the state of the ContainerArray.
+ * A ContainerArrayStatus contains the status of the ContainerArray.
  *
  * @class
  * @extends ObjectBase
  */
 module.exports = 
-class ContainerArrayState extends ObjectBase
+class ContainerArrayStatus extends ObjectBase
 {
 	constructor()
 	{
@@ -29,27 +29,27 @@ class ContainerArrayState extends ObjectBase
 	/**
 	 * The number of running containers.
 	 */
-	get state_containers_running()
+	get status_containers_running()
 	{
-		return this._state_containers_running || null;
+		return this._status_containers_running || null;
 	}
 
-	set state_containers_running(state_containers_running)
+	set status_containers_running(status_containers_running)
 	{
-		this._state_containers_running = state_containers_running;
+		this._status_containers_running = status_containers_running;
 	}
 
 	/**
 	 * The number of running containers that passed the readiness check.
 	 */
-	get state_containers_ready()
+	get status_containers_ready()
 	{
-		return this._state_containers_ready || null;
+		return this._status_containers_ready || null;
 	}
 
-	set state_containers_ready(state_containers_ready)
+	set status_containers_ready(status_containers_ready)
 	{
-		this._state_containers_ready = state_containers_ready;
+		this._status_containers_ready = status_containers_ready;
 	}
 
 	/**

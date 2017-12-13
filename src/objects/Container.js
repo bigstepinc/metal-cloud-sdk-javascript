@@ -112,6 +112,20 @@ class Container extends ObjectBase
 	}
 
 	/**
+	 * Automatically created based on container_label. It is a unique reference to
+	 * the Container object to be used within the ContainerPlatform network.
+	 */
+	get container_subdomain_internal()
+	{
+		return this._container_subdomain_internal || null;
+	}
+
+	set container_subdomain_internal(container_subdomain_internal)
+	{
+		this._container_subdomain_internal = container_subdomain_internal;
+	}
+
+	/**
 	 * The status of the Container.
 	 */
 	get container_service_status()

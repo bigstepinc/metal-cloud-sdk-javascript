@@ -26,12 +26,14 @@ module.exports = [
 						path.resolve(__dirname, "examples"),
 						path.resolve(__dirname, "node_modules", "jsonrpc-bidirectional")
 					],
+					exclude: [
+						path.resolve(__dirname, "node_modules") + "/",
+					],
 					loader: "babel-loader",
 					options: {
 						presets: ["es2015", "stage-3"],
 						plugins: [
-							"async-to-promises",
-							"remove-comments"
+							"async-to-promises"
 						],
 						babelrc: false
 					}
@@ -62,7 +64,7 @@ module.exports = [
 					)
 				},
 				output: {
-					screw_ie8: true, 
+					screw_ie8: true,
 					comments: false,
 					preamble: `/**
 						${objPackageJSON.name} v${objPackageJSON.version}
@@ -72,6 +74,39 @@ module.exports = [
 					*/`.replace(/\t+/g, "")
 				}
 			})
+		]
+	},
+	{
+		entry: "./index_webpack",
+		output: {
+			path: path.join(__dirname, "builds", "browser", "es7"),
+			filename: "metal-cloud-sdk.min.js",
+			libraryTarget: "umd"
+		},
+		externals: {
+			"cluster": ""
+		},
+		devtool: "source-map",
+		module: {
+			loaders: [
+				{
+					test: /\.js$/,
+					include: [
+						path.resolve(__dirname, "src"),
+						path.resolve(__dirname, "examples"),
+						path.resolve(__dirname, "node_modules", "jsonrpc-bidirectional")
+					],
+					exclude: [
+						path.resolve(__dirname, "node_modules") + "/",
+					],
+					loader: "babel-loader",
+					options: {
+						babelrc: false
+					}
+				}
+			],
+		},	
+		plugins: [
 		]
 	}
 ];

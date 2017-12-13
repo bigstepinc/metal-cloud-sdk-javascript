@@ -9,7 +9,7 @@ const ObjectBase = require('./ObjectBase');
 module.exports = 
 class DatacenterConfig extends ObjectBase
 {
-	constructor(BSIInternalHAProxyIPs, SANRoutedSubnet, BSIVRRPListenIPv4, BSIMachineListenIPv4List, BSIExternallyVisibleIPv4, repoURLRoot, repoURLRootQuarantineNetwork, DNSServers, KMS, TFTPServerWANVRRPListenIPv4, dataLakeEnabled, monitoringGraphitePlainTextSocketHost, monitoringGraphiteRenderURLHost)
+	constructor(BSIInternalHAProxyIPs, SANRoutedSubnet, BSIVRRPListenIPv4, BSIMachineListenIPv4List, BSIExternallyVisibleIPv4, repoURLRoot, repoURLRootQuarantineNetwork, NTPServers, DNSServers, TFTPServerWANVRRPListenIPv4, dataLakeEnabled)
 	{
 		super();
 
@@ -25,7 +25,7 @@ class DatacenterConfig extends ObjectBase
 			}
 		}
 
-		for(let index = 0; index < 13; index++)
+		for(let index = 0; index < 11; index++)
 		{
 			let arg = arguments[index];
 
@@ -40,12 +40,10 @@ class DatacenterConfig extends ObjectBase
 		this._BSIExternallyVisibleIPv4 = BSIExternallyVisibleIPv4;
 		this._repoURLRoot = repoURLRoot;
 		this._repoURLRootQuarantineNetwork = repoURLRootQuarantineNetwork;
+		this._NTPServers = NTPServers;
 		this._DNSServers = DNSServers;
-		this._KMS = KMS;
 		this._TFTPServerWANVRRPListenIPv4 = TFTPServerWANVRRPListenIPv4;
 		this._dataLakeEnabled = dataLakeEnabled;
-		this._monitoringGraphitePlainTextSocketHost = monitoringGraphitePlainTextSocketHost;
-		this._monitoringGraphiteRenderURLHost = monitoringGraphiteRenderURLHost;
 	}
 
 	/**
@@ -153,6 +151,20 @@ class DatacenterConfig extends ObjectBase
 	}
 
 	/**
+	 * IP addresses of NTP servers to be used in cloudinit and iLO and other
+	 * places. Try to specify at least two.
+	 */
+	get NTPServers()
+	{
+		return this._NTPServers || [];
+	}
+
+	set NTPServers(NTPServers)
+	{
+		this._NTPServers = NTPServers;
+	}
+
+	/**
 	 * IP addresses of DNS servers to be used in the DHCP response and in utility
 	 * OS for setting DNS servers in iLO. Try to specify at least two.
 	 */
@@ -172,7 +184,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get KMS()
 	{
-		return this._KMS || null;
+		return this._KMS || "";
 	}
 
 	set KMS(KMS)
@@ -213,7 +225,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get monitoringGraphitePlainTextSocketHost()
 	{
-		return this._monitoringGraphitePlainTextSocketHost || null;
+		return this._monitoringGraphitePlainTextSocketHost || "";
 	}
 
 	set monitoringGraphitePlainTextSocketHost(monitoringGraphitePlainTextSocketHost)
@@ -227,7 +239,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get monitoringGraphiteRenderURLHost()
 	{
-		return this._monitoringGraphiteRenderURLHost || null;
+		return this._monitoringGraphiteRenderURLHost || "";
 	}
 
 	set monitoringGraphiteRenderURLHost(monitoringGraphiteRenderURLHost)
@@ -263,12 +275,10 @@ class DatacenterConfig extends ObjectBase
 			"BSIExternallyVisibleIPv4",
 			"repoURLRoot",
 			"repoURLRootQuarantineNetwork",
+			"NTPServers",
 			"DNSServers",
-			"KMS",
 			"TFTPServerWANVRRPListenIPv4",
-			"dataLakeEnabled",
-			"monitoringGraphitePlainTextSocketHost",
-			"monitoringGraphiteRenderURLHost"
+			"dataLakeEnabled"
 		];
 	}
 };
