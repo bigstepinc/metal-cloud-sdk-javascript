@@ -9,7 +9,7 @@ const ObjectBase = require('./ObjectBase');
 module.exports = 
 class Dataset extends ObjectBase
 {
-	constructor()
+	constructor(dataset_datacenter)
 	{
 		super();
 
@@ -24,6 +24,11 @@ class Dataset extends ObjectBase
 				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
 			}
 		}
+
+		if(dataset_datacenter === undefined || dataset_datacenter === null)
+			throw new Error("Invalid param in Dataset constructor.");
+
+		this._dataset_datacenter = dataset_datacenter;
 	}
 
 	/**
@@ -258,7 +263,7 @@ class Dataset extends ObjectBase
 	static get JSONRequired()
 	{
 		return [
-
+			"dataset_datacenter"
 		];
 	}
 };

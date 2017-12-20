@@ -44,24 +44,21 @@ Changing `webpack.config.js` requires re-running the build.js script.
 const MetalCloud = require("metal-cloud-sdk");
 const JSONRPC = require("jsonrpc-bidirectional");
 
-
-async function run()
-{
+(async () => {
+	
 	const strEndpointURL = "https://fullmetal.bigstep.com/api/";
 	const strAPIKey = "00:pl34s3c0pyth34p1k3yfr0mth3bs14dm1n1nt3rf4c3"; // the API key can be found in the interface myBigstep > Metal Cloud > API
-	const strEmail = "example@mail.com";// change to your email
 
-	const bsi = await new MetalCloud.Clients.BSI(strEndpointURL);
-	bsi.addPlugin(new JSONRPC.Plugins.Client.SignatureAdd(strAPIKey));
+	const api = await new MetalCloud.Clients.API(strEndpointURL);
+	api.addPlugin(new JSONRPC.Plugins.Client.SignatureAdd(strAPIKey));
 
 	// The client is now initialized and authenticated. You can now execute functions through the Metal Cloud API.
-	// Example 
+    // Example:
 
-	const objUser = await bsi.user_get(strEmail);
-	console.log(objUser);
-}
-
-run();
+	const strEmail = "example@mail.com" // change to your email
+	const objUser = await api.user_get(strEmail);
+    console.log(objUser);
+})();
 
 ```
 
@@ -85,14 +82,14 @@ run();
 			var strAPIKey = "00:pl34s3c0pyth34p1k3yfr0mth3bs14dm1n1nt3rf4c3"; // the API key can be found in the interface myBigstep > Metal Cloud > API
 			var strEmail = "example@mail.com"; // Change to your email.
 
-			new MetalCloud.Clients.BSI(strEndpointURL)
+			new MetalCloud.Clients.API(strEndpointURL)
 				.then(function(client) {
-					bsi = client; 
-					bsi.addPlugin(new JSONRPC.Plugins.Client.SignatureAdd(strAPIKey));
+					api = client; 
+					api.addPlugin(new JSONRPC.Plugins.Client.SignatureAdd(strAPIKey));
 
 					// The client is now initialized and authenticated. You can now execute functions through the MetalCloud API.
 					// Example:
-					bsi.user_get(strEmail)
+					api.user_get(strEmail)
 						.then(function(response) {
                             var objUser = response;
                             console.log(objUser);

@@ -1,7 +1,7 @@
 const ObjectBase = require('./ObjectBase');
 
 /**
- *
+ * A blacklisted LAN IP range.
  *
  * @class
  * @extends ObjectBase
@@ -9,7 +9,7 @@ const ObjectBase = require('./ObjectBase');
 module.exports = 
 class BlacklistedLANIPRange extends ObjectBase
 {
-	constructor(range_start_human_readable, range_end_human_readable)
+	constructor(blacklisted_range_start_human_readable, blacklisted_range_end_human_readable)
 	{
 		super();
 
@@ -33,47 +33,47 @@ class BlacklistedLANIPRange extends ObjectBase
 				throw new Error("Invalid params in BlacklistedLANIPRange constructor.");
 		}
 
-		this._range_start_human_readable = range_start_human_readable;
-		this._range_end_human_readable = range_end_human_readable;
+		this._blacklisted_range_start_human_readable = blacklisted_range_start_human_readable;
+		this._blacklisted_range_end_human_readable = blacklisted_range_end_human_readable;
 	}
 
 	/**
-	 * The start address of the blacklisted range
+	 * The start address of the blacklisted LAN IP range.
 	 */
-	get range_start_human_readable()
+	get blacklisted_range_start_human_readable()
 	{
-		return this._range_start_human_readable || null;
+		return this._blacklisted_range_start_human_readable || null;
 	}
 
-	set range_start_human_readable(range_start_human_readable)
+	set blacklisted_range_start_human_readable(blacklisted_range_start_human_readable)
 	{
-		this._range_start_human_readable = range_start_human_readable;
+		this._blacklisted_range_start_human_readable = blacklisted_range_start_human_readable;
 	}
 
 	/**
-	 * The end address of the blacklisted range
+	 * The end address of the blacklisted LAN IP range.
 	 */
-	get range_end_human_readable()
+	get blacklisted_range_end_human_readable()
 	{
-		return this._range_end_human_readable || null;
+		return this._blacklisted_range_end_human_readable || null;
 	}
 
-	set range_end_human_readable(range_end_human_readable)
+	set blacklisted_range_end_human_readable(blacklisted_range_end_human_readable)
 	{
-		this._range_end_human_readable = range_end_human_readable;
+		this._blacklisted_range_end_human_readable = blacklisted_range_end_human_readable;
 	}
 
 	/**
-	 * Comment describing the use of the blacklist
+	 * Description regarding the use of the blacklist.
 	 */
-	get comment()
+	get blacklisted_range_description()
 	{
-		return this._comment || null;
+		return this._blacklisted_range_description || null;
 	}
 
-	set comment(comment)
+	set blacklisted_range_description(blacklisted_range_description)
 	{
-		this._comment = comment;
+		this._blacklisted_range_description = blacklisted_range_description;
 	}
 
 	/**
@@ -97,8 +97,8 @@ class BlacklistedLANIPRange extends ObjectBase
 	static get JSONRequired()
 	{
 		return [
-			"range_start_human_readable",
-			"range_end_human_readable"
+			"blacklisted_range_start_human_readable",
+			"blacklisted_range_end_human_readable"
 		];
 	}
 };

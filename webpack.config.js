@@ -26,9 +26,10 @@ module.exports = [
 						path.resolve(__dirname, "examples"),
 						path.resolve(__dirname, "node_modules", "jsonrpc-bidirectional")
 					],
-					exclude: [
-						path.resolve(__dirname, "node_modules") + "/",
-					],
+					exclude: {
+						test: path.resolve(__dirname, "node_modules"),
+						exclude: path.resolve(__dirname, "node_modules", "jsonrpc-bidirectional")
+					},
 					loader: "babel-loader",
 					options: {
 						presets: ["es2015", "stage-3"],
