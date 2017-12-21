@@ -2,7 +2,7 @@ module.exports =
 class Constants
 {
 		/**
-		 * Metal Cloud, API v2.13
+		 * Metal Cloud, API v2.14
 		 */
 	
 	

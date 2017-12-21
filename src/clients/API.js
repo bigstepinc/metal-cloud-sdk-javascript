@@ -135,7 +135,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 205 functions available on endpoint.
+	// 210 functions available on endpoint.
 
 	cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1160,6 +1160,31 @@ class API extends JSONRPC.Client
 	user_get_brand(nUserID)
 	{
 		return this.rpc("user_get_brand", Array.prototype.slice.call(arguments));
+	}
+
+	ip_custom_reverse_records(strInfrastructureID)
+	{
+		return this.rpc("ip_custom_reverse_records", Array.prototype.slice.call(arguments));
+	}
+
+	ip_custom_reverse_record_remove(strInfrastructureID, strIPAddress)
+	{
+		return this.rpc("ip_custom_reverse_record_remove", Array.prototype.slice.call(arguments));
+	}
+
+	ip_custom_reverse_record_add(strInfrastructureID, strIPAddress, strSubdomainName, strRootDomain)
+	{
+		return this.rpc("ip_custom_reverse_record_add", Array.prototype.slice.call(arguments));
+	}
+
+	container_status(strContainerID)
+	{
+		return this.rpc("container_status", Array.prototype.slice.call(arguments));
+	}
+
+	container_array_status(strContainerArrayID)
+	{
+		return this.rpc("container_array_status", Array.prototype.slice.call(arguments));
 	}
 
 

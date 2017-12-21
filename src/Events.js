@@ -5,7 +5,7 @@ module.exports =
 class EventTypes
 {
 	/**
-	 * Metal Cloud, API v2.13
+	 * Metal Cloud, API v2.14
 	 */
 
 
