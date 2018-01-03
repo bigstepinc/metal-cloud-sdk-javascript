@@ -69,16 +69,16 @@ class AppMysqlPerconaInstance extends ObjectBase
 	}
 
 	/**
-	 * The URL of the instance. Usually the subdomain name of the instance.
+	 * The port used for the MySQL connection.
 	 */
-	get url()
+	get port()
 	{
-		return this._url || null;
+		return this._port || null;
 	}
 
-	set url(url)
+	set port(port)
 	{
-		this._url = url;
+		this._port = port;
 	}
 
 	/**
