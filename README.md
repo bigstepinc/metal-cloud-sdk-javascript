@@ -19,23 +19,10 @@ npm install
 If you want to run the SDK inside the browser, you must bundle the project using webpack by running:
 
 ```bash
-node ./build.js
+npm run build
 ```
 	
 The generated bundles wil be placed in `builds/browser/` .
-
-You can change the `entry` property in `webpack.config.js` accordingly to the script you want to use.
-
-Example: 
-	
-
-	module.exports = {
-		entry: "./script.js",,
-		...
-	};
-
-Changing `webpack.config.js` requires re-running the build.js script.
-
 
 ## Usage
 
