@@ -1312,7 +1312,7 @@ class Guest extends JSONRPC.Client
 		return this.rpc("dataset_delete", Array.prototype.slice.call(arguments));
 	}
 
-	dataset_subscription_create(nDatasetID, strUserID)
+	dataset_subscription_create(datasetID, strUserID)
 	{
 		return this.rpc("dataset_subscription_create", Array.prototype.slice.call(arguments));
 	}
