@@ -58,16 +58,16 @@ class Dataset extends ObjectBase
 	}
 
 	/**
-	 * The change ID (version) of the dataset
+	 * The version of the dataset
 	 */
-	get dataset_change_id()
+	get dataset_version()
 	{
-		return this._dataset_change_id || null;
+		return this._dataset_version || null;
 	}
 
-	set dataset_change_id(dataset_change_id)
+	set dataset_version(dataset_version)
 	{
-		this._dataset_change_id = dataset_change_id;
+		this._dataset_version = dataset_version;
 	}
 
 	/**
@@ -107,6 +107,32 @@ class Dataset extends ObjectBase
 	set dataset_license_type(dataset_license_type)
 	{
 		this._dataset_license_type = dataset_license_type;
+	}
+
+	/**
+	 * Total cost of a dataset.
+	 */
+	get dataset_price()
+	{
+		return this._dataset_price || 0;
+	}
+
+	set dataset_price(dataset_price)
+	{
+		this._dataset_price = dataset_price;
+	}
+
+	/**
+	 * The currency of the dataset.
+	 */
+	get dataset_price_currency()
+	{
+		return this._dataset_price_currency || null;
+	}
+
+	set dataset_price_currency(dataset_price_currency)
+	{
+		this._dataset_price_currency = dataset_price_currency;
 	}
 
 	/**
