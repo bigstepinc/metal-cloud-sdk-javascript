@@ -295,6 +295,14 @@ class Constants
 		}
 	
 		/**
+		 * StreamSets container cluster type.StreamSets container cluster type
+		 */
+		static get CONTAINER_CLUSTER_TYPE_STREAMSETS()
+		{
+			return "streamsets";
+		}
+	
+		/**
 		 * Vanilla container cluster type.Default container cluster, with blank
 		 * behaviour. It is a singleton per ContainerPlatform product.
 		 */

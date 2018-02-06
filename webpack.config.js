@@ -14,7 +14,11 @@ module.exports = [
 			libraryTarget: "umd"
 		},
 		externals: {
-			"cluster": ""
+			"ws": "WebSocket", 
+			"uws": "WebSocket", 
+			"node-fetch": "fetch",
+			"cluster": "",
+			"fs-promise": ""
 		},
 		devtool: "source-map",
 		module: {
@@ -85,7 +89,11 @@ module.exports = [
 			libraryTarget: "umd"
 		},
 		externals: {
-			"cluster": ""
+			"ws": "WebSocket", 
+			"uws": "WebSocket", 
+			"node-fetch": "fetch",
+			"cluster": "",
+			"fs-promise": ""
 		},
 		devtool: "source-map",
 		module: {

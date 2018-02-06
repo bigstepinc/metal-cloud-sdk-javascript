@@ -1,7 +1,7 @@
 const JSONRPC = require("jsonrpc-bidirectional");
 
 const ClientBase = {};
-ClientBase.ExceptionFilter = require("../ExceptionFilter");
+ClientBase.Plugins = require("./plugins");
 ClientBase.Objects = require("../objects");
 ClientBase.Utils = require("../Utils");
 
@@ -31,7 +31,9 @@ class Docs extends JSONRPC.Client
 	 */
 	async _init()
 	{
-		this.addPlugin(new ClientBase.ExceptionFilter(true));
+		this.addPlugin(new ClientBase.Plugins.ExceptionFilter(true));
+		this.addPlugin(new ClientBase.Plugins.SerializeParameters());
+		this.addPlugin(new ClientBase.Plugins.DeserializeOutput());
 
 		if(Docs.arrFunctions === undefined || Docs.arrFunctions === null)
 		{
@@ -63,47 +65,19 @@ class Docs extends JSONRPC.Client
 	 */
 	async rpc(strFunctionName, arrParams)
 	{
-		for(let index = 0; index < arrParams.length; index++)
+		let fnCallback;
+
+		if(arrParams.length && typeof arrParams[0] === "function")
 		{
-			if(arrParams[index] instanceof ClientBase.Objects.ObjectBase)
-			{
-				arrParams[index] = ClientBase.Utils.Serialize(arrParams[index]);
-			}
+			fnCallback = arrParams.shift();
 		}
 
 		let objResult = await super.rpc(strFunctionName, arrParams);
 
-		if(objResult !== undefined && objResult !== null)
+		if(fnCallback)
 		{
-			if(objResult.hasOwnProperty("type") &&
-				ClientBase.Objects[objResult["type"]] !== undefined &&
-				ClientBase.Objects[objResult["type"]].prototype instanceof ClientBase.Objects.ObjectBase)
-			{
-				objResult = ClientBase.Utils.Deserialize(
-					ClientBase.Objects[objResult["type"]],
-					objResult);
-			}
-			else
-			{
-				for(let objProperty in objResult)
-				{
-					if(objResult.hasOwnProperty(objProperty))
-					{
-						const objValue = objResult[objProperty];
-						if(objValue !== undefined && objValue !== null)
-						{
-							if(objValue.hasOwnProperty("type") &&
-								ClientBase.Objects[objValue["type"]] !== undefined &&
-								ClientBase.Objects[objValue["type"]].prototype instanceof ClientBase.Objects.ObjectBase)
-							{
-								objResult[objProperty] = ClientBase.Utils.Deserialize(
-									ClientBase.Objects[objValue["type"]],
-									objValue);
-							}
-						}
-					}
-				}
-			}
+			const asyncCallbackWrapper = async(objResult) => fnCallback(objResult); 
+			asyncCallbackWrapper(objResult);
 		}
 
 		return objResult;

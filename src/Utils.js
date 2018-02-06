@@ -91,21 +91,32 @@ class Utils
 
 	/**
 	 * Deserializes a JSON and turns it into an instance of the corresponding class.
-	 * @param {Object} objClass
 	 * @param {*} mxJSON
+	 * @param {Object} objClass = null
 	 * @returns {Object} objRes - The newly created object.
 	 */
-	static Deserialize(objClass, mxJSON)
+	static Deserialize(mxJSON, objClass = null)
 	{
 		if(mxJSON instanceof APIObjects.ObjectBase)
 		{
 			return mxJSON;
 		}
 
-		if(objClass === null || objClass === undefined ||
-			!(objClass.prototype instanceof APIObjects.ObjectBase))
+		if(
+			objClass === null 
+			|| objClass === undefined 
+			|| !(objClass.prototype instanceof APIObjects.ObjectBase)
+		)
 		{
-			throw Error("Invalid class.");
+
+			if(APIObjects[mxJSON.type] && (APIObjects[mxJSON.type].prototype instanceof APIObjects.ObjectBase))
+			{
+				objClass = APIObjects[mxJSON.type];
+			}
+			else
+			{
+				throw Error("Invalid class.");
+			}
 		}
 
 		const arrParams = [];

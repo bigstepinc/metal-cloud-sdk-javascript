@@ -143,7 +143,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_virtual_interfaces_enabled()
 	{
-		return this._instance_array_virtual_interfaces_enabled || false;
+		return this._instance_array_virtual_interfaces_enabled || null;
 	}
 
 	set instance_array_virtual_interfaces_enabled(instance_array_virtual_interfaces_enabled)

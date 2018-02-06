@@ -9,7 +9,7 @@ const ObjectBase = require('./ObjectBase');
 module.exports = 
 class SubnetPoolLAN extends ObjectBase
 {
-	constructor(subnet_pool_lan_prefix_human_readable, subnet_pool_lan_netmask, subnet_pool_lan_type)
+	constructor(subnet_pool_lan_prefix_human_readable, subnet_pool_lan_prefix_size, subnet_pool_lan_type, subnets_prefix_size)
 	{
 		super();
 
@@ -25,7 +25,7 @@ class SubnetPoolLAN extends ObjectBase
 			}
 		}
 
-		for(let index = 0; index < 3; index++)
+		for(let index = 0; index < 4; index++)
 		{
 			let arg = arguments[index];
 
@@ -34,12 +34,13 @@ class SubnetPoolLAN extends ObjectBase
 		}
 
 		this._subnet_pool_lan_prefix_human_readable = subnet_pool_lan_prefix_human_readable;
-		this._subnet_pool_lan_netmask = subnet_pool_lan_netmask;
+		this._subnet_pool_lan_prefix_size = subnet_pool_lan_prefix_size;
 		this._subnet_pool_lan_type = subnet_pool_lan_type;
+		this._subnets_prefix_size = subnets_prefix_size;
 	}
 
 	/**
-	 * the network prefix in human readable format.
+	 * The network prefix in human readable format.
 	 */
 	get subnet_pool_lan_prefix_human_readable()
 	{
@@ -52,20 +53,20 @@ class SubnetPoolLAN extends ObjectBase
 	}
 
 	/**
-	 * the netmask value; ex: /32.
+	 * The subnet pool prefix size value; ex: /24.
 	 */
-	get subnet_pool_lan_netmask()
+	get subnet_pool_lan_prefix_size()
 	{
-		return this._subnet_pool_lan_netmask || null;
+		return this._subnet_pool_lan_prefix_size || null;
 	}
 
-	set subnet_pool_lan_netmask(subnet_pool_lan_netmask)
+	set subnet_pool_lan_prefix_size(subnet_pool_lan_prefix_size)
 	{
-		this._subnet_pool_lan_netmask = subnet_pool_lan_netmask;
+		this._subnet_pool_lan_prefix_size = subnet_pool_lan_prefix_size;
 	}
 
 	/**
-	 * must be ipv4 or ipv6.
+	 * Must be ipv4 or ipv6.
 	 */
 	get subnet_pool_lan_type()
 	{
@@ -106,6 +107,19 @@ class SubnetPoolLAN extends ObjectBase
 	}
 
 	/**
+	 * The underyling subnets prefix size value; ex: /24.
+	 */
+	get subnets_prefix_size()
+	{
+		return this._subnets_prefix_size || null;
+	}
+
+	set subnets_prefix_size(subnets_prefix_size)
+	{
+		this._subnets_prefix_size = subnets_prefix_size;
+	}
+
+	/**
 	 * The schema type.
 	 */
 	get type()
@@ -127,8 +141,9 @@ class SubnetPoolLAN extends ObjectBase
 	{
 		return [
 			"subnet_pool_lan_prefix_human_readable",
-			"subnet_pool_lan_netmask",
-			"subnet_pool_lan_type"
+			"subnet_pool_lan_prefix_size",
+			"subnet_pool_lan_type",
+			"subnets_prefix_size"
 		];
 	}
 };

@@ -401,6 +401,19 @@ class User extends ObjectBase
 	}
 
 	/**
+	 * Determines if the user is a datastore publisher.
+	 */
+	get user_is_datastore_publisher()
+	{
+		return this._user_is_datastore_publisher || false;
+	}
+
+	set user_is_datastore_publisher(user_is_datastore_publisher)
+	{
+		this._user_is_datastore_publisher = user_is_datastore_publisher;
+	}
+
+	/**
 	 * The schema type
 	 */
 	get type()

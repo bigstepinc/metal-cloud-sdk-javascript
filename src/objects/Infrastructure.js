@@ -271,16 +271,16 @@ class Infrastructure extends ObjectBase
 	}
 
 	/**
-	 * Contains the blacklisted LAN IP ranges on the infrastructure.
+	 * Contains the reserved LAN IP ranges on the infrastructure.
 	 */
-	get infrastructure_blacklisted_lan_ip_ranges()
+	get infrastructure_reserved_lan_ip_ranges()
 	{
-		return this._infrastructure_blacklisted_lan_ip_ranges || [];
+		return this._infrastructure_reserved_lan_ip_ranges || [];
 	}
 
-	set infrastructure_blacklisted_lan_ip_ranges(infrastructure_blacklisted_lan_ip_ranges)
+	set infrastructure_reserved_lan_ip_ranges(infrastructure_reserved_lan_ip_ranges)
 	{
-		this._infrastructure_blacklisted_lan_ip_ranges = infrastructure_blacklisted_lan_ip_ranges;
+		this._infrastructure_reserved_lan_ip_ranges = infrastructure_reserved_lan_ip_ranges;
 	}
 
 	/**

@@ -163,6 +163,19 @@ class UserLimits extends ObjectBase
 	}
 
 	/**
+	 * 1 if a Zoomdata container cluster is allowed on a infrastructure, 0 otherwise
+	 */
+	get infrastructure_container_cluster_zoomdata_allowed()
+	{
+		return this._infrastructure_container_cluster_zoomdata_allowed || null;
+	}
+
+	set infrastructure_container_cluster_zoomdata_allowed(infrastructure_container_cluster_zoomdata_allowed)
+	{
+		this._infrastructure_container_cluster_zoomdata_allowed = infrastructure_container_cluster_zoomdata_allowed;
+	}
+
+	/**
 	 * 1 if a Mysql cluster is allowed on a infrastructure, 0 otherwise
 	 */
 	get infrastructure_cluster_mysql_allowed()
@@ -190,6 +203,20 @@ class UserLimits extends ObjectBase
 	}
 
 	/**
+	 * Specifies whether the user (or his delegates) can create SparkArrays on his
+	 * Infrastructures.
+	 */
+	get infrastructure_container_cluster_spark_array_allowed()
+	{
+		return this._infrastructure_container_cluster_spark_array_allowed || null;
+	}
+
+	set infrastructure_container_cluster_spark_array_allowed(infrastructure_container_cluster_spark_array_allowed)
+	{
+		this._infrastructure_container_cluster_spark_array_allowed = infrastructure_container_cluster_spark_array_allowed;
+	}
+
+	/**
 	 * 1 if a SparkSQL container cluster is allowed on a infrastructure, 0 otherwise
 	 */
 	get infrastructure_container_cluster_sparksql_allowed()
@@ -213,6 +240,20 @@ class UserLimits extends ObjectBase
 	set infrastructure_container_cluster_kafka_allowed(infrastructure_container_cluster_kafka_allowed)
 	{
 		this._infrastructure_container_cluster_kafka_allowed = infrastructure_container_cluster_kafka_allowed;
+	}
+
+	/**
+	 * 1 if a StreamSets container cluster is allowed on a infrastructure, 0
+	 * otherwise
+	 */
+	get infrastructure_container_cluster_streamsets_allowed()
+	{
+		return this._infrastructure_container_cluster_streamsets_allowed || null;
+	}
+
+	set infrastructure_container_cluster_streamsets_allowed(infrastructure_container_cluster_streamsets_allowed)
+	{
+		this._infrastructure_container_cluster_streamsets_allowed = infrastructure_container_cluster_streamsets_allowed;
 	}
 
 	/**
@@ -297,20 +338,6 @@ class UserLimits extends ObjectBase
 	set infrastructure_san_max_count(infrastructure_san_max_count)
 	{
 		this._infrastructure_san_max_count = infrastructure_san_max_count;
-	}
-
-	/**
-	 * Specifies whether the user (or his delegates) can create SparkArrays on his
-	 * Infrastructures.
-	 */
-	get infrastructure_spark_array_allowed()
-	{
-		return this._infrastructure_spark_array_allowed || null;
-	}
-
-	set infrastructure_spark_array_allowed(infrastructure_spark_array_allowed)
-	{
-		this._infrastructure_spark_array_allowed = infrastructure_spark_array_allowed;
 	}
 
 	/**
