@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "node-fetch": "^1.7.0",
-    "jsonrpc-bidirectional": "^5.1.1",
+    "jsonrpc-bidirectional": "^5.8.1",
 	  "extendable-error-class": "^0.1.1"
   },
   "optionalDependencies": {

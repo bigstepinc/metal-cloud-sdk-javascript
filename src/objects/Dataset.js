@@ -9,7 +9,7 @@ const ObjectBase = require('./ObjectBase');
 module.exports = 
 class Dataset extends ObjectBase
 {
-	constructor(dataset_datacenter)
+	constructor(dataset_price, dataset_price_currency, dataset_datacenter)
 	{
 		super();
 
@@ -25,9 +25,16 @@ class Dataset extends ObjectBase
 			}
 		}
 
-		if(dataset_datacenter === undefined || dataset_datacenter === null)
-			throw new Error("Invalid param in Dataset constructor.");
+		for(let index = 0; index < 3; index++)
+		{
+			let arg = arguments[index];
 
+			if(arg === undefined || arg === null)
+				throw new Error("Invalid params in Dataset constructor.");
+		}
+
+		this._dataset_price = dataset_price;
+		this._dataset_price_currency = dataset_price_currency;
 		this._dataset_datacenter = dataset_datacenter;
 	}
 
@@ -114,7 +121,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_price()
 	{
-		return this._dataset_price || 0;
+		return this._dataset_price || null;
 	}
 
 	set dataset_price(dataset_price)
@@ -123,7 +130,7 @@ class Dataset extends ObjectBase
 	}
 
 	/**
-	 * The currency of the dataset.
+	 * The currency for the price of the dataset.
 	 */
 	get dataset_price_currency()
 	{
@@ -289,6 +296,8 @@ class Dataset extends ObjectBase
 	static get JSONRequired()
 	{
 		return [
+			"dataset_price",
+			"dataset_price_currency",
 			"dataset_datacenter"
 		];
 	}

@@ -1296,7 +1296,7 @@ class Guest extends JSONRPC.Client
 		return this.rpc("dataset_subscription_delete", Array.prototype.slice.call(arguments));
 	}
 
-	user_dataset_subscriptions(strUserID)
+	user_dataset_subscriptions(strUserIDOwner)
 	{
 		return this.rpc("user_dataset_subscriptions", Array.prototype.slice.call(arguments));
 	}
