@@ -95,4 +95,3 @@ const JSONRPC = require("jsonrpc-bidirectional");
 ```
 
 You can find more usage examples in the `examples` folder.
-
