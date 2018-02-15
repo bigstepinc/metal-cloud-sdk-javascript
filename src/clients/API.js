@@ -109,7 +109,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 210 functions available on endpoint.
+	// 222 functions available on endpoint.
 
 	cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1159,6 +1159,66 @@ class API extends JSONRPC.Client
 	container_array_status(strContainerArrayID)
 	{
 		return this.rpc("container_array_status", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_create(strUserID, objDataset)
+	{
+		return this.rpc("dataset_create", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_publish(strUserIDOwner, nDatasetID)
+	{
+		return this.rpc("dataset_publish", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_unpublish(strUserIDOwner, nDatasetID)
+	{
+		return this.rpc("dataset_unpublish", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_edit(nDatasetID, objChangedDataset)
+	{
+		return this.rpc("dataset_edit", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_datapackage_get(nDatasetID)
+	{
+		return this.rpc("dataset_datapackage_get", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_get(publishedDatasetID)
+	{
+		return this.rpc("dataset_get", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_delete(nDatasetID)
+	{
+		return this.rpc("dataset_delete", Array.prototype.slice.call(arguments));
+	}
+
+	datacenter_datasets(strDatacenterLabel)
+	{
+		return this.rpc("datacenter_datasets", Array.prototype.slice.call(arguments));
+	}
+
+	user_datasets_managed(strUserIDOwner)
+	{
+		return this.rpc("user_datasets_managed", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_subscription_create(strUserIDOwner, datasetID)
+	{
+		return this.rpc("dataset_subscription_create", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_subscription_delete(strUserIDOwner, nDatasetSubscriptionID)
+	{
+		return this.rpc("dataset_subscription_delete", Array.prototype.slice.call(arguments));
+	}
+
+	user_dataset_subscriptions(strUserIDOwner)
+	{
+		return this.rpc("user_dataset_subscriptions", Array.prototype.slice.call(arguments));
 	}
 
 

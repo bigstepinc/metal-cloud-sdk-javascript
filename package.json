@@ -1,7 +1,7 @@
 {
   "name": "metal-cloud-sdk",
   "description": "Metal Cloud SDK.",
-  "version": "2.14.0",
+  "version": "2.15.0",
   "scripts": {
     "build": "webpack"
   },
