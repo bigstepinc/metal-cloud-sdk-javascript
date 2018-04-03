@@ -27,6 +27,19 @@ class ContainerCredentials extends ObjectBase
 	}
 
 	/**
+	 * Information needed to connect to the container via RemoteConsole
+	 */
+	get remote_console()
+	{
+		return this._remote_console || null;
+	}
+
+	set remote_console(remote_console)
+	{
+		this._remote_console = remote_console;
+	}
+
+	/**
 	 * The schema type
 	 */
 	get type()
