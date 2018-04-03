@@ -22,7 +22,7 @@ If you want to run the SDK inside the browser, you must bundle the project using
 npm run build
 ```
 	
-The generated bundles wil be placed in `builds/browser/` .
+The generated bundle wil be placed in `dist/` .
 
 ## Usage
 
