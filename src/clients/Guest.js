@@ -19,43 +19,9 @@ class Guest extends JSONRPC.Client
 	{
 		super(strEndpointURL);
 
-		return new Promise(async (resolve) => {
-			await this._init();
-			resolve(this);
-		});
-	}
-
-	/**
-	 * Part of the constructor.
-	 * @protected
-	 */
-	async _init()
-	{
 		this.addPlugin(new ClientBase.Plugins.ExceptionFilter(true));
 		this.addPlugin(new ClientBase.Plugins.SerializeParameters());
 		this.addPlugin(new ClientBase.Plugins.DeserializeOutput());
-
-		if(Guest.arrFunctions === undefined || Guest.arrFunctions === null)
-		{
-			this._initMemberRPCFunctions(await this.rpcFunctions());
-		}
-	}
-
-	/**
-	 * Part of the constructor.
-	 * @protected
-	 * @param {Array} arrFunctions
-	 */
-	_initMemberRPCFunctions(arrFunctions)
-	{
-		this._arrFunctions = arrFunctions;
-
-		for(let strFunctionName of this.arrFunctions)
-		{
-			Guest.prototype[strFunctionName] = function() {
-				return this.rpc(strFunctionName, [].slice.call(arguments));
-			};
-		}
 	}
 
 	/**
@@ -81,31 +47,6 @@ class Guest extends JSONRPC.Client
 		}
 
 		return objResult;
-	}
-
-	/**
-	 * Enables static calling of functions from any scope.
-	 * @param {string} strEndpointURL
-	 */
-	static singletonInit(strEndpointURL)
-	{
-		if(Guest.singleton)
-		{
-			throw new Error("Guest singleton already initialized.");
-		}
-
-		return new Promise(async (resolve) => {
-			Guest.singleton = await new Guest(strEndpointURL);
-			resolve(this);
-		});
-	}
-
-	/**
-	 * @returns {Array|null} _arrFunctions
-	 */
-	get arrFunctions()
-	{
-		return this._arrFunctions || null;
 	}
 
 	
@@ -1236,7 +1177,7 @@ class Guest extends JSONRPC.Client
 		return this.rpc("containers", Array.prototype.slice.call(arguments));
 	}
 
-	container_logs(strContainerID, strTimestampSince = null, nLimitBytes = null)
+	container_logs(strContainerID, strSinceTimestamp = null, nLimitBytes = null)
 	{
 		return this.rpc("container_logs", Array.prototype.slice.call(arguments));
 	}

@@ -19,43 +19,9 @@ class ExtendedAPI extends JSONRPC.Client
 	{
 		super(strEndpointURL);
 
-		return new Promise(async (resolve) => {
-			await this._init();
-			resolve(this);
-		});
-	}
-
-	/**
-	 * Part of the constructor.
-	 * @protected
-	 */
-	async _init()
-	{
 		this.addPlugin(new ClientBase.Plugins.ExceptionFilter(true));
 		this.addPlugin(new ClientBase.Plugins.SerializeParameters());
 		this.addPlugin(new ClientBase.Plugins.DeserializeOutput());
-
-		if(ExtendedAPI.arrFunctions === undefined || ExtendedAPI.arrFunctions === null)
-		{
-			this._initMemberRPCFunctions(await this.rpcFunctions());
-		}
-	}
-
-	/**
-	 * Part of the constructor.
-	 * @protected
-	 * @param {Array} arrFunctions
-	 */
-	_initMemberRPCFunctions(arrFunctions)
-	{
-		this._arrFunctions = arrFunctions;
-
-		for(let strFunctionName of this.arrFunctions)
-		{
-			ExtendedAPI.prototype[strFunctionName] = function() {
-				return this.rpc(strFunctionName, [].slice.call(arguments));
-			};
-		}
 	}
 
 	/**
@@ -83,33 +49,8 @@ class ExtendedAPI extends JSONRPC.Client
 		return objResult;
 	}
 
-	/**
-	 * Enables static calling of functions from any scope.
-	 * @param {string} strEndpointURL
-	 */
-	static singletonInit(strEndpointURL)
-	{
-		if(ExtendedAPI.singleton)
-		{
-			throw new Error("ExtendedAPI singleton already initialized.");
-		}
-
-		return new Promise(async (resolve) => {
-			ExtendedAPI.singleton = await new ExtendedAPI(strEndpointURL);
-			resolve(this);
-		});
-	}
-
-	/**
-	 * @returns {Array|null} _arrFunctions
-	 */
-	get arrFunctions()
-	{
-		return this._arrFunctions || null;
-	}
-
 	
-	// 230 functions available on endpoint.
+	// 254 functions available on endpoint.
 
 	cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1206,19 +1147,9 @@ class ExtendedAPI extends JSONRPC.Client
 		return this.rpc("container_platform_monitoring_data_get", Array.prototype.slice.call(arguments));
 	}
 
-	license_type_for_volume_template(strVolumeTemplateID)
-	{
-		return this.rpc("license_type_for_volume_template", Array.prototype.slice.call(arguments));
-	}
-
 	data_lake_core_site_conf_download_url(strUserID, nDataLakeID)
 	{
 		return this.rpc("data_lake_core_site_conf_download_url", Array.prototype.slice.call(arguments));
-	}
-
-	secure_gateway_authorize_resource(strResourceUrl)
-	{
-		return this.rpc("secure_gateway_authorize_resource", Array.prototype.slice.call(arguments));
 	}
 
 	container_get(strContainerID)
@@ -1231,7 +1162,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return this.rpc("containers", Array.prototype.slice.call(arguments));
 	}
 
-	container_logs(strContainerID, strTimestampSince = null, nLimitBytes = null)
+	container_logs(strContainerID, strSinceTimestamp = null, nLimitBytes = null)
 	{
 		return this.rpc("container_logs", Array.prototype.slice.call(arguments));
 	}
@@ -1259,6 +1190,136 @@ class ExtendedAPI extends JSONRPC.Client
 	container_cluster_app(strContainerClusterID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
 	{
 		return this.rpc("container_cluster_app", Array.prototype.slice.call(arguments));
+	}
+
+	container_status(strContainerID)
+	{
+		return this.rpc("container_status", Array.prototype.slice.call(arguments));
+	}
+
+	container_array_status(strContainerArrayID)
+	{
+		return this.rpc("container_array_status", Array.prototype.slice.call(arguments));
+	}
+
+	datacenter_get(strUserID = null, strDatacenterName)
+	{
+		return this.rpc("datacenter_get", Array.prototype.slice.call(arguments));
+	}
+
+	infrastructure_overview_children_products(strInfrastructureID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
+	{
+		return this.rpc("infrastructure_overview_children_products", Array.prototype.slice.call(arguments));
+	}
+
+	ip_custom_reverse_records(strInfrastructureID)
+	{
+		return this.rpc("ip_custom_reverse_records", Array.prototype.slice.call(arguments));
+	}
+
+	ip_custom_reverse_record_remove(strInfrastructureID, strIPAddress)
+	{
+		return this.rpc("ip_custom_reverse_record_remove", Array.prototype.slice.call(arguments));
+	}
+
+	ip_custom_reverse_record_add(strInfrastructureID, strIPAddress, strSubdomainName, strRootDomain)
+	{
+		return this.rpc("ip_custom_reverse_record_add", Array.prototype.slice.call(arguments));
+	}
+
+	infrastructure_available_subnet_lan_pools(nInfrastructureID)
+	{
+		return this.rpc("infrastructure_available_subnet_lan_pools", Array.prototype.slice.call(arguments));
+	}
+
+	infrastructure_lan_subnet_available_prefixes(nInfrastructureID)
+	{
+		return this.rpc("infrastructure_lan_subnet_available_prefixes", Array.prototype.slice.call(arguments));
+	}
+
+	drive_attach_container(strDriveID, strContainerID)
+	{
+		return this.rpc("drive_attach_container", Array.prototype.slice.call(arguments));
+	}
+
+	drive_detach_container(strDriveID)
+	{
+		return this.rpc("drive_detach_container", Array.prototype.slice.call(arguments));
+	}
+
+	user_get_brand(nUserID)
+	{
+		return this.rpc("user_get_brand", Array.prototype.slice.call(arguments));
+	}
+
+	license_types_for_volume_template(strVolumeTemplateID)
+	{
+		return this.rpc("license_types_for_volume_template", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_create(strUserID, objDataset)
+	{
+		return this.rpc("dataset_create", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_publish(strUserIDOwner, nDatasetID)
+	{
+		return this.rpc("dataset_publish", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_unpublish(strUserIDOwner, nDatasetID)
+	{
+		return this.rpc("dataset_unpublish", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_edit(nDatasetID, objChangedDataset)
+	{
+		return this.rpc("dataset_edit", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_datapackage_get(nDatasetID)
+	{
+		return this.rpc("dataset_datapackage_get", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_get(publishedDatasetID)
+	{
+		return this.rpc("dataset_get", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_delete(nDatasetID)
+	{
+		return this.rpc("dataset_delete", Array.prototype.slice.call(arguments));
+	}
+
+	datacenter_datasets(strDatacenterLabel)
+	{
+		return this.rpc("datacenter_datasets", Array.prototype.slice.call(arguments));
+	}
+
+	user_datasets_managed(strUserIDOwner)
+	{
+		return this.rpc("user_datasets_managed", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_subscription_create(strUserIDOwner, datasetID)
+	{
+		return this.rpc("dataset_subscription_create", Array.prototype.slice.call(arguments));
+	}
+
+	dataset_subscription_delete(strUserIDOwner, nDatasetSubscriptionID)
+	{
+		return this.rpc("dataset_subscription_delete", Array.prototype.slice.call(arguments));
+	}
+
+	user_dataset_subscriptions(strUserIDOwner)
+	{
+		return this.rpc("user_dataset_subscriptions", Array.prototype.slice.call(arguments));
+	}
+
+	support_ticket_options(strUserLanguage)
+	{
+		return this.rpc("support_ticket_options", Array.prototype.slice.call(arguments));
 	}
 
 

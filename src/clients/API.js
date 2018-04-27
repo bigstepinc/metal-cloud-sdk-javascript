@@ -19,43 +19,9 @@ class API extends JSONRPC.Client
 	{
 		super(strEndpointURL);
 
-		return new Promise(async (resolve) => {
-			await this._init();
-			resolve(this);
-		});
-	}
-
-	/**
-	 * Part of the constructor.
-	 * @protected
-	 */
-	async _init()
-	{
 		this.addPlugin(new ClientBase.Plugins.ExceptionFilter(true));
 		this.addPlugin(new ClientBase.Plugins.SerializeParameters());
 		this.addPlugin(new ClientBase.Plugins.DeserializeOutput());
-
-		if(API.arrFunctions === undefined || API.arrFunctions === null)
-		{
-			this._initMemberRPCFunctions(await this.rpcFunctions());
-		}
-	}
-
-	/**
-	 * Part of the constructor.
-	 * @protected
-	 * @param {Array} arrFunctions
-	 */
-	_initMemberRPCFunctions(arrFunctions)
-	{
-		this._arrFunctions = arrFunctions;
-
-		for(let strFunctionName of this.arrFunctions)
-		{
-			API.prototype[strFunctionName] = function() {
-				return this.rpc(strFunctionName, [].slice.call(arguments));
-			};
-		}
 	}
 
 	/**
@@ -83,33 +49,8 @@ class API extends JSONRPC.Client
 		return objResult;
 	}
 
-	/**
-	 * Enables static calling of functions from any scope.
-	 * @param {string} strEndpointURL
-	 */
-	static singletonInit(strEndpointURL)
-	{
-		if(API.singleton)
-		{
-			throw new Error("API singleton already initialized.");
-		}
-
-		return new Promise(async (resolve) => {
-			API.singleton = await new API(strEndpointURL);
-			resolve(this);
-		});
-	}
-
-	/**
-	 * @returns {Array|null} _arrFunctions
-	 */
-	get arrFunctions()
-	{
-		return this._arrFunctions || null;
-	}
-
 	
-	// 222 functions available on endpoint.
+	// 227 functions available on endpoint.
 
 	cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1086,7 +1027,7 @@ class API extends JSONRPC.Client
 		return this.rpc("container_array_shared_drives", Array.prototype.slice.call(arguments));
 	}
 
-	container_logs(strContainerID, strTimestampSince = null, nLimitBytes = null)
+	container_logs(strContainerID, strSinceTimestamp = null, nLimitBytes = null)
 	{
 		return this.rpc("container_logs", Array.prototype.slice.call(arguments));
 	}
@@ -1219,6 +1160,31 @@ class API extends JSONRPC.Client
 	user_dataset_subscriptions(strUserIDOwner)
 	{
 		return this.rpc("user_dataset_subscriptions", Array.prototype.slice.call(arguments));
+	}
+
+	infrastructure_available_subnet_lan_pools(nInfrastructureID)
+	{
+		return this.rpc("infrastructure_available_subnet_lan_pools", Array.prototype.slice.call(arguments));
+	}
+
+	infrastructure_lan_subnet_available_prefixes(nInfrastructureID)
+	{
+		return this.rpc("infrastructure_lan_subnet_available_prefixes", Array.prototype.slice.call(arguments));
+	}
+
+	server_instance_oob_allowed_ips(strInstanceID)
+	{
+		return this.rpc("server_instance_oob_allowed_ips", Array.prototype.slice.call(arguments));
+	}
+
+	server_instance_oob_allow_ip(strInstanceID, strAllowedIP)
+	{
+		return this.rpc("server_instance_oob_allow_ip", Array.prototype.slice.call(arguments));
+	}
+
+	server_instance_oob_disallow_ip(strInstanceID, strDisallowedIP)
+	{
+		return this.rpc("server_instance_oob_disallow_ip", Array.prototype.slice.call(arguments));
 	}
 
 

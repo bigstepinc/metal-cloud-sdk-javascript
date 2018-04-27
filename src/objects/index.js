@@ -77,6 +77,7 @@ objExports.CookieLogin = require('./CookieLogin');
 objExports.DataLake = require('./DataLake');
 objExports.DataLakeCredentials = require('./DataLakeCredentials');
 objExports.DataLakeOperation = require('./DataLakeOperation');
+objExports.DataPackage = require('./DataPackage');
 objExports.Datacenter = require('./Datacenter');
 objExports.DatacenterConfig = require('./DatacenterConfig');
 objExports.Dataset = require('./Dataset');

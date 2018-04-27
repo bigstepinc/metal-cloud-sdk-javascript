@@ -41,26 +41,26 @@ class ExceptionFilter extends JSONRPC.ClientPluginBase
 		{
 			if(objResult.nCode >= 0)
 			{
-				const strMessage = "Exception: " + objResult.strMessage + " (Code: " + objResult.nCode + ")";
+				const strMessage = "API_Exception: " + objResult.message + " (Code: " + objResult.code + ")";
 				console.log(strMessage);
-				throw new Exception(strMessage, objResult.nCode);
+				throw new Exception(strMessage, objResult.code);
 			}
 			else
 			{
-				const strMessage = "JSONRPC.Exception: " + objResult.strMessage + " (Code: " + objResult.nCode + ")";
+				const strMessage = "JSONRPC.Exception: " + objResult.message + " (Code: " + objResult.code + ")";
 				console.log(strMessage);
-				throw new JSONRPC.Exception(strMessage, objResult.nCode);
+				throw new JSONRPC.Exception(strMessage, objResult.code);
 			}
 		}
 		else
 		{
-			if(objResult.nCode >= 0)
+			if(objResult.code >= 0)
 			{
-				throw new Error("Exception: " + objResult.strMessage + " (Code: " + objResult.nCode + ")", objResult.nCode);
+				throw new Error("API_Exception: " + objResult.message + " (Code: " + objResult.code + ")", objResult.code);
 			}
 			else
 			{
-				throw new Error("JSONRPC.Exception: " + objResult.strMessage + " (Code: " + objResult.nCode + ")", objResult.nCode);
+				throw new Error("JSONRPC.Exception: " + objResult.message + " (Code: " + objResult.code + ")", objResult.code);
 			}
 		}
 	}

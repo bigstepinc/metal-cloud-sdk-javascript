@@ -19,43 +19,9 @@ class Docs extends JSONRPC.Client
 	{
 		super(strEndpointURL);
 
-		return new Promise(async (resolve) => {
-			await this._init();
-			resolve(this);
-		});
-	}
-
-	/**
-	 * Part of the constructor.
-	 * @protected
-	 */
-	async _init()
-	{
 		this.addPlugin(new ClientBase.Plugins.ExceptionFilter(true));
 		this.addPlugin(new ClientBase.Plugins.SerializeParameters());
 		this.addPlugin(new ClientBase.Plugins.DeserializeOutput());
-
-		if(Docs.arrFunctions === undefined || Docs.arrFunctions === null)
-		{
-			this._initMemberRPCFunctions(await this.rpcFunctions());
-		}
-	}
-
-	/**
-	 * Part of the constructor.
-	 * @protected
-	 * @param {Array} arrFunctions
-	 */
-	_initMemberRPCFunctions(arrFunctions)
-	{
-		this._arrFunctions = arrFunctions;
-
-		for(let strFunctionName of this.arrFunctions)
-		{
-			Docs.prototype[strFunctionName] = function() {
-				return this.rpc(strFunctionName, [].slice.call(arguments));
-			};
-		}
 	}
 
 	/**
@@ -81,31 +47,6 @@ class Docs extends JSONRPC.Client
 		}
 
 		return objResult;
-	}
-
-	/**
-	 * Enables static calling of functions from any scope.
-	 * @param {string} strEndpointURL
-	 */
-	static singletonInit(strEndpointURL)
-	{
-		if(Docs.singleton)
-		{
-			throw new Error("Docs singleton already initialized.");
-		}
-
-		return new Promise(async (resolve) => {
-			Docs.singleton = await new Docs(strEndpointURL);
-			resolve(this);
-		});
-	}
-
-	/**
-	 * @returns {Array|null} _arrFunctions
-	 */
-	get arrFunctions()
-	{
-		return this._arrFunctions || null;
 	}
 
 	

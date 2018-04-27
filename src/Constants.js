@@ -2,7 +2,7 @@ module.exports =
 class Constants
 {
 		/**
-		 * Metal Cloud, API v2.15
+		 * Metal Cloud, API v3.0
 		 */
 	
 	
@@ -328,38 +328,6 @@ class Constants
 		}
 	
 		/**
-		 * Container status failed.
-		 */
-		static get CONTAINER_STATUS_FAILED()
-		{
-			return "failed";
-		}
-	
-		/**
-		 * Container status finished.
-		 */
-		static get CONTAINER_STATUS_FINISHED()
-		{
-			return "finished";
-		}
-	
-		/**
-		 * Container status killed.
-		 */
-		static get CONTAINER_STATUS_KILLED()
-		{
-			return "killed";
-		}
-	
-		/**
-		 * No status for Container.
-		 */
-		static get CONTAINER_STATUS_NONE()
-		{
-			return "none";
-		}
-	
-		/**
 		 * Container failed phase.The Container has failed.
 		 */
 		static get CONTAINER_STATUS_PHASE_FAILED()
@@ -399,23 +367,6 @@ class Constants
 		static get CONTAINER_STATUS_PHASE_UNKNOWN()
 		{
 			return "unknown";
-		}
-	
-		/**
-		 * Container status running.Container status "running" is equivalent in meaning
-		 * to an "active" status set on a product.
-		 */
-		static get CONTAINER_STATUS_RUNNING()
-		{
-			return "running";
-		}
-	
-		/**
-		 * Container status staged.
-		 */
-		static get CONTAINER_STATUS_STAGED()
-		{
-			return "staged";
 		}
 	
 		/**

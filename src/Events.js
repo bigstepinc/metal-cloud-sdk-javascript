@@ -5,7 +5,7 @@ module.exports =
 class EventTypes
 {
 	/**
-	 * Metal Cloud, API v2.15
+	 * Metal Cloud, API v3.0
 	 */
 
 
@@ -1850,6 +1850,32 @@ class EventTypes
 	static get SERVE()
 	{
 		return 364;
+	}
+
+	/**
+	 * Server OOB IP allow.
+	 * Severity: info.
+	 *
+	 * Allow access to server OOB.
+	 *
+	 * @returns {number}
+	 */
+	static get SERVER_OOB_IP_ALLOW()
+	{
+		return 392;
+	}
+
+	/**
+	 * Server OOB IP disallow.
+	 * Severity: info.
+	 *
+	 * Disallow access to server OOB.
+	 *
+	 * @returns {number}
+	 */
+	static get SERVER_OOB_IP_DISALLOW()
+	{
+		return 393;
 	}
 
 	/**

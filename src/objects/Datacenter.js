@@ -132,6 +132,20 @@ class Datacenter extends ObjectBase
 	}
 
 	/**
+	 * ISO 8601 timestamp which holds the date and time when the datacenter was
+	 * created through the API. Example format: 2013-11-29T13:00:01Z.
+	 */
+	get datacenter_updated_timestamp()
+	{
+		return this._datacenter_updated_timestamp || "0000-00-00T00:00:00Z";
+	}
+
+	set datacenter_updated_timestamp(datacenter_updated_timestamp)
+	{
+		this._datacenter_updated_timestamp = datacenter_updated_timestamp;
+	}
+
+	/**
 	 * True for datacenters which are under construction, beeing phased out, are to
 	 * be avoided temporarily, or no longer exist.
 	 */
