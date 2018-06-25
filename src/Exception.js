@@ -15,7 +15,7 @@ class Exception extends ExtendableError
 	}
 
 	/**
-	 * Metal Cloud, API v2.15
+	 * Metal Cloud, API v2.16
 	 */
 
 	/**

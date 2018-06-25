@@ -2,7 +2,7 @@ module.exports =
 class Constants
 {
 		/**
-		 * Metal Cloud, API v2.15
+		 * Metal Cloud, API v2.16
 		 */
 	
 	
@@ -472,6 +472,14 @@ class Constants
 		static get EVENT_SEVERITY_WARNING()
 		{
 			return "warning";
+		}
+	
+		/**
+		 * Filesystem navigator driver dataset readme.
+		 */
+		static get FILESYSTEM_NAVIGATOR_DRIVER_TYPE_DATASET_README()
+		{
+			return "dataset_readme";
 		}
 	
 		/**
