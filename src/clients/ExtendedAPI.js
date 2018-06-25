@@ -1257,7 +1257,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("license_types_for_volume_template", Array.prototype.slice.call(arguments));
 	}
 
-	async dataset_create(strUserID, objDataset)
+	async dataset_create(strUserID, nTemporaryUploadID = null, objDataset)
 	{
 		return await this.rpc("dataset_create", Array.prototype.slice.call(arguments));
 	}

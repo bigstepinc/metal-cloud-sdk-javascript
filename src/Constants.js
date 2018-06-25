@@ -475,6 +475,14 @@ class Constants
 		}
 	
 		/**
+		 * Filesystem navigator driver dataset readme.
+		 */
+		static get FILESYSTEM_NAVIGATOR_DRIVER_TYPE_DATASET_README()
+		{
+			return "dataset_readme";
+		}
+	
+		/**
 		 * FileSystemNavigator driver of type WebHDFS.
 		 */
 		static get FILESYSTEM_NAVIGATOR_DRIVER_TYPE_WEBHDFS()

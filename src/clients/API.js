@@ -50,7 +50,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 228 functions available on endpoint.
+	// 230 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1102,7 +1102,7 @@ class API extends JSONRPC.Client
 		return await this.rpc("container_array_status", Array.prototype.slice.call(arguments));
 	}
 
-	async dataset_create(strUserID, objDataset)
+	async dataset_create(strUserID, nTemporaryUploadID = null, objDataset)
 	{
 		return await this.rpc("dataset_create", Array.prototype.slice.call(arguments));
 	}
@@ -1162,16 +1162,6 @@ class API extends JSONRPC.Client
 		return await this.rpc("user_dataset_subscriptions", Array.prototype.slice.call(arguments));
 	}
 
-	async infrastructure_available_subnet_lan_pools(nInfrastructureID)
-	{
-		return await this.rpc("infrastructure_available_subnet_lan_pools", Array.prototype.slice.call(arguments));
-	}
-
-	async infrastructure_lan_subnet_available_prefixes(nInfrastructureID)
-	{
-		return await this.rpc("infrastructure_lan_subnet_available_prefixes", Array.prototype.slice.call(arguments));
-	}
-
 	async server_instance_oob_allowed_ips(strInstanceID)
 	{
 		return await this.rpc("server_instance_oob_allowed_ips", Array.prototype.slice.call(arguments));
@@ -1190,6 +1180,26 @@ class API extends JSONRPC.Client
 	async instance_array_drive_arrays(strInstanceArrayID)
 	{
 		return await this.rpc("instance_array_drive_arrays", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_lan_subnet_pools_available(nInfrastructureID)
+	{
+		return await this.rpc("infrastructure_lan_subnet_pools_available", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_lan_subnet_prefixes_available(nInfrastructureID)
+	{
+		return await this.rpc("infrastructure_lan_subnet_prefixes_available", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_readme_upload_url()
+	{
+		return await this.rpc("dataset_readme_upload_url", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_readme_download_url(nDatasetID)
+	{
+		return await this.rpc("dataset_readme_download_url", Array.prototype.slice.call(arguments));
 	}
 
 

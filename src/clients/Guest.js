@@ -1212,7 +1212,7 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("container_array_shared_drives", Array.prototype.slice.call(arguments));
 	}
 
-	async dataset_create(strUserID, objDataset)
+	async dataset_create(strUserID, nTemporaryUploadID = null, objDataset)
 	{
 		return await this.rpc("dataset_create", Array.prototype.slice.call(arguments));
 	}
