@@ -1,7 +1,7 @@
 {
   "name": "metal-cloud-sdk",
   "description": "Metal Cloud SDK.",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "scripts": {
     "build": "webpack"
   },
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "node-fetch": "^1.7.0",
-    "jsonrpc-bidirectional": "^5.8.1",
+    "jsonrpc-bidirectional": "^7.0.2",
 	  "extendable-error-class": "^0.1.1"
   },
   "optionalDependencies": {
