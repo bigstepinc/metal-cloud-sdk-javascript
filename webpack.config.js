@@ -17,7 +17,8 @@ module.exports = {
 		"uws": "WebSocket", 
 		"node-fetch": "fetch",
 		"cluster": "",
-		"fs-promise": ""
+		"fs-promise": "",
+		"electron": "null"
 	},
 	devtool: "source-map",
 	module: {
