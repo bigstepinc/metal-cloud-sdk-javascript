@@ -49,6 +49,58 @@ class EventTypes
 	}
 
 	/**
+	 * Agent drive partition finished.
+	 * Severity: success.
+	 *
+	 * Agent drive partitioning has finished on all instances.
+	 *
+	 * @returns {number}
+	 */
+	static get BSI_AGENT_DRIVE_PARTITION_FINISHED()
+	{
+		return 396;
+	}
+
+	/**
+	 * Agent drive partition format finished.
+	 * Severity: success.
+	 *
+	 * Agent drive partition formatting has finished on all instances.
+	 *
+	 * @returns {number}
+	 */
+	static get BSI_AGENT_DRIVE_PARTITION_FORMAT_FINISHED()
+	{
+		return 397;
+	}
+
+	/**
+	 * Agent drive partition mount finished.
+	 * Severity: success.
+	 *
+	 * Drive partition mounting has finished on all instances.
+	 *
+	 * @returns {number}
+	 */
+	static get BSI_AGENT_DRIVE_PARTITION_MOUNT_FINISHED()
+	{
+		return 398;
+	}
+
+	/**
+	 * Agent drive partition unmount finished.
+	 * Severity: success.
+	 *
+	 * Drive partition unmount has finished on all instances.
+	 *
+	 * @returns {number}
+	 */
+	static get BSI_AGENT_DRIVE_PARTITION_UNMOUNT_FINISHED()
+	{
+		return 399;
+	}
+
+	/**
 	 * BSI Agent Installed.
 	 * Severity: success.
 	 *
@@ -59,6 +111,19 @@ class EventTypes
 	static get BSI_AGENT_INSTALLED()
 	{
 		return 276;
+	}
+
+	/**
+	 * Agent iSCSI setup finished.
+	 * Severity: success.
+	 *
+	 * iSCSI setup and login has successfully finished on all instances.
+	 *
+	 * @returns {number}
+	 */
+	static get BSI_AGENT_ISCSI_SETUP_FINISHED()
+	{
+		return 395;
 	}
 
 	/**

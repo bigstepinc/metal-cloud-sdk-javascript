@@ -491,6 +491,46 @@ class Constants
 		}
 	
 		/**
+		 * EXT2 filesystem.
+		 */
+		static get FILESYSTEM_TYPE_EXT2()
+		{
+			return "ext2";
+		}
+	
+		/**
+		 * EXT3 filesystem.
+		 */
+		static get FILESYSTEM_TYPE_EXT3()
+		{
+			return "ext3";
+		}
+	
+		/**
+		 * EXT4 filesystem.
+		 */
+		static get FILESYSTEM_TYPE_EXT4()
+		{
+			return "ext4";
+		}
+	
+		/**
+		 * None filesystem.Value used when no file system is specified.
+		 */
+		static get FILESYSTEM_TYPE_NONE()
+		{
+			return "none";
+		}
+	
+		/**
+		 * XFS filesystem.
+		 */
+		static get FILESYSTEM_TYPE_XFS()
+		{
+			return "xfs";
+		}
+	
+		/**
 		 * FirewallRule IPV4.
 		 */
 		static get FIREWALL_RULE_IP_ADDRESS_TYPE_IPV4()
