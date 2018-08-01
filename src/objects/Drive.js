@@ -274,6 +274,19 @@ class Drive extends ObjectBase
 	}
 
 	/**
+	 * Drive file system information
+	 */
+	get drive_filesystem()
+	{
+		return this._drive_filesystem || null;
+	}
+
+	set drive_filesystem(drive_filesystem)
+	{
+		this._drive_filesystem = drive_filesystem;
+	}
+
+	/**
 	 * The required JSON fields for deserialization.
 	 *
 	 * @returns {Array}

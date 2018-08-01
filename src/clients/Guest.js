@@ -1217,7 +1217,7 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("dataset_create", Array.prototype.slice.call(arguments));
 	}
 
-	async dataset_edit(nDatasetID, objChangedDataset)
+	async dataset_edit(nDatasetID, nTemporaryUploadID = null, objChangedDataset)
 	{
 		return await this.rpc("dataset_edit", Array.prototype.slice.call(arguments));
 	}

@@ -50,7 +50,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 230 functions available on endpoint.
+	// 233 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1107,17 +1107,17 @@ class API extends JSONRPC.Client
 		return await this.rpc("dataset_create", Array.prototype.slice.call(arguments));
 	}
 
-	async dataset_publish(strUserIDOwner, nDatasetID)
+	async dataset_publish(nDatasetID)
 	{
 		return await this.rpc("dataset_publish", Array.prototype.slice.call(arguments));
 	}
 
-	async dataset_unpublish(strUserIDOwner, nDatasetID)
+	async dataset_unpublish(nDatasetID)
 	{
 		return await this.rpc("dataset_unpublish", Array.prototype.slice.call(arguments));
 	}
 
-	async dataset_edit(nDatasetID, objChangedDataset)
+	async dataset_edit(nDatasetID, nTemporaryUploadID = null, objChangedDataset)
 	{
 		return await this.rpc("dataset_edit", Array.prototype.slice.call(arguments));
 	}
@@ -1197,9 +1197,24 @@ class API extends JSONRPC.Client
 		return await this.rpc("dataset_readme_upload_url", Array.prototype.slice.call(arguments));
 	}
 
-	async dataset_readme_download_url(nDatasetID)
+	async dataset_readme_download_url(nPublicDatasetID)
 	{
 		return await this.rpc("dataset_readme_download_url", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_readme_delete(nDatasetID)
+	{
+		return await this.rpc("dataset_readme_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_filesystem_types_available()
+	{
+		return await this.rpc("drive_array_filesystem_types_available", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_block_sizes_available()
+	{
+		return await this.rpc("drive_array_block_sizes_available", Array.prototype.slice.call(arguments));
 	}
 
 

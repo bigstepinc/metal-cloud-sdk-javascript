@@ -276,6 +276,32 @@ class Dataset extends ObjectBase
 	}
 
 	/**
+	 * The name of the dataset readme file
+	 */
+	get dataset_readme_file_name()
+	{
+		return this._dataset_readme_file_name || null;
+	}
+
+	set dataset_readme_file_name(dataset_readme_file_name)
+	{
+		this._dataset_readme_file_name = dataset_readme_file_name;
+	}
+
+	/**
+	 * The size in bytes of the dataset readme file
+	 */
+	get dataset_readme_file_size_bytes()
+	{
+		return this._dataset_readme_file_size_bytes || null;
+	}
+
+	set dataset_readme_file_size_bytes(dataset_readme_file_size_bytes)
+	{
+		this._dataset_readme_file_size_bytes = dataset_readme_file_size_bytes;
+	}
+
+	/**
 	 * The schema type.
 	 */
 	get type()

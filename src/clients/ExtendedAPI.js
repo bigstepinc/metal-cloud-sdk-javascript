@@ -50,7 +50,7 @@ class ExtendedAPI extends JSONRPC.Client
 	}
 
 	
-	// 254 functions available on endpoint.
+	// 255 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1262,17 +1262,17 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("dataset_create", Array.prototype.slice.call(arguments));
 	}
 
-	async dataset_publish(strUserIDOwner, nDatasetID)
+	async dataset_publish(nDatasetID)
 	{
 		return await this.rpc("dataset_publish", Array.prototype.slice.call(arguments));
 	}
 
-	async dataset_unpublish(strUserIDOwner, nDatasetID)
+	async dataset_unpublish(nDatasetID)
 	{
 		return await this.rpc("dataset_unpublish", Array.prototype.slice.call(arguments));
 	}
 
-	async dataset_edit(nDatasetID, objChangedDataset)
+	async dataset_edit(nDatasetID, nTemporaryUploadID = null, objChangedDataset)
 	{
 		return await this.rpc("dataset_edit", Array.prototype.slice.call(arguments));
 	}
@@ -1320,6 +1320,11 @@ class ExtendedAPI extends JSONRPC.Client
 	async support_ticket_options(strUserLanguage)
 	{
 		return await this.rpc("support_ticket_options", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_array_drive_arrays(strInstanceArrayID)
+	{
+		return await this.rpc("instance_array_drive_arrays", Array.prototype.slice.call(arguments));
 	}
 
 

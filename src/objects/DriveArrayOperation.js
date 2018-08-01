@@ -285,6 +285,19 @@ class DriveArrayOperation extends ObjectBase
 	}
 
 	/**
+	 * Drive array file system information
+	 */
+	get drive_array_filesystem()
+	{
+		return this._drive_array_filesystem || null;
+	}
+
+	set drive_array_filesystem(drive_array_filesystem)
+	{
+		this._drive_array_filesystem = drive_array_filesystem;
+	}
+
+	/**
 	 * The required JSON fields for deserialization.
 	 *
 	 * @returns {Array}
