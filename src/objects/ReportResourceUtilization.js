@@ -43,7 +43,7 @@ class ReportResourceUtilization extends ObjectBase
 	 */
 	get drives()
 	{
-		return this._drives || null;
+		return (this._drives !== undefined ? this._drives : null);
 	}
 
 	set drives(drives)
@@ -56,7 +56,7 @@ class ReportResourceUtilization extends ObjectBase
 	 */
 	get instances()
 	{
-		return this._instances || null;
+		return (this._instances !== undefined ? this._instances : null);
 	}
 
 	set instances(instances)
@@ -69,7 +69,7 @@ class ReportResourceUtilization extends ObjectBase
 	 */
 	get subnets()
 	{
-		return this._subnets || null;
+		return (this._subnets !== undefined ? this._subnets : null);
 	}
 
 	set subnets(subnets)
@@ -82,7 +82,7 @@ class ReportResourceUtilization extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

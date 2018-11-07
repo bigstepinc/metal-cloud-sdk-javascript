@@ -34,7 +34,7 @@ class UserSuspendReason extends ObjectBase
 	 */
 	get user_suspend_reason_id()
 	{
-		return this._user_suspend_reason_id || null;
+		return (this._user_suspend_reason_id !== undefined ? this._user_suspend_reason_id : null);
 	}
 
 	set user_suspend_reason_id(user_suspend_reason_id)
@@ -47,7 +47,7 @@ class UserSuspendReason extends ObjectBase
 	 */
 	get user_id()
 	{
-		return this._user_id || null;
+		return (this._user_id !== undefined ? this._user_id : null);
 	}
 
 	set user_id(user_id)
@@ -60,7 +60,7 @@ class UserSuspendReason extends ObjectBase
 	 */
 	get user_suspend_reason_public_comment()
 	{
-		return this._user_suspend_reason_public_comment || null;
+		return (this._user_suspend_reason_public_comment !== undefined ? this._user_suspend_reason_public_comment : null);
 	}
 
 	set user_suspend_reason_public_comment(user_suspend_reason_public_comment)
@@ -74,7 +74,7 @@ class UserSuspendReason extends ObjectBase
 	 */
 	get user_suspend_reason_created_timestamp()
 	{
-		return this._user_suspend_reason_created_timestamp || null;
+		return (this._user_suspend_reason_created_timestamp !== undefined ? this._user_suspend_reason_created_timestamp : null);
 	}
 
 	set user_suspend_reason_created_timestamp(user_suspend_reason_created_timestamp)
@@ -88,7 +88,7 @@ class UserSuspendReason extends ObjectBase
 	 */
 	get user_suspend_reason_end_timestamp()
 	{
-		return this._user_suspend_reason_end_timestamp || null;
+		return (this._user_suspend_reason_end_timestamp !== undefined ? this._user_suspend_reason_end_timestamp : null);
 	}
 
 	set user_suspend_reason_end_timestamp(user_suspend_reason_end_timestamp)
@@ -101,7 +101,7 @@ class UserSuspendReason extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

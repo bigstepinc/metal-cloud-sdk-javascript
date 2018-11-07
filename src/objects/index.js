@@ -151,6 +151,7 @@ objExports.SubnetPoolLAN = require('./SubnetPoolLAN');
 objExports.SubnetReservation = require('./SubnetReservation');
 objExports.SubnetReservationInstallment = require('./SubnetReservationInstallment');
 objExports.Threshold = require('./Threshold');
+objExports.ThresholdOperation = require('./ThresholdOperation');
 objExports.User = require('./User');
 objExports.UserLimits = require('./UserLimits');
 objExports.UserSuspendReason = require('./UserSuspendReason');

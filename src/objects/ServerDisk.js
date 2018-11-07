@@ -31,7 +31,7 @@ class ServerDisk extends ObjectBase
 	 */
 	get server_disk_type()
 	{
-		return this._server_disk_type || null;
+		return (this._server_disk_type !== undefined ? this._server_disk_type : null);
 	}
 
 	set server_disk_type(server_disk_type)
@@ -44,7 +44,7 @@ class ServerDisk extends ObjectBase
 	 */
 	get server_disk_size_gb()
 	{
-		return this._server_disk_size_gb || null;
+		return (this._server_disk_size_gb !== undefined ? this._server_disk_size_gb : null);
 	}
 
 	set server_disk_size_gb(server_disk_size_gb)
@@ -57,7 +57,7 @@ class ServerDisk extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

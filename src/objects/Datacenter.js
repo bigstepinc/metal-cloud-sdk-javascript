@@ -42,7 +42,7 @@ class Datacenter extends ObjectBase
 	 */
 	get datacenter_name()
 	{
-		return this._datacenter_name || null;
+		return (this._datacenter_name !== undefined ? this._datacenter_name : null);
 	}
 
 	set datacenter_name(datacenter_name)
@@ -56,7 +56,7 @@ class Datacenter extends ObjectBase
 	 */
 	get user_id()
 	{
-		return this._user_id || null;
+		return (this._user_id !== undefined ? this._user_id : null);
 	}
 
 	set user_id(user_id)
@@ -69,7 +69,7 @@ class Datacenter extends ObjectBase
 	 */
 	get datacenter_display_name()
 	{
-		return this._datacenter_display_name || null;
+		return (this._datacenter_display_name !== undefined ? this._datacenter_display_name : null);
 	}
 
 	set datacenter_display_name(datacenter_display_name)
@@ -82,7 +82,7 @@ class Datacenter extends ObjectBase
 	 */
 	get datacenter_is_master()
 	{
-		return this._datacenter_is_master || false;
+		return (this._datacenter_is_master !== undefined ? this._datacenter_is_master : false);
 	}
 
 	set datacenter_is_master(datacenter_is_master)
@@ -96,7 +96,7 @@ class Datacenter extends ObjectBase
 	 */
 	get datacenter_is_maintenance()
 	{
-		return this._datacenter_is_maintenance || false;
+		return (this._datacenter_is_maintenance !== undefined ? this._datacenter_is_maintenance : false);
 	}
 
 	set datacenter_is_maintenance(datacenter_is_maintenance)
@@ -109,7 +109,7 @@ class Datacenter extends ObjectBase
 	 */
 	get datacenter_type()
 	{
-		return this._datacenter_type || "metal_cloud";
+		return (this._datacenter_type !== undefined ? this._datacenter_type : "metal_cloud");
 	}
 
 	set datacenter_type(datacenter_type)
@@ -123,7 +123,7 @@ class Datacenter extends ObjectBase
 	 */
 	get datacenter_created_timestamp()
 	{
-		return this._datacenter_created_timestamp || "0000-00-00T00:00:00Z";
+		return (this._datacenter_created_timestamp !== undefined ? this._datacenter_created_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set datacenter_created_timestamp(datacenter_created_timestamp)
@@ -137,7 +137,7 @@ class Datacenter extends ObjectBase
 	 */
 	get datacenter_updated_timestamp()
 	{
-		return this._datacenter_updated_timestamp || "0000-00-00T00:00:00Z";
+		return (this._datacenter_updated_timestamp !== undefined ? this._datacenter_updated_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set datacenter_updated_timestamp(datacenter_updated_timestamp)
@@ -151,7 +151,7 @@ class Datacenter extends ObjectBase
 	 */
 	get datacenter_hidden()
 	{
-		return this._datacenter_hidden || false;
+		return (this._datacenter_hidden !== undefined ? this._datacenter_hidden : false);
 	}
 
 	set datacenter_hidden(datacenter_hidden)
@@ -164,7 +164,7 @@ class Datacenter extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

@@ -36,7 +36,7 @@ class ReportReservationInstallments extends ObjectBase
 	 */
 	get server_types()
 	{
-		return this._server_types || [];
+		return (this._server_types !== undefined ? this._server_types : []);
 	}
 
 	set server_types(server_types)
@@ -49,7 +49,7 @@ class ReportReservationInstallments extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

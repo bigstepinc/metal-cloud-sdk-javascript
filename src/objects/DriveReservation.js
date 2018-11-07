@@ -36,7 +36,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get user_id()
 	{
-		return this._user_id || null;
+		return (this._user_id !== undefined ? this._user_id : null);
 	}
 
 	set user_id(user_id)
@@ -50,7 +50,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_reservation_created_timestamp()
 	{
-		return this._resource_reservation_created_timestamp || null;
+		return (this._resource_reservation_created_timestamp !== undefined ? this._resource_reservation_created_timestamp : null);
 	}
 
 	set resource_reservation_created_timestamp(resource_reservation_created_timestamp)
@@ -63,7 +63,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_reservation_cycle_months()
 	{
-		return this._resource_reservation_cycle_months || null;
+		return (this._resource_reservation_cycle_months !== undefined ? this._resource_reservation_cycle_months : null);
 	}
 
 	set resource_reservation_cycle_months(resource_reservation_cycle_months)
@@ -76,7 +76,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_reservation_installment_cycle_months()
 	{
-		return this._resource_reservation_installment_cycle_months || null;
+		return (this._resource_reservation_installment_cycle_months !== undefined ? this._resource_reservation_installment_cycle_months : null);
 	}
 
 	set resource_reservation_installment_cycle_months(resource_reservation_installment_cycle_months)
@@ -90,7 +90,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_reservation_end_timestamp()
 	{
-		return this._resource_reservation_end_timestamp || null;
+		return (this._resource_reservation_end_timestamp !== undefined ? this._resource_reservation_end_timestamp : null);
 	}
 
 	set resource_reservation_end_timestamp(resource_reservation_end_timestamp)
@@ -103,7 +103,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_reservation_price()
 	{
-		return this._resource_reservation_price || null;
+		return (this._resource_reservation_price !== undefined ? this._resource_reservation_price : null);
 	}
 
 	set resource_reservation_price(resource_reservation_price)
@@ -116,7 +116,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_reservation_price_currency()
 	{
-		return this._resource_reservation_price_currency || null;
+		return (this._resource_reservation_price_currency !== undefined ? this._resource_reservation_price_currency : null);
 	}
 
 	set resource_reservation_price_currency(resource_reservation_price_currency)
@@ -130,7 +130,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_reservation_recurring()
 	{
-		return this._resource_reservation_recurring || true;
+		return (this._resource_reservation_recurring !== undefined ? this._resource_reservation_recurring : true);
 	}
 
 	set resource_reservation_recurring(resource_reservation_recurring)
@@ -145,7 +145,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_reservation_start_timestamp()
 	{
-		return this._resource_reservation_start_timestamp || null;
+		return (this._resource_reservation_start_timestamp !== undefined ? this._resource_reservation_start_timestamp : null);
 	}
 
 	set resource_reservation_start_timestamp(resource_reservation_start_timestamp)
@@ -159,7 +159,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_utilization_price()
 	{
-		return this._resource_utilization_price || null;
+		return (this._resource_utilization_price !== undefined ? this._resource_utilization_price : null);
 	}
 
 	set resource_utilization_price(resource_utilization_price)
@@ -172,7 +172,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_utilization_price_currency()
 	{
-		return this._resource_utilization_price_currency || null;
+		return (this._resource_utilization_price_currency !== undefined ? this._resource_utilization_price_currency : null);
 	}
 
 	set resource_utilization_price_currency(resource_utilization_price_currency)
@@ -185,7 +185,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_utilization_price_unit_seconds()
 	{
-		return this._resource_utilization_price_unit_seconds || null;
+		return (this._resource_utilization_price_unit_seconds !== undefined ? this._resource_utilization_price_unit_seconds : null);
 	}
 
 	set resource_utilization_price_unit_seconds(resource_utilization_price_unit_seconds)
@@ -198,7 +198,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get drive_reservation_id()
 	{
-		return this._drive_reservation_id || null;
+		return (this._drive_reservation_id !== undefined ? this._drive_reservation_id : null);
 	}
 
 	set drive_reservation_id(drive_reservation_id)
@@ -211,7 +211,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get drive_size_mbytes()
 	{
-		return this._drive_size_mbytes || null;
+		return (this._drive_size_mbytes !== undefined ? this._drive_size_mbytes : null);
 	}
 
 	set drive_size_mbytes(drive_size_mbytes)
@@ -224,7 +224,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get drive_storage_type()
 	{
-		return this._drive_storage_type || "iscsi_ssd";
+		return (this._drive_storage_type !== undefined ? this._drive_storage_type : "iscsi_ssd");
 	}
 
 	set drive_storage_type(drive_storage_type)
@@ -237,7 +237,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_reservation_installments()
 	{
-		return this._resource_reservation_installments || [];
+		return (this._resource_reservation_installments !== undefined ? this._resource_reservation_installments : []);
 	}
 
 	set resource_reservation_installments(resource_reservation_installments)
@@ -250,7 +250,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get resource_reservation_status()
 	{
-		return this._resource_reservation_status || null;
+		return (this._resource_reservation_status !== undefined ? this._resource_reservation_status : null);
 	}
 
 	set resource_reservation_status(resource_reservation_status)
@@ -263,7 +263,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get datacenter_name()
 	{
-		return this._datacenter_name || null;
+		return (this._datacenter_name !== undefined ? this._datacenter_name : null);
 	}
 
 	set datacenter_name(datacenter_name)
@@ -276,7 +276,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get user_plan_type()
 	{
-		return this._user_plan_type || "vanilla";
+		return (this._user_plan_type !== undefined ? this._user_plan_type : "vanilla");
 	}
 
 	set user_plan_type(user_plan_type)
@@ -289,7 +289,7 @@ class DriveReservation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

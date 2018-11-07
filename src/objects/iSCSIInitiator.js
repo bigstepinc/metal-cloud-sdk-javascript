@@ -31,7 +31,7 @@ class iSCSIInitiator extends ObjectBase
 	 */
 	get username()
 	{
-		return this._username || null;
+		return (this._username !== undefined ? this._username : null);
 	}
 
 	set username(username)
@@ -44,7 +44,7 @@ class iSCSIInitiator extends ObjectBase
 	 */
 	get password()
 	{
-		return this._password || null;
+		return (this._password !== undefined ? this._password : null);
 	}
 
 	set password(password)
@@ -57,7 +57,7 @@ class iSCSIInitiator extends ObjectBase
 	 */
 	get initiator_iqn()
 	{
-		return this._initiator_iqn || null;
+		return (this._initiator_iqn !== undefined ? this._initiator_iqn : null);
 	}
 
 	set initiator_iqn(initiator_iqn)
@@ -70,7 +70,7 @@ class iSCSIInitiator extends ObjectBase
 	 */
 	get gateway()
 	{
-		return this._gateway || null;
+		return (this._gateway !== undefined ? this._gateway : null);
 	}
 
 	set gateway(gateway)
@@ -83,7 +83,7 @@ class iSCSIInitiator extends ObjectBase
 	 */
 	get netmask()
 	{
-		return this._netmask || null;
+		return (this._netmask !== undefined ? this._netmask : null);
 	}
 
 	set netmask(netmask)
@@ -96,7 +96,7 @@ class iSCSIInitiator extends ObjectBase
 	 */
 	get initiator_ip_address()
 	{
-		return this._initiator_ip_address || null;
+		return (this._initiator_ip_address !== undefined ? this._initiator_ip_address : null);
 	}
 
 	set initiator_ip_address(initiator_ip_address)
@@ -109,7 +109,7 @@ class iSCSIInitiator extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

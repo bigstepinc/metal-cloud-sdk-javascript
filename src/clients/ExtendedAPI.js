@@ -50,7 +50,7 @@ class ExtendedAPI extends JSONRPC.Client
 	}
 
 	
-	// 255 functions available on endpoint.
+	// 270 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1207,7 +1207,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("datacenter_get", Array.prototype.slice.call(arguments));
 	}
 
-	async infrastructure_overview_children_products(strInfrastructureID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
+	async infrastructure_overview_children_products(strInfrastructureID)
 	{
 		return await this.rpc("infrastructure_overview_children_products", Array.prototype.slice.call(arguments));
 	}
@@ -1322,9 +1322,84 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("support_ticket_options", Array.prototype.slice.call(arguments));
 	}
 
+	async infrastructure_lan_subnet_pools_available(nInfrastructureID)
+	{
+		return await this.rpc("infrastructure_lan_subnet_pools_available", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_lan_subnet_prefixes_available(nInfrastructureID)
+	{
+		return await this.rpc("infrastructure_lan_subnet_prefixes_available", Array.prototype.slice.call(arguments));
+	}
+
+	async server_instance_oob_allowed_ips(strInstanceID)
+	{
+		return await this.rpc("server_instance_oob_allowed_ips", Array.prototype.slice.call(arguments));
+	}
+
+	async server_instance_oob_allow_ip(strInstanceID, strAllowedIP)
+	{
+		return await this.rpc("server_instance_oob_allow_ip", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_filesystem_types_available()
+	{
+		return await this.rpc("drive_array_filesystem_types_available", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_block_sizes_available()
+	{
+		return await this.rpc("drive_array_block_sizes_available", Array.prototype.slice.call(arguments));
+	}
+
+	async server_instance_oob_disallow_ip(strInstanceID, strDisallowedIP)
+	{
+		return await this.rpc("server_instance_oob_disallow_ip", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_readme_delete(nDatasetID)
+	{
+		return await this.rpc("dataset_readme_delete", Array.prototype.slice.call(arguments));
+	}
+
 	async instance_array_drive_arrays(strInstanceArrayID)
 	{
 		return await this.rpc("instance_array_drive_arrays", Array.prototype.slice.call(arguments));
+	}
+
+	async cluster_instance_arrays(strClusterID, arrInstanceArrayIDs = null)
+	{
+		return await this.rpc("cluster_instance_arrays", Array.prototype.slice.call(arguments));
+	}
+
+	async container_cluster_container_arrays(strContainerClusterID, arrContainerArrayIDs = null)
+	{
+		return await this.rpc("container_cluster_container_arrays", Array.prototype.slice.call(arguments));
+	}
+
+	async threshold_create(strUserIDOwner, objThreshold)
+	{
+		return await this.rpc("threshold_create", Array.prototype.slice.call(arguments));
+	}
+
+	async thresholds(strUserIDOwner)
+	{
+		return await this.rpc("thresholds", Array.prototype.slice.call(arguments));
+	}
+
+	async threshold_edit(nThresholdID, objThresholdOperation)
+	{
+		return await this.rpc("threshold_edit", Array.prototype.slice.call(arguments));
+	}
+
+	async threshold_get(nThresholdID)
+	{
+		return await this.rpc("threshold_get", Array.prototype.slice.call(arguments));
+	}
+
+	async threshold_delete(nThresholdID)
+	{
+		return await this.rpc("threshold_delete", Array.prototype.slice.call(arguments));
 	}
 
 

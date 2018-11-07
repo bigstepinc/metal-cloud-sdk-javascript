@@ -31,7 +31,7 @@ class OperatingSystem extends ObjectBase
 	 */
 	get operating_system_type()
 	{
-		return this._operating_system_type || null;
+		return (this._operating_system_type !== undefined ? this._operating_system_type : null);
 	}
 
 	set operating_system_type(operating_system_type)
@@ -44,7 +44,7 @@ class OperatingSystem extends ObjectBase
 	 */
 	get operating_system_version()
 	{
-		return this._operating_system_version || null;
+		return (this._operating_system_version !== undefined ? this._operating_system_version : null);
 	}
 
 	set operating_system_version(operating_system_version)
@@ -57,7 +57,7 @@ class OperatingSystem extends ObjectBase
 	 */
 	get operating_system_architecture()
 	{
-		return this._operating_system_architecture || null;
+		return (this._operating_system_architecture !== undefined ? this._operating_system_architecture : null);
 	}
 
 	set operating_system_architecture(operating_system_architecture)
@@ -70,7 +70,7 @@ class OperatingSystem extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

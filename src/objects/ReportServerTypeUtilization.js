@@ -47,7 +47,7 @@ class ReportServerTypeUtilization extends ObjectBase
 	 */
 	get cost()
 	{
-		return this._cost || null;
+		return (this._cost !== undefined ? this._cost : null);
 	}
 
 	set cost(cost)
@@ -60,7 +60,7 @@ class ReportServerTypeUtilization extends ObjectBase
 	 */
 	get cost_currency()
 	{
-		return this._cost_currency || null;
+		return (this._cost_currency !== undefined ? this._cost_currency : null);
 	}
 
 	set cost_currency(cost_currency)
@@ -73,7 +73,7 @@ class ReportServerTypeUtilization extends ObjectBase
 	 */
 	get server_type_name()
 	{
-		return this._server_type_name || null;
+		return (this._server_type_name !== undefined ? this._server_type_name : null);
 	}
 
 	set server_type_name(server_type_name)
@@ -86,7 +86,7 @@ class ReportServerTypeUtilization extends ObjectBase
 	 */
 	get server_type_reservation_id()
 	{
-		return this._server_type_reservation_id || null;
+		return (this._server_type_reservation_id !== undefined ? this._server_type_reservation_id : null);
 	}
 
 	set server_type_reservation_id(server_type_reservation_id)
@@ -99,7 +99,7 @@ class ReportServerTypeUtilization extends ObjectBase
 	 */
 	get created_timestamp()
 	{
-		return this._created_timestamp || null;
+		return (this._created_timestamp !== undefined ? this._created_timestamp : null);
 	}
 
 	set created_timestamp(created_timestamp)
@@ -113,7 +113,7 @@ class ReportServerTypeUtilization extends ObjectBase
 	 */
 	get start_timestamp()
 	{
-		return this._start_timestamp || null;
+		return (this._start_timestamp !== undefined ? this._start_timestamp : null);
 	}
 
 	set start_timestamp(start_timestamp)
@@ -126,7 +126,7 @@ class ReportServerTypeUtilization extends ObjectBase
 	 */
 	get end_timestamp()
 	{
-		return this._end_timestamp || null;
+		return (this._end_timestamp !== undefined ? this._end_timestamp : null);
 	}
 
 	set end_timestamp(end_timestamp)
@@ -139,7 +139,7 @@ class ReportServerTypeUtilization extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

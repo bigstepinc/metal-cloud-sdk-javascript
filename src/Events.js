@@ -2449,6 +2449,71 @@ class EventTypes
 	}
 
 	/**
+	 * Threshold created.
+	 * Severity: info.
+	 *
+	 * A threshold was created.
+	 *
+	 * @returns {number}
+	 */
+	static get THRESHOLD_CREATED()
+	{
+		return 401;
+	}
+
+	/**
+	 * Threshold deleted.
+	 * Severity: info.
+	 *
+	 * A threshold was deleted.
+	 *
+	 * @returns {number}
+	 */
+	static get THRESHOLD_DELETED()
+	{
+		return 405;
+	}
+
+	/**
+	 * Threshold edited.
+	 * Severity: info.
+	 *
+	 * A threshold was edited.
+	 *
+	 * @returns {number}
+	 */
+	static get THRESHOLD_EDITED()
+	{
+		return 402;
+	}
+
+	/**
+	 * Threshold infrastructure on-demand and metered costs notification sent.
+	 * Severity: info.
+	 *
+	 * A notification was sent to a user for a threshold of type infrastructure_on_demand_and_metered_costs.
+	 *
+	 * @returns {number}
+	 */
+	static get THRESHOLD_INFRASTRUCTURE_ON_DEMAND_AND_METERED_COSTS_NOTIFICATION_SENT()
+	{
+		return 404;
+	}
+
+	/**
+	 * Threshold network traffic per billing cycle notification sent.
+	 * Severity: info.
+	 *
+	 * A notification was sent to a user for a network traffic threshold.
+	 *
+	 * @returns {number}
+	 */
+	static get THRESHOLD_NETWORK_TRAFFIC_NOTIFICATION_SENT()
+	{
+		return 403;
+	}
+
+	/**
 	 * User access level set.
 	 * Severity: info.
 	 *

@@ -31,7 +31,7 @@ class RemoteConsole extends ObjectBase
 	 */
 	get remote_protocol()
 	{
-		return this._remote_protocol || null;
+		return (this._remote_protocol !== undefined ? this._remote_protocol : null);
 	}
 
 	set remote_protocol(remote_protocol)
@@ -44,7 +44,7 @@ class RemoteConsole extends ObjectBase
 	 */
 	get tunnel_path_url()
 	{
-		return this._tunnel_path_url || null;
+		return (this._tunnel_path_url !== undefined ? this._tunnel_path_url : null);
 	}
 
 	set tunnel_path_url(tunnel_path_url)
@@ -57,7 +57,7 @@ class RemoteConsole extends ObjectBase
 	 */
 	get remote_control_panel_url()
 	{
-		return this._remote_control_panel_url || null;
+		return (this._remote_control_panel_url !== undefined ? this._remote_control_panel_url : null);
 	}
 
 	set remote_control_panel_url(remote_control_panel_url)
@@ -70,7 +70,7 @@ class RemoteConsole extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

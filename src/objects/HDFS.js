@@ -31,7 +31,7 @@ class HDFS extends ObjectBase
 	 */
 	get home_directory()
 	{
-		return this._home_directory || null;
+		return (this._home_directory !== undefined ? this._home_directory : null);
 	}
 
 	set home_directory(home_directory)
@@ -44,7 +44,7 @@ class HDFS extends ObjectBase
 	 */
 	get user_id()
 	{
-		return this._user_id || null;
+		return (this._user_id !== undefined ? this._user_id : null);
 	}
 
 	set user_id(user_id)
@@ -57,7 +57,7 @@ class HDFS extends ObjectBase
 	 */
 	get namenode_port()
 	{
-		return this._namenode_port || null;
+		return (this._namenode_port !== undefined ? this._namenode_port : null);
 	}
 
 	set namenode_port(namenode_port)
@@ -70,7 +70,7 @@ class HDFS extends ObjectBase
 	 */
 	get namenode_url()
 	{
-		return this._namenode_url || null;
+		return (this._namenode_url !== undefined ? this._namenode_url : null);
 	}
 
 	set namenode_url(namenode_url)
@@ -84,7 +84,7 @@ class HDFS extends ObjectBase
 	 */
 	get webhdfs_url()
 	{
-		return this._webhdfs_url || null;
+		return (this._webhdfs_url !== undefined ? this._webhdfs_url : null);
 	}
 
 	set webhdfs_url(webhdfs_url)
@@ -97,7 +97,7 @@ class HDFS extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

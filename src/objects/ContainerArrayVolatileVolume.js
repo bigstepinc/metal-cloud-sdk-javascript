@@ -43,7 +43,7 @@ class ContainerArrayVolatileVolume extends ObjectBase
 	 */
 	get volatile_volume_name()
 	{
-		return this._volatile_volume_name || null;
+		return (this._volatile_volume_name !== undefined ? this._volatile_volume_name : null);
 	}
 
 	set volatile_volume_name(volatile_volume_name)
@@ -56,7 +56,7 @@ class ContainerArrayVolatileVolume extends ObjectBase
 	 */
 	get volatile_volume_type()
 	{
-		return this._volatile_volume_type || null;
+		return (this._volatile_volume_type !== undefined ? this._volatile_volume_type : null);
 	}
 
 	set volatile_volume_type(volatile_volume_type)
@@ -69,7 +69,7 @@ class ContainerArrayVolatileVolume extends ObjectBase
 	 */
 	get volatile_volume_mount_path()
 	{
-		return this._volatile_volume_mount_path || null;
+		return (this._volatile_volume_mount_path !== undefined ? this._volatile_volume_mount_path : null);
 	}
 
 	set volatile_volume_mount_path(volatile_volume_mount_path)
@@ -82,7 +82,7 @@ class ContainerArrayVolatileVolume extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

@@ -31,7 +31,7 @@ class ContainerArrayConfigMap extends ObjectBase
 	 */
 	get config_map_data()
 	{
-		return this._config_map_data || [];
+		return (this._config_map_data !== undefined ? this._config_map_data : []);
 	}
 
 	set config_map_data(config_map_data)
@@ -44,7 +44,7 @@ class ContainerArrayConfigMap extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

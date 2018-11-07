@@ -32,7 +32,7 @@ class InfrastructureDeployBlocker extends ObjectBase
 	 */
 	get instance()
 	{
-		return this._instance || null;
+		return (this._instance !== undefined ? this._instance : null);
 	}
 
 	set instance(instance)
@@ -45,7 +45,7 @@ class InfrastructureDeployBlocker extends ObjectBase
 	 */
 	get cluster()
 	{
-		return this._cluster || null;
+		return (this._cluster !== undefined ? this._cluster : null);
 	}
 
 	set cluster(cluster)
@@ -58,7 +58,7 @@ class InfrastructureDeployBlocker extends ObjectBase
 	 */
 	get instanceArray()
 	{
-		return this._instanceArray || null;
+		return (this._instanceArray !== undefined ? this._instanceArray : null);
 	}
 
 	set instanceArray(instanceArray)
@@ -71,7 +71,7 @@ class InfrastructureDeployBlocker extends ObjectBase
 	 */
 	get sshConnectivity()
 	{
-		return this._sshConnectivity || null;
+		return (this._sshConnectivity !== undefined ? this._sshConnectivity : null);
 	}
 
 	set sshConnectivity(sshConnectivity)
@@ -84,7 +84,7 @@ class InfrastructureDeployBlocker extends ObjectBase
 	 */
 	get sshAuthentication()
 	{
-		return this._sshAuthentication || null;
+		return (this._sshAuthentication !== undefined ? this._sshAuthentication : null);
 	}
 
 	set sshAuthentication(sshAuthentication)
@@ -97,7 +97,7 @@ class InfrastructureDeployBlocker extends ObjectBase
 	 */
 	get apiConnectivity()
 	{
-		return this._apiConnectivity || null;
+		return (this._apiConnectivity !== undefined ? this._apiConnectivity : null);
 	}
 
 	set apiConnectivity(apiConnectivity)
@@ -110,7 +110,7 @@ class InfrastructureDeployBlocker extends ObjectBase
 	 */
 	get apiAuthentication()
 	{
-		return this._apiAuthentication || null;
+		return (this._apiAuthentication !== undefined ? this._apiAuthentication : null);
 	}
 
 	set apiAuthentication(apiAuthentication)
@@ -123,7 +123,7 @@ class InfrastructureDeployBlocker extends ObjectBase
 	 */
 	get memoryUsageReport()
 	{
-		return this._memoryUsageReport || null;
+		return (this._memoryUsageReport !== undefined ? this._memoryUsageReport : null);
 	}
 
 	set memoryUsageReport(memoryUsageReport)
@@ -136,7 +136,7 @@ class InfrastructureDeployBlocker extends ObjectBase
 	 */
 	get saasVersion()
 	{
-		return this._saasVersion || null;
+		return (this._saasVersion !== undefined ? this._saasVersion : null);
 	}
 
 	set saasVersion(saasVersion)
@@ -149,7 +149,7 @@ class InfrastructureDeployBlocker extends ObjectBase
 	 */
 	get errorMessage()
 	{
-		return this._errorMessage || null;
+		return (this._errorMessage !== undefined ? this._errorMessage : null);
 	}
 
 	set errorMessage(errorMessage)
@@ -162,7 +162,7 @@ class InfrastructureDeployBlocker extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

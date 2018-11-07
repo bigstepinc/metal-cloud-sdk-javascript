@@ -31,7 +31,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get ssh()
 	{
-		return this._ssh || null;
+		return (this._ssh !== undefined ? this._ssh : null);
 	}
 
 	set ssh(ssh)
@@ -44,7 +44,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get rdp()
 	{
-		return this._rdp || null;
+		return (this._rdp !== undefined ? this._rdp : null);
 	}
 
 	set rdp(rdp)
@@ -57,7 +57,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get ipmi()
 	{
-		return this._ipmi || null;
+		return (this._ipmi !== undefined ? this._ipmi : null);
 	}
 
 	set ipmi(ipmi)
@@ -70,7 +70,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get telnet()
 	{
-		return this._telnet || null;
+		return (this._telnet !== undefined ? this._telnet : null);
 	}
 
 	set telnet(telnet)
@@ -83,7 +83,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get ilo()
 	{
-		return this._ilo || null;
+		return (this._ilo !== undefined ? this._ilo : null);
 	}
 
 	set ilo(ilo)
@@ -96,7 +96,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get idrac()
 	{
-		return this._idrac || null;
+		return (this._idrac !== undefined ? this._idrac : null);
 	}
 
 	set idrac(idrac)
@@ -109,7 +109,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get iscsi()
 	{
-		return this._iscsi || null;
+		return (this._iscsi !== undefined ? this._iscsi : null);
 	}
 
 	set iscsi(iscsi)
@@ -122,7 +122,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get remote_console()
 	{
-		return this._remote_console || null;
+		return (this._remote_console !== undefined ? this._remote_console : null);
 	}
 
 	set remote_console(remote_console)
@@ -136,7 +136,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get shared_drives()
 	{
-		return this._shared_drives || [];
+		return (this._shared_drives !== undefined ? this._shared_drives : []);
 	}
 
 	set shared_drives(shared_drives)
@@ -149,7 +149,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get ip_addresses_public()
 	{
-		return this._ip_addresses_public || [];
+		return (this._ip_addresses_public !== undefined ? this._ip_addresses_public : []);
 	}
 
 	set ip_addresses_public(ip_addresses_public)
@@ -163,7 +163,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get ip_addresses_private()
 	{
-		return this._ip_addresses_private || [];
+		return (this._ip_addresses_private !== undefined ? this._ip_addresses_private : []);
 	}
 
 	set ip_addresses_private(ip_addresses_private)
@@ -176,7 +176,7 @@ class InstanceCredentials extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

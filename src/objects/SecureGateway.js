@@ -44,7 +44,7 @@ class SecureGateway extends ObjectBase
 	 */
 	get domain()
 	{
-		return this._domain || null;
+		return (this._domain !== undefined ? this._domain : null);
 	}
 
 	set domain(domain)
@@ -57,7 +57,7 @@ class SecureGateway extends ObjectBase
 	 */
 	get VRRPIP()
 	{
-		return this._VRRPIP || null;
+		return (this._VRRPIP !== undefined ? this._VRRPIP : null);
 	}
 
 	set VRRPIP(VRRPIP)
@@ -70,7 +70,7 @@ class SecureGateway extends ObjectBase
 	 */
 	get datacenterName()
 	{
-		return this._datacenterName || null;
+		return (this._datacenterName !== undefined ? this._datacenterName : null);
 	}
 
 	set datacenterName(datacenterName)
@@ -83,7 +83,7 @@ class SecureGateway extends ObjectBase
 	 */
 	get SSLCrtFilePath()
 	{
-		return this._SSLCrtFilePath || null;
+		return (this._SSLCrtFilePath !== undefined ? this._SSLCrtFilePath : null);
 	}
 
 	set SSLCrtFilePath(SSLCrtFilePath)
@@ -96,7 +96,7 @@ class SecureGateway extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -109,7 +109,7 @@ class SecureGateway extends ObjectBase
 	 */
 	get ID()
 	{
-		return this._ID || null;
+		return (this._ID !== undefined ? this._ID : null);
 	}
 
 	set ID(ID)
@@ -122,7 +122,7 @@ class SecureGateway extends ObjectBase
 	 */
 	get reservedPorts()
 	{
-		return this._reservedPorts || [];
+		return (this._reservedPorts !== undefined ? this._reservedPorts : []);
 	}
 
 	set reservedPorts(reservedPorts)
@@ -135,7 +135,7 @@ class SecureGateway extends ObjectBase
 	 */
 	get peers()
 	{
-		return this._peers || [];
+		return (this._peers !== undefined ? this._peers : []);
 	}
 
 	set peers(peers)

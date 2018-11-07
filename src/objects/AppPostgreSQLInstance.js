@@ -31,7 +31,7 @@ class AppPostgreSQLInstance extends ObjectBase
 	 */
 	get container_array_id()
 	{
-		return this._container_array_id || null;
+		return (this._container_array_id !== undefined ? this._container_array_id : null);
 	}
 
 	set container_array_id(container_array_id)
@@ -44,7 +44,7 @@ class AppPostgreSQLInstance extends ObjectBase
 	 */
 	get container_array_label()
 	{
-		return this._container_array_label || null;
+		return (this._container_array_label !== undefined ? this._container_array_label : null);
 	}
 
 	set container_array_label(container_array_label)
@@ -57,7 +57,7 @@ class AppPostgreSQLInstance extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

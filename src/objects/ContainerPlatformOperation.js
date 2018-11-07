@@ -45,7 +45,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_deploy_status()
 	{
-		return this._container_platform_deploy_status || null;
+		return (this._container_platform_deploy_status !== undefined ? this._container_platform_deploy_status : null);
 	}
 
 	set container_platform_deploy_status(container_platform_deploy_status)
@@ -58,7 +58,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_deploy_type()
 	{
-		return this._container_platform_deploy_type || null;
+		return (this._container_platform_deploy_type !== undefined ? this._container_platform_deploy_type : null);
 	}
 
 	set container_platform_deploy_type(container_platform_deploy_type)
@@ -73,7 +73,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_label()
 	{
-		return this._container_platform_label || null;
+		return (this._container_platform_label !== undefined ? this._container_platform_label : null);
 	}
 
 	set container_platform_label(container_platform_label)
@@ -87,7 +87,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_subdomain()
 	{
-		return this._container_platform_subdomain || null;
+		return (this._container_platform_subdomain !== undefined ? this._container_platform_subdomain : null);
 	}
 
 	set container_platform_subdomain(container_platform_subdomain)
@@ -101,7 +101,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_maximum_hosts_count()
 	{
-		return this._container_platform_maximum_hosts_count || 10;
+		return (this._container_platform_maximum_hosts_count !== undefined ? this._container_platform_maximum_hosts_count : 10);
 	}
 
 	set container_platform_maximum_hosts_count(container_platform_maximum_hosts_count)
@@ -115,7 +115,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_minimum_hosts_count()
 	{
-		return this._container_platform_minimum_hosts_count || 0;
+		return (this._container_platform_minimum_hosts_count !== undefined ? this._container_platform_minimum_hosts_count : 0);
 	}
 
 	set container_platform_minimum_hosts_count(container_platform_minimum_hosts_count)
@@ -128,7 +128,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_data_drive_size_mbytes()
 	{
-		return this._container_platform_data_drive_size_mbytes || 102400;
+		return (this._container_platform_data_drive_size_mbytes !== undefined ? this._container_platform_data_drive_size_mbytes : 102400);
 	}
 
 	set container_platform_data_drive_size_mbytes(container_platform_data_drive_size_mbytes)
@@ -143,7 +143,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_id()
 	{
-		return this._container_platform_id || null;
+		return (this._container_platform_id !== undefined ? this._container_platform_id : null);
 	}
 
 	set container_platform_id(container_platform_id)
@@ -156,7 +156,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_hardware_configuration()
 	{
-		return this._container_platform_hardware_configuration || null;
+		return (this._container_platform_hardware_configuration !== undefined ? this._container_platform_hardware_configuration : null);
 	}
 
 	set container_platform_hardware_configuration(container_platform_hardware_configuration)
@@ -173,7 +173,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_firewall_managed()
 	{
-		return this._container_platform_firewall_managed || null;
+		return (this._container_platform_firewall_managed !== undefined ? this._container_platform_firewall_managed : null);
 	}
 
 	set container_platform_firewall_managed(container_platform_firewall_managed)
@@ -186,7 +186,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_firewall_rules()
 	{
-		return this._container_platform_firewall_rules || [];
+		return (this._container_platform_firewall_rules !== undefined ? this._container_platform_firewall_rules : []);
 	}
 
 	set container_platform_firewall_rules(container_platform_firewall_rules)
@@ -199,7 +199,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -214,7 +214,7 @@ class ContainerPlatformOperation extends ObjectBase
 	 */
 	get container_platform_change_id()
 	{
-		return this._container_platform_change_id || null;
+		return (this._container_platform_change_id !== undefined ? this._container_platform_change_id : null);
 	}
 
 	set container_platform_change_id(container_platform_change_id)

@@ -37,7 +37,7 @@ class AppZoomdata extends ObjectBase
 	 */
 	get zoomdata_node()
 	{
-		return this._zoomdata_node || [];
+		return (this._zoomdata_node !== undefined ? this._zoomdata_node : []);
 	}
 
 	set zoomdata_node(zoomdata_node)
@@ -50,7 +50,7 @@ class AppZoomdata extends ObjectBase
 	 */
 	get zoomdata_url()
 	{
-		return this._zoomdata_url || null;
+		return (this._zoomdata_url !== undefined ? this._zoomdata_url : null);
 	}
 
 	set zoomdata_url(zoomdata_url)
@@ -63,7 +63,7 @@ class AppZoomdata extends ObjectBase
 	 */
 	get container_cluster_software_available_versions()
 	{
-		return this._container_cluster_software_available_versions || [];
+		return (this._container_cluster_software_available_versions !== undefined ? this._container_cluster_software_available_versions : []);
 	}
 
 	set container_cluster_software_available_versions(container_cluster_software_available_versions)
@@ -76,7 +76,7 @@ class AppZoomdata extends ObjectBase
 	 */
 	get container_cluster_software_version()
 	{
-		return this._container_cluster_software_version || null;
+		return (this._container_cluster_software_version !== undefined ? this._container_cluster_software_version : null);
 	}
 
 	set container_cluster_software_version(container_cluster_software_version)
@@ -89,7 +89,7 @@ class AppZoomdata extends ObjectBase
 	 */
 	get connectable_container_clusters()
 	{
-		return this._connectable_container_clusters || [];
+		return (this._connectable_container_clusters !== undefined ? this._connectable_container_clusters : []);
 	}
 
 	set connectable_container_clusters(connectable_container_clusters)
@@ -102,7 +102,7 @@ class AppZoomdata extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

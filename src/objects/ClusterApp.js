@@ -36,7 +36,7 @@ class ClusterApp extends ObjectBase
 	 */
 	get cluster_app()
 	{
-		return this._cluster_app || null;
+		return (this._cluster_app !== undefined ? this._cluster_app : null);
 	}
 
 	set cluster_app(cluster_app)
@@ -49,7 +49,7 @@ class ClusterApp extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

@@ -45,7 +45,7 @@ class NetworkOperation extends ObjectBase
 	 */
 	get network_deploy_status()
 	{
-		return this._network_deploy_status || null;
+		return (this._network_deploy_status !== undefined ? this._network_deploy_status : null);
 	}
 
 	set network_deploy_status(network_deploy_status)
@@ -58,7 +58,7 @@ class NetworkOperation extends ObjectBase
 	 */
 	get network_deploy_type()
 	{
-		return this._network_deploy_type || null;
+		return (this._network_deploy_type !== undefined ? this._network_deploy_type : null);
 	}
 
 	set network_deploy_type(network_deploy_type)
@@ -72,7 +72,7 @@ class NetworkOperation extends ObjectBase
 	 */
 	get network_label()
 	{
-		return this._network_label || null;
+		return (this._network_label !== undefined ? this._network_label : null);
 	}
 
 	set network_label(network_label)
@@ -86,7 +86,7 @@ class NetworkOperation extends ObjectBase
 	 */
 	get network_subdomain()
 	{
-		return this._network_subdomain || null;
+		return (this._network_subdomain !== undefined ? this._network_subdomain : null);
 	}
 
 	set network_subdomain(network_subdomain)
@@ -101,7 +101,7 @@ class NetworkOperation extends ObjectBase
 	 */
 	get network_id()
 	{
-		return this._network_id || null;
+		return (this._network_id !== undefined ? this._network_id : null);
 	}
 
 	set network_id(network_id)
@@ -115,7 +115,7 @@ class NetworkOperation extends ObjectBase
 	 */
 	get network_updated_timestamp()
 	{
-		return this._network_updated_timestamp || null;
+		return (this._network_updated_timestamp !== undefined ? this._network_updated_timestamp : null);
 	}
 
 	set network_updated_timestamp(network_updated_timestamp)
@@ -128,7 +128,7 @@ class NetworkOperation extends ObjectBase
 	 */
 	get network_type()
 	{
-		return this._network_type || null;
+		return (this._network_type !== undefined ? this._network_type : null);
 	}
 
 	set network_type(network_type)
@@ -141,7 +141,7 @@ class NetworkOperation extends ObjectBase
 	 */
 	get network_gui_settings_json()
 	{
-		return this._network_gui_settings_json || "";
+		return (this._network_gui_settings_json !== undefined ? this._network_gui_settings_json : "");
 	}
 
 	set network_gui_settings_json(network_gui_settings_json)
@@ -154,7 +154,7 @@ class NetworkOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -169,7 +169,7 @@ class NetworkOperation extends ObjectBase
 	 */
 	get network_change_id()
 	{
-		return this._network_change_id || null;
+		return (this._network_change_id !== undefined ? this._network_change_id : null);
 	}
 
 	set network_change_id(network_change_id)
@@ -183,7 +183,7 @@ class NetworkOperation extends ObjectBase
 	 */
 	get network_lan_autoallocate_ips()
 	{
-		return this._network_lan_autoallocate_ips || false;
+		return (this._network_lan_autoallocate_ips !== undefined ? this._network_lan_autoallocate_ips : false);
 	}
 
 	set network_lan_autoallocate_ips(network_lan_autoallocate_ips)

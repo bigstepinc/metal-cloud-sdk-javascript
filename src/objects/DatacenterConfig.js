@@ -54,7 +54,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get BSIInternalHAProxyIPs()
 	{
-		return this._BSIInternalHAProxyIPs || [];
+		return (this._BSIInternalHAProxyIPs !== undefined ? this._BSIInternalHAProxyIPs : []);
 	}
 
 	set BSIInternalHAProxyIPs(BSIInternalHAProxyIPs)
@@ -68,7 +68,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get SANRoutedSubnet()
 	{
-		return this._SANRoutedSubnet || null;
+		return (this._SANRoutedSubnet !== undefined ? this._SANRoutedSubnet : null);
 	}
 
 	set SANRoutedSubnet(SANRoutedSubnet)
@@ -84,7 +84,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get BSIVRRPListenIPv4()
 	{
-		return this._BSIVRRPListenIPv4 || null;
+		return (this._BSIVRRPListenIPv4 !== undefined ? this._BSIVRRPListenIPv4 : null);
 	}
 
 	set BSIVRRPListenIPv4(BSIVRRPListenIPv4)
@@ -98,7 +98,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get BSIMachineListenIPv4List()
 	{
-		return this._BSIMachineListenIPv4List || [];
+		return (this._BSIMachineListenIPv4List !== undefined ? this._BSIMachineListenIPv4List : []);
 	}
 
 	set BSIMachineListenIPv4List(BSIMachineListenIPv4List)
@@ -114,7 +114,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get BSIExternallyVisibleIPv4()
 	{
-		return this._BSIExternallyVisibleIPv4 || null;
+		return (this._BSIExternallyVisibleIPv4 !== undefined ? this._BSIExternallyVisibleIPv4 : null);
 	}
 
 	set BSIExternallyVisibleIPv4(BSIExternallyVisibleIPv4)
@@ -128,7 +128,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get repoURLRoot()
 	{
-		return this._repoURLRoot || null;
+		return (this._repoURLRoot !== undefined ? this._repoURLRoot : null);
 	}
 
 	set repoURLRoot(repoURLRoot)
@@ -142,7 +142,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get repoURLRootQuarantineNetwork()
 	{
-		return this._repoURLRootQuarantineNetwork || null;
+		return (this._repoURLRootQuarantineNetwork !== undefined ? this._repoURLRootQuarantineNetwork : null);
 	}
 
 	set repoURLRootQuarantineNetwork(repoURLRootQuarantineNetwork)
@@ -156,7 +156,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get NTPServers()
 	{
-		return this._NTPServers || [];
+		return (this._NTPServers !== undefined ? this._NTPServers : []);
 	}
 
 	set NTPServers(NTPServers)
@@ -170,7 +170,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get DNSServers()
 	{
-		return this._DNSServers || [];
+		return (this._DNSServers !== undefined ? this._DNSServers : []);
 	}
 
 	set DNSServers(DNSServers)
@@ -184,7 +184,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get KMS()
 	{
-		return this._KMS || "";
+		return (this._KMS !== undefined ? this._KMS : "");
 	}
 
 	set KMS(KMS)
@@ -198,7 +198,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get TFTPServerWANVRRPListenIPv4()
 	{
-		return this._TFTPServerWANVRRPListenIPv4 || null;
+		return (this._TFTPServerWANVRRPListenIPv4 !== undefined ? this._TFTPServerWANVRRPListenIPv4 : null);
 	}
 
 	set TFTPServerWANVRRPListenIPv4(TFTPServerWANVRRPListenIPv4)
@@ -211,7 +211,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get dataLakeEnabled()
 	{
-		return this._dataLakeEnabled || null;
+		return (this._dataLakeEnabled !== undefined ? this._dataLakeEnabled : null);
 	}
 
 	set dataLakeEnabled(dataLakeEnabled)
@@ -225,7 +225,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get monitoringGraphitePlainTextSocketHost()
 	{
-		return this._monitoringGraphitePlainTextSocketHost || "";
+		return (this._monitoringGraphitePlainTextSocketHost !== undefined ? this._monitoringGraphitePlainTextSocketHost : "");
 	}
 
 	set monitoringGraphitePlainTextSocketHost(monitoringGraphitePlainTextSocketHost)
@@ -239,7 +239,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get monitoringGraphiteRenderURLHost()
 	{
-		return this._monitoringGraphiteRenderURLHost || "";
+		return (this._monitoringGraphiteRenderURLHost !== undefined ? this._monitoringGraphiteRenderURLHost : "");
 	}
 
 	set monitoringGraphiteRenderURLHost(monitoringGraphiteRenderURLHost)
@@ -252,7 +252,7 @@ class DatacenterConfig extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

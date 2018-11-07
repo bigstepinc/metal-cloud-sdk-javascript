@@ -33,7 +33,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get instance_array_interface_label()
 	{
-		return this._instance_array_interface_label || null;
+		return (this._instance_array_interface_label !== undefined ? this._instance_array_interface_label : null);
 	}
 
 	set instance_array_interface_label(instance_array_interface_label)
@@ -47,7 +47,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get instance_array_interface_subdomain()
 	{
-		return this._instance_array_interface_subdomain || null;
+		return (this._instance_array_interface_subdomain !== undefined ? this._instance_array_interface_subdomain : null);
 	}
 
 	set instance_array_interface_subdomain(instance_array_interface_subdomain)
@@ -60,7 +60,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get instance_array_interface_id()
 	{
-		return this._instance_array_interface_id || null;
+		return (this._instance_array_interface_id !== undefined ? this._instance_array_interface_id : null);
 	}
 
 	set instance_array_interface_id(instance_array_interface_id)
@@ -73,7 +73,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get instance_array_id()
 	{
-		return this._instance_array_id || null;
+		return (this._instance_array_id !== undefined ? this._instance_array_id : null);
 	}
 
 	set instance_array_id(instance_array_id)
@@ -86,7 +86,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get network_id()
 	{
-		return this._network_id || null;
+		return (this._network_id !== undefined ? this._network_id : null);
 	}
 
 	set network_id(network_id)
@@ -101,7 +101,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get instance_array_interface_lagg_indexes()
 	{
-		return this._instance_array_interface_lagg_indexes || [];
+		return (this._instance_array_interface_lagg_indexes !== undefined ? this._instance_array_interface_lagg_indexes : []);
 	}
 
 	set instance_array_interface_lagg_indexes(instance_array_interface_lagg_indexes)
@@ -114,7 +114,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get instance_array_interface_index()
 	{
-		return this._instance_array_interface_index || null;
+		return (this._instance_array_interface_index !== undefined ? this._instance_array_interface_index : null);
 	}
 
 	set instance_array_interface_index(instance_array_interface_index)
@@ -127,7 +127,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get instance_array_interface_service_status()
 	{
-		return this._instance_array_interface_service_status || null;
+		return (this._instance_array_interface_service_status !== undefined ? this._instance_array_interface_service_status : null);
 	}
 
 	set instance_array_interface_service_status(instance_array_interface_service_status)
@@ -141,7 +141,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get instance_array_interface_operation()
 	{
-		return this._instance_array_interface_operation || null;
+		return (this._instance_array_interface_operation !== undefined ? this._instance_array_interface_operation : null);
 	}
 
 	set instance_array_interface_operation(instance_array_interface_operation)
@@ -155,7 +155,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get instance_array_interface_created_timestamp()
 	{
-		return this._instance_array_interface_created_timestamp || "0000-00-00T00:00:00Z";
+		return (this._instance_array_interface_created_timestamp !== undefined ? this._instance_array_interface_created_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set instance_array_interface_created_timestamp(instance_array_interface_created_timestamp)
@@ -169,7 +169,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get instance_array_interface_updated_timestamp()
 	{
-		return this._instance_array_interface_updated_timestamp || "0000-00-00T00:00:00Z";
+		return (this._instance_array_interface_updated_timestamp !== undefined ? this._instance_array_interface_updated_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set instance_array_interface_updated_timestamp(instance_array_interface_updated_timestamp)
@@ -182,7 +182,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -197,7 +197,7 @@ class InstanceArrayInterface extends ObjectBase
 	 */
 	get instance_array_interface_change_id()
 	{
-		return this._instance_array_interface_change_id || null;
+		return (this._instance_array_interface_change_id !== undefined ? this._instance_array_interface_change_id : null);
 	}
 
 	set instance_array_interface_change_id(instance_array_interface_change_id)

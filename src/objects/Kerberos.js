@@ -37,7 +37,7 @@ class Kerberos extends ObjectBase
 	 */
 	get username()
 	{
-		return this._username || null;
+		return (this._username !== undefined ? this._username : null);
 	}
 
 	set username(username)
@@ -52,7 +52,7 @@ class Kerberos extends ObjectBase
 	 */
 	get initial_password()
 	{
-		return this._initial_password || null;
+		return (this._initial_password !== undefined ? this._initial_password : null);
 	}
 
 	set initial_password(initial_password)
@@ -65,7 +65,7 @@ class Kerberos extends ObjectBase
 	 */
 	get realm()
 	{
-		return this._realm || null;
+		return (this._realm !== undefined ? this._realm : null);
 	}
 
 	set realm(realm)
@@ -78,7 +78,7 @@ class Kerberos extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

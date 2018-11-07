@@ -45,7 +45,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get name()
 	{
-		return this._name || null;
+		return (this._name !== undefined ? this._name : null);
 	}
 
 	set name(name)
@@ -58,7 +58,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get mode()
 	{
-		return this._mode || null;
+		return (this._mode !== undefined ? this._mode : null);
 	}
 
 	set mode(mode)
@@ -71,7 +71,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get start_port()
 	{
-		return this._start_port || null;
+		return (this._start_port !== undefined ? this._start_port : null);
 	}
 
 	set start_port(start_port)
@@ -84,7 +84,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get end_port()
 	{
-		return this._end_port || null;
+		return (this._end_port !== undefined ? this._end_port : null);
 	}
 
 	set end_port(end_port)
@@ -97,7 +97,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get host()
 	{
-		return this._host || null;
+		return (this._host !== undefined ? this._host : null);
 	}
 
 	set host(host)
@@ -110,7 +110,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get frontend_ssl_enabled()
 	{
-		return this._frontend_ssl_enabled || null;
+		return (this._frontend_ssl_enabled !== undefined ? this._frontend_ssl_enabled : null);
 	}
 
 	set frontend_ssl_enabled(frontend_ssl_enabled)
@@ -123,7 +123,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get frontend_authorization_enabled()
 	{
-		return this._frontend_authorization_enabled || null;
+		return (this._frontend_authorization_enabled !== undefined ? this._frontend_authorization_enabled : null);
 	}
 
 	set frontend_authorization_enabled(frontend_authorization_enabled)
@@ -136,7 +136,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get frontend_allowed_client_ips()
 	{
-		return this._frontend_allowed_client_ips || [];
+		return (this._frontend_allowed_client_ips !== undefined ? this._frontend_allowed_client_ips : []);
 	}
 
 	set frontend_allowed_client_ips(frontend_allowed_client_ips)
@@ -149,7 +149,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get backend_balance_strategy()
 	{
-		return this._backend_balance_strategy || null;
+		return (this._backend_balance_strategy !== undefined ? this._backend_balance_strategy : null);
 	}
 
 	set backend_balance_strategy(backend_balance_strategy)
@@ -162,7 +162,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get backend_servers()
 	{
-		return this._backend_servers || [];
+		return (this._backend_servers !== undefined ? this._backend_servers : []);
 	}
 
 	set backend_servers(backend_servers)
@@ -175,7 +175,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get destination_id()
 	{
-		return this._destination_id || null;
+		return (this._destination_id !== undefined ? this._destination_id : null);
 	}
 
 	set destination_id(destination_id)
@@ -188,7 +188,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get destination_discriminator()
 	{
-		return this._destination_discriminator || null;
+		return (this._destination_discriminator !== undefined ? this._destination_discriminator : null);
 	}
 
 	set destination_discriminator(destination_discriminator)
@@ -201,7 +201,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get infrastructure_id()
 	{
-		return this._infrastructure_id || null;
+		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
 	}
 
 	set infrastructure_id(infrastructure_id)
@@ -214,7 +214,7 @@ class SecureGatewayProxy extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

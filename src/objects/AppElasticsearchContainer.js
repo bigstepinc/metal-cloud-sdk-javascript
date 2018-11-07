@@ -37,7 +37,7 @@ class AppElasticsearchContainer extends ObjectBase
 	 */
 	get elasticsearch_node()
 	{
-		return this._elasticsearch_node || [];
+		return (this._elasticsearch_node !== undefined ? this._elasticsearch_node : []);
 	}
 
 	set elasticsearch_node(elasticsearch_node)
@@ -50,7 +50,7 @@ class AppElasticsearchContainer extends ObjectBase
 	 */
 	get connection_strings()
 	{
-		return this._connection_strings || [];
+		return (this._connection_strings !== undefined ? this._connection_strings : []);
 	}
 
 	set connection_strings(connection_strings)
@@ -63,7 +63,7 @@ class AppElasticsearchContainer extends ObjectBase
 	 */
 	get container_cluster_software_available_versions()
 	{
-		return this._container_cluster_software_available_versions || [];
+		return (this._container_cluster_software_available_versions !== undefined ? this._container_cluster_software_available_versions : []);
 	}
 
 	set container_cluster_software_available_versions(container_cluster_software_available_versions)
@@ -76,7 +76,7 @@ class AppElasticsearchContainer extends ObjectBase
 	 */
 	get container_cluster_software_version()
 	{
-		return this._container_cluster_software_version || null;
+		return (this._container_cluster_software_version !== undefined ? this._container_cluster_software_version : null);
 	}
 
 	set container_cluster_software_version(container_cluster_software_version)
@@ -89,7 +89,7 @@ class AppElasticsearchContainer extends ObjectBase
 	 */
 	get connectable_container_clusters()
 	{
-		return this._connectable_container_clusters || [];
+		return (this._connectable_container_clusters !== undefined ? this._connectable_container_clusters : []);
 	}
 
 	set connectable_container_clusters(connectable_container_clusters)
@@ -102,7 +102,7 @@ class AppElasticsearchContainer extends ObjectBase
 	 */
 	get username()
 	{
-		return this._username || null;
+		return (this._username !== undefined ? this._username : null);
 	}
 
 	set username(username)
@@ -115,7 +115,7 @@ class AppElasticsearchContainer extends ObjectBase
 	 */
 	get password()
 	{
-		return this._password || null;
+		return (this._password !== undefined ? this._password : null);
 	}
 
 	set password(password)
@@ -128,7 +128,7 @@ class AppElasticsearchContainer extends ObjectBase
 	 */
 	get cluster_name()
 	{
-		return this._cluster_name || null;
+		return (this._cluster_name !== undefined ? this._cluster_name : null);
 	}
 
 	set cluster_name(cluster_name)
@@ -141,7 +141,7 @@ class AppElasticsearchContainer extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

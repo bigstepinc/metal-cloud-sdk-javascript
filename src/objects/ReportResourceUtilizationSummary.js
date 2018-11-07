@@ -47,7 +47,7 @@ class ReportResourceUtilizationSummary extends ObjectBase
 	 */
 	get resource_utilization()
 	{
-		return this._resource_utilization || null;
+		return (this._resource_utilization !== undefined ? this._resource_utilization : null);
 	}
 
 	set resource_utilization(resource_utilization)
@@ -60,7 +60,7 @@ class ReportResourceUtilizationSummary extends ObjectBase
 	 */
 	get internet()
 	{
-		return this._internet || null;
+		return (this._internet !== undefined ? this._internet : null);
 	}
 
 	set internet(internet)
@@ -73,7 +73,7 @@ class ReportResourceUtilizationSummary extends ObjectBase
 	 */
 	get resource_reservation_installments()
 	{
-		return this._resource_reservation_installments || null;
+		return (this._resource_reservation_installments !== undefined ? this._resource_reservation_installments : null);
 	}
 
 	set resource_reservation_installments(resource_reservation_installments)
@@ -86,7 +86,7 @@ class ReportResourceUtilizationSummary extends ObjectBase
 	 */
 	get infrastructure_ids()
 	{
-		return this._infrastructure_ids || [];
+		return (this._infrastructure_ids !== undefined ? this._infrastructure_ids : []);
 	}
 
 	set infrastructure_ids(infrastructure_ids)
@@ -100,7 +100,7 @@ class ReportResourceUtilizationSummary extends ObjectBase
 	 */
 	get start_timestamp()
 	{
-		return this._start_timestamp || null;
+		return (this._start_timestamp !== undefined ? this._start_timestamp : null);
 	}
 
 	set start_timestamp(start_timestamp)
@@ -114,7 +114,7 @@ class ReportResourceUtilizationSummary extends ObjectBase
 	 */
 	get end_timestamp()
 	{
-		return this._end_timestamp || null;
+		return (this._end_timestamp !== undefined ? this._end_timestamp : null);
 	}
 
 	set end_timestamp(end_timestamp)
@@ -127,7 +127,7 @@ class ReportResourceUtilizationSummary extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

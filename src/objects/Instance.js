@@ -36,7 +36,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_label()
 	{
-		return this._instance_label || null;
+		return (this._instance_label !== undefined ? this._instance_label : null);
 	}
 
 	set instance_label(instance_label)
@@ -50,7 +50,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_subdomain()
 	{
-		return this._instance_subdomain || null;
+		return (this._instance_subdomain !== undefined ? this._instance_subdomain : null);
 	}
 
 	set instance_subdomain(instance_subdomain)
@@ -64,7 +64,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_subdomain_permanent()
 	{
-		return this._instance_subdomain_permanent || null;
+		return (this._instance_subdomain_permanent !== undefined ? this._instance_subdomain_permanent : null);
 	}
 
 	set instance_subdomain_permanent(instance_subdomain_permanent)
@@ -79,7 +79,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_id()
 	{
-		return this._instance_id || null;
+		return (this._instance_id !== undefined ? this._instance_id : null);
 	}
 
 	set instance_id(instance_id)
@@ -92,7 +92,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_array_id()
 	{
-		return this._instance_array_id || null;
+		return (this._instance_array_id !== undefined ? this._instance_array_id : null);
 	}
 
 	set instance_array_id(instance_array_id)
@@ -105,7 +105,7 @@ class Instance extends ObjectBase
 	 */
 	get server_id()
 	{
-		return this._server_id || null;
+		return (this._server_id !== undefined ? this._server_id : null);
 	}
 
 	set server_id(server_id)
@@ -118,7 +118,7 @@ class Instance extends ObjectBase
 	 */
 	get server_type_id()
 	{
-		return this._server_type_id || null;
+		return (this._server_type_id !== undefined ? this._server_type_id : null);
 	}
 
 	set server_type_id(server_type_id)
@@ -131,7 +131,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_service_status()
 	{
-		return this._instance_service_status || null;
+		return (this._instance_service_status !== undefined ? this._instance_service_status : null);
 	}
 
 	set instance_service_status(instance_service_status)
@@ -144,7 +144,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_credentials()
 	{
-		return this._instance_credentials || null;
+		return (this._instance_credentials !== undefined ? this._instance_credentials : null);
 	}
 
 	set instance_credentials(instance_credentials)
@@ -157,7 +157,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_operation()
 	{
-		return this._instance_operation || null;
+		return (this._instance_operation !== undefined ? this._instance_operation : null);
 	}
 
 	set instance_operation(instance_operation)
@@ -170,7 +170,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_interfaces()
 	{
-		return this._instance_interfaces || [];
+		return (this._instance_interfaces !== undefined ? this._instance_interfaces : []);
 	}
 
 	set instance_interfaces(instance_interfaces)
@@ -184,7 +184,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_created_timestamp()
 	{
-		return this._instance_created_timestamp || "0000-00-00T00:00:00Z";
+		return (this._instance_created_timestamp !== undefined ? this._instance_created_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set instance_created_timestamp(instance_created_timestamp)
@@ -198,7 +198,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_updated_timestamp()
 	{
-		return this._instance_updated_timestamp || "0000-00-00T00:00:00Z";
+		return (this._instance_updated_timestamp !== undefined ? this._instance_updated_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set instance_updated_timestamp(instance_updated_timestamp)
@@ -211,7 +211,7 @@ class Instance extends ObjectBase
 	 */
 	get drive_id_bootable()
 	{
-		return this._drive_id_bootable || null;
+		return (this._drive_id_bootable !== undefined ? this._drive_id_bootable : null);
 	}
 
 	set drive_id_bootable(drive_id_bootable)
@@ -224,7 +224,7 @@ class Instance extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -239,7 +239,7 @@ class Instance extends ObjectBase
 	 */
 	get instance_change_id()
 	{
-		return this._instance_change_id || null;
+		return (this._instance_change_id !== undefined ? this._instance_change_id : null);
 	}
 
 	set instance_change_id(instance_change_id)
@@ -252,7 +252,7 @@ class Instance extends ObjectBase
 	 */
 	get template_id_origin()
 	{
-		return this._template_id_origin || null;
+		return (this._template_id_origin !== undefined ? this._template_id_origin : null);
 	}
 
 	set template_id_origin(template_id_origin)

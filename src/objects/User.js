@@ -43,7 +43,7 @@ class User extends ObjectBase
 	 */
 	get user_id()
 	{
-		return this._user_id || null;
+		return (this._user_id !== undefined ? this._user_id : null);
 	}
 
 	set user_id(user_id)
@@ -57,7 +57,7 @@ class User extends ObjectBase
 	 */
 	get franchise()
 	{
-		return this._franchise || null;
+		return (this._franchise !== undefined ? this._franchise : null);
 	}
 
 	set franchise(franchise)
@@ -70,7 +70,7 @@ class User extends ObjectBase
 	 */
 	get user_display_name()
 	{
-		return this._user_display_name || null;
+		return (this._user_display_name !== undefined ? this._user_display_name : null);
 	}
 
 	set user_display_name(user_display_name)
@@ -83,7 +83,7 @@ class User extends ObjectBase
 	 */
 	get user_email()
 	{
-		return this._user_email || null;
+		return (this._user_email !== undefined ? this._user_email : null);
 	}
 
 	set user_email(user_email)
@@ -96,7 +96,7 @@ class User extends ObjectBase
 	 */
 	get user_created_timestamp()
 	{
-		return this._user_created_timestamp || null;
+		return (this._user_created_timestamp !== undefined ? this._user_created_timestamp : null);
 	}
 
 	set user_created_timestamp(user_created_timestamp)
@@ -109,7 +109,7 @@ class User extends ObjectBase
 	 */
 	get user_last_login_timestamp()
 	{
-		return this._user_last_login_timestamp || null;
+		return (this._user_last_login_timestamp !== undefined ? this._user_last_login_timestamp : null);
 	}
 
 	set user_last_login_timestamp(user_last_login_timestamp)
@@ -122,7 +122,7 @@ class User extends ObjectBase
 	 */
 	get user_auth_failed_attempts_since_last_login()
 	{
-		return this._user_auth_failed_attempts_since_last_login || null;
+		return (this._user_auth_failed_attempts_since_last_login !== undefined ? this._user_auth_failed_attempts_since_last_login : null);
 	}
 
 	set user_auth_failed_attempts_since_last_login(user_auth_failed_attempts_since_last_login)
@@ -135,7 +135,7 @@ class User extends ObjectBase
 	 */
 	get user_password_change_required()
 	{
-		return this._user_password_change_required || null;
+		return (this._user_password_change_required !== undefined ? this._user_password_change_required : null);
 	}
 
 	set user_password_change_required(user_password_change_required)
@@ -151,7 +151,7 @@ class User extends ObjectBase
 	 */
 	get user_authenticator_secret_base32()
 	{
-		return this._user_authenticator_secret_base32 || null;
+		return (this._user_authenticator_secret_base32 !== undefined ? this._user_authenticator_secret_base32 : null);
 	}
 
 	set user_authenticator_secret_base32(user_authenticator_secret_base32)
@@ -166,7 +166,7 @@ class User extends ObjectBase
 	 */
 	get user_authenticator_is_mandatory()
 	{
-		return this._user_authenticator_is_mandatory || false;
+		return (this._user_authenticator_is_mandatory !== undefined ? this._user_authenticator_is_mandatory : false);
 	}
 
 	set user_authenticator_is_mandatory(user_authenticator_is_mandatory)
@@ -180,7 +180,7 @@ class User extends ObjectBase
 	 */
 	get user_authenticator_must_change()
 	{
-		return this._user_authenticator_must_change || false;
+		return (this._user_authenticator_must_change !== undefined ? this._user_authenticator_must_change : false);
 	}
 
 	set user_authenticator_must_change(user_authenticator_must_change)
@@ -194,7 +194,7 @@ class User extends ObjectBase
 	 */
 	get user_authenticator_created_timestamp()
 	{
-		return this._user_authenticator_created_timestamp || "1970-01-01T00:00:00Z";
+		return (this._user_authenticator_created_timestamp !== undefined ? this._user_authenticator_created_timestamp : "1970-01-01T00:00:00Z");
 	}
 
 	set user_authenticator_created_timestamp(user_authenticator_created_timestamp)
@@ -207,7 +207,7 @@ class User extends ObjectBase
 	 */
 	get user_email_status()
 	{
-		return this._user_email_status || null;
+		return (this._user_email_status !== undefined ? this._user_email_status : null);
 	}
 
 	set user_email_status(user_email_status)
@@ -220,7 +220,7 @@ class User extends ObjectBase
 	 */
 	get user_blocked()
 	{
-		return this._user_blocked || null;
+		return (this._user_blocked !== undefined ? this._user_blocked : null);
 	}
 
 	set user_blocked(user_blocked)
@@ -234,7 +234,7 @@ class User extends ObjectBase
 	 */
 	get user_api_key()
 	{
-		return this._user_api_key || null;
+		return (this._user_api_key !== undefined ? this._user_api_key : null);
 	}
 
 	set user_api_key(user_api_key)
@@ -247,7 +247,7 @@ class User extends ObjectBase
 	 */
 	get user_access_level()
 	{
-		return this._user_access_level || "customer";
+		return (this._user_access_level !== undefined ? this._user_access_level : "customer");
 	}
 
 	set user_access_level(user_access_level)
@@ -260,7 +260,7 @@ class User extends ObjectBase
 	 */
 	get user_is_billable()
 	{
-		return this._user_is_billable || null;
+		return (this._user_is_billable !== undefined ? this._user_is_billable : null);
 	}
 
 	set user_is_billable(user_is_billable)
@@ -273,7 +273,7 @@ class User extends ObjectBase
 	 */
 	get user_is_suspended()
 	{
-		return this._user_is_suspended || null;
+		return (this._user_is_suspended !== undefined ? this._user_is_suspended : null);
 	}
 
 	set user_is_suspended(user_is_suspended)
@@ -287,7 +287,7 @@ class User extends ObjectBase
 	 */
 	get user_language()
 	{
-		return this._user_language || "en";
+		return (this._user_language !== undefined ? this._user_language : "en");
 	}
 
 	set user_language(user_language)
@@ -300,7 +300,7 @@ class User extends ObjectBase
 	 */
 	get user_delegate_parents()
 	{
-		return this._user_delegate_parents || [];
+		return (this._user_delegate_parents !== undefined ? this._user_delegate_parents : []);
 	}
 
 	set user_delegate_parents(user_delegate_parents)
@@ -313,7 +313,7 @@ class User extends ObjectBase
 	 */
 	get user_delegate_children()
 	{
-		return this._user_delegate_children || [];
+		return (this._user_delegate_children !== undefined ? this._user_delegate_children : []);
 	}
 
 	set user_delegate_children(user_delegate_children)
@@ -326,7 +326,7 @@ class User extends ObjectBase
 	 */
 	get user_infrastructure_id_default()
 	{
-		return this._user_infrastructure_id_default || null;
+		return (this._user_infrastructure_id_default !== undefined ? this._user_infrastructure_id_default : null);
 	}
 
 	set user_infrastructure_id_default(user_infrastructure_id_default)
@@ -339,7 +339,7 @@ class User extends ObjectBase
 	 */
 	get user_gui_settings_json()
 	{
-		return this._user_gui_settings_json || "";
+		return (this._user_gui_settings_json !== undefined ? this._user_gui_settings_json : "");
 	}
 
 	set user_gui_settings_json(user_gui_settings_json)
@@ -352,7 +352,7 @@ class User extends ObjectBase
 	 */
 	get user_is_test_account()
 	{
-		return this._user_is_test_account || false;
+		return (this._user_is_test_account !== undefined ? this._user_is_test_account : false);
 	}
 
 	set user_is_test_account(user_is_test_account)
@@ -365,7 +365,7 @@ class User extends ObjectBase
 	 */
 	get user_exclude_from_reports()
 	{
-		return this._user_exclude_from_reports || false;
+		return (this._user_exclude_from_reports !== undefined ? this._user_exclude_from_reports : false);
 	}
 
 	set user_exclude_from_reports(user_exclude_from_reports)
@@ -378,7 +378,7 @@ class User extends ObjectBase
 	 */
 	get user_brand()
 	{
-		return this._user_brand || null;
+		return (this._user_brand !== undefined ? this._user_brand : null);
 	}
 
 	set user_brand(user_brand)
@@ -392,7 +392,7 @@ class User extends ObjectBase
 	 */
 	get user_is_brand_manager()
 	{
-		return this._user_is_brand_manager || false;
+		return (this._user_is_brand_manager !== undefined ? this._user_is_brand_manager : false);
 	}
 
 	set user_is_brand_manager(user_is_brand_manager)
@@ -405,7 +405,7 @@ class User extends ObjectBase
 	 */
 	get user_is_datastore_publisher()
 	{
-		return this._user_is_datastore_publisher || false;
+		return (this._user_is_datastore_publisher !== undefined ? this._user_is_datastore_publisher : false);
 	}
 
 	set user_is_datastore_publisher(user_is_datastore_publisher)
@@ -418,7 +418,7 @@ class User extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

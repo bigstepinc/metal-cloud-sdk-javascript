@@ -31,7 +31,7 @@ class Server extends ObjectBase
 	 */
 	get server_id()
 	{
-		return this._server_id || null;
+		return (this._server_id !== undefined ? this._server_id : null);
 	}
 
 	set server_id(server_id)
@@ -44,7 +44,7 @@ class Server extends ObjectBase
 	 */
 	get server_uuid()
 	{
-		return this._server_uuid || null;
+		return (this._server_uuid !== undefined ? this._server_uuid : null);
 	}
 
 	set server_uuid(server_uuid)
@@ -57,7 +57,7 @@ class Server extends ObjectBase
 	 */
 	get server_network_total_capacity_mbps()
 	{
-		return this._server_network_total_capacity_mbps || null;
+		return (this._server_network_total_capacity_mbps !== undefined ? this._server_network_total_capacity_mbps : null);
 	}
 
 	set server_network_total_capacity_mbps(server_network_total_capacity_mbps)
@@ -71,7 +71,7 @@ class Server extends ObjectBase
 	 */
 	get server_power_status()
 	{
-		return this._server_power_status || null;
+		return (this._server_power_status !== undefined ? this._server_power_status : null);
 	}
 
 	set server_power_status(server_power_status)
@@ -84,7 +84,7 @@ class Server extends ObjectBase
 	 */
 	get server_processor_core_count()
 	{
-		return this._server_processor_core_count || 1;
+		return (this._server_processor_core_count !== undefined ? this._server_processor_core_count : 1);
 	}
 
 	set server_processor_core_count(server_processor_core_count)
@@ -97,7 +97,7 @@ class Server extends ObjectBase
 	 */
 	get server_processor_core_mhz()
 	{
-		return this._server_processor_core_mhz || 1000;
+		return (this._server_processor_core_mhz !== undefined ? this._server_processor_core_mhz : 1000);
 	}
 
 	set server_processor_core_mhz(server_processor_core_mhz)
@@ -110,7 +110,7 @@ class Server extends ObjectBase
 	 */
 	get server_processor_count()
 	{
-		return this._server_processor_count || 1;
+		return (this._server_processor_count !== undefined ? this._server_processor_count : 1);
 	}
 
 	set server_processor_count(server_processor_count)
@@ -123,7 +123,7 @@ class Server extends ObjectBase
 	 */
 	get server_ram_gbytes()
 	{
-		return this._server_ram_gbytes || 1;
+		return (this._server_ram_gbytes !== undefined ? this._server_ram_gbytes : 1);
 	}
 
 	set server_ram_gbytes(server_ram_gbytes)
@@ -136,7 +136,7 @@ class Server extends ObjectBase
 	 */
 	get server_disk_count()
 	{
-		return this._server_disk_count || 0;
+		return (this._server_disk_count !== undefined ? this._server_disk_count : 0);
 	}
 
 	set server_disk_count(server_disk_count)
@@ -149,7 +149,7 @@ class Server extends ObjectBase
 	 */
 	get server_disk_size_mbytes()
 	{
-		return this._server_disk_size_mbytes || 0;
+		return (this._server_disk_size_mbytes !== undefined ? this._server_disk_size_mbytes : 0);
 	}
 
 	set server_disk_size_mbytes(server_disk_size_mbytes)
@@ -162,7 +162,7 @@ class Server extends ObjectBase
 	 */
 	get server_disk_type()
 	{
-		return this._server_disk_type || "none";
+		return (this._server_disk_type !== undefined ? this._server_disk_type : "none");
 	}
 
 	set server_disk_type(server_disk_type)
@@ -175,7 +175,7 @@ class Server extends ObjectBase
 	 */
 	get server_processor_name()
 	{
-		return this._server_processor_name || null;
+		return (this._server_processor_name !== undefined ? this._server_processor_name : null);
 	}
 
 	set server_processor_name(server_processor_name)
@@ -188,7 +188,7 @@ class Server extends ObjectBase
 	 */
 	get server_product_name()
 	{
-		return this._server_product_name || null;
+		return (this._server_product_name !== undefined ? this._server_product_name : null);
 	}
 
 	set server_product_name(server_product_name)
@@ -201,7 +201,7 @@ class Server extends ObjectBase
 	 */
 	get server_type_id()
 	{
-		return this._server_type_id || null;
+		return (this._server_type_id !== undefined ? this._server_type_id : null);
 	}
 
 	set server_type_id(server_type_id)
@@ -214,7 +214,7 @@ class Server extends ObjectBase
 	 */
 	get server_interfaces()
 	{
-		return this._server_interfaces || null;
+		return (this._server_interfaces !== undefined ? this._server_interfaces : null);
 	}
 
 	set server_interfaces(server_interfaces)
@@ -227,7 +227,7 @@ class Server extends ObjectBase
 	 */
 	get server_disks()
 	{
-		return this._server_disks || null;
+		return (this._server_disks !== undefined ? this._server_disks : null);
 	}
 
 	set server_disks(server_disks)
@@ -240,7 +240,7 @@ class Server extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

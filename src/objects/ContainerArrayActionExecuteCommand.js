@@ -39,7 +39,7 @@ class ContainerArrayActionExecuteCommand extends ObjectBase
 	 */
 	get action_command()
 	{
-		return this._action_command || [];
+		return (this._action_command !== undefined ? this._action_command : []);
 	}
 
 	set action_command(action_command)
@@ -52,7 +52,7 @@ class ContainerArrayActionExecuteCommand extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

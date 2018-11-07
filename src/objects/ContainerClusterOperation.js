@@ -45,7 +45,7 @@ class ContainerClusterOperation extends ObjectBase
 	 */
 	get container_cluster_deploy_status()
 	{
-		return this._container_cluster_deploy_status || null;
+		return (this._container_cluster_deploy_status !== undefined ? this._container_cluster_deploy_status : null);
 	}
 
 	set container_cluster_deploy_status(container_cluster_deploy_status)
@@ -58,7 +58,7 @@ class ContainerClusterOperation extends ObjectBase
 	 */
 	get container_cluster_deploy_type()
 	{
-		return this._container_cluster_deploy_type || null;
+		return (this._container_cluster_deploy_type !== undefined ? this._container_cluster_deploy_type : null);
 	}
 
 	set container_cluster_deploy_type(container_cluster_deploy_type)
@@ -73,7 +73,7 @@ class ContainerClusterOperation extends ObjectBase
 	 */
 	get container_cluster_label()
 	{
-		return this._container_cluster_label || null;
+		return (this._container_cluster_label !== undefined ? this._container_cluster_label : null);
 	}
 
 	set container_cluster_label(container_cluster_label)
@@ -87,7 +87,7 @@ class ContainerClusterOperation extends ObjectBase
 	 */
 	get container_cluster_subdomain()
 	{
-		return this._container_cluster_subdomain || null;
+		return (this._container_cluster_subdomain !== undefined ? this._container_cluster_subdomain : null);
 	}
 
 	set container_cluster_subdomain(container_cluster_subdomain)
@@ -102,7 +102,7 @@ class ContainerClusterOperation extends ObjectBase
 	 */
 	get container_cluster_id()
 	{
-		return this._container_cluster_id || null;
+		return (this._container_cluster_id !== undefined ? this._container_cluster_id : null);
 	}
 
 	set container_cluster_id(container_cluster_id)
@@ -117,7 +117,7 @@ class ContainerClusterOperation extends ObjectBase
 	 */
 	get container_cluster_change_id()
 	{
-		return this._container_cluster_change_id || null;
+		return (this._container_cluster_change_id !== undefined ? this._container_cluster_change_id : null);
 	}
 
 	set container_cluster_change_id(container_cluster_change_id)
@@ -130,7 +130,7 @@ class ContainerClusterOperation extends ObjectBase
 	 */
 	get container_cluster_software_version()
 	{
-		return this._container_cluster_software_version || null;
+		return (this._container_cluster_software_version !== undefined ? this._container_cluster_software_version : null);
 	}
 
 	set container_cluster_software_version(container_cluster_software_version)
@@ -143,7 +143,7 @@ class ContainerClusterOperation extends ObjectBase
 	 */
 	get container_cluster_automatic_management()
 	{
-		return this._container_cluster_automatic_management || true;
+		return (this._container_cluster_automatic_management !== undefined ? this._container_cluster_automatic_management : true);
 	}
 
 	set container_cluster_automatic_management(container_cluster_automatic_management)
@@ -157,7 +157,7 @@ class ContainerClusterOperation extends ObjectBase
 	 */
 	get container_cluster_connections()
 	{
-		return this._container_cluster_connections || [];
+		return (this._container_cluster_connections !== undefined ? this._container_cluster_connections : []);
 	}
 
 	set container_cluster_connections(container_cluster_connections)
@@ -170,7 +170,7 @@ class ContainerClusterOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

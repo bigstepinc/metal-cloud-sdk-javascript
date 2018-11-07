@@ -9,7 +9,7 @@ const ObjectBase = require('./ObjectBase');
 module.exports = 
 class Dataset extends ObjectBase
 {
-	constructor(dataset_price, dataset_price_currency, dataset_datacenter)
+	constructor(dataset_name, dataset_description, dataset_price, dataset_price_currency, dataset_tags, dataset_datacenter, dataset_source_display_name, dataset_maintainer_display_name, dataset_formats)
 	{
 		super();
 
@@ -25,7 +25,7 @@ class Dataset extends ObjectBase
 			}
 		}
 
-		for(let index = 0; index < 3; index++)
+		for(let index = 0; index < 9; index++)
 		{
 			let arg = arguments[index];
 
@@ -33,9 +33,15 @@ class Dataset extends ObjectBase
 				throw new Error("Invalid params in Dataset constructor.");
 		}
 
+		this._dataset_name = dataset_name;
+		this._dataset_description = dataset_description;
 		this._dataset_price = dataset_price;
 		this._dataset_price_currency = dataset_price_currency;
+		this._dataset_tags = dataset_tags;
 		this._dataset_datacenter = dataset_datacenter;
+		this._dataset_source_display_name = dataset_source_display_name;
+		this._dataset_maintainer_display_name = dataset_maintainer_display_name;
+		this._dataset_formats = dataset_formats;
 	}
 
 	/**
@@ -43,7 +49,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_id()
 	{
-		return this._dataset_id || null;
+		return (this._dataset_id !== undefined ? this._dataset_id : null);
 	}
 
 	set dataset_id(dataset_id)
@@ -56,7 +62,7 @@ class Dataset extends ObjectBase
 	 */
 	get user_id_owner()
 	{
-		return this._user_id_owner || null;
+		return (this._user_id_owner !== undefined ? this._user_id_owner : null);
 	}
 
 	set user_id_owner(user_id_owner)
@@ -69,7 +75,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_version()
 	{
-		return this._dataset_version || null;
+		return (this._dataset_version !== undefined ? this._dataset_version : null);
 	}
 
 	set dataset_version(dataset_version)
@@ -82,7 +88,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_name()
 	{
-		return this._dataset_name || null;
+		return (this._dataset_name !== undefined ? this._dataset_name : null);
 	}
 
 	set dataset_name(dataset_name)
@@ -95,7 +101,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_description()
 	{
-		return this._dataset_description || null;
+		return (this._dataset_description !== undefined ? this._dataset_description : null);
 	}
 
 	set dataset_description(dataset_description)
@@ -108,7 +114,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_license_type()
 	{
-		return this._dataset_license_type || null;
+		return (this._dataset_license_type !== undefined ? this._dataset_license_type : null);
 	}
 
 	set dataset_license_type(dataset_license_type)
@@ -121,7 +127,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_price()
 	{
-		return this._dataset_price || null;
+		return (this._dataset_price !== undefined ? this._dataset_price : null);
 	}
 
 	set dataset_price(dataset_price)
@@ -134,7 +140,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_price_currency()
 	{
-		return this._dataset_price_currency || null;
+		return (this._dataset_price_currency !== undefined ? this._dataset_price_currency : null);
 	}
 
 	set dataset_price_currency(dataset_price_currency)
@@ -147,7 +153,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_tags()
 	{
-		return this._dataset_tags || [];
+		return (this._dataset_tags !== undefined ? this._dataset_tags : []);
 	}
 
 	set dataset_tags(dataset_tags)
@@ -160,7 +166,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_url()
 	{
-		return this._dataset_url || null;
+		return (this._dataset_url !== undefined ? this._dataset_url : null);
 	}
 
 	set dataset_url(dataset_url)
@@ -173,7 +179,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_datacenter()
 	{
-		return this._dataset_datacenter || null;
+		return (this._dataset_datacenter !== undefined ? this._dataset_datacenter : null);
 	}
 
 	set dataset_datacenter(dataset_datacenter)
@@ -186,7 +192,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_source_display_name()
 	{
-		return this._dataset_source_display_name || null;
+		return (this._dataset_source_display_name !== undefined ? this._dataset_source_display_name : null);
 	}
 
 	set dataset_source_display_name(dataset_source_display_name)
@@ -199,7 +205,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_maintainer_display_name()
 	{
-		return this._dataset_maintainer_display_name || null;
+		return (this._dataset_maintainer_display_name !== undefined ? this._dataset_maintainer_display_name : null);
 	}
 
 	set dataset_maintainer_display_name(dataset_maintainer_display_name)
@@ -212,7 +218,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_formats()
 	{
-		return this._dataset_formats || [];
+		return (this._dataset_formats !== undefined ? this._dataset_formats : []);
 	}
 
 	set dataset_formats(dataset_formats)
@@ -226,7 +232,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_updated_timestamp()
 	{
-		return this._dataset_updated_timestamp || null;
+		return (this._dataset_updated_timestamp !== undefined ? this._dataset_updated_timestamp : null);
 	}
 
 	set dataset_updated_timestamp(dataset_updated_timestamp)
@@ -240,7 +246,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_created_timestamp()
 	{
-		return this._dataset_created_timestamp || null;
+		return (this._dataset_created_timestamp !== undefined ? this._dataset_created_timestamp : null);
 	}
 
 	set dataset_created_timestamp(dataset_created_timestamp)
@@ -253,7 +259,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_size_mbytes()
 	{
-		return this._dataset_size_mbytes || 0;
+		return (this._dataset_size_mbytes !== undefined ? this._dataset_size_mbytes : 0);
 	}
 
 	set dataset_size_mbytes(dataset_size_mbytes)
@@ -267,7 +273,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_published()
 	{
-		return this._dataset_published || false;
+		return (this._dataset_published !== undefined ? this._dataset_published : false);
 	}
 
 	set dataset_published(dataset_published)
@@ -280,7 +286,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_readme_file_name()
 	{
-		return this._dataset_readme_file_name || null;
+		return (this._dataset_readme_file_name !== undefined ? this._dataset_readme_file_name : null);
 	}
 
 	set dataset_readme_file_name(dataset_readme_file_name)
@@ -293,7 +299,7 @@ class Dataset extends ObjectBase
 	 */
 	get dataset_readme_file_size_bytes()
 	{
-		return this._dataset_readme_file_size_bytes || null;
+		return (this._dataset_readme_file_size_bytes !== undefined ? this._dataset_readme_file_size_bytes : null);
 	}
 
 	set dataset_readme_file_size_bytes(dataset_readme_file_size_bytes)
@@ -306,7 +312,7 @@ class Dataset extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -322,9 +328,15 @@ class Dataset extends ObjectBase
 	static get JSONRequired()
 	{
 		return [
+			"dataset_name",
+			"dataset_description",
 			"dataset_price",
 			"dataset_price_currency",
-			"dataset_datacenter"
+			"dataset_tags",
+			"dataset_datacenter",
+			"dataset_source_display_name",
+			"dataset_maintainer_display_name",
+			"dataset_formats"
 		];
 	}
 };

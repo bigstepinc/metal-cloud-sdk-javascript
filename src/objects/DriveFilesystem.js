@@ -42,7 +42,7 @@ class DriveFilesystem extends ObjectBase
 	 */
 	get drive_filesystem_type()
 	{
-		return this._drive_filesystem_type || null;
+		return (this._drive_filesystem_type !== undefined ? this._drive_filesystem_type : null);
 	}
 
 	set drive_filesystem_type(drive_filesystem_type)
@@ -55,7 +55,7 @@ class DriveFilesystem extends ObjectBase
 	 */
 	get drive_filesystem_block_size_bytes()
 	{
-		return this._drive_filesystem_block_size_bytes || null;
+		return (this._drive_filesystem_block_size_bytes !== undefined ? this._drive_filesystem_block_size_bytes : null);
 	}
 
 	set drive_filesystem_block_size_bytes(drive_filesystem_block_size_bytes)
@@ -68,7 +68,7 @@ class DriveFilesystem extends ObjectBase
 	 */
 	get drive_filesystem_mount_path()
 	{
-		return this._drive_filesystem_mount_path || null;
+		return (this._drive_filesystem_mount_path !== undefined ? this._drive_filesystem_mount_path : null);
 	}
 
 	set drive_filesystem_mount_path(drive_filesystem_mount_path)
@@ -81,7 +81,7 @@ class DriveFilesystem extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

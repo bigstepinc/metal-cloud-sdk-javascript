@@ -43,7 +43,7 @@ class VolumeTemplate extends ObjectBase
 	 */
 	get volume_template_id()
 	{
-		return this._volume_template_id || null;
+		return (this._volume_template_id !== undefined ? this._volume_template_id : null);
 	}
 
 	set volume_template_id(volume_template_id)
@@ -57,7 +57,7 @@ class VolumeTemplate extends ObjectBase
 	 */
 	get volume_template_label()
 	{
-		return this._volume_template_label || null;
+		return (this._volume_template_label !== undefined ? this._volume_template_label : null);
 	}
 
 	set volume_template_label(volume_template_label)
@@ -70,7 +70,7 @@ class VolumeTemplate extends ObjectBase
 	 */
 	get volume_template_display_name()
 	{
-		return this._volume_template_display_name || null;
+		return (this._volume_template_display_name !== undefined ? this._volume_template_display_name : null);
 	}
 
 	set volume_template_display_name(volume_template_display_name)
@@ -83,7 +83,7 @@ class VolumeTemplate extends ObjectBase
 	 */
 	get volume_template_size_mbytes()
 	{
-		return this._volume_template_size_mbytes || null;
+		return (this._volume_template_size_mbytes !== undefined ? this._volume_template_size_mbytes : null);
 	}
 
 	set volume_template_size_mbytes(volume_template_size_mbytes)
@@ -96,7 +96,7 @@ class VolumeTemplate extends ObjectBase
 	 */
 	get volume_template_description()
 	{
-		return this._volume_template_description || "";
+		return (this._volume_template_description !== undefined ? this._volume_template_description : "");
 	}
 
 	set volume_template_description(volume_template_description)
@@ -110,7 +110,7 @@ class VolumeTemplate extends ObjectBase
 	 */
 	get volume_template_created_timestamp()
 	{
-		return this._volume_template_created_timestamp || null;
+		return (this._volume_template_created_timestamp !== undefined ? this._volume_template_created_timestamp : null);
 	}
 
 	set volume_template_created_timestamp(volume_template_created_timestamp)
@@ -123,7 +123,7 @@ class VolumeTemplate extends ObjectBase
 	 */
 	get user_id()
 	{
-		return this._user_id || null;
+		return (this._user_id !== undefined ? this._user_id : null);
 	}
 
 	set user_id(user_id)
@@ -136,7 +136,7 @@ class VolumeTemplate extends ObjectBase
 	 */
 	get volume_template_operating_system()
 	{
-		return this._volume_template_operating_system || null;
+		return (this._volume_template_operating_system !== undefined ? this._volume_template_operating_system : null);
 	}
 
 	set volume_template_operating_system(volume_template_operating_system)
@@ -149,7 +149,7 @@ class VolumeTemplate extends ObjectBase
 	 */
 	get volume_template_repo_url()
 	{
-		return this._volume_template_repo_url || null;
+		return (this._volume_template_repo_url !== undefined ? this._volume_template_repo_url : null);
 	}
 
 	set volume_template_repo_url(volume_template_repo_url)
@@ -162,7 +162,7 @@ class VolumeTemplate extends ObjectBase
 	 */
 	get volume_template_deprecation_status()
 	{
-		return this._volume_template_deprecation_status || "not_deprecated";
+		return (this._volume_template_deprecation_status !== undefined ? this._volume_template_deprecation_status : "not_deprecated");
 	}
 
 	set volume_template_deprecation_status(volume_template_deprecation_status)
@@ -175,7 +175,7 @@ class VolumeTemplate extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

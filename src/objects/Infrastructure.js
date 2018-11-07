@@ -33,7 +33,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_label()
 	{
-		return this._infrastructure_label || null;
+		return (this._infrastructure_label !== undefined ? this._infrastructure_label : null);
 	}
 
 	set infrastructure_label(infrastructure_label)
@@ -47,7 +47,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_subdomain()
 	{
-		return this._infrastructure_subdomain || null;
+		return (this._infrastructure_subdomain !== undefined ? this._infrastructure_subdomain : null);
 	}
 
 	set infrastructure_subdomain(infrastructure_subdomain)
@@ -61,7 +61,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get datacenter_name()
 	{
-		return this._datacenter_name || null;
+		return (this._datacenter_name !== undefined ? this._datacenter_name : null);
 	}
 
 	set datacenter_name(datacenter_name)
@@ -75,7 +75,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_id()
 	{
-		return this._infrastructure_id || null;
+		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
 	}
 
 	set infrastructure_id(infrastructure_id)
@@ -88,7 +88,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get user_id_owner()
 	{
-		return this._user_id_owner || null;
+		return (this._user_id_owner !== undefined ? this._user_id_owner : null);
 	}
 
 	set user_id_owner(user_id_owner)
@@ -101,7 +101,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get user_email_owner()
 	{
-		return this._user_email_owner || null;
+		return (this._user_email_owner !== undefined ? this._user_email_owner : null);
 	}
 
 	set user_email_owner(user_email_owner)
@@ -114,7 +114,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_touch_unixtime()
 	{
-		return this._infrastructure_touch_unixtime || null;
+		return (this._infrastructure_touch_unixtime !== undefined ? this._infrastructure_touch_unixtime : null);
 	}
 
 	set infrastructure_touch_unixtime(infrastructure_touch_unixtime)
@@ -127,7 +127,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_service_status()
 	{
-		return this._infrastructure_service_status || null;
+		return (this._infrastructure_service_status !== undefined ? this._infrastructure_service_status : null);
 	}
 
 	set infrastructure_service_status(infrastructure_service_status)
@@ -140,7 +140,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_operation()
 	{
-		return this._infrastructure_operation || null;
+		return (this._infrastructure_operation !== undefined ? this._infrastructure_operation : null);
 	}
 
 	set infrastructure_operation(infrastructure_operation)
@@ -154,7 +154,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_created_timestamp()
 	{
-		return this._infrastructure_created_timestamp || "0000-00-00T00:00:00Z";
+		return (this._infrastructure_created_timestamp !== undefined ? this._infrastructure_created_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set infrastructure_created_timestamp(infrastructure_created_timestamp)
@@ -168,7 +168,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_updated_timestamp()
 	{
-		return this._infrastructure_updated_timestamp || "0000-00-00T00:00:00Z";
+		return (this._infrastructure_updated_timestamp !== undefined ? this._infrastructure_updated_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set infrastructure_updated_timestamp(infrastructure_updated_timestamp)
@@ -181,7 +181,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_gui_settings_json()
 	{
-		return this._infrastructure_gui_settings_json || "";
+		return (this._infrastructure_gui_settings_json !== undefined ? this._infrastructure_gui_settings_json : "");
 	}
 
 	set infrastructure_gui_settings_json(infrastructure_gui_settings_json)
@@ -194,7 +194,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -209,7 +209,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_change_id()
 	{
-		return this._infrastructure_change_id || null;
+		return (this._infrastructure_change_id !== undefined ? this._infrastructure_change_id : null);
 	}
 
 	set infrastructure_change_id(infrastructure_change_id)
@@ -222,7 +222,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_deploy_id()
 	{
-		return this._infrastructure_deploy_id || null;
+		return (this._infrastructure_deploy_id !== undefined ? this._infrastructure_deploy_id : null);
 	}
 
 	set infrastructure_deploy_id(infrastructure_deploy_id)
@@ -235,7 +235,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_private_datacenters_json()
 	{
-		return this._infrastructure_private_datacenters_json || null;
+		return (this._infrastructure_private_datacenters_json !== undefined ? this._infrastructure_private_datacenters_json : null);
 	}
 
 	set infrastructure_private_datacenters_json(infrastructure_private_datacenters_json)
@@ -249,7 +249,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_design_is_locked()
 	{
-		return this._infrastructure_design_is_locked || false;
+		return (this._infrastructure_design_is_locked !== undefined ? this._infrastructure_design_is_locked : false);
 	}
 
 	set infrastructure_design_is_locked(infrastructure_design_is_locked)
@@ -262,7 +262,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get subnet_pool_lan()
 	{
-		return this._subnet_pool_lan || null;
+		return (this._subnet_pool_lan !== undefined ? this._subnet_pool_lan : null);
 	}
 
 	set subnet_pool_lan(subnet_pool_lan)
@@ -275,7 +275,7 @@ class Infrastructure extends ObjectBase
 	 */
 	get infrastructure_reserved_lan_ip_ranges()
 	{
-		return this._infrastructure_reserved_lan_ip_ranges || [];
+		return (this._infrastructure_reserved_lan_ip_ranges !== undefined ? this._infrastructure_reserved_lan_ip_ranges : []);
 	}
 
 	set infrastructure_reserved_lan_ip_ranges(infrastructure_reserved_lan_ip_ranges)

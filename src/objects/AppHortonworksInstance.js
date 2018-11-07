@@ -33,7 +33,7 @@ class AppHortonworksInstance extends ObjectBase
 	 */
 	get instance_id()
 	{
-		return this._instance_id || null;
+		return (this._instance_id !== undefined ? this._instance_id : null);
 	}
 
 	set instance_id(instance_id)
@@ -46,7 +46,7 @@ class AppHortonworksInstance extends ObjectBase
 	 */
 	get instance_label()
 	{
-		return this._instance_label || null;
+		return (this._instance_label !== undefined ? this._instance_label : null);
 	}
 
 	set instance_label(instance_label)
@@ -59,7 +59,7 @@ class AppHortonworksInstance extends ObjectBase
 	 */
 	get instance_service_status()
 	{
-		return this._instance_service_status || null;
+		return (this._instance_service_status !== undefined ? this._instance_service_status : null);
 	}
 
 	set instance_service_status(instance_service_status)
@@ -72,7 +72,7 @@ class AppHortonworksInstance extends ObjectBase
 	 */
 	get instance_hostname()
 	{
-		return this._instance_hostname || null;
+		return (this._instance_hostname !== undefined ? this._instance_hostname : null);
 	}
 
 	set instance_hostname(instance_hostname)
@@ -85,7 +85,7 @@ class AppHortonworksInstance extends ObjectBase
 	 */
 	get instance_cluster_url()
 	{
-		return this._instance_cluster_url || null;
+		return (this._instance_cluster_url !== undefined ? this._instance_cluster_url : null);
 	}
 
 	set instance_cluster_url(instance_cluster_url)
@@ -98,7 +98,7 @@ class AppHortonworksInstance extends ObjectBase
 	 */
 	get instance_health()
 	{
-		return this._instance_health || null;
+		return (this._instance_health !== undefined ? this._instance_health : null);
 	}
 
 	set instance_health(instance_health)
@@ -111,7 +111,7 @@ class AppHortonworksInstance extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

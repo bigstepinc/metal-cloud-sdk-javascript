@@ -43,7 +43,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get user_id()
 	{
-		return this._user_id || null;
+		return (this._user_id !== undefined ? this._user_id : null);
 	}
 
 	set user_id(user_id)
@@ -57,7 +57,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_reservation_created_timestamp()
 	{
-		return this._resource_reservation_created_timestamp || null;
+		return (this._resource_reservation_created_timestamp !== undefined ? this._resource_reservation_created_timestamp : null);
 	}
 
 	set resource_reservation_created_timestamp(resource_reservation_created_timestamp)
@@ -71,7 +71,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_reservation_cycle_months()
 	{
-		return this._resource_reservation_cycle_months || 12;
+		return (this._resource_reservation_cycle_months !== undefined ? this._resource_reservation_cycle_months : 12);
 	}
 
 	set resource_reservation_cycle_months(resource_reservation_cycle_months)
@@ -84,7 +84,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_reservation_installment_cycle_months()
 	{
-		return this._resource_reservation_installment_cycle_months || 1;
+		return (this._resource_reservation_installment_cycle_months !== undefined ? this._resource_reservation_installment_cycle_months : 1);
 	}
 
 	set resource_reservation_installment_cycle_months(resource_reservation_installment_cycle_months)
@@ -98,7 +98,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_reservation_end_timestamp()
 	{
-		return this._resource_reservation_end_timestamp || null;
+		return (this._resource_reservation_end_timestamp !== undefined ? this._resource_reservation_end_timestamp : null);
 	}
 
 	set resource_reservation_end_timestamp(resource_reservation_end_timestamp)
@@ -111,7 +111,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_reservation_price()
 	{
-		return this._resource_reservation_price || null;
+		return (this._resource_reservation_price !== undefined ? this._resource_reservation_price : null);
 	}
 
 	set resource_reservation_price(resource_reservation_price)
@@ -124,7 +124,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_reservation_price_currency()
 	{
-		return this._resource_reservation_price_currency || null;
+		return (this._resource_reservation_price_currency !== undefined ? this._resource_reservation_price_currency : null);
 	}
 
 	set resource_reservation_price_currency(resource_reservation_price_currency)
@@ -138,7 +138,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_reservation_recurring()
 	{
-		return this._resource_reservation_recurring || true;
+		return (this._resource_reservation_recurring !== undefined ? this._resource_reservation_recurring : true);
 	}
 
 	set resource_reservation_recurring(resource_reservation_recurring)
@@ -153,7 +153,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_reservation_start_timestamp()
 	{
-		return this._resource_reservation_start_timestamp || null;
+		return (this._resource_reservation_start_timestamp !== undefined ? this._resource_reservation_start_timestamp : null);
 	}
 
 	set resource_reservation_start_timestamp(resource_reservation_start_timestamp)
@@ -167,7 +167,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_utilization_price()
 	{
-		return this._resource_utilization_price || null;
+		return (this._resource_utilization_price !== undefined ? this._resource_utilization_price : null);
 	}
 
 	set resource_utilization_price(resource_utilization_price)
@@ -180,7 +180,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_utilization_price_currency()
 	{
-		return this._resource_utilization_price_currency || null;
+		return (this._resource_utilization_price_currency !== undefined ? this._resource_utilization_price_currency : null);
 	}
 
 	set resource_utilization_price_currency(resource_utilization_price_currency)
@@ -193,7 +193,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_utilization_price_unit_seconds()
 	{
-		return this._resource_utilization_price_unit_seconds || null;
+		return (this._resource_utilization_price_unit_seconds !== undefined ? this._resource_utilization_price_unit_seconds : null);
 	}
 
 	set resource_utilization_price_unit_seconds(resource_utilization_price_unit_seconds)
@@ -206,7 +206,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get server_type_reservation_id()
 	{
-		return this._server_type_reservation_id || null;
+		return (this._server_type_reservation_id !== undefined ? this._server_type_reservation_id : null);
 	}
 
 	set server_type_reservation_id(server_type_reservation_id)
@@ -219,7 +219,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get server_type_id()
 	{
-		return this._server_type_id || null;
+		return (this._server_type_id !== undefined ? this._server_type_id : null);
 	}
 
 	set server_type_id(server_type_id)
@@ -233,7 +233,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_reservation_installments()
 	{
-		return this._resource_reservation_installments || [];
+		return (this._resource_reservation_installments !== undefined ? this._resource_reservation_installments : []);
 	}
 
 	set resource_reservation_installments(resource_reservation_installments)
@@ -246,7 +246,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get resource_reservation_status()
 	{
-		return this._resource_reservation_status || null;
+		return (this._resource_reservation_status !== undefined ? this._resource_reservation_status : null);
 	}
 
 	set resource_reservation_status(resource_reservation_status)
@@ -259,7 +259,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get datacenter_name()
 	{
-		return this._datacenter_name || null;
+		return (this._datacenter_name !== undefined ? this._datacenter_name : null);
 	}
 
 	set datacenter_name(datacenter_name)
@@ -272,7 +272,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get user_plan_type()
 	{
-		return this._user_plan_type || "vanilla";
+		return (this._user_plan_type !== undefined ? this._user_plan_type : "vanilla");
 	}
 
 	set user_plan_type(user_plan_type)
@@ -285,7 +285,7 @@ class ServerTypeReservation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

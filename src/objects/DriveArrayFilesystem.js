@@ -42,7 +42,7 @@ class DriveArrayFilesystem extends ObjectBase
 	 */
 	get drive_array_filesystem_type_default()
 	{
-		return this._drive_array_filesystem_type_default || null;
+		return (this._drive_array_filesystem_type_default !== undefined ? this._drive_array_filesystem_type_default : null);
 	}
 
 	set drive_array_filesystem_type_default(drive_array_filesystem_type_default)
@@ -55,7 +55,7 @@ class DriveArrayFilesystem extends ObjectBase
 	 */
 	get drive_array_filesystem_block_size_bytes_default()
 	{
-		return this._drive_array_filesystem_block_size_bytes_default || null;
+		return (this._drive_array_filesystem_block_size_bytes_default !== undefined ? this._drive_array_filesystem_block_size_bytes_default : null);
 	}
 
 	set drive_array_filesystem_block_size_bytes_default(drive_array_filesystem_block_size_bytes_default)
@@ -68,7 +68,7 @@ class DriveArrayFilesystem extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

@@ -44,7 +44,7 @@ class IPOperation extends ObjectBase
 	 */
 	get instance_interface_id()
 	{
-		return this._instance_interface_id || null;
+		return (this._instance_interface_id !== undefined ? this._instance_interface_id : null);
 	}
 
 	set instance_interface_id(instance_interface_id)
@@ -57,7 +57,7 @@ class IPOperation extends ObjectBase
 	 */
 	get ip_deploy_status()
 	{
-		return this._ip_deploy_status || null;
+		return (this._ip_deploy_status !== undefined ? this._ip_deploy_status : null);
 	}
 
 	set ip_deploy_status(ip_deploy_status)
@@ -70,7 +70,7 @@ class IPOperation extends ObjectBase
 	 */
 	get ip_deploy_type()
 	{
-		return this._ip_deploy_type || null;
+		return (this._ip_deploy_type !== undefined ? this._ip_deploy_type : null);
 	}
 
 	set ip_deploy_type(ip_deploy_type)
@@ -85,7 +85,7 @@ class IPOperation extends ObjectBase
 	 */
 	get ip_id()
 	{
-		return this._ip_id || null;
+		return (this._ip_id !== undefined ? this._ip_id : null);
 	}
 
 	set ip_id(ip_id)
@@ -98,7 +98,7 @@ class IPOperation extends ObjectBase
 	 */
 	get ip_type()
 	{
-		return this._ip_type || null;
+		return (this._ip_type !== undefined ? this._ip_type : null);
 	}
 
 	set ip_type(ip_type)
@@ -111,7 +111,7 @@ class IPOperation extends ObjectBase
 	 */
 	get ip_human_readable()
 	{
-		return this._ip_human_readable || null;
+		return (this._ip_human_readable !== undefined ? this._ip_human_readable : null);
 	}
 
 	set ip_human_readable(ip_human_readable)
@@ -124,7 +124,7 @@ class IPOperation extends ObjectBase
 	 */
 	get ip_hex()
 	{
-		return this._ip_hex || null;
+		return (this._ip_hex !== undefined ? this._ip_hex : null);
 	}
 
 	set ip_hex(ip_hex)
@@ -138,7 +138,7 @@ class IPOperation extends ObjectBase
 	 */
 	get ip_label()
 	{
-		return this._ip_label || null;
+		return (this._ip_label !== undefined ? this._ip_label : null);
 	}
 
 	set ip_label(ip_label)
@@ -152,7 +152,7 @@ class IPOperation extends ObjectBase
 	 */
 	get ip_subdomain()
 	{
-		return this._ip_subdomain || null;
+		return (this._ip_subdomain !== undefined ? this._ip_subdomain : null);
 	}
 
 	set ip_subdomain(ip_subdomain)
@@ -165,7 +165,7 @@ class IPOperation extends ObjectBase
 	 */
 	get ip_lease_expires()
 	{
-		return this._ip_lease_expires || null;
+		return (this._ip_lease_expires !== undefined ? this._ip_lease_expires : null);
 	}
 
 	set ip_lease_expires(ip_lease_expires)
@@ -179,7 +179,7 @@ class IPOperation extends ObjectBase
 	 */
 	get ip_updated_timestamp()
 	{
-		return this._ip_updated_timestamp || null;
+		return (this._ip_updated_timestamp !== undefined ? this._ip_updated_timestamp : null);
 	}
 
 	set ip_updated_timestamp(ip_updated_timestamp)
@@ -192,7 +192,7 @@ class IPOperation extends ObjectBase
 	 */
 	get subnet_id()
 	{
-		return this._subnet_id || null;
+		return (this._subnet_id !== undefined ? this._subnet_id : null);
 	}
 
 	set subnet_id(subnet_id)
@@ -205,7 +205,7 @@ class IPOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -220,7 +220,7 @@ class IPOperation extends ObjectBase
 	 */
 	get ip_change_id()
 	{
-		return this._ip_change_id || null;
+		return (this._ip_change_id !== undefined ? this._ip_change_id : null);
 	}
 
 	set ip_change_id(ip_change_id)

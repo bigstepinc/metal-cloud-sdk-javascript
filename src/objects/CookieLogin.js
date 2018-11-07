@@ -36,7 +36,7 @@ class CookieLogin extends ObjectBase
 	 */
 	get user_id_bsi()
 	{
-		return this._user_id_bsi || null;
+		return (this._user_id_bsi !== undefined ? this._user_id_bsi : null);
 	}
 
 	set user_id_bsi(user_id_bsi)
@@ -49,7 +49,7 @@ class CookieLogin extends ObjectBase
 	 */
 	get is_logged_in()
 	{
-		return this._is_logged_in || null;
+		return (this._is_logged_in !== undefined ? this._is_logged_in : null);
 	}
 
 	set is_logged_in(is_logged_in)
@@ -62,7 +62,7 @@ class CookieLogin extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

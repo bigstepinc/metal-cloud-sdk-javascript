@@ -33,7 +33,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get admin_username()
 	{
-		return this._admin_username || null;
+		return (this._admin_username !== undefined ? this._admin_username : null);
 	}
 
 	set admin_username(admin_username)
@@ -46,7 +46,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get admin_initial_password()
 	{
-		return this._admin_initial_password || null;
+		return (this._admin_initial_password !== undefined ? this._admin_initial_password : null);
 	}
 
 	set admin_initial_password(admin_initial_password)
@@ -59,7 +59,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get url()
 	{
-		return this._url || null;
+		return (this._url !== undefined ? this._url : null);
 	}
 
 	set url(url)
@@ -72,7 +72,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get cpu_total_pct()
 	{
-		return this._cpu_total_pct || null;
+		return (this._cpu_total_pct !== undefined ? this._cpu_total_pct : null);
 	}
 
 	set cpu_total_pct(cpu_total_pct)
@@ -85,7 +85,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get mem_total_gb()
 	{
-		return this._mem_total_gb || null;
+		return (this._mem_total_gb !== undefined ? this._mem_total_gb : null);
 	}
 
 	set mem_total_gb(mem_total_gb)
@@ -98,7 +98,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get mem_used_pct()
 	{
-		return this._mem_used_pct || null;
+		return (this._mem_used_pct !== undefined ? this._mem_used_pct : null);
 	}
 
 	set mem_used_pct(mem_used_pct)
@@ -111,7 +111,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get guid()
 	{
-		return this._guid || null;
+		return (this._guid !== undefined ? this._guid : null);
 	}
 
 	set guid(guid)
@@ -125,7 +125,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get activeLicenseGroup()
 	{
-		return this._activeLicenseGroup || null;
+		return (this._activeLicenseGroup !== undefined ? this._activeLicenseGroup : null);
 	}
 
 	set activeLicenseGroup(activeLicenseGroup)
@@ -138,7 +138,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get licenseKeys()
 	{
-		return this._licenseKeys || null;
+		return (this._licenseKeys !== undefined ? this._licenseKeys : null);
 	}
 
 	set licenseKeys(licenseKeys)
@@ -151,7 +151,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get licenseState()
 	{
-		return this._licenseState || null;
+		return (this._licenseState !== undefined ? this._licenseState : null);
 	}
 
 	set licenseState(licenseState)
@@ -164,7 +164,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get version()
 	{
-		return this._version || null;
+		return (this._version !== undefined ? this._version : null);
 	}
 
 	set version(version)
@@ -178,7 +178,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get license_quota_gb()
 	{
-		return this._license_quota_gb || null;
+		return (this._license_quota_gb !== undefined ? this._license_quota_gb : null);
 	}
 
 	set license_quota_gb(license_quota_gb)
@@ -191,7 +191,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get license_used_pct()
 	{
-		return this._license_used_pct || null;
+		return (this._license_used_pct !== undefined ? this._license_used_pct : null);
 	}
 
 	set license_used_pct(license_used_pct)
@@ -204,7 +204,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get storage_capacity_gb()
 	{
-		return this._storage_capacity_gb || null;
+		return (this._storage_capacity_gb !== undefined ? this._storage_capacity_gb : null);
 	}
 
 	set storage_capacity_gb(storage_capacity_gb)
@@ -218,7 +218,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get storage_used_pct()
 	{
-		return this._storage_used_pct || null;
+		return (this._storage_used_pct !== undefined ? this._storage_used_pct : null);
 	}
 
 	set storage_used_pct(storage_used_pct)
@@ -231,7 +231,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get instance_id()
 	{
-		return this._instance_id || null;
+		return (this._instance_id !== undefined ? this._instance_id : null);
 	}
 
 	set instance_id(instance_id)
@@ -244,7 +244,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get instance_label()
 	{
-		return this._instance_label || null;
+		return (this._instance_label !== undefined ? this._instance_label : null);
 	}
 
 	set instance_label(instance_label)
@@ -257,7 +257,7 @@ class AppSplunkInstance extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

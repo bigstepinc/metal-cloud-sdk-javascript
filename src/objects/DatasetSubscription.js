@@ -31,7 +31,7 @@ class DatasetSubscription extends ObjectBase
 	 */
 	get dataset()
 	{
-		return this._dataset || null;
+		return (this._dataset !== undefined ? this._dataset : null);
 	}
 
 	set dataset(dataset)
@@ -44,7 +44,7 @@ class DatasetSubscription extends ObjectBase
 	 */
 	get user_id()
 	{
-		return this._user_id || null;
+		return (this._user_id !== undefined ? this._user_id : null);
 	}
 
 	set user_id(user_id)
@@ -57,7 +57,7 @@ class DatasetSubscription extends ObjectBase
 	 */
 	get dataset_subscription_id()
 	{
-		return this._dataset_subscription_id || null;
+		return (this._dataset_subscription_id !== undefined ? this._dataset_subscription_id : null);
 	}
 
 	set dataset_subscription_id(dataset_subscription_id)
@@ -70,7 +70,7 @@ class DatasetSubscription extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

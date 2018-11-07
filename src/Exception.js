@@ -1,19 +1,7 @@
-const ExtendableError = require("extendable-error-class");
+const JSONRPC = require("jsonrpc-bidirectional");
 
-/**
- * @class
- * @extends ExtendableError
- */
-class Exception extends ExtendableError
+class Exception extends JSONRPC.Exception
 {
-	constructor(strMessage, nCode)
-	{
-		super(strMessage);
-
-		this.strMessage = strMessage;
-		this.nCode = nCode;
-	}
-
 	/**
 	 * Metal Cloud, API v3.0
 	 */

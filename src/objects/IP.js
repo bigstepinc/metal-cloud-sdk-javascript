@@ -31,7 +31,7 @@ class IP extends ObjectBase
 	 */
 	get ip_id()
 	{
-		return this._ip_id || null;
+		return (this._ip_id !== undefined ? this._ip_id : null);
 	}
 
 	set ip_id(ip_id)
@@ -44,7 +44,7 @@ class IP extends ObjectBase
 	 */
 	get ip_type()
 	{
-		return this._ip_type || null;
+		return (this._ip_type !== undefined ? this._ip_type : null);
 	}
 
 	set ip_type(ip_type)
@@ -57,7 +57,7 @@ class IP extends ObjectBase
 	 */
 	get ip_human_readable()
 	{
-		return this._ip_human_readable || null;
+		return (this._ip_human_readable !== undefined ? this._ip_human_readable : null);
 	}
 
 	set ip_human_readable(ip_human_readable)
@@ -70,7 +70,7 @@ class IP extends ObjectBase
 	 */
 	get ip_hex()
 	{
-		return this._ip_hex || null;
+		return (this._ip_hex !== undefined ? this._ip_hex : null);
 	}
 
 	set ip_hex(ip_hex)
@@ -83,7 +83,7 @@ class IP extends ObjectBase
 	 */
 	get ip_lease_expires()
 	{
-		return this._ip_lease_expires || null;
+		return (this._ip_lease_expires !== undefined ? this._ip_lease_expires : null);
 	}
 
 	set ip_lease_expires(ip_lease_expires)
@@ -96,7 +96,7 @@ class IP extends ObjectBase
 	 */
 	get ip_operation()
 	{
-		return this._ip_operation || null;
+		return (this._ip_operation !== undefined ? this._ip_operation : null);
 	}
 
 	set ip_operation(ip_operation)
@@ -109,7 +109,7 @@ class IP extends ObjectBase
 	 */
 	get subnet_id()
 	{
-		return this._subnet_id || null;
+		return (this._subnet_id !== undefined ? this._subnet_id : null);
 	}
 
 	set subnet_id(subnet_id)
@@ -122,7 +122,7 @@ class IP extends ObjectBase
 	 */
 	get subnet_destination()
 	{
-		return this._subnet_destination || "wan";
+		return (this._subnet_destination !== undefined ? this._subnet_destination : "wan");
 	}
 
 	set subnet_destination(subnet_destination)
@@ -135,7 +135,7 @@ class IP extends ObjectBase
 	 */
 	get subnet_gateway_human_readable()
 	{
-		return this._subnet_gateway_human_readable || null;
+		return (this._subnet_gateway_human_readable !== undefined ? this._subnet_gateway_human_readable : null);
 	}
 
 	set subnet_gateway_human_readable(subnet_gateway_human_readable)
@@ -148,7 +148,7 @@ class IP extends ObjectBase
 	 */
 	get subnet_netmask_human_readable()
 	{
-		return this._subnet_netmask_human_readable || null;
+		return (this._subnet_netmask_human_readable !== undefined ? this._subnet_netmask_human_readable : null);
 	}
 
 	set subnet_netmask_human_readable(subnet_netmask_human_readable)
@@ -161,7 +161,7 @@ class IP extends ObjectBase
 	 */
 	get instance_interface_id()
 	{
-		return this._instance_interface_id || null;
+		return (this._instance_interface_id !== undefined ? this._instance_interface_id : null);
 	}
 
 	set instance_interface_id(instance_interface_id)
@@ -174,7 +174,7 @@ class IP extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -189,7 +189,7 @@ class IP extends ObjectBase
 	 */
 	get ip_change_id()
 	{
-		return this._ip_change_id || null;
+		return (this._ip_change_id !== undefined ? this._ip_change_id : null);
 	}
 
 	set ip_change_id(ip_change_id)

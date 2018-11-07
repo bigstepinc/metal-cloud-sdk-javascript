@@ -31,7 +31,7 @@ class ContainerCredentials extends ObjectBase
 	 */
 	get remote_console()
 	{
-		return this._remote_console || null;
+		return (this._remote_console !== undefined ? this._remote_console : null);
 	}
 
 	set remote_console(remote_console)
@@ -44,7 +44,7 @@ class ContainerCredentials extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

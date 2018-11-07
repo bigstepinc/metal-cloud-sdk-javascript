@@ -50,7 +50,7 @@ class Guest extends JSONRPC.Client
 	}
 
 	
-	// 249 functions available on endpoint.
+	// 271 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1247,7 +1247,7 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("datacenter_get", Array.prototype.slice.call(arguments));
 	}
 
-	async infrastructure_overview_children_products(strInfrastructureID, bAccessSaaSAPI = true, nAccessSaaSAPITimeoutSeconds = 10)
+	async infrastructure_overview_children_products(strInfrastructureID)
 	{
 		return await this.rpc("infrastructure_overview_children_products", Array.prototype.slice.call(arguments));
 	}
@@ -1295,6 +1295,116 @@ class Guest extends JSONRPC.Client
 	async support_ticket_options(strUserLanguage)
 	{
 		return await this.rpc("support_ticket_options", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_array_drive_arrays(strInstanceArrayID)
+	{
+		return await this.rpc("instance_array_drive_arrays", Array.prototype.slice.call(arguments));
+	}
+
+	async ip_custom_reverse_records(strInfrastructureID)
+	{
+		return await this.rpc("ip_custom_reverse_records", Array.prototype.slice.call(arguments));
+	}
+
+	async ip_custom_reverse_record_remove(strInfrastructureID, strIPAddress)
+	{
+		return await this.rpc("ip_custom_reverse_record_remove", Array.prototype.slice.call(arguments));
+	}
+
+	async ip_custom_reverse_record_add(strInfrastructureID, strIPAddress, strSubdomainName, strRootDomain)
+	{
+		return await this.rpc("ip_custom_reverse_record_add", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_lan_subnet_pools_available(nInfrastructureID)
+	{
+		return await this.rpc("infrastructure_lan_subnet_pools_available", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_lan_subnet_prefixes_available(nInfrastructureID)
+	{
+		return await this.rpc("infrastructure_lan_subnet_prefixes_available", Array.prototype.slice.call(arguments));
+	}
+
+	async server_instance_oob_allowed_ips(strInstanceID)
+	{
+		return await this.rpc("server_instance_oob_allowed_ips", Array.prototype.slice.call(arguments));
+	}
+
+	async server_instance_oob_allow_ip(strInstanceID, strAllowedIP)
+	{
+		return await this.rpc("server_instance_oob_allow_ip", Array.prototype.slice.call(arguments));
+	}
+
+	async server_instance_oob_disallow_ip(strInstanceID, strDisallowedIP)
+	{
+		return await this.rpc("server_instance_oob_disallow_ip", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_filesystem_types_available()
+	{
+		return await this.rpc("drive_array_filesystem_types_available", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_block_sizes_available()
+	{
+		return await this.rpc("drive_array_block_sizes_available", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_publish(nDatasetID)
+	{
+		return await this.rpc("dataset_publish", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_unpublish(nDatasetID)
+	{
+		return await this.rpc("dataset_unpublish", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_datapackage_get(nDatasetID)
+	{
+		return await this.rpc("dataset_datapackage_get", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_readme_upload_url()
+	{
+		return await this.rpc("dataset_readme_upload_url", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_readme_download_url(nPublicDatasetID)
+	{
+		return await this.rpc("dataset_readme_download_url", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_readme_delete(nDatasetID)
+	{
+		return await this.rpc("dataset_readme_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async threshold_create(strUserIDOwner, objThreshold)
+	{
+		return await this.rpc("threshold_create", Array.prototype.slice.call(arguments));
+	}
+
+	async thresholds(strUserIDOwner)
+	{
+		return await this.rpc("thresholds", Array.prototype.slice.call(arguments));
+	}
+
+	async threshold_edit(nThresholdID, objThresholdOperation)
+	{
+		return await this.rpc("threshold_edit", Array.prototype.slice.call(arguments));
+	}
+
+	async threshold_get(nThresholdID)
+	{
+		return await this.rpc("threshold_get", Array.prototype.slice.call(arguments));
+	}
+
+	async threshold_delete(nThresholdID)
+	{
+		return await this.rpc("threshold_delete", Array.prototype.slice.call(arguments));
 	}
 
 

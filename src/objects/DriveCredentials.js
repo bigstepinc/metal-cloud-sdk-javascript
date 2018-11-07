@@ -1,7 +1,7 @@
 const ObjectBase = require('./ObjectBase');
 
 /**
- * Drive Credentials
+ * Information to connect via iSCSI or bootable drive associated credentials.
  *
  * @class
  * @extends ObjectBase
@@ -24,6 +24,32 @@ class DriveCredentials extends ObjectBase
 				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
 			}
 		}
+	}
+
+	/**
+	 * iSCSI credentials
+	 */
+	get iscsi()
+	{
+		return (this._iscsi !== undefined ? this._iscsi : null);
+	}
+
+	set iscsi(iscsi)
+	{
+		this._iscsi = iscsi;
+	}
+
+	/**
+	 * The schema type
+	 */
+	get type()
+	{
+		return (this._type !== undefined ? this._type : null);
+	}
+
+	set type(type)
+	{
+		this._type = type;
 	}
 
 	/**

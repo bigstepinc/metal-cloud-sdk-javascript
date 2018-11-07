@@ -32,7 +32,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_label()
 	{
-		return this._drive_array_label || null;
+		return (this._drive_array_label !== undefined ? this._drive_array_label : null);
 	}
 
 	set drive_array_label(drive_array_label)
@@ -46,7 +46,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_subdomain()
 	{
-		return this._drive_array_subdomain || null;
+		return (this._drive_array_subdomain !== undefined ? this._drive_array_subdomain : null);
 	}
 
 	set drive_array_subdomain(drive_array_subdomain)
@@ -61,7 +61,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_id()
 	{
-		return this._drive_array_id || null;
+		return (this._drive_array_id !== undefined ? this._drive_array_id : null);
 	}
 
 	set drive_array_id(drive_array_id)
@@ -76,7 +76,7 @@ class DriveArray extends ObjectBase
 	 */
 	get volume_template_id()
 	{
-		return this._volume_template_id || null;
+		return (this._volume_template_id !== undefined ? this._volume_template_id : null);
 	}
 
 	set volume_template_id(volume_template_id)
@@ -89,7 +89,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_storage_type()
 	{
-		return this._drive_array_storage_type || "iscsi_ssd";
+		return (this._drive_array_storage_type !== undefined ? this._drive_array_storage_type : "iscsi_ssd");
 	}
 
 	set drive_array_storage_type(drive_array_storage_type)
@@ -102,7 +102,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_count()
 	{
-		return this._drive_array_count || 1;
+		return (this._drive_array_count !== undefined ? this._drive_array_count : 1);
 	}
 
 	set drive_array_count(drive_array_count)
@@ -115,7 +115,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_size_mbytes_default()
 	{
-		return this._drive_size_mbytes_default || 40960;
+		return (this._drive_size_mbytes_default !== undefined ? this._drive_size_mbytes_default : 40960);
 	}
 
 	set drive_size_mbytes_default(drive_size_mbytes_default)
@@ -130,7 +130,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_expand_with_instance_array()
 	{
-		return this._drive_array_expand_with_instance_array || true;
+		return (this._drive_array_expand_with_instance_array !== undefined ? this._drive_array_expand_with_instance_array : true);
 	}
 
 	set drive_array_expand_with_instance_array(drive_array_expand_with_instance_array)
@@ -143,7 +143,7 @@ class DriveArray extends ObjectBase
 	 */
 	get infrastructure_id()
 	{
-		return this._infrastructure_id || null;
+		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
 	}
 
 	set infrastructure_id(infrastructure_id)
@@ -156,7 +156,7 @@ class DriveArray extends ObjectBase
 	 */
 	get instance_array_id()
 	{
-		return this._instance_array_id || null;
+		return (this._instance_array_id !== undefined ? this._instance_array_id : null);
 	}
 
 	set instance_array_id(instance_array_id)
@@ -169,7 +169,7 @@ class DriveArray extends ObjectBase
 	 */
 	get container_array_id()
 	{
-		return this._container_array_id || null;
+		return (this._container_array_id !== undefined ? this._container_array_id : null);
 	}
 
 	set container_array_id(container_array_id)
@@ -182,7 +182,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_service_status()
 	{
-		return this._drive_array_service_status || null;
+		return (this._drive_array_service_status !== undefined ? this._drive_array_service_status : null);
 	}
 
 	set drive_array_service_status(drive_array_service_status)
@@ -195,7 +195,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_operation()
 	{
-		return this._drive_array_operation || null;
+		return (this._drive_array_operation !== undefined ? this._drive_array_operation : null);
 	}
 
 	set drive_array_operation(drive_array_operation)
@@ -208,7 +208,7 @@ class DriveArray extends ObjectBase
 	 */
 	get cluster_id()
 	{
-		return this._cluster_id || null;
+		return (this._cluster_id !== undefined ? this._cluster_id : null);
 	}
 
 	set cluster_id(cluster_id)
@@ -222,7 +222,7 @@ class DriveArray extends ObjectBase
 	 */
 	get container_cluster_id()
 	{
-		return this._container_cluster_id || null;
+		return (this._container_cluster_id !== undefined ? this._container_cluster_id : null);
 	}
 
 	set container_cluster_id(container_cluster_id)
@@ -235,7 +235,7 @@ class DriveArray extends ObjectBase
 	 */
 	get cluster_role_group()
 	{
-		return this._cluster_role_group || "none";
+		return (this._cluster_role_group !== undefined ? this._cluster_role_group : "none");
 	}
 
 	set cluster_role_group(cluster_role_group)
@@ -248,7 +248,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_gui_settings_json()
 	{
-		return this._drive_array_gui_settings_json || "";
+		return (this._drive_array_gui_settings_json !== undefined ? this._drive_array_gui_settings_json : "");
 	}
 
 	set drive_array_gui_settings_json(drive_array_gui_settings_json)
@@ -262,7 +262,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_created_timestamp()
 	{
-		return this._drive_array_created_timestamp || "0000-00-00T00:00:00Z";
+		return (this._drive_array_created_timestamp !== undefined ? this._drive_array_created_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set drive_array_created_timestamp(drive_array_created_timestamp)
@@ -276,7 +276,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_updated_timestamp()
 	{
-		return this._drive_array_updated_timestamp || "0000-00-00T00:00:00Z";
+		return (this._drive_array_updated_timestamp !== undefined ? this._drive_array_updated_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set drive_array_updated_timestamp(drive_array_updated_timestamp)
@@ -289,7 +289,7 @@ class DriveArray extends ObjectBase
 	 */
 	get license_utilization_type()
 	{
-		return this._license_utilization_type || "subscription";
+		return (this._license_utilization_type !== undefined ? this._license_utilization_type : "subscription");
 	}
 
 	set license_utilization_type(license_utilization_type)
@@ -302,7 +302,7 @@ class DriveArray extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -317,7 +317,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_change_id()
 	{
-		return this._drive_array_change_id || null;
+		return (this._drive_array_change_id !== undefined ? this._drive_array_change_id : null);
 	}
 
 	set drive_array_change_id(drive_array_change_id)
@@ -330,7 +330,7 @@ class DriveArray extends ObjectBase
 	 */
 	get drive_array_filesystem()
 	{
-		return this._drive_array_filesystem || null;
+		return (this._drive_array_filesystem !== undefined ? this._drive_array_filesystem : null);
 	}
 
 	set drive_array_filesystem(drive_array_filesystem)

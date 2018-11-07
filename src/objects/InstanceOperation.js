@@ -45,7 +45,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get instance_deploy_type()
 	{
-		return this._instance_deploy_type || null;
+		return (this._instance_deploy_type !== undefined ? this._instance_deploy_type : null);
 	}
 
 	set instance_deploy_type(instance_deploy_type)
@@ -58,7 +58,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get instance_deploy_status()
 	{
-		return this._instance_deploy_status || null;
+		return (this._instance_deploy_status !== undefined ? this._instance_deploy_status : null);
 	}
 
 	set instance_deploy_status(instance_deploy_status)
@@ -72,7 +72,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get instance_label()
 	{
-		return this._instance_label || null;
+		return (this._instance_label !== undefined ? this._instance_label : null);
 	}
 
 	set instance_label(instance_label)
@@ -86,7 +86,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get instance_subdomain()
 	{
-		return this._instance_subdomain || null;
+		return (this._instance_subdomain !== undefined ? this._instance_subdomain : null);
 	}
 
 	set instance_subdomain(instance_subdomain)
@@ -100,7 +100,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get instance_id()
 	{
-		return this._instance_id || null;
+		return (this._instance_id !== undefined ? this._instance_id : null);
 	}
 
 	set instance_id(instance_id)
@@ -113,7 +113,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get instance_array_id()
 	{
-		return this._instance_array_id || null;
+		return (this._instance_array_id !== undefined ? this._instance_array_id : null);
 	}
 
 	set instance_array_id(instance_array_id)
@@ -127,7 +127,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get instance_updated_timestamp()
 	{
-		return this._instance_updated_timestamp || null;
+		return (this._instance_updated_timestamp !== undefined ? this._instance_updated_timestamp : null);
 	}
 
 	set instance_updated_timestamp(instance_updated_timestamp)
@@ -140,7 +140,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get server_id()
 	{
-		return this._server_id || null;
+		return (this._server_id !== undefined ? this._server_id : null);
 	}
 
 	set server_id(server_id)
@@ -153,7 +153,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get server_type_id()
 	{
-		return this._server_type_id || null;
+		return (this._server_type_id !== undefined ? this._server_type_id : null);
 	}
 
 	set server_type_id(server_type_id)
@@ -166,7 +166,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get drive_id_bootable()
 	{
-		return this._drive_id_bootable || null;
+		return (this._drive_id_bootable !== undefined ? this._drive_id_bootable : null);
 	}
 
 	set drive_id_bootable(drive_id_bootable)
@@ -179,7 +179,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -194,7 +194,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get instance_change_id()
 	{
-		return this._instance_change_id || null;
+		return (this._instance_change_id !== undefined ? this._instance_change_id : null);
 	}
 
 	set instance_change_id(instance_change_id)
@@ -207,7 +207,7 @@ class InstanceOperation extends ObjectBase
 	 */
 	get template_id_origin()
 	{
-		return this._template_id_origin || null;
+		return (this._template_id_origin !== undefined ? this._template_id_origin : null);
 	}
 
 	set template_id_origin(template_id_origin)

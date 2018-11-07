@@ -44,7 +44,7 @@ class SubnetPoolLAN extends ObjectBase
 	 */
 	get subnet_pool_lan_prefix_human_readable()
 	{
-		return this._subnet_pool_lan_prefix_human_readable || null;
+		return (this._subnet_pool_lan_prefix_human_readable !== undefined ? this._subnet_pool_lan_prefix_human_readable : null);
 	}
 
 	set subnet_pool_lan_prefix_human_readable(subnet_pool_lan_prefix_human_readable)
@@ -57,7 +57,7 @@ class SubnetPoolLAN extends ObjectBase
 	 */
 	get subnet_pool_lan_prefix_size()
 	{
-		return this._subnet_pool_lan_prefix_size || null;
+		return (this._subnet_pool_lan_prefix_size !== undefined ? this._subnet_pool_lan_prefix_size : null);
 	}
 
 	set subnet_pool_lan_prefix_size(subnet_pool_lan_prefix_size)
@@ -70,7 +70,7 @@ class SubnetPoolLAN extends ObjectBase
 	 */
 	get subnet_pool_lan_type()
 	{
-		return this._subnet_pool_lan_type || null;
+		return (this._subnet_pool_lan_type !== undefined ? this._subnet_pool_lan_type : null);
 	}
 
 	set subnet_pool_lan_type(subnet_pool_lan_type)
@@ -84,7 +84,7 @@ class SubnetPoolLAN extends ObjectBase
 	 */
 	get subnet_pool_lan_range_start_human_readable()
 	{
-		return this._subnet_pool_lan_range_start_human_readable || null;
+		return (this._subnet_pool_lan_range_start_human_readable !== undefined ? this._subnet_pool_lan_range_start_human_readable : null);
 	}
 
 	set subnet_pool_lan_range_start_human_readable(subnet_pool_lan_range_start_human_readable)
@@ -98,7 +98,7 @@ class SubnetPoolLAN extends ObjectBase
 	 */
 	get subnet_pool_lan_range_end_human_readable()
 	{
-		return this._subnet_pool_lan_range_end_human_readable || null;
+		return (this._subnet_pool_lan_range_end_human_readable !== undefined ? this._subnet_pool_lan_range_end_human_readable : null);
 	}
 
 	set subnet_pool_lan_range_end_human_readable(subnet_pool_lan_range_end_human_readable)
@@ -111,7 +111,7 @@ class SubnetPoolLAN extends ObjectBase
 	 */
 	get subnets_prefix_size()
 	{
-		return this._subnets_prefix_size || null;
+		return (this._subnets_prefix_size !== undefined ? this._subnets_prefix_size : null);
 	}
 
 	set subnets_prefix_size(subnets_prefix_size)
@@ -124,7 +124,7 @@ class SubnetPoolLAN extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

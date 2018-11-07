@@ -42,7 +42,7 @@ class DataPackage extends ObjectBase
 	 */
 	get dataset_name()
 	{
-		return this._dataset_name || null;
+		return (this._dataset_name !== undefined ? this._dataset_name : null);
 	}
 
 	set dataset_name(dataset_name)
@@ -55,7 +55,7 @@ class DataPackage extends ObjectBase
 	 */
 	get dataset_description()
 	{
-		return this._dataset_description || null;
+		return (this._dataset_description !== undefined ? this._dataset_description : null);
 	}
 
 	set dataset_description(dataset_description)
@@ -68,7 +68,7 @@ class DataPackage extends ObjectBase
 	 */
 	get dataset_price()
 	{
-		return this._dataset_price || null;
+		return (this._dataset_price !== undefined ? this._dataset_price : null);
 	}
 
 	set dataset_price(dataset_price)
@@ -81,7 +81,7 @@ class DataPackage extends ObjectBase
 	 */
 	get dataset_price_currency()
 	{
-		return this._dataset_price_currency || null;
+		return (this._dataset_price_currency !== undefined ? this._dataset_price_currency : null);
 	}
 
 	set dataset_price_currency(dataset_price_currency)
@@ -94,7 +94,7 @@ class DataPackage extends ObjectBase
 	 */
 	get dataset_tags()
 	{
-		return this._dataset_tags || [];
+		return (this._dataset_tags !== undefined ? this._dataset_tags : []);
 	}
 
 	set dataset_tags(dataset_tags)
@@ -107,7 +107,7 @@ class DataPackage extends ObjectBase
 	 */
 	get dataset_source_display_name()
 	{
-		return this._dataset_source_display_name || null;
+		return (this._dataset_source_display_name !== undefined ? this._dataset_source_display_name : null);
 	}
 
 	set dataset_source_display_name(dataset_source_display_name)
@@ -120,7 +120,7 @@ class DataPackage extends ObjectBase
 	 */
 	get dataset_maintainer_display_name()
 	{
-		return this._dataset_maintainer_display_name || null;
+		return (this._dataset_maintainer_display_name !== undefined ? this._dataset_maintainer_display_name : null);
 	}
 
 	set dataset_maintainer_display_name(dataset_maintainer_display_name)
@@ -133,7 +133,7 @@ class DataPackage extends ObjectBase
 	 */
 	get dataset_formats()
 	{
-		return this._dataset_formats || [];
+		return (this._dataset_formats !== undefined ? this._dataset_formats : []);
 	}
 
 	set dataset_formats(dataset_formats)
@@ -146,7 +146,7 @@ class DataPackage extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

@@ -42,7 +42,7 @@ class ContainerArrayPortMapping extends ObjectBase
 	 */
 	get port_mapping_name()
 	{
-		return this._port_mapping_name || null;
+		return (this._port_mapping_name !== undefined ? this._port_mapping_name : null);
 	}
 
 	set port_mapping_name(port_mapping_name)
@@ -56,7 +56,7 @@ class ContainerArrayPortMapping extends ObjectBase
 	 */
 	get port_mapping_container_port()
 	{
-		return this._port_mapping_container_port || null;
+		return (this._port_mapping_container_port !== undefined ? this._port_mapping_container_port : null);
 	}
 
 	set port_mapping_container_port(port_mapping_container_port)
@@ -70,7 +70,7 @@ class ContainerArrayPortMapping extends ObjectBase
 	 */
 	get port_mapping_service_port()
 	{
-		return this._port_mapping_service_port || null;
+		return (this._port_mapping_service_port !== undefined ? this._port_mapping_service_port : null);
 	}
 
 	set port_mapping_service_port(port_mapping_service_port)
@@ -83,7 +83,7 @@ class ContainerArrayPortMapping extends ObjectBase
 	 */
 	get port_mapping_protocol()
 	{
-		return this._port_mapping_protocol || "TCP";
+		return (this._port_mapping_protocol !== undefined ? this._port_mapping_protocol : "TCP");
 	}
 
 	set port_mapping_protocol(port_mapping_protocol)
@@ -96,7 +96,7 @@ class ContainerArrayPortMapping extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

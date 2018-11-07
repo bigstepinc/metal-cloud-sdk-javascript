@@ -34,7 +34,7 @@ class IPMI extends ObjectBase
 	 */
 	get ip_address()
 	{
-		return this._ip_address || null;
+		return (this._ip_address !== undefined ? this._ip_address : null);
 	}
 
 	set ip_address(ip_address)
@@ -47,7 +47,7 @@ class IPMI extends ObjectBase
 	 */
 	get version()
 	{
-		return this._version || null;
+		return (this._version !== undefined ? this._version : null);
 	}
 
 	set version(version)
@@ -60,7 +60,7 @@ class IPMI extends ObjectBase
 	 */
 	get username()
 	{
-		return this._username || null;
+		return (this._username !== undefined ? this._username : null);
 	}
 
 	set username(username)
@@ -73,7 +73,7 @@ class IPMI extends ObjectBase
 	 */
 	get initial_password()
 	{
-		return this._initial_password || null;
+		return (this._initial_password !== undefined ? this._initial_password : null);
 	}
 
 	set initial_password(initial_password)
@@ -86,7 +86,7 @@ class IPMI extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

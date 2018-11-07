@@ -38,7 +38,7 @@ class InfrastructurePermissions extends ObjectBase
 	 */
 	get infrastructure_user_allow_ssh_keys()
 	{
-		return this._infrastructure_user_allow_ssh_keys || null;
+		return (this._infrastructure_user_allow_ssh_keys !== undefined ? this._infrastructure_user_allow_ssh_keys : null);
 	}
 
 	set infrastructure_user_allow_ssh_keys(infrastructure_user_allow_ssh_keys)
@@ -51,7 +51,7 @@ class InfrastructurePermissions extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

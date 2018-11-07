@@ -37,7 +37,7 @@ class AppMapR extends ObjectBase
 	 */
 	get mapr_nodes()
 	{
-		return this._mapr_nodes || [];
+		return (this._mapr_nodes !== undefined ? this._mapr_nodes : []);
 	}
 
 	set mapr_nodes(mapr_nodes)
@@ -50,7 +50,7 @@ class AppMapR extends ObjectBase
 	 */
 	get admin_username()
 	{
-		return this._admin_username || null;
+		return (this._admin_username !== undefined ? this._admin_username : null);
 	}
 
 	set admin_username(admin_username)
@@ -63,7 +63,7 @@ class AppMapR extends ObjectBase
 	 */
 	get admin_initial_password()
 	{
-		return this._admin_initial_password || null;
+		return (this._admin_initial_password !== undefined ? this._admin_initial_password : null);
 	}
 
 	set admin_initial_password(admin_initial_password)
@@ -76,7 +76,7 @@ class AppMapR extends ObjectBase
 	 */
 	get cluster_software_available_versions()
 	{
-		return this._cluster_software_available_versions || [];
+		return (this._cluster_software_available_versions !== undefined ? this._cluster_software_available_versions : []);
 	}
 
 	set cluster_software_available_versions(cluster_software_available_versions)
@@ -89,7 +89,7 @@ class AppMapR extends ObjectBase
 	 */
 	get cluster_software_version()
 	{
-		return this._cluster_software_version || null;
+		return (this._cluster_software_version !== undefined ? this._cluster_software_version : null);
 	}
 
 	set cluster_software_version(cluster_software_version)
@@ -102,7 +102,7 @@ class AppMapR extends ObjectBase
 	 */
 	get connectable_clusters()
 	{
-		return this._connectable_clusters || [];
+		return (this._connectable_clusters !== undefined ? this._connectable_clusters : []);
 	}
 
 	set connectable_clusters(connectable_clusters)
@@ -115,7 +115,7 @@ class AppMapR extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

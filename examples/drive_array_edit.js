@@ -17,7 +17,7 @@ const JSONRPC = require("jsonrpc-bidirectional");
 
 	// Selecting an OS template
 	// Note that changing the OS template will not affect any active drives, but only drives that are provisioned after the change takes effect
-	objDriveArrayOperation.volume_template_id = "centos7-2";
+	objDriveArrayOperation.volume_template_id = "centos7-5";
 
 	objDriveArray = await api.drive_array_edit(
 		"my-drive-array",

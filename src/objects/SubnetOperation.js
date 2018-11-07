@@ -49,7 +49,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_deploy_type()
 	{
-		return this._subnet_deploy_type || null;
+		return (this._subnet_deploy_type !== undefined ? this._subnet_deploy_type : null);
 	}
 
 	set subnet_deploy_type(subnet_deploy_type)
@@ -62,7 +62,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_deploy_status()
 	{
-		return this._subnet_deploy_status || null;
+		return (this._subnet_deploy_status !== undefined ? this._subnet_deploy_status : null);
 	}
 
 	set subnet_deploy_status(subnet_deploy_status)
@@ -76,7 +76,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_label()
 	{
-		return this._subnet_label || null;
+		return (this._subnet_label !== undefined ? this._subnet_label : null);
 	}
 
 	set subnet_label(subnet_label)
@@ -90,7 +90,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_subdomain()
 	{
-		return this._subnet_subdomain || null;
+		return (this._subnet_subdomain !== undefined ? this._subnet_subdomain : null);
 	}
 
 	set subnet_subdomain(subnet_subdomain)
@@ -105,7 +105,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_id()
 	{
-		return this._subnet_id || null;
+		return (this._subnet_id !== undefined ? this._subnet_id : null);
 	}
 
 	set subnet_id(subnet_id)
@@ -118,7 +118,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_range_start_hex()
 	{
-		return this._subnet_range_start_hex || null;
+		return (this._subnet_range_start_hex !== undefined ? this._subnet_range_start_hex : null);
 	}
 
 	set subnet_range_start_hex(subnet_range_start_hex)
@@ -131,7 +131,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_range_end_hex()
 	{
-		return this._subnet_range_end_hex || null;
+		return (this._subnet_range_end_hex !== undefined ? this._subnet_range_end_hex : null);
 	}
 
 	set subnet_range_end_hex(subnet_range_end_hex)
@@ -145,7 +145,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_range_start_human_readable()
 	{
-		return this._subnet_range_start_human_readable || null;
+		return (this._subnet_range_start_human_readable !== undefined ? this._subnet_range_start_human_readable : null);
 	}
 
 	set subnet_range_start_human_readable(subnet_range_start_human_readable)
@@ -159,7 +159,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_range_end_human_readable()
 	{
-		return this._subnet_range_end_human_readable || null;
+		return (this._subnet_range_end_human_readable !== undefined ? this._subnet_range_end_human_readable : null);
 	}
 
 	set subnet_range_end_human_readable(subnet_range_end_human_readable)
@@ -172,7 +172,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_type()
 	{
-		return this._subnet_type || null;
+		return (this._subnet_type !== undefined ? this._subnet_type : null);
 	}
 
 	set subnet_type(subnet_type)
@@ -185,7 +185,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get network_id()
 	{
-		return this._network_id || null;
+		return (this._network_id !== undefined ? this._network_id : null);
 	}
 
 	set network_id(network_id)
@@ -200,7 +200,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_netmask_human_readable()
 	{
-		return this._subnet_netmask_human_readable || null;
+		return (this._subnet_netmask_human_readable !== undefined ? this._subnet_netmask_human_readable : null);
 	}
 
 	set subnet_netmask_human_readable(subnet_netmask_human_readable)
@@ -213,7 +213,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_gateway_human_readable()
 	{
-		return this._subnet_gateway_human_readable || null;
+		return (this._subnet_gateway_human_readable !== undefined ? this._subnet_gateway_human_readable : null);
 	}
 
 	set subnet_gateway_human_readable(subnet_gateway_human_readable)
@@ -226,7 +226,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_gateway_hex()
 	{
-		return this._subnet_gateway_hex || null;
+		return (this._subnet_gateway_hex !== undefined ? this._subnet_gateway_hex : null);
 	}
 
 	set subnet_gateway_hex(subnet_gateway_hex)
@@ -240,7 +240,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_prefix_size()
 	{
-		return this._subnet_prefix_size || null;
+		return (this._subnet_prefix_size !== undefined ? this._subnet_prefix_size : null);
 	}
 
 	set subnet_prefix_size(subnet_prefix_size)
@@ -254,7 +254,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_updated_timestamp()
 	{
-		return this._subnet_updated_timestamp || null;
+		return (this._subnet_updated_timestamp !== undefined ? this._subnet_updated_timestamp : null);
 	}
 
 	set subnet_updated_timestamp(subnet_updated_timestamp)
@@ -267,7 +267,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_destination()
 	{
-		return this._subnet_destination || null;
+		return (this._subnet_destination !== undefined ? this._subnet_destination : null);
 	}
 
 	set subnet_destination(subnet_destination)
@@ -280,7 +280,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -295,7 +295,7 @@ class SubnetOperation extends ObjectBase
 	 */
 	get subnet_change_id()
 	{
-		return this._subnet_change_id || null;
+		return (this._subnet_change_id !== undefined ? this._subnet_change_id : null);
 	}
 
 	set subnet_change_id(subnet_change_id)

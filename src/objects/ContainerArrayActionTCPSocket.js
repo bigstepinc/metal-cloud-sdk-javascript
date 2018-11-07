@@ -37,7 +37,7 @@ class ContainerArrayActionTCPSocket extends ObjectBase
 	 */
 	get action_port()
 	{
-		return this._action_port || null;
+		return (this._action_port !== undefined ? this._action_port : null);
 	}
 
 	set action_port(action_port)
@@ -50,7 +50,7 @@ class ContainerArrayActionTCPSocket extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

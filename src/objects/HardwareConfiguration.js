@@ -43,7 +43,7 @@ class HardwareConfiguration extends ObjectBase
 	 */
 	get instance_array_ram_gbytes()
 	{
-		return this._instance_array_ram_gbytes || null;
+		return (this._instance_array_ram_gbytes !== undefined ? this._instance_array_ram_gbytes : null);
 	}
 
 	set instance_array_ram_gbytes(instance_array_ram_gbytes)
@@ -56,7 +56,7 @@ class HardwareConfiguration extends ObjectBase
 	 */
 	get instance_array_processor_count()
 	{
-		return this._instance_array_processor_count || null;
+		return (this._instance_array_processor_count !== undefined ? this._instance_array_processor_count : null);
 	}
 
 	set instance_array_processor_count(instance_array_processor_count)
@@ -69,7 +69,7 @@ class HardwareConfiguration extends ObjectBase
 	 */
 	get instance_array_processor_core_mhz()
 	{
-		return this._instance_array_processor_core_mhz || null;
+		return (this._instance_array_processor_core_mhz !== undefined ? this._instance_array_processor_core_mhz : null);
 	}
 
 	set instance_array_processor_core_mhz(instance_array_processor_core_mhz)
@@ -82,7 +82,7 @@ class HardwareConfiguration extends ObjectBase
 	 */
 	get instance_array_processor_core_count()
 	{
-		return this._instance_array_processor_core_count || null;
+		return (this._instance_array_processor_core_count !== undefined ? this._instance_array_processor_core_count : null);
 	}
 
 	set instance_array_processor_core_count(instance_array_processor_core_count)
@@ -95,7 +95,7 @@ class HardwareConfiguration extends ObjectBase
 	 */
 	get instance_array_total_mhz()
 	{
-		return this._instance_array_total_mhz || null;
+		return (this._instance_array_total_mhz !== undefined ? this._instance_array_total_mhz : null);
 	}
 
 	set instance_array_total_mhz(instance_array_total_mhz)
@@ -108,7 +108,7 @@ class HardwareConfiguration extends ObjectBase
 	 */
 	get instance_array_instance_count()
 	{
-		return this._instance_array_instance_count || null;
+		return (this._instance_array_instance_count !== undefined ? this._instance_array_instance_count : null);
 	}
 
 	set instance_array_instance_count(instance_array_instance_count)
@@ -121,7 +121,7 @@ class HardwareConfiguration extends ObjectBase
 	 */
 	get instance_array_disk_count()
 	{
-		return this._instance_array_disk_count || 0;
+		return (this._instance_array_disk_count !== undefined ? this._instance_array_disk_count : 0);
 	}
 
 	set instance_array_disk_count(instance_array_disk_count)
@@ -134,7 +134,7 @@ class HardwareConfiguration extends ObjectBase
 	 */
 	get instance_array_disk_size_mbytes()
 	{
-		return this._instance_array_disk_size_mbytes || 0;
+		return (this._instance_array_disk_size_mbytes !== undefined ? this._instance_array_disk_size_mbytes : 0);
 	}
 
 	set instance_array_disk_size_mbytes(instance_array_disk_size_mbytes)
@@ -147,7 +147,7 @@ class HardwareConfiguration extends ObjectBase
 	 */
 	get instance_array_disk_types()
 	{
-		return this._instance_array_disk_types || [];
+		return (this._instance_array_disk_types !== undefined ? this._instance_array_disk_types : []);
 	}
 
 	set instance_array_disk_types(instance_array_disk_types)
@@ -160,7 +160,7 @@ class HardwareConfiguration extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

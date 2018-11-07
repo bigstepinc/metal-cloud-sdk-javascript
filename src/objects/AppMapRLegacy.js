@@ -43,7 +43,7 @@ class AppMapRLegacy extends ObjectBase
 	 */
 	get mapr_masternodes()
 	{
-		return this._mapr_masternodes || [];
+		return (this._mapr_masternodes !== undefined ? this._mapr_masternodes : []);
 	}
 
 	set mapr_masternodes(mapr_masternodes)
@@ -56,7 +56,7 @@ class AppMapRLegacy extends ObjectBase
 	 */
 	get mapr_slavenodes()
 	{
-		return this._mapr_slavenodes || [];
+		return (this._mapr_slavenodes !== undefined ? this._mapr_slavenodes : []);
 	}
 
 	set mapr_slavenodes(mapr_slavenodes)
@@ -69,7 +69,7 @@ class AppMapRLegacy extends ObjectBase
 	 */
 	get admin_username()
 	{
-		return this._admin_username || null;
+		return (this._admin_username !== undefined ? this._admin_username : null);
 	}
 
 	set admin_username(admin_username)
@@ -82,7 +82,7 @@ class AppMapRLegacy extends ObjectBase
 	 */
 	get admin_initial_password()
 	{
-		return this._admin_initial_password || null;
+		return (this._admin_initial_password !== undefined ? this._admin_initial_password : null);
 	}
 
 	set admin_initial_password(admin_initial_password)
@@ -95,7 +95,7 @@ class AppMapRLegacy extends ObjectBase
 	 */
 	get cluster_software_available_versions()
 	{
-		return this._cluster_software_available_versions || [];
+		return (this._cluster_software_available_versions !== undefined ? this._cluster_software_available_versions : []);
 	}
 
 	set cluster_software_available_versions(cluster_software_available_versions)
@@ -108,7 +108,7 @@ class AppMapRLegacy extends ObjectBase
 	 */
 	get cluster_software_version()
 	{
-		return this._cluster_software_version || null;
+		return (this._cluster_software_version !== undefined ? this._cluster_software_version : null);
 	}
 
 	set cluster_software_version(cluster_software_version)
@@ -121,7 +121,7 @@ class AppMapRLegacy extends ObjectBase
 	 */
 	get connectable_clusters()
 	{
-		return this._connectable_clusters || [];
+		return (this._connectable_clusters !== undefined ? this._connectable_clusters : []);
 	}
 
 	set connectable_clusters(connectable_clusters)
@@ -134,7 +134,7 @@ class AppMapRLegacy extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

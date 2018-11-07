@@ -45,7 +45,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_deploy_status()
 	{
-		return this._drive_deploy_status || null;
+		return (this._drive_deploy_status !== undefined ? this._drive_deploy_status : null);
 	}
 
 	set drive_deploy_status(drive_deploy_status)
@@ -58,7 +58,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_deploy_type()
 	{
-		return this._drive_deploy_type || null;
+		return (this._drive_deploy_type !== undefined ? this._drive_deploy_type : null);
 	}
 
 	set drive_deploy_type(drive_deploy_type)
@@ -72,7 +72,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_label()
 	{
-		return this._drive_label || null;
+		return (this._drive_label !== undefined ? this._drive_label : null);
 	}
 
 	set drive_label(drive_label)
@@ -86,7 +86,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_subdomain()
 	{
-		return this._drive_subdomain || null;
+		return (this._drive_subdomain !== undefined ? this._drive_subdomain : null);
 	}
 
 	set drive_subdomain(drive_subdomain)
@@ -99,7 +99,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_array_id()
 	{
-		return this._drive_array_id || null;
+		return (this._drive_array_id !== undefined ? this._drive_array_id : null);
 	}
 
 	set drive_array_id(drive_array_id)
@@ -113,7 +113,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_created_timestamp()
 	{
-		return this._drive_created_timestamp || null;
+		return (this._drive_created_timestamp !== undefined ? this._drive_created_timestamp : null);
 	}
 
 	set drive_created_timestamp(drive_created_timestamp)
@@ -128,7 +128,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_id()
 	{
-		return this._drive_id || null;
+		return (this._drive_id !== undefined ? this._drive_id : null);
 	}
 
 	set drive_id(drive_id)
@@ -141,7 +141,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_size_mbytes()
 	{
-		return this._drive_size_mbytes || null;
+		return (this._drive_size_mbytes !== undefined ? this._drive_size_mbytes : null);
 	}
 
 	set drive_size_mbytes(drive_size_mbytes)
@@ -154,7 +154,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_storage_type()
 	{
-		return this._drive_storage_type || null;
+		return (this._drive_storage_type !== undefined ? this._drive_storage_type : null);
 	}
 
 	set drive_storage_type(drive_storage_type)
@@ -167,7 +167,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get instance_id()
 	{
-		return this._instance_id || null;
+		return (this._instance_id !== undefined ? this._instance_id : null);
 	}
 
 	set instance_id(instance_id)
@@ -180,7 +180,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get container_id()
 	{
-		return this._container_id || null;
+		return (this._container_id !== undefined ? this._container_id : null);
 	}
 
 	set container_id(container_id)
@@ -193,7 +193,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get template_id_origin()
 	{
-		return this._template_id_origin || null;
+		return (this._template_id_origin !== undefined ? this._template_id_origin : null);
 	}
 
 	set template_id_origin(template_id_origin)
@@ -207,7 +207,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_updated_timestamp()
 	{
-		return this._drive_updated_timestamp || null;
+		return (this._drive_updated_timestamp !== undefined ? this._drive_updated_timestamp : null);
 	}
 
 	set drive_updated_timestamp(drive_updated_timestamp)
@@ -220,7 +220,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -235,7 +235,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_change_id()
 	{
-		return this._drive_change_id || null;
+		return (this._drive_change_id !== undefined ? this._drive_change_id : null);
 	}
 
 	set drive_change_id(drive_change_id)
@@ -248,7 +248,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_operating_system()
 	{
-		return this._drive_operating_system || null;
+		return (this._drive_operating_system !== undefined ? this._drive_operating_system : null);
 	}
 
 	set drive_operating_system(drive_operating_system)
@@ -261,7 +261,7 @@ class DriveOperation extends ObjectBase
 	 */
 	get drive_filesystem()
 	{
-		return this._drive_filesystem || null;
+		return (this._drive_filesystem !== undefined ? this._drive_filesystem : null);
 	}
 
 	set drive_filesystem(drive_filesystem)

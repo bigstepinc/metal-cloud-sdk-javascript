@@ -33,7 +33,7 @@ class DataLake extends ObjectBase
 	 */
 	get data_lake_label()
 	{
-		return this._data_lake_label || null;
+		return (this._data_lake_label !== undefined ? this._data_lake_label : null);
 	}
 
 	set data_lake_label(data_lake_label)
@@ -47,7 +47,7 @@ class DataLake extends ObjectBase
 	 */
 	get data_lake_subdomain()
 	{
-		return this._data_lake_subdomain || null;
+		return (this._data_lake_subdomain !== undefined ? this._data_lake_subdomain : null);
 	}
 
 	set data_lake_subdomain(data_lake_subdomain)
@@ -62,7 +62,7 @@ class DataLake extends ObjectBase
 	 */
 	get data_lake_id()
 	{
-		return this._data_lake_id || null;
+		return (this._data_lake_id !== undefined ? this._data_lake_id : null);
 	}
 
 	set data_lake_id(data_lake_id)
@@ -75,7 +75,7 @@ class DataLake extends ObjectBase
 	 */
 	get data_lake_type()
 	{
-		return this._data_lake_type || "hdfs";
+		return (this._data_lake_type !== undefined ? this._data_lake_type : "hdfs");
 	}
 
 	set data_lake_type(data_lake_type)
@@ -88,7 +88,7 @@ class DataLake extends ObjectBase
 	 */
 	get infrastructure_id()
 	{
-		return this._infrastructure_id || null;
+		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
 	}
 
 	set infrastructure_id(infrastructure_id)
@@ -101,7 +101,7 @@ class DataLake extends ObjectBase
 	 */
 	get data_lake_service_status()
 	{
-		return this._data_lake_service_status || null;
+		return (this._data_lake_service_status !== undefined ? this._data_lake_service_status : null);
 	}
 
 	set data_lake_service_status(data_lake_service_status)
@@ -114,7 +114,7 @@ class DataLake extends ObjectBase
 	 */
 	get data_lake_credentials()
 	{
-		return this._data_lake_credentials || null;
+		return (this._data_lake_credentials !== undefined ? this._data_lake_credentials : null);
 	}
 
 	set data_lake_credentials(data_lake_credentials)
@@ -127,7 +127,7 @@ class DataLake extends ObjectBase
 	 */
 	get data_lake_operation()
 	{
-		return this._data_lake_operation || null;
+		return (this._data_lake_operation !== undefined ? this._data_lake_operation : null);
 	}
 
 	set data_lake_operation(data_lake_operation)
@@ -140,7 +140,7 @@ class DataLake extends ObjectBase
 	 */
 	get data_lake_gui_settings_json()
 	{
-		return this._data_lake_gui_settings_json || "";
+		return (this._data_lake_gui_settings_json !== undefined ? this._data_lake_gui_settings_json : "");
 	}
 
 	set data_lake_gui_settings_json(data_lake_gui_settings_json)
@@ -154,7 +154,7 @@ class DataLake extends ObjectBase
 	 */
 	get data_lake_created_timestamp()
 	{
-		return this._data_lake_created_timestamp || "0000-00-00T00:00:00Z";
+		return (this._data_lake_created_timestamp !== undefined ? this._data_lake_created_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set data_lake_created_timestamp(data_lake_created_timestamp)
@@ -168,7 +168,7 @@ class DataLake extends ObjectBase
 	 */
 	get data_lake_updated_timestamp()
 	{
-		return this._data_lake_updated_timestamp || "0000-00-00T00:00:00Z";
+		return (this._data_lake_updated_timestamp !== undefined ? this._data_lake_updated_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set data_lake_updated_timestamp(data_lake_updated_timestamp)
@@ -181,7 +181,7 @@ class DataLake extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -196,7 +196,7 @@ class DataLake extends ObjectBase
 	 */
 	get data_lake_change_id()
 	{
-		return this._data_lake_change_id || null;
+		return (this._data_lake_change_id !== undefined ? this._data_lake_change_id : null);
 	}
 
 	set data_lake_change_id(data_lake_change_id)

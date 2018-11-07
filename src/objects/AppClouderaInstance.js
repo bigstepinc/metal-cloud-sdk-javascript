@@ -34,7 +34,7 @@ class AppClouderaInstance extends ObjectBase
 	 */
 	get name()
 	{
-		return this._name || null;
+		return (this._name !== undefined ? this._name : null);
 	}
 
 	set name(name)
@@ -47,7 +47,7 @@ class AppClouderaInstance extends ObjectBase
 	 */
 	get commissionState()
 	{
-		return this._commissionState || null;
+		return (this._commissionState !== undefined ? this._commissionState : null);
 	}
 
 	set commissionState(commissionState)
@@ -60,7 +60,7 @@ class AppClouderaInstance extends ObjectBase
 	 */
 	get healthSummary()
 	{
-		return this._healthSummary || null;
+		return (this._healthSummary !== undefined ? this._healthSummary : null);
 	}
 
 	set healthSummary(healthSummary)
@@ -73,7 +73,7 @@ class AppClouderaInstance extends ObjectBase
 	 */
 	get roleUrl()
 	{
-		return this._roleUrl || null;
+		return (this._roleUrl !== undefined ? this._roleUrl : null);
 	}
 
 	set roleUrl(roleUrl)
@@ -86,7 +86,7 @@ class AppClouderaInstance extends ObjectBase
 	 */
 	get ipAddress()
 	{
-		return this._ipAddress || null;
+		return (this._ipAddress !== undefined ? this._ipAddress : null);
 	}
 
 	set ipAddress(ipAddress)
@@ -99,7 +99,7 @@ class AppClouderaInstance extends ObjectBase
 	 */
 	get totalPhysMemBytes()
 	{
-		return this._totalPhysMemBytes || null;
+		return (this._totalPhysMemBytes !== undefined ? this._totalPhysMemBytes : null);
 	}
 
 	set totalPhysMemBytes(totalPhysMemBytes)
@@ -112,7 +112,7 @@ class AppClouderaInstance extends ObjectBase
 	 */
 	get instance_id()
 	{
-		return this._instance_id || null;
+		return (this._instance_id !== undefined ? this._instance_id : null);
 	}
 
 	set instance_id(instance_id)
@@ -125,7 +125,7 @@ class AppClouderaInstance extends ObjectBase
 	 */
 	get instance_label()
 	{
-		return this._instance_label || null;
+		return (this._instance_label !== undefined ? this._instance_label : null);
 	}
 
 	set instance_label(instance_label)
@@ -138,7 +138,7 @@ class AppClouderaInstance extends ObjectBase
 	 */
 	get instance_service_status()
 	{
-		return this._instance_service_status || null;
+		return (this._instance_service_status !== undefined ? this._instance_service_status : null);
 	}
 
 	set instance_service_status(instance_service_status)
@@ -151,7 +151,7 @@ class AppClouderaInstance extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

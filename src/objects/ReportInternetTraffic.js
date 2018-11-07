@@ -42,7 +42,7 @@ class ReportInternetTraffic extends ObjectBase
 	 */
 	get download()
 	{
-		return this._download || null;
+		return (this._download !== undefined ? this._download : null);
 	}
 
 	set download(download)
@@ -55,7 +55,7 @@ class ReportInternetTraffic extends ObjectBase
 	 */
 	get upload()
 	{
-		return this._upload || null;
+		return (this._upload !== undefined ? this._upload : null);
 	}
 
 	set upload(upload)
@@ -68,7 +68,7 @@ class ReportInternetTraffic extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

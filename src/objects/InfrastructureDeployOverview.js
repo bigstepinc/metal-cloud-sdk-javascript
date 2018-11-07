@@ -31,7 +31,7 @@ class InfrastructureDeployOverview extends ObjectBase
 	 */
 	get unusedServerTypeReservations()
 	{
-		return this._unusedServerTypeReservations || [];
+		return (this._unusedServerTypeReservations !== undefined ? this._unusedServerTypeReservations : []);
 	}
 
 	set unusedServerTypeReservations(unusedServerTypeReservations)
@@ -40,11 +40,25 @@ class InfrastructureDeployOverview extends ObjectBase
 	}
 
 	/**
+	 * If this is true, it means that strictly only firewall changes will be
+	 * deployed and nothing else, meaning a very short deploy will happen.
+	 */
+	get isOnlyFirewallDeploy()
+	{
+		return (this._isOnlyFirewallDeploy !== undefined ? this._isOnlyFirewallDeploy : null);
+	}
+
+	set isOnlyFirewallDeploy(isOnlyFirewallDeploy)
+	{
+		this._isOnlyFirewallDeploy = isOnlyFirewallDeploy;
+	}
+
+	/**
 	 * Licenses which are created, reassigned or unused.
 	 */
 	get licenses()
 	{
-		return this._licenses || [];
+		return (this._licenses !== undefined ? this._licenses : []);
 	}
 
 	set licenses(licenses)
@@ -58,7 +72,7 @@ class InfrastructureDeployOverview extends ObjectBase
 	 */
 	get dataLoss()
 	{
-		return this._dataLoss || [];
+		return (this._dataLoss !== undefined ? this._dataLoss : []);
 	}
 
 	set dataLoss(dataLoss)
@@ -72,7 +86,7 @@ class InfrastructureDeployOverview extends ObjectBase
 	 */
 	get downtime()
 	{
-		return this._downtime || [];
+		return (this._downtime !== undefined ? this._downtime : []);
 	}
 
 	set downtime(downtime)
@@ -86,7 +100,7 @@ class InfrastructureDeployOverview extends ObjectBase
 	 */
 	get resourceChanges()
 	{
-		return this._resourceChanges || [];
+		return (this._resourceChanges !== undefined ? this._resourceChanges : []);
 	}
 
 	set resourceChanges(resourceChanges)
@@ -99,7 +113,7 @@ class InfrastructureDeployOverview extends ObjectBase
 	 */
 	get unusedLANNetworks()
 	{
-		return this._unusedLANNetworks || [];
+		return (this._unusedLANNetworks !== undefined ? this._unusedLANNetworks : []);
 	}
 
 	set unusedLANNetworks(unusedLANNetworks)
@@ -112,7 +126,7 @@ class InfrastructureDeployOverview extends ObjectBase
 	 */
 	get subdomainChanges()
 	{
-		return this._subdomainChanges || [];
+		return (this._subdomainChanges !== undefined ? this._subdomainChanges : []);
 	}
 
 	set subdomainChanges(subdomainChanges)
@@ -126,7 +140,7 @@ class InfrastructureDeployOverview extends ObjectBase
 	 */
 	get willAllServersPowerOnAtDeployEnd()
 	{
-		return this._willAllServersPowerOnAtDeployEnd || null;
+		return (this._willAllServersPowerOnAtDeployEnd !== undefined ? this._willAllServersPowerOnAtDeployEnd : null);
 	}
 
 	set willAllServersPowerOnAtDeployEnd(willAllServersPowerOnAtDeployEnd)
@@ -139,7 +153,7 @@ class InfrastructureDeployOverview extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

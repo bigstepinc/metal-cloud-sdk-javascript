@@ -653,6 +653,22 @@ class Constants
 		}
 	
 		/**
+		 * IPv4 IP.
+		 */
+		static get IP_TYPE_IPV4()
+		{
+			return "ipv4";
+		}
+	
+		/**
+		 * IPv6 IP.
+		 */
+		static get IP_TYPE_IPV6()
+		{
+			return "ipv6";
+		}
+	
+		/**
 		 * Microsoft minimum number of processors for two core license pack.
 		 */
 		static get LICENSE_MICROSOFT_PROCESSOR_MIN_COUNT()
@@ -1410,6 +1426,15 @@ class Constants
 		static get USER_SUSPEND_REASON_UNPAID()
 		{
 			return "unpaid";
+		}
+	
+		/**
+		 * User test account keyword identifier.It is used to identify the erasable
+		 * test accounts.
+		 */
+		static get USER_TEST_ACCOUNT_KEYWORD()
+		{
+			return "_erasable_";
 		}
 	
 		/**

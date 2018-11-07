@@ -36,7 +36,7 @@ class AppStreamSets extends ObjectBase
 	 */
 	get streamsets_node()
 	{
-		return this._streamsets_node || [];
+		return (this._streamsets_node !== undefined ? this._streamsets_node : []);
 	}
 
 	set streamsets_node(streamsets_node)
@@ -49,7 +49,7 @@ class AppStreamSets extends ObjectBase
 	 */
 	get container_cluster_software_available_versions()
 	{
-		return this._container_cluster_software_available_versions || [];
+		return (this._container_cluster_software_available_versions !== undefined ? this._container_cluster_software_available_versions : []);
 	}
 
 	set container_cluster_software_available_versions(container_cluster_software_available_versions)
@@ -62,7 +62,7 @@ class AppStreamSets extends ObjectBase
 	 */
 	get container_cluster_software_version()
 	{
-		return this._container_cluster_software_version || null;
+		return (this._container_cluster_software_version !== undefined ? this._container_cluster_software_version : null);
 	}
 
 	set container_cluster_software_version(container_cluster_software_version)
@@ -75,7 +75,7 @@ class AppStreamSets extends ObjectBase
 	 */
 	get connectable_container_clusters()
 	{
-		return this._connectable_container_clusters || [];
+		return (this._connectable_container_clusters !== undefined ? this._connectable_container_clusters : []);
 	}
 
 	set connectable_container_clusters(connectable_container_clusters)
@@ -88,7 +88,7 @@ class AppStreamSets extends ObjectBase
 	 */
 	get streamsets_connection_string()
 	{
-		return this._streamsets_connection_string || [];
+		return (this._streamsets_connection_string !== undefined ? this._streamsets_connection_string : []);
 	}
 
 	set streamsets_connection_string(streamsets_connection_string)
@@ -101,7 +101,7 @@ class AppStreamSets extends ObjectBase
 	 */
 	get streamsets_admin_username()
 	{
-		return this._streamsets_admin_username || null;
+		return (this._streamsets_admin_username !== undefined ? this._streamsets_admin_username : null);
 	}
 
 	set streamsets_admin_username(streamsets_admin_username)
@@ -114,7 +114,7 @@ class AppStreamSets extends ObjectBase
 	 */
 	get streamsets_admin_password()
 	{
-		return this._streamsets_admin_password || null;
+		return (this._streamsets_admin_password !== undefined ? this._streamsets_admin_password : null);
 	}
 
 	set streamsets_admin_password(streamsets_admin_password)
@@ -127,7 +127,7 @@ class AppStreamSets extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

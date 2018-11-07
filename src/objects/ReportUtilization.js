@@ -44,7 +44,7 @@ class ReportUtilization extends ObjectBase
 	 */
 	get quantity()
 	{
-		return this._quantity || null;
+		return (this._quantity !== undefined ? this._quantity : null);
 	}
 
 	set quantity(quantity)
@@ -57,7 +57,7 @@ class ReportUtilization extends ObjectBase
 	 */
 	get measurement_unit()
 	{
-		return this._measurement_unit || null;
+		return (this._measurement_unit !== undefined ? this._measurement_unit : null);
 	}
 
 	set measurement_unit(measurement_unit)
@@ -70,7 +70,7 @@ class ReportUtilization extends ObjectBase
 	 */
 	get cost()
 	{
-		return this._cost || null;
+		return (this._cost !== undefined ? this._cost : null);
 	}
 
 	set cost(cost)
@@ -83,7 +83,7 @@ class ReportUtilization extends ObjectBase
 	 */
 	get cost_currency()
 	{
-		return this._cost_currency || null;
+		return (this._cost_currency !== undefined ? this._cost_currency : null);
 	}
 
 	set cost_currency(cost_currency)
@@ -96,7 +96,7 @@ class ReportUtilization extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

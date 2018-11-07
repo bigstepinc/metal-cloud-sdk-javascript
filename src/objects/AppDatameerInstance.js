@@ -31,7 +31,7 @@ class AppDatameerInstance extends ObjectBase
 	 */
 	get ipAddress()
 	{
-		return this._ipAddress || null;
+		return (this._ipAddress !== undefined ? this._ipAddress : null);
 	}
 
 	set ipAddress(ipAddress)
@@ -44,7 +44,7 @@ class AppDatameerInstance extends ObjectBase
 	 */
 	get url()
 	{
-		return this._url || null;
+		return (this._url !== undefined ? this._url : null);
 	}
 
 	set url(url)
@@ -57,7 +57,7 @@ class AppDatameerInstance extends ObjectBase
 	 */
 	get instance_id()
 	{
-		return this._instance_id || null;
+		return (this._instance_id !== undefined ? this._instance_id : null);
 	}
 
 	set instance_id(instance_id)
@@ -70,7 +70,7 @@ class AppDatameerInstance extends ObjectBase
 	 */
 	get instance_label()
 	{
-		return this._instance_label || null;
+		return (this._instance_label !== undefined ? this._instance_label : null);
 	}
 
 	set instance_label(instance_label)
@@ -83,7 +83,7 @@ class AppDatameerInstance extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

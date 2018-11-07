@@ -42,7 +42,7 @@ class ReservedLANIPRange extends ObjectBase
 	 */
 	get reserved_range_start_human_readable()
 	{
-		return this._reserved_range_start_human_readable || null;
+		return (this._reserved_range_start_human_readable !== undefined ? this._reserved_range_start_human_readable : null);
 	}
 
 	set reserved_range_start_human_readable(reserved_range_start_human_readable)
@@ -55,7 +55,7 @@ class ReservedLANIPRange extends ObjectBase
 	 */
 	get reserved_range_end_human_readable()
 	{
-		return this._reserved_range_end_human_readable || null;
+		return (this._reserved_range_end_human_readable !== undefined ? this._reserved_range_end_human_readable : null);
 	}
 
 	set reserved_range_end_human_readable(reserved_range_end_human_readable)
@@ -68,7 +68,7 @@ class ReservedLANIPRange extends ObjectBase
 	 */
 	get reserved_range_description()
 	{
-		return this._reserved_range_description || null;
+		return (this._reserved_range_description !== undefined ? this._reserved_range_description : null);
 	}
 
 	set reserved_range_description(reserved_range_description)
@@ -81,7 +81,7 @@ class ReservedLANIPRange extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

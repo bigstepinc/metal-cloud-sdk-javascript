@@ -31,7 +31,7 @@ class AppDatastaxInstance extends ObjectBase
 	 */
 	get opscenter_username()
 	{
-		return this._opscenter_username || null;
+		return (this._opscenter_username !== undefined ? this._opscenter_username : null);
 	}
 
 	set opscenter_username(opscenter_username)
@@ -44,7 +44,7 @@ class AppDatastaxInstance extends ObjectBase
 	 */
 	get opscenter_initial_password()
 	{
-		return this._opscenter_initial_password || null;
+		return (this._opscenter_initial_password !== undefined ? this._opscenter_initial_password : null);
 	}
 
 	set opscenter_initial_password(opscenter_initial_password)
@@ -57,7 +57,7 @@ class AppDatastaxInstance extends ObjectBase
 	 */
 	get opscenter_ip()
 	{
-		return this._opscenter_ip || null;
+		return (this._opscenter_ip !== undefined ? this._opscenter_ip : null);
 	}
 
 	set opscenter_ip(opscenter_ip)
@@ -70,7 +70,7 @@ class AppDatastaxInstance extends ObjectBase
 	 */
 	get rpc_url()
 	{
-		return this._rpc_url || null;
+		return (this._rpc_url !== undefined ? this._rpc_url : null);
 	}
 
 	set rpc_url(rpc_url)
@@ -83,7 +83,7 @@ class AppDatastaxInstance extends ObjectBase
 	 */
 	get instance_id()
 	{
-		return this._instance_id || null;
+		return (this._instance_id !== undefined ? this._instance_id : null);
 	}
 
 	set instance_id(instance_id)
@@ -96,7 +96,7 @@ class AppDatastaxInstance extends ObjectBase
 	 */
 	get instance_label()
 	{
-		return this._instance_label || null;
+		return (this._instance_label !== undefined ? this._instance_label : null);
 	}
 
 	set instance_label(instance_label)
@@ -109,7 +109,7 @@ class AppDatastaxInstance extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

@@ -44,7 +44,7 @@ class SecureGatewayPeer extends ObjectBase
 	 */
 	get name()
 	{
-		return this._name || null;
+		return (this._name !== undefined ? this._name : null);
 	}
 
 	set name(name)
@@ -57,7 +57,7 @@ class SecureGatewayPeer extends ObjectBase
 	 */
 	get IP()
 	{
-		return this._IP || null;
+		return (this._IP !== undefined ? this._IP : null);
 	}
 
 	set IP(IP)
@@ -70,7 +70,7 @@ class SecureGatewayPeer extends ObjectBase
 	 */
 	get port()
 	{
-		return this._port || null;
+		return (this._port !== undefined ? this._port : null);
 	}
 
 	set port(port)
@@ -83,7 +83,7 @@ class SecureGatewayPeer extends ObjectBase
 	 */
 	get privateSSHKey()
 	{
-		return this._privateSSHKey || null;
+		return (this._privateSSHKey !== undefined ? this._privateSSHKey : null);
 	}
 
 	set privateSSHKey(privateSSHKey)
@@ -96,7 +96,7 @@ class SecureGatewayPeer extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

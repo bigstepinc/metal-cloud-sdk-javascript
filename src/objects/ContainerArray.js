@@ -34,7 +34,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_id()
 	{
-		return this._container_array_id || null;
+		return (this._container_array_id !== undefined ? this._container_array_id : null);
 	}
 
 	set container_array_id(container_array_id)
@@ -49,7 +49,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_change_id()
 	{
-		return this._container_array_change_id || null;
+		return (this._container_array_change_id !== undefined ? this._container_array_change_id : null);
 	}
 
 	set container_array_change_id(container_array_change_id)
@@ -62,7 +62,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_cluster_id()
 	{
-		return this._container_cluster_id || null;
+		return (this._container_cluster_id !== undefined ? this._container_cluster_id : null);
 	}
 
 	set container_cluster_id(container_cluster_id)
@@ -75,7 +75,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get infrastructure_id()
 	{
-		return this._infrastructure_id || null;
+		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
 	}
 
 	set infrastructure_id(infrastructure_id)
@@ -90,7 +90,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_label()
 	{
-		return this._container_array_label || null;
+		return (this._container_array_label !== undefined ? this._container_array_label : null);
 	}
 
 	set container_array_label(container_array_label)
@@ -104,7 +104,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_subdomain()
 	{
-		return this._container_array_subdomain || null;
+		return (this._container_array_subdomain !== undefined ? this._container_array_subdomain : null);
 	}
 
 	set container_array_subdomain(container_array_subdomain)
@@ -118,7 +118,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_subdomain_internal()
 	{
-		return this._container_array_subdomain_internal || null;
+		return (this._container_array_subdomain_internal !== undefined ? this._container_array_subdomain_internal : null);
 	}
 
 	set container_array_subdomain_internal(container_array_subdomain_internal)
@@ -133,7 +133,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_load_balancer_subdomain_internal()
 	{
-		return this._container_array_load_balancer_subdomain_internal || null;
+		return (this._container_array_load_balancer_subdomain_internal !== undefined ? this._container_array_load_balancer_subdomain_internal : null);
 	}
 
 	set container_array_load_balancer_subdomain_internal(container_array_load_balancer_subdomain_internal)
@@ -146,7 +146,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_service_status()
 	{
-		return this._container_array_service_status || null;
+		return (this._container_array_service_status !== undefined ? this._container_array_service_status : null);
 	}
 
 	set container_array_service_status(container_array_service_status)
@@ -159,7 +159,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_cluster_role_group()
 	{
-		return this._container_cluster_role_group || "none";
+		return (this._container_cluster_role_group !== undefined ? this._container_cluster_role_group : "none");
 	}
 
 	set container_cluster_role_group(container_cluster_role_group)
@@ -172,7 +172,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_operation()
 	{
-		return this._container_array_operation || null;
+		return (this._container_array_operation !== undefined ? this._container_array_operation : null);
 	}
 
 	set container_array_operation(container_array_operation)
@@ -185,7 +185,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_interfaces()
 	{
-		return this._container_array_interfaces || [];
+		return (this._container_array_interfaces !== undefined ? this._container_array_interfaces : []);
 	}
 
 	set container_array_interfaces(container_array_interfaces)
@@ -199,7 +199,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_ram_mbytes()
 	{
-		return this._container_array_ram_mbytes || 1024;
+		return (this._container_array_ram_mbytes !== undefined ? this._container_array_ram_mbytes : 1024);
 	}
 
 	set container_array_ram_mbytes(container_array_ram_mbytes)
@@ -213,7 +213,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_processor_core_count()
 	{
-		return this._container_array_processor_core_count || 1;
+		return (this._container_array_processor_core_count !== undefined ? this._container_array_processor_core_count : 1);
 	}
 
 	set container_array_processor_core_count(container_array_processor_core_count)
@@ -226,7 +226,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_container_count()
 	{
-		return this._container_array_container_count || 1;
+		return (this._container_array_container_count !== undefined ? this._container_array_container_count : 1);
 	}
 
 	set container_array_container_count(container_array_container_count)
@@ -239,7 +239,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_application_image()
 	{
-		return this._container_array_application_image || "bigstepinc/hello-world";
+		return (this._container_array_application_image !== undefined ? this._container_array_application_image : "bigstepinc/hello-world");
 	}
 
 	set container_array_application_image(container_array_application_image)
@@ -252,7 +252,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_entrypoint_command_override()
 	{
-		return this._container_array_entrypoint_command_override || [];
+		return (this._container_array_entrypoint_command_override !== undefined ? this._container_array_entrypoint_command_override : []);
 	}
 
 	set container_array_entrypoint_command_override(container_array_entrypoint_command_override)
@@ -265,7 +265,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_entrypoint_args()
 	{
-		return this._container_array_entrypoint_args || [];
+		return (this._container_array_entrypoint_args !== undefined ? this._container_array_entrypoint_args : []);
 	}
 
 	set container_array_entrypoint_args(container_array_entrypoint_args)
@@ -278,7 +278,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_environment_variables()
 	{
-		return this._container_array_environment_variables || [];
+		return (this._container_array_environment_variables !== undefined ? this._container_array_environment_variables : []);
 	}
 
 	set container_array_environment_variables(container_array_environment_variables)
@@ -291,7 +291,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_port_mappings()
 	{
-		return this._container_array_port_mappings || [];
+		return (this._container_array_port_mappings !== undefined ? this._container_array_port_mappings : []);
 	}
 
 	set container_array_port_mappings(container_array_port_mappings)
@@ -304,7 +304,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_config_map()
 	{
-		return this._container_array_config_map || null;
+		return (this._container_array_config_map !== undefined ? this._container_array_config_map : null);
 	}
 
 	set container_array_config_map(container_array_config_map)
@@ -317,7 +317,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_secrets()
 	{
-		return this._container_array_secrets || [];
+		return (this._container_array_secrets !== undefined ? this._container_array_secrets : []);
 	}
 
 	set container_array_secrets(container_array_secrets)
@@ -330,7 +330,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_volatile_volumes()
 	{
-		return this._container_array_volatile_volumes || [];
+		return (this._container_array_volatile_volumes !== undefined ? this._container_array_volatile_volumes : []);
 	}
 
 	set container_array_volatile_volumes(container_array_volatile_volumes)
@@ -343,7 +343,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_persistent_volumes()
 	{
-		return this._container_array_persistent_volumes || [];
+		return (this._container_array_persistent_volumes !== undefined ? this._container_array_persistent_volumes : []);
 	}
 
 	set container_array_persistent_volumes(container_array_persistent_volumes)
@@ -357,7 +357,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_readiness_check()
 	{
-		return this._container_array_readiness_check || null;
+		return (this._container_array_readiness_check !== undefined ? this._container_array_readiness_check : null);
 	}
 
 	set container_array_readiness_check(container_array_readiness_check)
@@ -371,7 +371,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_liveness_check()
 	{
-		return this._container_array_liveness_check || null;
+		return (this._container_array_liveness_check !== undefined ? this._container_array_liveness_check : null);
 	}
 
 	set container_array_liveness_check(container_array_liveness_check)
@@ -384,7 +384,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_gui_settings_json()
 	{
-		return this._container_array_gui_settings_json || "";
+		return (this._container_array_gui_settings_json !== undefined ? this._container_array_gui_settings_json : "");
 	}
 
 	set container_array_gui_settings_json(container_array_gui_settings_json)
@@ -398,7 +398,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_created_timestamp()
 	{
-		return this._container_array_created_timestamp || "0000-00-00T00:00:00Z";
+		return (this._container_array_created_timestamp !== undefined ? this._container_array_created_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set container_array_created_timestamp(container_array_created_timestamp)
@@ -412,7 +412,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get container_array_updated_timestamp()
 	{
-		return this._container_array_updated_timestamp || "0000-00-00T00:00:00Z";
+		return (this._container_array_updated_timestamp !== undefined ? this._container_array_updated_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set container_array_updated_timestamp(container_array_updated_timestamp)
@@ -425,7 +425,7 @@ class ContainerArray extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

@@ -36,7 +36,7 @@ class ClusterConnection extends ObjectBase
 	 */
 	get cluster_id()
 	{
-		return this._cluster_id || null;
+		return (this._cluster_id !== undefined ? this._cluster_id : null);
 	}
 
 	set cluster_id(cluster_id)
@@ -49,7 +49,7 @@ class ClusterConnection extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

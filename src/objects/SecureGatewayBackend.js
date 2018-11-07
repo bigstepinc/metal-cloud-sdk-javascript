@@ -31,7 +31,7 @@ class SecureGatewayBackend extends ObjectBase
 	 */
 	get name()
 	{
-		return this._name || null;
+		return (this._name !== undefined ? this._name : null);
 	}
 
 	set name(name)
@@ -44,7 +44,7 @@ class SecureGatewayBackend extends ObjectBase
 	 */
 	get ip()
 	{
-		return this._ip || null;
+		return (this._ip !== undefined ? this._ip : null);
 	}
 
 	set ip(ip)
@@ -57,7 +57,7 @@ class SecureGatewayBackend extends ObjectBase
 	 */
 	get port()
 	{
-		return this._port || null;
+		return (this._port !== undefined ? this._port : null);
 	}
 
 	set port(port)
@@ -70,7 +70,7 @@ class SecureGatewayBackend extends ObjectBase
 	 */
 	get check_enabled()
 	{
-		return this._check_enabled || null;
+		return (this._check_enabled !== undefined ? this._check_enabled : null);
 	}
 
 	set check_enabled(check_enabled)
@@ -83,7 +83,7 @@ class SecureGatewayBackend extends ObjectBase
 	 */
 	get ssl_enabled()
 	{
-		return this._ssl_enabled || null;
+		return (this._ssl_enabled !== undefined ? this._ssl_enabled : null);
 	}
 
 	set ssl_enabled(ssl_enabled)
@@ -96,7 +96,7 @@ class SecureGatewayBackend extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

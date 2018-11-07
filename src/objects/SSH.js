@@ -31,7 +31,7 @@ class SSH extends ObjectBase
 	 */
 	get port()
 	{
-		return this._port || null;
+		return (this._port !== undefined ? this._port : null);
 	}
 
 	set port(port)
@@ -45,7 +45,7 @@ class SSH extends ObjectBase
 	 */
 	get username()
 	{
-		return this._username || null;
+		return (this._username !== undefined ? this._username : null);
 	}
 
 	set username(username)
@@ -59,7 +59,7 @@ class SSH extends ObjectBase
 	 */
 	get initial_password()
 	{
-		return this._initial_password || null;
+		return (this._initial_password !== undefined ? this._initial_password : null);
 	}
 
 	set initial_password(initial_password)
@@ -74,7 +74,7 @@ class SSH extends ObjectBase
 	 */
 	get initial_ssh_keys()
 	{
-		return this._initial_ssh_keys || {};
+		return (this._initial_ssh_keys !== undefined ? this._initial_ssh_keys : {});
 	}
 
 	set initial_ssh_keys(initial_ssh_keys)
@@ -87,7 +87,7 @@ class SSH extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

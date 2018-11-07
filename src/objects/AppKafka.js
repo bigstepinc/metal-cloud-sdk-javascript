@@ -36,7 +36,7 @@ class AppKafka extends ObjectBase
 	 */
 	get kafka_brokers()
 	{
-		return this._kafka_brokers || [];
+		return (this._kafka_brokers !== undefined ? this._kafka_brokers : []);
 	}
 
 	set kafka_brokers(kafka_brokers)
@@ -49,7 +49,7 @@ class AppKafka extends ObjectBase
 	 */
 	get kafka_brokers_connection_strings()
 	{
-		return this._kafka_brokers_connection_strings || [];
+		return (this._kafka_brokers_connection_strings !== undefined ? this._kafka_brokers_connection_strings : []);
 	}
 
 	set kafka_brokers_connection_strings(kafka_brokers_connection_strings)
@@ -62,7 +62,7 @@ class AppKafka extends ObjectBase
 	 */
 	get kafka_manager_url()
 	{
-		return this._kafka_manager_url || null;
+		return (this._kafka_manager_url !== undefined ? this._kafka_manager_url : null);
 	}
 
 	set kafka_manager_url(kafka_manager_url)
@@ -75,7 +75,7 @@ class AppKafka extends ObjectBase
 	 */
 	get container_cluster_software_available_versions()
 	{
-		return this._container_cluster_software_available_versions || [];
+		return (this._container_cluster_software_available_versions !== undefined ? this._container_cluster_software_available_versions : []);
 	}
 
 	set container_cluster_software_available_versions(container_cluster_software_available_versions)
@@ -88,7 +88,7 @@ class AppKafka extends ObjectBase
 	 */
 	get container_cluster_software_version()
 	{
-		return this._container_cluster_software_version || null;
+		return (this._container_cluster_software_version !== undefined ? this._container_cluster_software_version : null);
 	}
 
 	set container_cluster_software_version(container_cluster_software_version)
@@ -101,7 +101,7 @@ class AppKafka extends ObjectBase
 	 */
 	get connectable_container_clusters()
 	{
-		return this._connectable_container_clusters || [];
+		return (this._connectable_container_clusters !== undefined ? this._connectable_container_clusters : []);
 	}
 
 	set connectable_container_clusters(connectable_container_clusters)
@@ -114,7 +114,7 @@ class AppKafka extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

@@ -32,7 +32,7 @@ class Snapshot extends ObjectBase
 	 */
 	get drive_snapshot_label()
 	{
-		return this._drive_snapshot_label || null;
+		return (this._drive_snapshot_label !== undefined ? this._drive_snapshot_label : null);
 	}
 
 	set drive_snapshot_label(drive_snapshot_label)
@@ -45,7 +45,7 @@ class Snapshot extends ObjectBase
 	 */
 	get drive_snapshot_id()
 	{
-		return this._drive_snapshot_id || null;
+		return (this._drive_snapshot_id !== undefined ? this._drive_snapshot_id : null);
 	}
 
 	set drive_snapshot_id(drive_snapshot_id)
@@ -58,7 +58,7 @@ class Snapshot extends ObjectBase
 	 */
 	get drive_id()
 	{
-		return this._drive_id || null;
+		return (this._drive_id !== undefined ? this._drive_id : null);
 	}
 
 	set drive_id(drive_id)
@@ -72,7 +72,7 @@ class Snapshot extends ObjectBase
 	 */
 	get drive_snapshot_created_timestamp()
 	{
-		return this._drive_snapshot_created_timestamp || null;
+		return (this._drive_snapshot_created_timestamp !== undefined ? this._drive_snapshot_created_timestamp : null);
 	}
 
 	set drive_snapshot_created_timestamp(drive_snapshot_created_timestamp)
@@ -85,7 +85,7 @@ class Snapshot extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

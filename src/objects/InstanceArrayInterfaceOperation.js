@@ -46,7 +46,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get instance_array_interface_label()
 	{
-		return this._instance_array_interface_label || null;
+		return (this._instance_array_interface_label !== undefined ? this._instance_array_interface_label : null);
 	}
 
 	set instance_array_interface_label(instance_array_interface_label)
@@ -60,7 +60,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get instance_array_interface_subdomain()
 	{
-		return this._instance_array_interface_subdomain || null;
+		return (this._instance_array_interface_subdomain !== undefined ? this._instance_array_interface_subdomain : null);
 	}
 
 	set instance_array_interface_subdomain(instance_array_interface_subdomain)
@@ -73,7 +73,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get instance_array_interface_deploy_status()
 	{
-		return this._instance_array_interface_deploy_status || null;
+		return (this._instance_array_interface_deploy_status !== undefined ? this._instance_array_interface_deploy_status : null);
 	}
 
 	set instance_array_interface_deploy_status(instance_array_interface_deploy_status)
@@ -86,7 +86,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get instance_array_interface_deploy_type()
 	{
-		return this._instance_array_interface_deploy_type || null;
+		return (this._instance_array_interface_deploy_type !== undefined ? this._instance_array_interface_deploy_type : null);
 	}
 
 	set instance_array_interface_deploy_type(instance_array_interface_deploy_type)
@@ -99,7 +99,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get instance_array_interface_id()
 	{
-		return this._instance_array_interface_id || null;
+		return (this._instance_array_interface_id !== undefined ? this._instance_array_interface_id : null);
 	}
 
 	set instance_array_interface_id(instance_array_interface_id)
@@ -112,7 +112,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get instance_array_id()
 	{
-		return this._instance_array_id || null;
+		return (this._instance_array_id !== undefined ? this._instance_array_id : null);
 	}
 
 	set instance_array_id(instance_array_id)
@@ -125,7 +125,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get network_id()
 	{
-		return this._network_id || null;
+		return (this._network_id !== undefined ? this._network_id : null);
 	}
 
 	set network_id(network_id)
@@ -140,7 +140,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get instance_array_interface_lagg_indexes()
 	{
-		return this._instance_array_interface_lagg_indexes || [];
+		return (this._instance_array_interface_lagg_indexes !== undefined ? this._instance_array_interface_lagg_indexes : []);
 	}
 
 	set instance_array_interface_lagg_indexes(instance_array_interface_lagg_indexes)
@@ -154,7 +154,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get instance_array_interface_updated_timestamp()
 	{
-		return this._instance_array_interface_updated_timestamp || null;
+		return (this._instance_array_interface_updated_timestamp !== undefined ? this._instance_array_interface_updated_timestamp : null);
 	}
 
 	set instance_array_interface_updated_timestamp(instance_array_interface_updated_timestamp)
@@ -167,7 +167,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get instance_array_interface_index()
 	{
-		return this._instance_array_interface_index || null;
+		return (this._instance_array_interface_index !== undefined ? this._instance_array_interface_index : null);
 	}
 
 	set instance_array_interface_index(instance_array_interface_index)
@@ -180,7 +180,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -195,7 +195,7 @@ class InstanceArrayInterfaceOperation extends ObjectBase
 	 */
 	get instance_array_interface_change_id()
 	{
-		return this._instance_array_interface_change_id || null;
+		return (this._instance_array_interface_change_id !== undefined ? this._instance_array_interface_change_id : null);
 	}
 
 	set instance_array_interface_change_id(instance_array_interface_change_id)

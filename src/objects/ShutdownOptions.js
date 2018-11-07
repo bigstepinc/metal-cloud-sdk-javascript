@@ -47,7 +47,7 @@ class ShutdownOptions extends ObjectBase
 	 */
 	get hard_shutdown_after_timeout()
 	{
-		return this._hard_shutdown_after_timeout || null;
+		return (this._hard_shutdown_after_timeout !== undefined ? this._hard_shutdown_after_timeout : null);
 	}
 
 	set hard_shutdown_after_timeout(hard_shutdown_after_timeout)
@@ -61,7 +61,7 @@ class ShutdownOptions extends ObjectBase
 	 */
 	get attempt_soft_shutdown()
 	{
-		return this._attempt_soft_shutdown || null;
+		return (this._attempt_soft_shutdown !== undefined ? this._attempt_soft_shutdown : null);
 	}
 
 	set attempt_soft_shutdown(attempt_soft_shutdown)
@@ -78,7 +78,7 @@ class ShutdownOptions extends ObjectBase
 	 */
 	get soft_shutdown_timeout_seconds()
 	{
-		return this._soft_shutdown_timeout_seconds || 120;
+		return (this._soft_shutdown_timeout_seconds !== undefined ? this._soft_shutdown_timeout_seconds : 120);
 	}
 
 	set soft_shutdown_timeout_seconds(soft_shutdown_timeout_seconds)
@@ -91,7 +91,7 @@ class ShutdownOptions extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

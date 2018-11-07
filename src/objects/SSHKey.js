@@ -31,7 +31,7 @@ class SSHKey extends ObjectBase
 	 */
 	get user_ssh_key_id()
 	{
-		return this._user_ssh_key_id || null;
+		return (this._user_ssh_key_id !== undefined ? this._user_ssh_key_id : null);
 	}
 
 	set user_ssh_key_id(user_ssh_key_id)
@@ -44,7 +44,7 @@ class SSHKey extends ObjectBase
 	 */
 	get user_id()
 	{
-		return this._user_id || null;
+		return (this._user_id !== undefined ? this._user_id : null);
 	}
 
 	set user_id(user_id)
@@ -57,7 +57,7 @@ class SSHKey extends ObjectBase
 	 */
 	get user_ssh_key()
 	{
-		return this._user_ssh_key || null;
+		return (this._user_ssh_key !== undefined ? this._user_ssh_key : null);
 	}
 
 	set user_ssh_key(user_ssh_key)
@@ -71,7 +71,7 @@ class SSHKey extends ObjectBase
 	 */
 	get user_ssh_key_created_timestamp()
 	{
-		return this._user_ssh_key_created_timestamp || null;
+		return (this._user_ssh_key_created_timestamp !== undefined ? this._user_ssh_key_created_timestamp : null);
 	}
 
 	set user_ssh_key_created_timestamp(user_ssh_key_created_timestamp)
@@ -84,7 +84,7 @@ class SSHKey extends ObjectBase
 	 */
 	get user_ssh_key_status()
 	{
-		return this._user_ssh_key_status || "active";
+		return (this._user_ssh_key_status !== undefined ? this._user_ssh_key_status : "active");
 	}
 
 	set user_ssh_key_status(user_ssh_key_status)
@@ -97,7 +97,7 @@ class SSHKey extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

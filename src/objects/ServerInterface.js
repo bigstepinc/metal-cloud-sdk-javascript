@@ -31,7 +31,7 @@ class ServerInterface extends ObjectBase
 	 */
 	get server_interface_mac_address()
 	{
-		return this._server_interface_mac_address || null;
+		return (this._server_interface_mac_address !== undefined ? this._server_interface_mac_address : null);
 	}
 
 	set server_interface_mac_address(server_interface_mac_address)
@@ -44,7 +44,7 @@ class ServerInterface extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

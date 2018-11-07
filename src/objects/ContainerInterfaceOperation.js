@@ -32,7 +32,7 @@ class ContainerInterfaceOperation extends ObjectBase
 	 */
 	get container_interface_id()
 	{
-		return this._container_interface_id || null;
+		return (this._container_interface_id !== undefined ? this._container_interface_id : null);
 	}
 
 	set container_interface_id(container_interface_id)
@@ -47,7 +47,7 @@ class ContainerInterfaceOperation extends ObjectBase
 	 */
 	get container_interface_change_id()
 	{
-		return this._container_interface_change_id || null;
+		return (this._container_interface_change_id !== undefined ? this._container_interface_change_id : null);
 	}
 
 	set container_interface_change_id(container_interface_change_id)
@@ -60,7 +60,7 @@ class ContainerInterfaceOperation extends ObjectBase
 	 */
 	get network_id()
 	{
-		return this._network_id || null;
+		return (this._network_id !== undefined ? this._network_id : null);
 	}
 
 	set network_id(network_id)
@@ -74,7 +74,7 @@ class ContainerInterfaceOperation extends ObjectBase
 	 */
 	get container_interface_label()
 	{
-		return this._container_interface_label || null;
+		return (this._container_interface_label !== undefined ? this._container_interface_label : null);
 	}
 
 	set container_interface_label(container_interface_label)
@@ -88,7 +88,7 @@ class ContainerInterfaceOperation extends ObjectBase
 	 */
 	get container_interface_subdomain()
 	{
-		return this._container_interface_subdomain || null;
+		return (this._container_interface_subdomain !== undefined ? this._container_interface_subdomain : null);
 	}
 
 	set container_interface_subdomain(container_interface_subdomain)
@@ -101,7 +101,7 @@ class ContainerInterfaceOperation extends ObjectBase
 	 */
 	get container_interface_deploy_type()
 	{
-		return this._container_interface_deploy_type || null;
+		return (this._container_interface_deploy_type !== undefined ? this._container_interface_deploy_type : null);
 	}
 
 	set container_interface_deploy_type(container_interface_deploy_type)
@@ -114,7 +114,7 @@ class ContainerInterfaceOperation extends ObjectBase
 	 */
 	get container_interface_deploy_status()
 	{
-		return this._container_interface_deploy_status || null;
+		return (this._container_interface_deploy_status !== undefined ? this._container_interface_deploy_status : null);
 	}
 
 	set container_interface_deploy_status(container_interface_deploy_status)
@@ -128,7 +128,7 @@ class ContainerInterfaceOperation extends ObjectBase
 	 */
 	get container_interface_index()
 	{
-		return this._container_interface_index || null;
+		return (this._container_interface_index !== undefined ? this._container_interface_index : null);
 	}
 
 	set container_interface_index(container_interface_index)
@@ -142,7 +142,7 @@ class ContainerInterfaceOperation extends ObjectBase
 	 */
 	get container_interface_updated_timestamp()
 	{
-		return this._container_interface_updated_timestamp || "0000-00-00T00:00:00Z";
+		return (this._container_interface_updated_timestamp !== undefined ? this._container_interface_updated_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set container_interface_updated_timestamp(container_interface_updated_timestamp)
@@ -155,7 +155,7 @@ class ContainerInterfaceOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

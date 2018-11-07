@@ -31,7 +31,7 @@ class RDP extends ObjectBase
 	 */
 	get port()
 	{
-		return this._port || null;
+		return (this._port !== undefined ? this._port : null);
 	}
 
 	set port(port)
@@ -45,7 +45,7 @@ class RDP extends ObjectBase
 	 */
 	get username()
 	{
-		return this._username || null;
+		return (this._username !== undefined ? this._username : null);
 	}
 
 	set username(username)
@@ -59,7 +59,7 @@ class RDP extends ObjectBase
 	 */
 	get initial_password()
 	{
-		return this._initial_password || null;
+		return (this._initial_password !== undefined ? this._initial_password : null);
 	}
 
 	set initial_password(initial_password)
@@ -72,7 +72,7 @@ class RDP extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

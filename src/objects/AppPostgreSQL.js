@@ -36,7 +36,7 @@ class AppPostgreSQL extends ObjectBase
 	 */
 	get postgresql_node()
 	{
-		return this._postgresql_node || [];
+		return (this._postgresql_node !== undefined ? this._postgresql_node : []);
 	}
 
 	set postgresql_node(postgresql_node)
@@ -49,7 +49,7 @@ class AppPostgreSQL extends ObjectBase
 	 */
 	get postgresql_connection_strings()
 	{
-		return this._postgresql_connection_strings || [];
+		return (this._postgresql_connection_strings !== undefined ? this._postgresql_connection_strings : []);
 	}
 
 	set postgresql_connection_strings(postgresql_connection_strings)
@@ -62,7 +62,7 @@ class AppPostgreSQL extends ObjectBase
 	 */
 	get container_cluster_software_available_versions()
 	{
-		return this._container_cluster_software_available_versions || [];
+		return (this._container_cluster_software_available_versions !== undefined ? this._container_cluster_software_available_versions : []);
 	}
 
 	set container_cluster_software_available_versions(container_cluster_software_available_versions)
@@ -75,7 +75,7 @@ class AppPostgreSQL extends ObjectBase
 	 */
 	get container_cluster_software_version()
 	{
-		return this._container_cluster_software_version || null;
+		return (this._container_cluster_software_version !== undefined ? this._container_cluster_software_version : null);
 	}
 
 	set container_cluster_software_version(container_cluster_software_version)
@@ -88,7 +88,7 @@ class AppPostgreSQL extends ObjectBase
 	 */
 	get connectable_container_clusters()
 	{
-		return this._connectable_container_clusters || [];
+		return (this._connectable_container_clusters !== undefined ? this._connectable_container_clusters : []);
 	}
 
 	set connectable_container_clusters(connectable_container_clusters)
@@ -101,7 +101,7 @@ class AppPostgreSQL extends ObjectBase
 	 */
 	get postgresql_username()
 	{
-		return this._postgresql_username || null;
+		return (this._postgresql_username !== undefined ? this._postgresql_username : null);
 	}
 
 	set postgresql_username(postgresql_username)
@@ -114,7 +114,7 @@ class AppPostgreSQL extends ObjectBase
 	 */
 	get postgresql_password()
 	{
-		return this._postgresql_password || null;
+		return (this._postgresql_password !== undefined ? this._postgresql_password : null);
 	}
 
 	set postgresql_password(postgresql_password)
@@ -127,7 +127,7 @@ class AppPostgreSQL extends ObjectBase
 	 */
 	get postgresql_database()
 	{
-		return this._postgresql_database || null;
+		return (this._postgresql_database !== undefined ? this._postgresql_database : null);
 	}
 
 	set postgresql_database(postgresql_database)
@@ -140,7 +140,7 @@ class AppPostgreSQL extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

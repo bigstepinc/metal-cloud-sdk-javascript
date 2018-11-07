@@ -34,7 +34,7 @@ class AppMysqlPerconaInstance extends ObjectBase
 	 */
 	get admin_username()
 	{
-		return this._admin_username || null;
+		return (this._admin_username !== undefined ? this._admin_username : null);
 	}
 
 	set admin_username(admin_username)
@@ -47,7 +47,7 @@ class AppMysqlPerconaInstance extends ObjectBase
 	 */
 	get admin_initial_password()
 	{
-		return this._admin_initial_password || null;
+		return (this._admin_initial_password !== undefined ? this._admin_initial_password : null);
 	}
 
 	set admin_initial_password(admin_initial_password)
@@ -60,7 +60,7 @@ class AppMysqlPerconaInstance extends ObjectBase
 	 */
 	get hostname()
 	{
-		return this._hostname || null;
+		return (this._hostname !== undefined ? this._hostname : null);
 	}
 
 	set hostname(hostname)
@@ -73,7 +73,7 @@ class AppMysqlPerconaInstance extends ObjectBase
 	 */
 	get port()
 	{
-		return this._port || null;
+		return (this._port !== undefined ? this._port : null);
 	}
 
 	set port(port)
@@ -86,7 +86,7 @@ class AppMysqlPerconaInstance extends ObjectBase
 	 */
 	get status()
 	{
-		return this._status || null;
+		return (this._status !== undefined ? this._status : null);
 	}
 
 	set status(status)
@@ -99,7 +99,7 @@ class AppMysqlPerconaInstance extends ObjectBase
 	 */
 	get version()
 	{
-		return this._version || null;
+		return (this._version !== undefined ? this._version : null);
 	}
 
 	set version(version)
@@ -112,7 +112,7 @@ class AppMysqlPerconaInstance extends ObjectBase
 	 */
 	get memoryTotal()
 	{
-		return this._memoryTotal || null;
+		return (this._memoryTotal !== undefined ? this._memoryTotal : null);
 	}
 
 	set memoryTotal(memoryTotal)
@@ -125,7 +125,7 @@ class AppMysqlPerconaInstance extends ObjectBase
 	 */
 	get memoryFree()
 	{
-		return this._memoryFree || null;
+		return (this._memoryFree !== undefined ? this._memoryFree : null);
 	}
 
 	set memoryFree(memoryFree)
@@ -138,7 +138,7 @@ class AppMysqlPerconaInstance extends ObjectBase
 	 */
 	get instance_id()
 	{
-		return this._instance_id || null;
+		return (this._instance_id !== undefined ? this._instance_id : null);
 	}
 
 	set instance_id(instance_id)
@@ -151,7 +151,7 @@ class AppMysqlPerconaInstance extends ObjectBase
 	 */
 	get instance_label()
 	{
-		return this._instance_label || null;
+		return (this._instance_label !== undefined ? this._instance_label : null);
 	}
 
 	set instance_label(instance_label)
@@ -164,7 +164,7 @@ class AppMysqlPerconaInstance extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

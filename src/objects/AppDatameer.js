@@ -32,7 +32,7 @@ class AppDatameer extends ObjectBase
 	 */
 	get datameer_nodes()
 	{
-		return this._datameer_nodes || [];
+		return (this._datameer_nodes !== undefined ? this._datameer_nodes : []);
 	}
 
 	set datameer_nodes(datameer_nodes)
@@ -45,7 +45,7 @@ class AppDatameer extends ObjectBase
 	 */
 	get admin_username()
 	{
-		return this._admin_username || null;
+		return (this._admin_username !== undefined ? this._admin_username : null);
 	}
 
 	set admin_username(admin_username)
@@ -58,7 +58,7 @@ class AppDatameer extends ObjectBase
 	 */
 	get admin_initial_password()
 	{
-		return this._admin_initial_password || null;
+		return (this._admin_initial_password !== undefined ? this._admin_initial_password : null);
 	}
 
 	set admin_initial_password(admin_initial_password)
@@ -71,7 +71,7 @@ class AppDatameer extends ObjectBase
 	 */
 	get cluster_software_available_versions()
 	{
-		return this._cluster_software_available_versions || [];
+		return (this._cluster_software_available_versions !== undefined ? this._cluster_software_available_versions : []);
 	}
 
 	set cluster_software_available_versions(cluster_software_available_versions)
@@ -84,7 +84,7 @@ class AppDatameer extends ObjectBase
 	 */
 	get cluster_software_version()
 	{
-		return this._cluster_software_version || null;
+		return (this._cluster_software_version !== undefined ? this._cluster_software_version : null);
 	}
 
 	set cluster_software_version(cluster_software_version)
@@ -97,7 +97,7 @@ class AppDatameer extends ObjectBase
 	 */
 	get connectable_clusters()
 	{
-		return this._connectable_clusters || [];
+		return (this._connectable_clusters !== undefined ? this._connectable_clusters : []);
 	}
 
 	set connectable_clusters(connectable_clusters)
@@ -110,7 +110,7 @@ class AppDatameer extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

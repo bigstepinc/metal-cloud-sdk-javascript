@@ -43,7 +43,7 @@ class AppDatastax extends ObjectBase
 	 */
 	get seeds()
 	{
-		return this._seeds || [];
+		return (this._seeds !== undefined ? this._seeds : []);
 	}
 
 	set seeds(seeds)
@@ -56,7 +56,7 @@ class AppDatastax extends ObjectBase
 	 */
 	get nodes()
 	{
-		return this._nodes || [];
+		return (this._nodes !== undefined ? this._nodes : []);
 	}
 
 	set nodes(nodes)
@@ -69,7 +69,7 @@ class AppDatastax extends ObjectBase
 	 */
 	get cluster_software_available_versions()
 	{
-		return this._cluster_software_available_versions || [];
+		return (this._cluster_software_available_versions !== undefined ? this._cluster_software_available_versions : []);
 	}
 
 	set cluster_software_available_versions(cluster_software_available_versions)
@@ -82,7 +82,7 @@ class AppDatastax extends ObjectBase
 	 */
 	get cluster_software_version()
 	{
-		return this._cluster_software_version || null;
+		return (this._cluster_software_version !== undefined ? this._cluster_software_version : null);
 	}
 
 	set cluster_software_version(cluster_software_version)
@@ -95,7 +95,7 @@ class AppDatastax extends ObjectBase
 	 */
 	get connectable_clusters()
 	{
-		return this._connectable_clusters || [];
+		return (this._connectable_clusters !== undefined ? this._connectable_clusters : []);
 	}
 
 	set connectable_clusters(connectable_clusters)
@@ -108,7 +108,7 @@ class AppDatastax extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

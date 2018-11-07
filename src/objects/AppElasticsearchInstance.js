@@ -34,7 +34,7 @@ class AppElasticsearchInstance extends ObjectBase
 	 */
 	get ui_url()
 	{
-		return this._ui_url || null;
+		return (this._ui_url !== undefined ? this._ui_url : null);
 	}
 
 	set ui_url(ui_url)
@@ -48,7 +48,7 @@ class AppElasticsearchInstance extends ObjectBase
 	 */
 	get cpu_usage_percent()
 	{
-		return this._cpu_usage_percent || null;
+		return (this._cpu_usage_percent !== undefined ? this._cpu_usage_percent : null);
 	}
 
 	set cpu_usage_percent(cpu_usage_percent)
@@ -61,7 +61,7 @@ class AppElasticsearchInstance extends ObjectBase
 	 */
 	get memory_total_gb()
 	{
-		return this._memory_total_gb || null;
+		return (this._memory_total_gb !== undefined ? this._memory_total_gb : null);
 	}
 
 	set memory_total_gb(memory_total_gb)
@@ -74,7 +74,7 @@ class AppElasticsearchInstance extends ObjectBase
 	 */
 	get memory_used_percent()
 	{
-		return this._memory_used_percent || null;
+		return (this._memory_used_percent !== undefined ? this._memory_used_percent : null);
 	}
 
 	set memory_used_percent(memory_used_percent)
@@ -87,7 +87,7 @@ class AppElasticsearchInstance extends ObjectBase
 	 */
 	get fs_memory_total_gb()
 	{
-		return this._fs_memory_total_gb || null;
+		return (this._fs_memory_total_gb !== undefined ? this._fs_memory_total_gb : null);
 	}
 
 	set fs_memory_total_gb(fs_memory_total_gb)
@@ -101,7 +101,7 @@ class AppElasticsearchInstance extends ObjectBase
 	 */
 	get fs_memory_used_gb()
 	{
-		return this._fs_memory_used_gb || null;
+		return (this._fs_memory_used_gb !== undefined ? this._fs_memory_used_gb : null);
 	}
 
 	set fs_memory_used_gb(fs_memory_used_gb)
@@ -114,7 +114,7 @@ class AppElasticsearchInstance extends ObjectBase
 	 */
 	get version()
 	{
-		return this._version || null;
+		return (this._version !== undefined ? this._version : null);
 	}
 
 	set version(version)
@@ -127,7 +127,7 @@ class AppElasticsearchInstance extends ObjectBase
 	 */
 	get node_id()
 	{
-		return this._node_id || null;
+		return (this._node_id !== undefined ? this._node_id : null);
 	}
 
 	set node_id(node_id)
@@ -140,7 +140,7 @@ class AppElasticsearchInstance extends ObjectBase
 	 */
 	get instance_id()
 	{
-		return this._instance_id || null;
+		return (this._instance_id !== undefined ? this._instance_id : null);
 	}
 
 	set instance_id(instance_id)
@@ -153,7 +153,7 @@ class AppElasticsearchInstance extends ObjectBase
 	 */
 	get instance_label()
 	{
-		return this._instance_label || null;
+		return (this._instance_label !== undefined ? this._instance_label : null);
 	}
 
 	set instance_label(instance_label)
@@ -166,7 +166,7 @@ class AppElasticsearchInstance extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

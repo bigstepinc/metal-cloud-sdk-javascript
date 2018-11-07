@@ -42,7 +42,7 @@ class DataLakeCredentials extends ObjectBase
 	 */
 	get hdfs()
 	{
-		return this._hdfs || null;
+		return (this._hdfs !== undefined ? this._hdfs : null);
 	}
 
 	set hdfs(hdfs)
@@ -55,7 +55,7 @@ class DataLakeCredentials extends ObjectBase
 	 */
 	get kerberos()
 	{
-		return this._kerberos || null;
+		return (this._kerberos !== undefined ? this._kerberos : null);
 	}
 
 	set kerberos(kerberos)
@@ -68,7 +68,7 @@ class DataLakeCredentials extends ObjectBase
 	 */
 	get hdfs_login_tutorial_url()
 	{
-		return this._hdfs_login_tutorial_url || null;
+		return (this._hdfs_login_tutorial_url !== undefined ? this._hdfs_login_tutorial_url : null);
 	}
 
 	set hdfs_login_tutorial_url(hdfs_login_tutorial_url)
@@ -81,7 +81,7 @@ class DataLakeCredentials extends ObjectBase
 	 */
 	get data_lake_command_line_tool_documentation_url()
 	{
-		return this._data_lake_command_line_tool_documentation_url || null;
+		return (this._data_lake_command_line_tool_documentation_url !== undefined ? this._data_lake_command_line_tool_documentation_url : null);
 	}
 
 	set data_lake_command_line_tool_documentation_url(data_lake_command_line_tool_documentation_url)
@@ -94,7 +94,7 @@ class DataLakeCredentials extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

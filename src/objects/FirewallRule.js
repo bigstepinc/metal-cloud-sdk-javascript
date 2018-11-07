@@ -36,7 +36,7 @@ class FirewallRule extends ObjectBase
 	 */
 	get firewall_rule_description()
 	{
-		return this._firewall_rule_description || "Rule description.";
+		return (this._firewall_rule_description !== undefined ? this._firewall_rule_description : "Rule description.");
 	}
 
 	set firewall_rule_description(firewall_rule_description)
@@ -50,7 +50,7 @@ class FirewallRule extends ObjectBase
 	 */
 	get firewall_rule_port_range_start()
 	{
-		return this._firewall_rule_port_range_start || null;
+		return (this._firewall_rule_port_range_start !== undefined ? this._firewall_rule_port_range_start : null);
 	}
 
 	set firewall_rule_port_range_start(firewall_rule_port_range_start)
@@ -64,7 +64,7 @@ class FirewallRule extends ObjectBase
 	 */
 	get firewall_rule_port_range_end()
 	{
-		return this._firewall_rule_port_range_end || null;
+		return (this._firewall_rule_port_range_end !== undefined ? this._firewall_rule_port_range_end : null);
 	}
 
 	set firewall_rule_port_range_end(firewall_rule_port_range_end)
@@ -78,7 +78,7 @@ class FirewallRule extends ObjectBase
 	 */
 	get firewall_rule_source_ip_address_range_start()
 	{
-		return this._firewall_rule_source_ip_address_range_start || null;
+		return (this._firewall_rule_source_ip_address_range_start !== undefined ? this._firewall_rule_source_ip_address_range_start : null);
 	}
 
 	set firewall_rule_source_ip_address_range_start(firewall_rule_source_ip_address_range_start)
@@ -92,7 +92,7 @@ class FirewallRule extends ObjectBase
 	 */
 	get firewall_rule_source_ip_address_range_end()
 	{
-		return this._firewall_rule_source_ip_address_range_end || null;
+		return (this._firewall_rule_source_ip_address_range_end !== undefined ? this._firewall_rule_source_ip_address_range_end : null);
 	}
 
 	set firewall_rule_source_ip_address_range_end(firewall_rule_source_ip_address_range_end)
@@ -106,7 +106,7 @@ class FirewallRule extends ObjectBase
 	 */
 	get firewall_rule_destination_ip_address_range_start()
 	{
-		return this._firewall_rule_destination_ip_address_range_start || null;
+		return (this._firewall_rule_destination_ip_address_range_start !== undefined ? this._firewall_rule_destination_ip_address_range_start : null);
 	}
 
 	set firewall_rule_destination_ip_address_range_start(firewall_rule_destination_ip_address_range_start)
@@ -120,7 +120,7 @@ class FirewallRule extends ObjectBase
 	 */
 	get firewall_rule_destination_ip_address_range_end()
 	{
-		return this._firewall_rule_destination_ip_address_range_end || null;
+		return (this._firewall_rule_destination_ip_address_range_end !== undefined ? this._firewall_rule_destination_ip_address_range_end : null);
 	}
 
 	set firewall_rule_destination_ip_address_range_end(firewall_rule_destination_ip_address_range_end)
@@ -133,7 +133,7 @@ class FirewallRule extends ObjectBase
 	 */
 	get firewall_rule_protocol()
 	{
-		return this._firewall_rule_protocol || "all";
+		return (this._firewall_rule_protocol !== undefined ? this._firewall_rule_protocol : "all");
 	}
 
 	set firewall_rule_protocol(firewall_rule_protocol)
@@ -146,7 +146,7 @@ class FirewallRule extends ObjectBase
 	 */
 	get firewall_rule_ip_address_type()
 	{
-		return this._firewall_rule_ip_address_type || null;
+		return (this._firewall_rule_ip_address_type !== undefined ? this._firewall_rule_ip_address_type : null);
 	}
 
 	set firewall_rule_ip_address_type(firewall_rule_ip_address_type)
@@ -159,7 +159,7 @@ class FirewallRule extends ObjectBase
 	 */
 	get firewall_rule_enabled()
 	{
-		return this._firewall_rule_enabled || true;
+		return (this._firewall_rule_enabled !== undefined ? this._firewall_rule_enabled : true);
 	}
 
 	set firewall_rule_enabled(firewall_rule_enabled)
@@ -172,7 +172,7 @@ class FirewallRule extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

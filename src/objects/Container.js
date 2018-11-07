@@ -34,7 +34,7 @@ class Container extends ObjectBase
 	 */
 	get container_id()
 	{
-		return this._container_id || null;
+		return (this._container_id !== undefined ? this._container_id : null);
 	}
 
 	set container_id(container_id)
@@ -49,7 +49,7 @@ class Container extends ObjectBase
 	 */
 	get container_change_id()
 	{
-		return this._container_change_id || null;
+		return (this._container_change_id !== undefined ? this._container_change_id : null);
 	}
 
 	set container_change_id(container_change_id)
@@ -62,7 +62,7 @@ class Container extends ObjectBase
 	 */
 	get container_array_id()
 	{
-		return this._container_array_id || null;
+		return (this._container_array_id !== undefined ? this._container_array_id : null);
 	}
 
 	set container_array_id(container_array_id)
@@ -75,7 +75,7 @@ class Container extends ObjectBase
 	 */
 	get infrastructure_id()
 	{
-		return this._infrastructure_id || null;
+		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
 	}
 
 	set infrastructure_id(infrastructure_id)
@@ -89,7 +89,7 @@ class Container extends ObjectBase
 	 */
 	get container_label()
 	{
-		return this._container_label || null;
+		return (this._container_label !== undefined ? this._container_label : null);
 	}
 
 	set container_label(container_label)
@@ -103,7 +103,7 @@ class Container extends ObjectBase
 	 */
 	get container_subdomain()
 	{
-		return this._container_subdomain || null;
+		return (this._container_subdomain !== undefined ? this._container_subdomain : null);
 	}
 
 	set container_subdomain(container_subdomain)
@@ -117,7 +117,7 @@ class Container extends ObjectBase
 	 */
 	get container_subdomain_internal()
 	{
-		return this._container_subdomain_internal || null;
+		return (this._container_subdomain_internal !== undefined ? this._container_subdomain_internal : null);
 	}
 
 	set container_subdomain_internal(container_subdomain_internal)
@@ -130,7 +130,7 @@ class Container extends ObjectBase
 	 */
 	get container_service_status()
 	{
-		return this._container_service_status || null;
+		return (this._container_service_status !== undefined ? this._container_service_status : null);
 	}
 
 	set container_service_status(container_service_status)
@@ -143,7 +143,7 @@ class Container extends ObjectBase
 	 */
 	get container_operation()
 	{
-		return this._container_operation || null;
+		return (this._container_operation !== undefined ? this._container_operation : null);
 	}
 
 	set container_operation(container_operation)
@@ -156,7 +156,7 @@ class Container extends ObjectBase
 	 */
 	get container_credentials()
 	{
-		return this._container_credentials || null;
+		return (this._container_credentials !== undefined ? this._container_credentials : null);
 	}
 
 	set container_credentials(container_credentials)
@@ -169,7 +169,7 @@ class Container extends ObjectBase
 	 */
 	get container_interfaces()
 	{
-		return this._container_interfaces || [];
+		return (this._container_interfaces !== undefined ? this._container_interfaces : []);
 	}
 
 	set container_interfaces(container_interfaces)
@@ -182,7 +182,7 @@ class Container extends ObjectBase
 	 */
 	get container_index()
 	{
-		return this._container_index || null;
+		return (this._container_index !== undefined ? this._container_index : null);
 	}
 
 	set container_index(container_index)
@@ -196,7 +196,7 @@ class Container extends ObjectBase
 	 */
 	get container_created_timestamp()
 	{
-		return this._container_created_timestamp || "0000-00-00T00:00:00Z";
+		return (this._container_created_timestamp !== undefined ? this._container_created_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set container_created_timestamp(container_created_timestamp)
@@ -210,7 +210,7 @@ class Container extends ObjectBase
 	 */
 	get container_updated_timestamp()
 	{
-		return this._container_updated_timestamp || "0000-00-00T00:00:00Z";
+		return (this._container_updated_timestamp !== undefined ? this._container_updated_timestamp : "0000-00-00T00:00:00Z");
 	}
 
 	set container_updated_timestamp(container_updated_timestamp)
@@ -223,7 +223,7 @@ class Container extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

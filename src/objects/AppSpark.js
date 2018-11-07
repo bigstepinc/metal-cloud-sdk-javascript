@@ -42,7 +42,7 @@ class AppSpark extends ObjectBase
 	 */
 	get spark_master()
 	{
-		return this._spark_master || [];
+		return (this._spark_master !== undefined ? this._spark_master : []);
 	}
 
 	set spark_master(spark_master)
@@ -55,7 +55,7 @@ class AppSpark extends ObjectBase
 	 */
 	get spark_workers()
 	{
-		return this._spark_workers || [];
+		return (this._spark_workers !== undefined ? this._spark_workers : []);
 	}
 
 	set spark_workers(spark_workers)
@@ -68,7 +68,7 @@ class AppSpark extends ObjectBase
 	 */
 	get spark_master_url()
 	{
-		return this._spark_master_url || null;
+		return (this._spark_master_url !== undefined ? this._spark_master_url : null);
 	}
 
 	set spark_master_url(spark_master_url)
@@ -81,7 +81,7 @@ class AppSpark extends ObjectBase
 	 */
 	get spark_master_web_ui_url()
 	{
-		return this._spark_master_web_ui_url || null;
+		return (this._spark_master_web_ui_url !== undefined ? this._spark_master_web_ui_url : null);
 	}
 
 	set spark_master_web_ui_url(spark_master_web_ui_url)
@@ -94,7 +94,7 @@ class AppSpark extends ObjectBase
 	 */
 	get jupyter_url()
 	{
-		return this._jupyter_url || null;
+		return (this._jupyter_url !== undefined ? this._jupyter_url : null);
 	}
 
 	set jupyter_url(jupyter_url)
@@ -107,7 +107,7 @@ class AppSpark extends ObjectBase
 	 */
 	get jupyter_password()
 	{
-		return this._jupyter_password || null;
+		return (this._jupyter_password !== undefined ? this._jupyter_password : null);
 	}
 
 	set jupyter_password(jupyter_password)
@@ -120,7 +120,7 @@ class AppSpark extends ObjectBase
 	 */
 	get container_cluster_software_available_versions()
 	{
-		return this._container_cluster_software_available_versions || [];
+		return (this._container_cluster_software_available_versions !== undefined ? this._container_cluster_software_available_versions : []);
 	}
 
 	set container_cluster_software_available_versions(container_cluster_software_available_versions)
@@ -133,7 +133,7 @@ class AppSpark extends ObjectBase
 	 */
 	get container_cluster_software_version()
 	{
-		return this._container_cluster_software_version || null;
+		return (this._container_cluster_software_version !== undefined ? this._container_cluster_software_version : null);
 	}
 
 	set container_cluster_software_version(container_cluster_software_version)
@@ -146,7 +146,7 @@ class AppSpark extends ObjectBase
 	 */
 	get connectable_container_clusters()
 	{
-		return this._connectable_container_clusters || [];
+		return (this._connectable_container_clusters !== undefined ? this._connectable_container_clusters : []);
 	}
 
 	set connectable_container_clusters(connectable_container_clusters)
@@ -159,7 +159,7 @@ class AppSpark extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

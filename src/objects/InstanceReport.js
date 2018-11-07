@@ -31,7 +31,7 @@ class InstanceReport extends ObjectBase
 	 */
 	get sshConnectivity()
 	{
-		return this._sshConnectivity || "n/a";
+		return (this._sshConnectivity !== undefined ? this._sshConnectivity : "n/a");
 	}
 
 	set sshConnectivity(sshConnectivity)
@@ -44,7 +44,7 @@ class InstanceReport extends ObjectBase
 	 */
 	get sshAuthentication()
 	{
-		return this._sshAuthentication || "n/a";
+		return (this._sshAuthentication !== undefined ? this._sshAuthentication : "n/a");
 	}
 
 	set sshAuthentication(sshAuthentication)
@@ -57,7 +57,7 @@ class InstanceReport extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

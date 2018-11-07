@@ -31,7 +31,7 @@ class ContainerStatus extends ObjectBase
 	 */
 	get status_phase()
 	{
-		return this._status_phase || null;
+		return (this._status_phase !== undefined ? this._status_phase : null);
 	}
 
 	set status_phase(status_phase)
@@ -45,7 +45,7 @@ class ContainerStatus extends ObjectBase
 	 */
 	get status_reason()
 	{
-		return this._status_reason || null;
+		return (this._status_reason !== undefined ? this._status_reason : null);
 	}
 
 	set status_reason(status_reason)
@@ -59,7 +59,7 @@ class ContainerStatus extends ObjectBase
 	 */
 	get status_message()
 	{
-		return this._status_message || null;
+		return (this._status_message !== undefined ? this._status_message : null);
 	}
 
 	set status_message(status_message)
@@ -73,7 +73,7 @@ class ContainerStatus extends ObjectBase
 	 */
 	get status_started_timestamp()
 	{
-		return this._status_started_timestamp || null;
+		return (this._status_started_timestamp !== undefined ? this._status_started_timestamp : null);
 	}
 
 	set status_started_timestamp(status_started_timestamp)
@@ -87,7 +87,7 @@ class ContainerStatus extends ObjectBase
 	 */
 	get status_host_ip_public_human_readable()
 	{
-		return this._status_host_ip_public_human_readable || null;
+		return (this._status_host_ip_public_human_readable !== undefined ? this._status_host_ip_public_human_readable : null);
 	}
 
 	set status_host_ip_public_human_readable(status_host_ip_public_human_readable)
@@ -100,7 +100,7 @@ class ContainerStatus extends ObjectBase
 	 */
 	get status_container_ip_private_human_readable()
 	{
-		return this._status_container_ip_private_human_readable || null;
+		return (this._status_container_ip_private_human_readable !== undefined ? this._status_container_ip_private_human_readable : null);
 	}
 
 	set status_container_ip_private_human_readable(status_container_ip_private_human_readable)
@@ -113,7 +113,7 @@ class ContainerStatus extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

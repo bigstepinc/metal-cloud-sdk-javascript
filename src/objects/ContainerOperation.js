@@ -39,7 +39,7 @@ class ContainerOperation extends ObjectBase
 	 */
 	get container_id()
 	{
-		return this._container_id || null;
+		return (this._container_id !== undefined ? this._container_id : null);
 	}
 
 	set container_id(container_id)
@@ -54,7 +54,7 @@ class ContainerOperation extends ObjectBase
 	 */
 	get container_change_id()
 	{
-		return this._container_change_id || null;
+		return (this._container_change_id !== undefined ? this._container_change_id : null);
 	}
 
 	set container_change_id(container_change_id)
@@ -68,7 +68,7 @@ class ContainerOperation extends ObjectBase
 	 */
 	get container_label()
 	{
-		return this._container_label || null;
+		return (this._container_label !== undefined ? this._container_label : null);
 	}
 
 	set container_label(container_label)
@@ -82,7 +82,7 @@ class ContainerOperation extends ObjectBase
 	 */
 	get container_subdomain()
 	{
-		return this._container_subdomain || null;
+		return (this._container_subdomain !== undefined ? this._container_subdomain : null);
 	}
 
 	set container_subdomain(container_subdomain)
@@ -95,7 +95,7 @@ class ContainerOperation extends ObjectBase
 	 */
 	get container_deploy_type()
 	{
-		return this._container_deploy_type || null;
+		return (this._container_deploy_type !== undefined ? this._container_deploy_type : null);
 	}
 
 	set container_deploy_type(container_deploy_type)
@@ -108,7 +108,7 @@ class ContainerOperation extends ObjectBase
 	 */
 	get container_deploy_status()
 	{
-		return this._container_deploy_status || null;
+		return (this._container_deploy_status !== undefined ? this._container_deploy_status : null);
 	}
 
 	set container_deploy_status(container_deploy_status)
@@ -121,7 +121,7 @@ class ContainerOperation extends ObjectBase
 	 */
 	get container_interfaces()
 	{
-		return this._container_interfaces || [];
+		return (this._container_interfaces !== undefined ? this._container_interfaces : []);
 	}
 
 	set container_interfaces(container_interfaces)
@@ -135,7 +135,7 @@ class ContainerOperation extends ObjectBase
 	 */
 	get container_updated_timestamp()
 	{
-		return this._container_updated_timestamp || null;
+		return (this._container_updated_timestamp !== undefined ? this._container_updated_timestamp : null);
 	}
 
 	set container_updated_timestamp(container_updated_timestamp)
@@ -148,7 +148,7 @@ class ContainerOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

@@ -32,7 +32,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_active_max_count()
 	{
-		return this._infrastructure_active_max_count || null;
+		return (this._infrastructure_active_max_count !== undefined ? this._infrastructure_active_max_count : null);
 	}
 
 	set infrastructure_active_max_count(infrastructure_active_max_count)
@@ -45,7 +45,7 @@ class UserLimits extends ObjectBase
 	 */
 	get server_type_reservation_max_quantity()
 	{
-		return this._server_type_reservation_max_quantity || null;
+		return (this._server_type_reservation_max_quantity !== undefined ? this._server_type_reservation_max_quantity : null);
 	}
 
 	set server_type_reservation_max_quantity(server_type_reservation_max_quantity)
@@ -58,7 +58,7 @@ class UserLimits extends ObjectBase
 	 */
 	get server_type_reservation_max_count()
 	{
-		return this._server_type_reservation_max_count || null;
+		return (this._server_type_reservation_max_count !== undefined ? this._server_type_reservation_max_count : null);
 	}
 
 	set server_type_reservation_max_count(server_type_reservation_max_count)
@@ -71,7 +71,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_inactive_max_count()
 	{
-		return this._infrastructure_inactive_max_count || null;
+		return (this._infrastructure_inactive_max_count !== undefined ? this._infrastructure_inactive_max_count : null);
 	}
 
 	set infrastructure_inactive_max_count(infrastructure_inactive_max_count)
@@ -84,7 +84,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_deleted_max_count()
 	{
-		return this._infrastructure_deleted_max_count || null;
+		return (this._infrastructure_deleted_max_count !== undefined ? this._infrastructure_deleted_max_count : null);
 	}
 
 	set infrastructure_deleted_max_count(infrastructure_deleted_max_count)
@@ -98,7 +98,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_drive_array_max_count()
 	{
-		return this._infrastructure_drive_array_max_count || null;
+		return (this._infrastructure_drive_array_max_count !== undefined ? this._infrastructure_drive_array_max_count : null);
 	}
 
 	set infrastructure_drive_array_max_count(infrastructure_drive_array_max_count)
@@ -112,7 +112,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_instance_array_max_count()
 	{
-		return this._infrastructure_instance_array_max_count || null;
+		return (this._infrastructure_instance_array_max_count !== undefined ? this._infrastructure_instance_array_max_count : null);
 	}
 
 	set infrastructure_instance_array_max_count(infrastructure_instance_array_max_count)
@@ -126,7 +126,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_container_platform_max_count()
 	{
-		return this._infrastructure_container_platform_max_count || null;
+		return (this._infrastructure_container_platform_max_count !== undefined ? this._infrastructure_container_platform_max_count : null);
 	}
 
 	set infrastructure_container_platform_max_count(infrastructure_container_platform_max_count)
@@ -140,7 +140,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_volume_template_experimental_allowed()
 	{
-		return this._infrastructure_volume_template_experimental_allowed || null;
+		return (this._infrastructure_volume_template_experimental_allowed !== undefined ? this._infrastructure_volume_template_experimental_allowed : null);
 	}
 
 	set infrastructure_volume_template_experimental_allowed(infrastructure_volume_template_experimental_allowed)
@@ -154,7 +154,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_container_cluster_zookeeper_allowed()
 	{
-		return this._infrastructure_container_cluster_zookeeper_allowed || null;
+		return (this._infrastructure_container_cluster_zookeeper_allowed !== undefined ? this._infrastructure_container_cluster_zookeeper_allowed : null);
 	}
 
 	set infrastructure_container_cluster_zookeeper_allowed(infrastructure_container_cluster_zookeeper_allowed)
@@ -167,7 +167,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_container_cluster_zoomdata_allowed()
 	{
-		return this._infrastructure_container_cluster_zoomdata_allowed || null;
+		return (this._infrastructure_container_cluster_zoomdata_allowed !== undefined ? this._infrastructure_container_cluster_zoomdata_allowed : null);
 	}
 
 	set infrastructure_container_cluster_zoomdata_allowed(infrastructure_container_cluster_zoomdata_allowed)
@@ -180,7 +180,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_cluster_mysql_allowed()
 	{
-		return this._infrastructure_cluster_mysql_allowed || null;
+		return (this._infrastructure_cluster_mysql_allowed !== undefined ? this._infrastructure_cluster_mysql_allowed : null);
 	}
 
 	set infrastructure_cluster_mysql_allowed(infrastructure_cluster_mysql_allowed)
@@ -194,7 +194,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_container_cluster_postgresql_allowed()
 	{
-		return this._infrastructure_container_cluster_postgresql_allowed || null;
+		return (this._infrastructure_container_cluster_postgresql_allowed !== undefined ? this._infrastructure_container_cluster_postgresql_allowed : null);
 	}
 
 	set infrastructure_container_cluster_postgresql_allowed(infrastructure_container_cluster_postgresql_allowed)
@@ -208,7 +208,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_container_cluster_spark_array_allowed()
 	{
-		return this._infrastructure_container_cluster_spark_array_allowed || null;
+		return (this._infrastructure_container_cluster_spark_array_allowed !== undefined ? this._infrastructure_container_cluster_spark_array_allowed : null);
 	}
 
 	set infrastructure_container_cluster_spark_array_allowed(infrastructure_container_cluster_spark_array_allowed)
@@ -221,7 +221,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_container_cluster_sparksql_allowed()
 	{
-		return this._infrastructure_container_cluster_sparksql_allowed || null;
+		return (this._infrastructure_container_cluster_sparksql_allowed !== undefined ? this._infrastructure_container_cluster_sparksql_allowed : null);
 	}
 
 	set infrastructure_container_cluster_sparksql_allowed(infrastructure_container_cluster_sparksql_allowed)
@@ -234,7 +234,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_container_cluster_kafka_allowed()
 	{
-		return this._infrastructure_container_cluster_kafka_allowed || null;
+		return (this._infrastructure_container_cluster_kafka_allowed !== undefined ? this._infrastructure_container_cluster_kafka_allowed : null);
 	}
 
 	set infrastructure_container_cluster_kafka_allowed(infrastructure_container_cluster_kafka_allowed)
@@ -248,7 +248,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_container_cluster_streamsets_allowed()
 	{
-		return this._infrastructure_container_cluster_streamsets_allowed || null;
+		return (this._infrastructure_container_cluster_streamsets_allowed !== undefined ? this._infrastructure_container_cluster_streamsets_allowed : null);
 	}
 
 	set infrastructure_container_cluster_streamsets_allowed(infrastructure_container_cluster_streamsets_allowed)
@@ -262,7 +262,7 @@ class UserLimits extends ObjectBase
 	 */
 	get container_platform_container_array_max_count()
 	{
-		return this._container_platform_container_array_max_count || null;
+		return (this._container_platform_container_array_max_count !== undefined ? this._container_platform_container_array_max_count : null);
 	}
 
 	set container_platform_container_array_max_count(container_platform_container_array_max_count)
@@ -276,7 +276,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_data_lake_max_count()
 	{
-		return this._infrastructure_data_lake_max_count || null;
+		return (this._infrastructure_data_lake_max_count !== undefined ? this._infrastructure_data_lake_max_count : null);
 	}
 
 	set infrastructure_data_lake_max_count(infrastructure_data_lake_max_count)
@@ -290,7 +290,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_data_lake_enabled()
 	{
-		return this._infrastructure_data_lake_enabled || null;
+		return (this._infrastructure_data_lake_enabled !== undefined ? this._infrastructure_data_lake_enabled : null);
 	}
 
 	set infrastructure_data_lake_enabled(infrastructure_data_lake_enabled)
@@ -304,7 +304,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_wan_max_count()
 	{
-		return this._infrastructure_wan_max_count || null;
+		return (this._infrastructure_wan_max_count !== undefined ? this._infrastructure_wan_max_count : null);
 	}
 
 	set infrastructure_wan_max_count(infrastructure_wan_max_count)
@@ -318,7 +318,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_lan_max_count()
 	{
-		return this._infrastructure_lan_max_count || null;
+		return (this._infrastructure_lan_max_count !== undefined ? this._infrastructure_lan_max_count : null);
 	}
 
 	set infrastructure_lan_max_count(infrastructure_lan_max_count)
@@ -332,7 +332,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_san_max_count()
 	{
-		return this._infrastructure_san_max_count || null;
+		return (this._infrastructure_san_max_count !== undefined ? this._infrastructure_san_max_count : null);
 	}
 
 	set infrastructure_san_max_count(infrastructure_san_max_count)
@@ -346,7 +346,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_container_cluster_max_count()
 	{
-		return this._infrastructure_container_cluster_max_count || null;
+		return (this._infrastructure_container_cluster_max_count !== undefined ? this._infrastructure_container_cluster_max_count : null);
 	}
 
 	set infrastructure_container_cluster_max_count(infrastructure_container_cluster_max_count)
@@ -360,7 +360,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_cluster_max_count()
 	{
-		return this._infrastructure_cluster_max_count || null;
+		return (this._infrastructure_cluster_max_count !== undefined ? this._infrastructure_cluster_max_count : null);
 	}
 
 	set infrastructure_cluster_max_count(infrastructure_cluster_max_count)
@@ -374,7 +374,7 @@ class UserLimits extends ObjectBase
 	 */
 	get wan_subnet_ipv4_max_count()
 	{
-		return this._wan_subnet_ipv4_max_count || null;
+		return (this._wan_subnet_ipv4_max_count !== undefined ? this._wan_subnet_ipv4_max_count : null);
 	}
 
 	set wan_subnet_ipv4_max_count(wan_subnet_ipv4_max_count)
@@ -388,7 +388,7 @@ class UserLimits extends ObjectBase
 	 */
 	get wan_subnet_ipv6_max_count()
 	{
-		return this._wan_subnet_ipv6_max_count || null;
+		return (this._wan_subnet_ipv6_max_count !== undefined ? this._wan_subnet_ipv6_max_count : null);
 	}
 
 	set wan_subnet_ipv6_max_count(wan_subnet_ipv6_max_count)
@@ -402,7 +402,7 @@ class UserLimits extends ObjectBase
 	 */
 	get instance_array_instances_min_count()
 	{
-		return this._instance_array_instances_min_count || null;
+		return (this._instance_array_instances_min_count !== undefined ? this._instance_array_instances_min_count : null);
 	}
 
 	set instance_array_instances_min_count(instance_array_instances_min_count)
@@ -416,7 +416,7 @@ class UserLimits extends ObjectBase
 	 */
 	get instance_array_instances_max_count()
 	{
-		return this._instance_array_instances_max_count || null;
+		return (this._instance_array_instances_max_count !== undefined ? this._instance_array_instances_max_count : null);
 	}
 
 	set instance_array_instances_max_count(instance_array_instances_max_count)
@@ -430,7 +430,7 @@ class UserLimits extends ObjectBase
 	 */
 	get instance_array_drive_arrays_min_count()
 	{
-		return this._instance_array_drive_arrays_min_count || null;
+		return (this._instance_array_drive_arrays_min_count !== undefined ? this._instance_array_drive_arrays_min_count : null);
 	}
 
 	set instance_array_drive_arrays_min_count(instance_array_drive_arrays_min_count)
@@ -444,7 +444,7 @@ class UserLimits extends ObjectBase
 	 */
 	get instance_array_drive_arrays_max_count()
 	{
-		return this._instance_array_drive_arrays_max_count || null;
+		return (this._instance_array_drive_arrays_max_count !== undefined ? this._instance_array_drive_arrays_max_count : null);
 	}
 
 	set instance_array_drive_arrays_max_count(instance_array_drive_arrays_max_count)
@@ -458,7 +458,7 @@ class UserLimits extends ObjectBase
 	 */
 	get container_array_drive_arrays_min_count()
 	{
-		return this._container_array_drive_arrays_min_count || null;
+		return (this._container_array_drive_arrays_min_count !== undefined ? this._container_array_drive_arrays_min_count : null);
 	}
 
 	set container_array_drive_arrays_min_count(container_array_drive_arrays_min_count)
@@ -472,7 +472,7 @@ class UserLimits extends ObjectBase
 	 */
 	get container_array_drive_arrays_max_count()
 	{
-		return this._container_array_drive_arrays_max_count || null;
+		return (this._container_array_drive_arrays_max_count !== undefined ? this._container_array_drive_arrays_max_count : null);
 	}
 
 	set container_array_drive_arrays_max_count(container_array_drive_arrays_max_count)
@@ -486,7 +486,7 @@ class UserLimits extends ObjectBase
 	 */
 	get container_array_containers_min_count()
 	{
-		return this._container_array_containers_min_count || null;
+		return (this._container_array_containers_min_count !== undefined ? this._container_array_containers_min_count : null);
 	}
 
 	set container_array_containers_min_count(container_array_containers_min_count)
@@ -500,7 +500,7 @@ class UserLimits extends ObjectBase
 	 */
 	get container_array_containers_max_count()
 	{
-		return this._container_array_containers_max_count || null;
+		return (this._container_array_containers_max_count !== undefined ? this._container_array_containers_max_count : null);
 	}
 
 	set container_array_containers_max_count(container_array_containers_max_count)
@@ -513,7 +513,7 @@ class UserLimits extends ObjectBase
 	 */
 	get container_array_secrets_max_count()
 	{
-		return this._container_array_secrets_max_count || null;
+		return (this._container_array_secrets_max_count !== undefined ? this._container_array_secrets_max_count : null);
 	}
 
 	set container_array_secrets_max_count(container_array_secrets_max_count)
@@ -526,7 +526,7 @@ class UserLimits extends ObjectBase
 	 */
 	get drive_array_drives_min_count()
 	{
-		return this._drive_array_drives_min_count || null;
+		return (this._drive_array_drives_min_count !== undefined ? this._drive_array_drives_min_count : null);
 	}
 
 	set drive_array_drives_min_count(drive_array_drives_min_count)
@@ -539,7 +539,7 @@ class UserLimits extends ObjectBase
 	 */
 	get drive_array_drives_max_count()
 	{
-		return this._drive_array_drives_max_count || null;
+		return (this._drive_array_drives_max_count !== undefined ? this._drive_array_drives_max_count : null);
 	}
 
 	set drive_array_drives_max_count(drive_array_drives_max_count)
@@ -552,7 +552,7 @@ class UserLimits extends ObjectBase
 	 */
 	get drive_max_size_mbytes()
 	{
-		return this._drive_max_size_mbytes || null;
+		return (this._drive_max_size_mbytes !== undefined ? this._drive_max_size_mbytes : null);
 	}
 
 	set drive_max_size_mbytes(drive_max_size_mbytes)
@@ -565,7 +565,7 @@ class UserLimits extends ObjectBase
 	 */
 	get drive_min_size_mbytes()
 	{
-		return this._drive_min_size_mbytes || null;
+		return (this._drive_min_size_mbytes !== undefined ? this._drive_min_size_mbytes : null);
 	}
 
 	set drive_min_size_mbytes(drive_min_size_mbytes)
@@ -579,7 +579,7 @@ class UserLimits extends ObjectBase
 	 */
 	get shared_drive_max_size_mbytes()
 	{
-		return this._shared_drive_max_size_mbytes || null;
+		return (this._shared_drive_max_size_mbytes !== undefined ? this._shared_drive_max_size_mbytes : null);
 	}
 
 	set shared_drive_max_size_mbytes(shared_drive_max_size_mbytes)
@@ -593,7 +593,7 @@ class UserLimits extends ObjectBase
 	 */
 	get shared_drive_min_size_mbytes()
 	{
-		return this._shared_drive_min_size_mbytes || null;
+		return (this._shared_drive_min_size_mbytes !== undefined ? this._shared_drive_min_size_mbytes : null);
 	}
 
 	set shared_drive_min_size_mbytes(shared_drive_min_size_mbytes)
@@ -607,7 +607,7 @@ class UserLimits extends ObjectBase
 	 */
 	get infrastructure_shared_drive_max_count()
 	{
-		return this._infrastructure_shared_drive_max_count || null;
+		return (this._infrastructure_shared_drive_max_count !== undefined ? this._infrastructure_shared_drive_max_count : null);
 	}
 
 	set infrastructure_shared_drive_max_count(infrastructure_shared_drive_max_count)
@@ -620,7 +620,7 @@ class UserLimits extends ObjectBase
 	 */
 	get storage_types()
 	{
-		return this._storage_types || [];
+		return (this._storage_types !== undefined ? this._storage_types : []);
 	}
 
 	set storage_types(storage_types)
@@ -634,7 +634,7 @@ class UserLimits extends ObjectBase
 	 */
 	get user_resource_servers_max_count()
 	{
-		return this._user_resource_servers_max_count || null;
+		return (this._user_resource_servers_max_count !== undefined ? this._user_resource_servers_max_count : null);
 	}
 
 	set user_resource_servers_max_count(user_resource_servers_max_count)
@@ -648,7 +648,7 @@ class UserLimits extends ObjectBase
 	 */
 	get user_resource_iscsi_storage_space_max_gbytes()
 	{
-		return this._user_resource_iscsi_storage_space_max_gbytes || null;
+		return (this._user_resource_iscsi_storage_space_max_gbytes !== undefined ? this._user_resource_iscsi_storage_space_max_gbytes : null);
 	}
 
 	set user_resource_iscsi_storage_space_max_gbytes(user_resource_iscsi_storage_space_max_gbytes)
@@ -661,7 +661,7 @@ class UserLimits extends ObjectBase
 	 */
 	get owner_is_billable()
 	{
-		return this._owner_is_billable || null;
+		return (this._owner_is_billable !== undefined ? this._owner_is_billable : null);
 	}
 
 	set owner_is_billable(owner_is_billable)
@@ -674,7 +674,7 @@ class UserLimits extends ObjectBase
 	 */
 	get user_ssh_keys_count_max()
 	{
-		return this._user_ssh_keys_count_max || null;
+		return (this._user_ssh_keys_count_max !== undefined ? this._user_ssh_keys_count_max : null);
 	}
 
 	set user_ssh_keys_count_max(user_ssh_keys_count_max)
@@ -683,11 +683,24 @@ class UserLimits extends ObjectBase
 	}
 
 	/**
+	 * The maximum number of thresholds.
+	 */
+	get threshold_max_count()
+	{
+		return (this._threshold_max_count !== undefined ? this._threshold_max_count : null);
+	}
+
+	set threshold_max_count(threshold_max_count)
+	{
+		this._threshold_max_count = threshold_max_count;
+	}
+
+	/**
 	 * The schema type
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

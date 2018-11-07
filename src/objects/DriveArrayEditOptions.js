@@ -37,7 +37,7 @@ class DriveArrayEditOptions extends ObjectBase
 	 */
 	get update_active_drives_size()
 	{
-		return this._update_active_drives_size || null;
+		return (this._update_active_drives_size !== undefined ? this._update_active_drives_size : null);
 	}
 
 	set update_active_drives_size(update_active_drives_size)
@@ -50,7 +50,7 @@ class DriveArrayEditOptions extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

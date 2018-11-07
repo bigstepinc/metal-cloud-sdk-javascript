@@ -43,7 +43,7 @@ class ContainerArraySecret extends ObjectBase
 	 */
 	get secret_name()
 	{
-		return this._secret_name || null;
+		return (this._secret_name !== undefined ? this._secret_name : null);
 	}
 
 	set secret_name(secret_name)
@@ -56,7 +56,7 @@ class ContainerArraySecret extends ObjectBase
 	 */
 	get secret_data_base64()
 	{
-		return this._secret_data_base64 || null;
+		return (this._secret_data_base64 !== undefined ? this._secret_data_base64 : null);
 	}
 
 	set secret_data_base64(secret_data_base64)
@@ -69,7 +69,7 @@ class ContainerArraySecret extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

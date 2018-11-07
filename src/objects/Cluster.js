@@ -40,7 +40,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_label()
 	{
-		return this._cluster_label || null;
+		return (this._cluster_label !== undefined ? this._cluster_label : null);
 	}
 
 	set cluster_label(cluster_label)
@@ -54,7 +54,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_subdomain()
 	{
-		return this._cluster_subdomain || null;
+		return (this._cluster_subdomain !== undefined ? this._cluster_subdomain : null);
 	}
 
 	set cluster_subdomain(cluster_subdomain)
@@ -69,7 +69,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_id()
 	{
-		return this._cluster_id || null;
+		return (this._cluster_id !== undefined ? this._cluster_id : null);
 	}
 
 	set cluster_id(cluster_id)
@@ -82,7 +82,7 @@ class Cluster extends ObjectBase
 	 */
 	get infrastructure_id()
 	{
-		return this._infrastructure_id || null;
+		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
 	}
 
 	set infrastructure_id(infrastructure_id)
@@ -95,7 +95,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_type()
 	{
-		return this._cluster_type || null;
+		return (this._cluster_type !== undefined ? this._cluster_type : null);
 	}
 
 	set cluster_type(cluster_type)
@@ -108,7 +108,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_service_status()
 	{
-		return this._cluster_service_status || null;
+		return (this._cluster_service_status !== undefined ? this._cluster_service_status : null);
 	}
 
 	set cluster_service_status(cluster_service_status)
@@ -121,7 +121,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_software_version()
 	{
-		return this._cluster_software_version || null;
+		return (this._cluster_software_version !== undefined ? this._cluster_software_version : null);
 	}
 
 	set cluster_software_version(cluster_software_version)
@@ -134,7 +134,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_service_assignment()
 	{
-		return this._cluster_service_assignment || {};
+		return (this._cluster_service_assignment !== undefined ? this._cluster_service_assignment : {});
 	}
 
 	set cluster_service_assignment(cluster_service_assignment)
@@ -147,7 +147,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_automatic_management()
 	{
-		return this._cluster_automatic_management || true;
+		return (this._cluster_automatic_management !== undefined ? this._cluster_automatic_management : true);
 	}
 
 	set cluster_automatic_management(cluster_automatic_management)
@@ -160,7 +160,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_app()
 	{
-		return this._cluster_app || null;
+		return (this._cluster_app !== undefined ? this._cluster_app : null);
 	}
 
 	set cluster_app(cluster_app)
@@ -173,7 +173,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_operation()
 	{
-		return this._cluster_operation || null;
+		return (this._cluster_operation !== undefined ? this._cluster_operation : null);
 	}
 
 	set cluster_operation(cluster_operation)
@@ -186,7 +186,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_gui_settings_json()
 	{
-		return this._cluster_gui_settings_json || "";
+		return (this._cluster_gui_settings_json !== undefined ? this._cluster_gui_settings_json : "");
 	}
 
 	set cluster_gui_settings_json(cluster_gui_settings_json)
@@ -199,7 +199,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_connections()
 	{
-		return this._cluster_connections || [];
+		return (this._cluster_connections !== undefined ? this._cluster_connections : []);
 	}
 
 	set cluster_connections(cluster_connections)
@@ -212,7 +212,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_ssh_management_public_key()
 	{
-		return this._cluster_ssh_management_public_key || null;
+		return (this._cluster_ssh_management_public_key !== undefined ? this._cluster_ssh_management_public_key : null);
 	}
 
 	set cluster_ssh_management_public_key(cluster_ssh_management_public_key)
@@ -225,7 +225,7 @@ class Cluster extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -240,7 +240,7 @@ class Cluster extends ObjectBase
 	 */
 	get cluster_change_id()
 	{
-		return this._cluster_change_id || null;
+		return (this._cluster_change_id !== undefined ? this._cluster_change_id : null);
 	}
 
 	set cluster_change_id(cluster_change_id)

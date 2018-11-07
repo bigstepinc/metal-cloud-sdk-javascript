@@ -31,7 +31,7 @@ class ContainerArrayStatus extends ObjectBase
 	 */
 	get status_containers_running()
 	{
-		return this._status_containers_running || null;
+		return (this._status_containers_running !== undefined ? this._status_containers_running : null);
 	}
 
 	set status_containers_running(status_containers_running)
@@ -44,7 +44,7 @@ class ContainerArrayStatus extends ObjectBase
 	 */
 	get status_containers_ready()
 	{
-		return this._status_containers_ready || null;
+		return (this._status_containers_ready !== undefined ? this._status_containers_ready : null);
 	}
 
 	set status_containers_ready(status_containers_ready)
@@ -57,7 +57,7 @@ class ContainerArrayStatus extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

@@ -42,7 +42,7 @@ class ContainerArrayEnvironmentVariable extends ObjectBase
 	 */
 	get environment_variable_name()
 	{
-		return this._environment_variable_name || null;
+		return (this._environment_variable_name !== undefined ? this._environment_variable_name : null);
 	}
 
 	set environment_variable_name(environment_variable_name)
@@ -55,7 +55,7 @@ class ContainerArrayEnvironmentVariable extends ObjectBase
 	 */
 	get environment_variable_value()
 	{
-		return this._environment_variable_value || null;
+		return (this._environment_variable_value !== undefined ? this._environment_variable_value : null);
 	}
 
 	set environment_variable_value(environment_variable_value)
@@ -68,7 +68,7 @@ class ContainerArrayEnvironmentVariable extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

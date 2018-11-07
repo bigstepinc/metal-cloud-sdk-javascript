@@ -37,7 +37,7 @@ class ContainerArrayActionHTTPGet extends ObjectBase
 	 */
 	get action_path()
 	{
-		return this._action_path || "/";
+		return (this._action_path !== undefined ? this._action_path : "/");
 	}
 
 	set action_path(action_path)
@@ -50,7 +50,7 @@ class ContainerArrayActionHTTPGet extends ObjectBase
 	 */
 	get action_port()
 	{
-		return this._action_port || null;
+		return (this._action_port !== undefined ? this._action_port : null);
 	}
 
 	set action_port(action_port)
@@ -63,7 +63,7 @@ class ContainerArrayActionHTTPGet extends ObjectBase
 	 */
 	get action_host()
 	{
-		return this._action_host || null;
+		return (this._action_host !== undefined ? this._action_host : null);
 	}
 
 	set action_host(action_host)
@@ -76,7 +76,7 @@ class ContainerArrayActionHTTPGet extends ObjectBase
 	 */
 	get action_scheme()
 	{
-		return this._action_scheme || "HTTP";
+		return (this._action_scheme !== undefined ? this._action_scheme : "HTTP");
 	}
 
 	set action_scheme(action_scheme)
@@ -89,7 +89,7 @@ class ContainerArrayActionHTTPGet extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

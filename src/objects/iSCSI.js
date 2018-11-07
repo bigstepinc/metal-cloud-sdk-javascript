@@ -31,7 +31,7 @@ class iSCSI extends ObjectBase
 	 */
 	get target_iqn()
 	{
-		return this._target_iqn || null;
+		return (this._target_iqn !== undefined ? this._target_iqn : null);
 	}
 
 	set target_iqn(target_iqn)
@@ -44,7 +44,7 @@ class iSCSI extends ObjectBase
 	 */
 	get storage_ip_address()
 	{
-		return this._storage_ip_address || null;
+		return (this._storage_ip_address !== undefined ? this._storage_ip_address : null);
 	}
 
 	set storage_ip_address(storage_ip_address)
@@ -57,7 +57,7 @@ class iSCSI extends ObjectBase
 	 */
 	get storage_port()
 	{
-		return this._storage_port || null;
+		return (this._storage_port !== undefined ? this._storage_port : null);
 	}
 
 	set storage_port(storage_port)
@@ -70,7 +70,7 @@ class iSCSI extends ObjectBase
 	 */
 	get lun_id()
 	{
-		return this._lun_id || null;
+		return (this._lun_id !== undefined ? this._lun_id : null);
 	}
 
 	set lun_id(lun_id)
@@ -83,7 +83,7 @@ class iSCSI extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

@@ -31,7 +31,7 @@ class AppExasolInstance extends ObjectBase
 	 */
 	get admin_username()
 	{
-		return this._admin_username || null;
+		return (this._admin_username !== undefined ? this._admin_username : null);
 	}
 
 	set admin_username(admin_username)
@@ -44,7 +44,7 @@ class AppExasolInstance extends ObjectBase
 	 */
 	get admin_initial_password()
 	{
-		return this._admin_initial_password || null;
+		return (this._admin_initial_password !== undefined ? this._admin_initial_password : null);
 	}
 
 	set admin_initial_password(admin_initial_password)
@@ -57,7 +57,7 @@ class AppExasolInstance extends ObjectBase
 	 */
 	get exaoperation_ip()
 	{
-		return this._exaoperation_ip || null;
+		return (this._exaoperation_ip !== undefined ? this._exaoperation_ip : null);
 	}
 
 	set exaoperation_ip(exaoperation_ip)
@@ -70,7 +70,7 @@ class AppExasolInstance extends ObjectBase
 	 */
 	get instance_id()
 	{
-		return this._instance_id || null;
+		return (this._instance_id !== undefined ? this._instance_id : null);
 	}
 
 	set instance_id(instance_id)
@@ -83,7 +83,7 @@ class AppExasolInstance extends ObjectBase
 	 */
 	get instance_label()
 	{
-		return this._instance_label || null;
+		return (this._instance_label !== undefined ? this._instance_label : null);
 	}
 
 	set instance_label(instance_label)
@@ -96,7 +96,7 @@ class AppExasolInstance extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

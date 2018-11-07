@@ -42,7 +42,7 @@ class ContainerArrayLivenessCheck extends ObjectBase
 	 */
 	get check_action_type()
 	{
-		return this._check_action_type || null;
+		return (this._check_action_type !== undefined ? this._check_action_type : null);
 	}
 
 	set check_action_type(check_action_type)
@@ -55,7 +55,7 @@ class ContainerArrayLivenessCheck extends ObjectBase
 	 */
 	get check_action()
 	{
-		return this._check_action || null;
+		return (this._check_action !== undefined ? this._check_action : null);
 	}
 
 	set check_action(check_action)
@@ -69,7 +69,7 @@ class ContainerArrayLivenessCheck extends ObjectBase
 	 */
 	get check_delay_seconds()
 	{
-		return this._check_delay_seconds || 10;
+		return (this._check_delay_seconds !== undefined ? this._check_delay_seconds : 10);
 	}
 
 	set check_delay_seconds(check_delay_seconds)
@@ -83,7 +83,7 @@ class ContainerArrayLivenessCheck extends ObjectBase
 	 */
 	get check_interval_seconds()
 	{
-		return this._check_interval_seconds || 10;
+		return (this._check_interval_seconds !== undefined ? this._check_interval_seconds : 10);
 	}
 
 	set check_interval_seconds(check_interval_seconds)
@@ -97,7 +97,7 @@ class ContainerArrayLivenessCheck extends ObjectBase
 	 */
 	get check_timeout_seconds()
 	{
-		return this._check_timeout_seconds || 1;
+		return (this._check_timeout_seconds !== undefined ? this._check_timeout_seconds : 1);
 	}
 
 	set check_timeout_seconds(check_timeout_seconds)
@@ -111,7 +111,7 @@ class ContainerArrayLivenessCheck extends ObjectBase
 	 */
 	get check_failure_threshold()
 	{
-		return this._check_failure_threshold || 3;
+		return (this._check_failure_threshold !== undefined ? this._check_failure_threshold : 3);
 	}
 
 	set check_failure_threshold(check_failure_threshold)
@@ -124,7 +124,7 @@ class ContainerArrayLivenessCheck extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

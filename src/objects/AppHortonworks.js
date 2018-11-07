@@ -44,7 +44,7 @@ class AppHortonworks extends ObjectBase
 	 */
 	get hortonworks_masternodes()
 	{
-		return this._hortonworks_masternodes || [];
+		return (this._hortonworks_masternodes !== undefined ? this._hortonworks_masternodes : []);
 	}
 
 	set hortonworks_masternodes(hortonworks_masternodes)
@@ -57,7 +57,7 @@ class AppHortonworks extends ObjectBase
 	 */
 	get hortonworks_slavenodes()
 	{
-		return this._hortonworks_slavenodes || [];
+		return (this._hortonworks_slavenodes !== undefined ? this._hortonworks_slavenodes : []);
 	}
 
 	set hortonworks_slavenodes(hortonworks_slavenodes)
@@ -70,7 +70,7 @@ class AppHortonworks extends ObjectBase
 	 */
 	get admin_username()
 	{
-		return this._admin_username || null;
+		return (this._admin_username !== undefined ? this._admin_username : null);
 	}
 
 	set admin_username(admin_username)
@@ -83,7 +83,7 @@ class AppHortonworks extends ObjectBase
 	 */
 	get admin_initial_password()
 	{
-		return this._admin_initial_password || null;
+		return (this._admin_initial_password !== undefined ? this._admin_initial_password : null);
 	}
 
 	set admin_initial_password(admin_initial_password)
@@ -96,7 +96,7 @@ class AppHortonworks extends ObjectBase
 	 */
 	get cluster_software_available_versions()
 	{
-		return this._cluster_software_available_versions || [];
+		return (this._cluster_software_available_versions !== undefined ? this._cluster_software_available_versions : []);
 	}
 
 	set cluster_software_available_versions(cluster_software_available_versions)
@@ -109,7 +109,7 @@ class AppHortonworks extends ObjectBase
 	 */
 	get cluster_software_version()
 	{
-		return this._cluster_software_version || null;
+		return (this._cluster_software_version !== undefined ? this._cluster_software_version : null);
 	}
 
 	set cluster_software_version(cluster_software_version)
@@ -122,7 +122,7 @@ class AppHortonworks extends ObjectBase
 	 */
 	get connectable_clusters()
 	{
-		return this._connectable_clusters || [];
+		return (this._connectable_clusters !== undefined ? this._connectable_clusters : []);
 	}
 
 	set connectable_clusters(connectable_clusters)
@@ -135,7 +135,7 @@ class AppHortonworks extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

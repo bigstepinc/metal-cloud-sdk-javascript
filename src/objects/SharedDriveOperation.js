@@ -45,7 +45,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_deploy_status()
 	{
-		return this._shared_drive_deploy_status || null;
+		return (this._shared_drive_deploy_status !== undefined ? this._shared_drive_deploy_status : null);
 	}
 
 	set shared_drive_deploy_status(shared_drive_deploy_status)
@@ -58,7 +58,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_deploy_type()
 	{
-		return this._shared_drive_deploy_type || null;
+		return (this._shared_drive_deploy_type !== undefined ? this._shared_drive_deploy_type : null);
 	}
 
 	set shared_drive_deploy_type(shared_drive_deploy_type)
@@ -72,7 +72,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_label()
 	{
-		return this._shared_drive_label || null;
+		return (this._shared_drive_label !== undefined ? this._shared_drive_label : null);
 	}
 
 	set shared_drive_label(shared_drive_label)
@@ -86,7 +86,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_subdomain()
 	{
-		return this._shared_drive_subdomain || null;
+		return (this._shared_drive_subdomain !== undefined ? this._shared_drive_subdomain : null);
 	}
 
 	set shared_drive_subdomain(shared_drive_subdomain)
@@ -101,7 +101,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_id()
 	{
-		return this._shared_drive_id || null;
+		return (this._shared_drive_id !== undefined ? this._shared_drive_id : null);
 	}
 
 	set shared_drive_id(shared_drive_id)
@@ -114,7 +114,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_size_mbytes()
 	{
-		return this._shared_drive_size_mbytes || null;
+		return (this._shared_drive_size_mbytes !== undefined ? this._shared_drive_size_mbytes : null);
 	}
 
 	set shared_drive_size_mbytes(shared_drive_size_mbytes)
@@ -127,7 +127,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_storage_type()
 	{
-		return this._shared_drive_storage_type || null;
+		return (this._shared_drive_storage_type !== undefined ? this._shared_drive_storage_type : null);
 	}
 
 	set shared_drive_storage_type(shared_drive_storage_type)
@@ -142,7 +142,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_has_gfs()
 	{
-		return this._shared_drive_has_gfs || true;
+		return (this._shared_drive_has_gfs !== undefined ? this._shared_drive_has_gfs : true);
 	}
 
 	set shared_drive_has_gfs(shared_drive_has_gfs)
@@ -156,7 +156,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_updated_timestamp()
 	{
-		return this._shared_drive_updated_timestamp || null;
+		return (this._shared_drive_updated_timestamp !== undefined ? this._shared_drive_updated_timestamp : null);
 	}
 
 	set shared_drive_updated_timestamp(shared_drive_updated_timestamp)
@@ -169,7 +169,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_attached_instance_arrays()
 	{
-		return this._shared_drive_attached_instance_arrays || [];
+		return (this._shared_drive_attached_instance_arrays !== undefined ? this._shared_drive_attached_instance_arrays : []);
 	}
 
 	set shared_drive_attached_instance_arrays(shared_drive_attached_instance_arrays)
@@ -182,7 +182,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_attached_container_arrays()
 	{
-		return this._shared_drive_attached_container_arrays || [];
+		return (this._shared_drive_attached_container_arrays !== undefined ? this._shared_drive_attached_container_arrays : []);
 	}
 
 	set shared_drive_attached_container_arrays(shared_drive_attached_container_arrays)
@@ -195,7 +195,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -208,7 +208,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_gui_settings_json()
 	{
-		return this._shared_drive_gui_settings_json || null;
+		return (this._shared_drive_gui_settings_json !== undefined ? this._shared_drive_gui_settings_json : null);
 	}
 
 	set shared_drive_gui_settings_json(shared_drive_gui_settings_json)
@@ -223,7 +223,7 @@ class SharedDriveOperation extends ObjectBase
 	 */
 	get shared_drive_change_id()
 	{
-		return this._shared_drive_change_id || null;
+		return (this._shared_drive_change_id !== undefined ? this._shared_drive_change_id : null);
 	}
 
 	set shared_drive_change_id(shared_drive_change_id)

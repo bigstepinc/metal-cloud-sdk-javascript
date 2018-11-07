@@ -32,7 +32,7 @@ class iLO extends ObjectBase
 	 */
 	get control_panel_url()
 	{
-		return this._control_panel_url || null;
+		return (this._control_panel_url !== undefined ? this._control_panel_url : null);
 	}
 
 	set control_panel_url(control_panel_url)
@@ -45,7 +45,7 @@ class iLO extends ObjectBase
 	 */
 	get username()
 	{
-		return this._username || null;
+		return (this._username !== undefined ? this._username : null);
 	}
 
 	set username(username)
@@ -58,7 +58,7 @@ class iLO extends ObjectBase
 	 */
 	get initial_password()
 	{
-		return this._initial_password || null;
+		return (this._initial_password !== undefined ? this._initial_password : null);
 	}
 
 	set initial_password(initial_password)
@@ -71,7 +71,7 @@ class iLO extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

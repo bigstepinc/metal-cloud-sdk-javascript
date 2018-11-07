@@ -45,7 +45,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_deploy_status()
 	{
-		return this._instance_array_deploy_status || null;
+		return (this._instance_array_deploy_status !== undefined ? this._instance_array_deploy_status : null);
 	}
 
 	set instance_array_deploy_status(instance_array_deploy_status)
@@ -58,7 +58,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_deploy_type()
 	{
-		return this._instance_array_deploy_type || null;
+		return (this._instance_array_deploy_type !== undefined ? this._instance_array_deploy_type : null);
 	}
 
 	set instance_array_deploy_type(instance_array_deploy_type)
@@ -73,7 +73,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_label()
 	{
-		return this._instance_array_label || null;
+		return (this._instance_array_label !== undefined ? this._instance_array_label : null);
 	}
 
 	set instance_array_label(instance_array_label)
@@ -87,7 +87,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_subdomain()
 	{
-		return this._instance_array_subdomain || null;
+		return (this._instance_array_subdomain !== undefined ? this._instance_array_subdomain : null);
 	}
 
 	set instance_array_subdomain(instance_array_subdomain)
@@ -102,7 +102,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_id()
 	{
-		return this._instance_array_id || null;
+		return (this._instance_array_id !== undefined ? this._instance_array_id : null);
 	}
 
 	set instance_array_id(instance_array_id)
@@ -115,7 +115,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_instance_count()
 	{
-		return this._instance_array_instance_count || null;
+		return (this._instance_array_instance_count !== undefined ? this._instance_array_instance_count : null);
 	}
 
 	set instance_array_instance_count(instance_array_instance_count)
@@ -130,7 +130,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_ipv4_subnet_create_auto()
 	{
-		return this._instance_array_ipv4_subnet_create_auto || null;
+		return (this._instance_array_ipv4_subnet_create_auto !== undefined ? this._instance_array_ipv4_subnet_create_auto : null);
 	}
 
 	set instance_array_ipv4_subnet_create_auto(instance_array_ipv4_subnet_create_auto)
@@ -143,7 +143,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_virtual_interfaces_enabled()
 	{
-		return this._instance_array_virtual_interfaces_enabled || null;
+		return (this._instance_array_virtual_interfaces_enabled !== undefined ? this._instance_array_virtual_interfaces_enabled : null);
 	}
 
 	set instance_array_virtual_interfaces_enabled(instance_array_virtual_interfaces_enabled)
@@ -157,7 +157,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_ip_allocate_auto()
 	{
-		return this._instance_array_ip_allocate_auto || null;
+		return (this._instance_array_ip_allocate_auto !== undefined ? this._instance_array_ip_allocate_auto : null);
 	}
 
 	set instance_array_ip_allocate_auto(instance_array_ip_allocate_auto)
@@ -170,7 +170,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_ram_gbytes()
 	{
-		return this._instance_array_ram_gbytes || null;
+		return (this._instance_array_ram_gbytes !== undefined ? this._instance_array_ram_gbytes : null);
 	}
 
 	set instance_array_ram_gbytes(instance_array_ram_gbytes)
@@ -183,7 +183,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_processor_count()
 	{
-		return this._instance_array_processor_count || null;
+		return (this._instance_array_processor_count !== undefined ? this._instance_array_processor_count : null);
 	}
 
 	set instance_array_processor_count(instance_array_processor_count)
@@ -196,7 +196,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_processor_core_mhz()
 	{
-		return this._instance_array_processor_core_mhz || null;
+		return (this._instance_array_processor_core_mhz !== undefined ? this._instance_array_processor_core_mhz : null);
 	}
 
 	set instance_array_processor_core_mhz(instance_array_processor_core_mhz)
@@ -209,7 +209,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_processor_core_count()
 	{
-		return this._instance_array_processor_core_count || null;
+		return (this._instance_array_processor_core_count !== undefined ? this._instance_array_processor_core_count : null);
 	}
 
 	set instance_array_processor_core_count(instance_array_processor_core_count)
@@ -222,7 +222,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_disk_count()
 	{
-		return this._instance_array_disk_count || 0;
+		return (this._instance_array_disk_count !== undefined ? this._instance_array_disk_count : 0);
 	}
 
 	set instance_array_disk_count(instance_array_disk_count)
@@ -235,7 +235,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_disk_size_mbytes()
 	{
-		return this._instance_array_disk_size_mbytes || 0;
+		return (this._instance_array_disk_size_mbytes !== undefined ? this._instance_array_disk_size_mbytes : 0);
 	}
 
 	set instance_array_disk_size_mbytes(instance_array_disk_size_mbytes)
@@ -248,7 +248,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_disk_types()
 	{
-		return this._instance_array_disk_types || [];
+		return (this._instance_array_disk_types !== undefined ? this._instance_array_disk_types : []);
 	}
 
 	set instance_array_disk_types(instance_array_disk_types)
@@ -262,7 +262,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_updated_timestamp()
 	{
-		return this._instance_array_updated_timestamp || null;
+		return (this._instance_array_updated_timestamp !== undefined ? this._instance_array_updated_timestamp : null);
 	}
 
 	set instance_array_updated_timestamp(instance_array_updated_timestamp)
@@ -275,7 +275,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get drive_array_id_boot()
 	{
-		return this._drive_array_id_boot || null;
+		return (this._drive_array_id_boot !== undefined ? this._drive_array_id_boot : null);
 	}
 
 	set drive_array_id_boot(drive_array_id_boot)
@@ -288,7 +288,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_gui_settings_json()
 	{
-		return this._instance_array_gui_settings_json || null;
+		return (this._instance_array_gui_settings_json !== undefined ? this._instance_array_gui_settings_json : null);
 	}
 
 	set instance_array_gui_settings_json(instance_array_gui_settings_json)
@@ -301,7 +301,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
@@ -316,7 +316,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_change_id()
 	{
-		return this._instance_array_change_id || null;
+		return (this._instance_array_change_id !== undefined ? this._instance_array_change_id : null);
 	}
 
 	set instance_array_change_id(instance_array_change_id)
@@ -329,7 +329,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_interfaces()
 	{
-		return this._instance_array_interfaces || [];
+		return (this._instance_array_interfaces !== undefined ? this._instance_array_interfaces : []);
 	}
 
 	set instance_array_interfaces(instance_array_interfaces)
@@ -346,7 +346,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_firewall_managed()
 	{
-		return this._instance_array_firewall_managed || null;
+		return (this._instance_array_firewall_managed !== undefined ? this._instance_array_firewall_managed : null);
 	}
 
 	set instance_array_firewall_managed(instance_array_firewall_managed)
@@ -359,7 +359,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get instance_array_firewall_rules()
 	{
-		return this._instance_array_firewall_rules || [];
+		return (this._instance_array_firewall_rules !== undefined ? this._instance_array_firewall_rules : []);
 	}
 
 	set instance_array_firewall_rules(instance_array_firewall_rules)
@@ -372,7 +372,7 @@ class InstanceArrayOperation extends ObjectBase
 	 */
 	get volume_template_id()
 	{
-		return this._volume_template_id || null;
+		return (this._volume_template_id !== undefined ? this._volume_template_id : null);
 	}
 
 	set volume_template_id(volume_template_id)

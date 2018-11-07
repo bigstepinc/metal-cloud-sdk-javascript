@@ -43,7 +43,7 @@ class ContainerArrayPersistentVolume extends ObjectBase
 	 */
 	get persistent_volume_name()
 	{
-		return this._persistent_volume_name || null;
+		return (this._persistent_volume_name !== undefined ? this._persistent_volume_name : null);
 	}
 
 	set persistent_volume_name(persistent_volume_name)
@@ -56,7 +56,7 @@ class ContainerArrayPersistentVolume extends ObjectBase
 	 */
 	get persistent_volume_type()
 	{
-		return this._persistent_volume_type || null;
+		return (this._persistent_volume_type !== undefined ? this._persistent_volume_type : null);
 	}
 
 	set persistent_volume_type(persistent_volume_type)
@@ -69,7 +69,7 @@ class ContainerArrayPersistentVolume extends ObjectBase
 	 */
 	get persistent_volume_mount_path()
 	{
-		return this._persistent_volume_mount_path || null;
+		return (this._persistent_volume_mount_path !== undefined ? this._persistent_volume_mount_path : null);
 	}
 
 	set persistent_volume_mount_path(persistent_volume_mount_path)
@@ -82,7 +82,7 @@ class ContainerArrayPersistentVolume extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

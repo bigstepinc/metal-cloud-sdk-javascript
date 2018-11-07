@@ -32,7 +32,7 @@ class DeployOptions extends ObjectBase
 	 */
 	get instance_array()
 	{
-		return this._instance_array || {};
+		return (this._instance_array !== undefined ? this._instance_array : {});
 	}
 
 	set instance_array(instance_array)
@@ -45,7 +45,7 @@ class DeployOptions extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)

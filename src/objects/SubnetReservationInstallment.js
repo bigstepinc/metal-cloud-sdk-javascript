@@ -32,7 +32,7 @@ class SubnetReservationInstallment extends ObjectBase
 	 */
 	get subnet_reservation_id()
 	{
-		return this._subnet_reservation_id || null;
+		return (this._subnet_reservation_id !== undefined ? this._subnet_reservation_id : null);
 	}
 
 	set subnet_reservation_id(subnet_reservation_id)
@@ -45,7 +45,7 @@ class SubnetReservationInstallment extends ObjectBase
 	 */
 	get subnet_reservation_installment_id()
 	{
-		return this._subnet_reservation_installment_id || null;
+		return (this._subnet_reservation_installment_id !== undefined ? this._subnet_reservation_installment_id : null);
 	}
 
 	set subnet_reservation_installment_id(subnet_reservation_installment_id)
@@ -59,7 +59,7 @@ class SubnetReservationInstallment extends ObjectBase
 	 */
 	get resource_reservation_installment_created_timestamp()
 	{
-		return this._resource_reservation_installment_created_timestamp || null;
+		return (this._resource_reservation_installment_created_timestamp !== undefined ? this._resource_reservation_installment_created_timestamp : null);
 	}
 
 	set resource_reservation_installment_created_timestamp(resource_reservation_installment_created_timestamp)
@@ -73,7 +73,7 @@ class SubnetReservationInstallment extends ObjectBase
 	 */
 	get resource_reservation_installment_start_timestamp()
 	{
-		return this._resource_reservation_installment_start_timestamp || null;
+		return (this._resource_reservation_installment_start_timestamp !== undefined ? this._resource_reservation_installment_start_timestamp : null);
 	}
 
 	set resource_reservation_installment_start_timestamp(resource_reservation_installment_start_timestamp)
@@ -87,7 +87,7 @@ class SubnetReservationInstallment extends ObjectBase
 	 */
 	get resource_reservation_installment_end_timestamp()
 	{
-		return this._resource_reservation_installment_end_timestamp || null;
+		return (this._resource_reservation_installment_end_timestamp !== undefined ? this._resource_reservation_installment_end_timestamp : null);
 	}
 
 	set resource_reservation_installment_end_timestamp(resource_reservation_installment_end_timestamp)
@@ -100,7 +100,7 @@ class SubnetReservationInstallment extends ObjectBase
 	 */
 	get resource_reservation_installment_price()
 	{
-		return this._resource_reservation_installment_price || null;
+		return (this._resource_reservation_installment_price !== undefined ? this._resource_reservation_installment_price : null);
 	}
 
 	set resource_reservation_installment_price(resource_reservation_installment_price)
@@ -113,7 +113,7 @@ class SubnetReservationInstallment extends ObjectBase
 	 */
 	get resource_reservation_installment_price_currency()
 	{
-		return this._resource_reservation_installment_price_currency || null;
+		return (this._resource_reservation_installment_price_currency !== undefined ? this._resource_reservation_installment_price_currency : null);
 	}
 
 	set resource_reservation_installment_price_currency(resource_reservation_installment_price_currency)
@@ -126,7 +126,7 @@ class SubnetReservationInstallment extends ObjectBase
 	 */
 	get resource_reservation_installment_status()
 	{
-		return this._resource_reservation_installment_status || null;
+		return (this._resource_reservation_installment_status !== undefined ? this._resource_reservation_installment_status : null);
 	}
 
 	set resource_reservation_installment_status(resource_reservation_installment_status)
@@ -139,7 +139,7 @@ class SubnetReservationInstallment extends ObjectBase
 	 */
 	get type()
 	{
-		return this._type || null;
+		return (this._type !== undefined ? this._type : null);
 	}
 
 	set type(type)
