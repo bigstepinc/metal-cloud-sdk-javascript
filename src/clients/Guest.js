@@ -1262,11 +1262,6 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("license_types_for_volume_template", Array.prototype.slice.call(arguments));
 	}
 
-	async published_datasets_updated(strMaintainerUserID)
-	{
-		return await this.rpc("published_datasets_updated", Array.prototype.slice.call(arguments));
-	}
-
 	async datacenter_datasets(strDatacenterLabel)
 	{
 		return await this.rpc("datacenter_datasets", Array.prototype.slice.call(arguments));
@@ -1277,24 +1272,29 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("user_datasets_managed", Array.prototype.slice.call(arguments));
 	}
 
-	async datastore_publishers()
-	{
-		return await this.rpc("datastore_publishers", Array.prototype.slice.call(arguments));
-	}
-
-	async datastore_publisher_create(nPublisherUserID)
-	{
-		return await this.rpc("datastore_publisher_create", Array.prototype.slice.call(arguments));
-	}
-
-	async datastore_publisher_delete(nDatastorePublisherID)
-	{
-		return await this.rpc("datastore_publisher_delete", Array.prototype.slice.call(arguments));
-	}
-
 	async support_ticket_options(strUserLanguage)
 	{
 		return await this.rpc("support_ticket_options", Array.prototype.slice.call(arguments));
+	}
+
+	async cluster_instance_arrays(strClusterID, arrInstanceArrayIDs = null)
+	{
+		return await this.rpc("cluster_instance_arrays", Array.prototype.slice.call(arguments));
+	}
+
+	async container_status(strContainerID)
+	{
+		return await this.rpc("container_status", Array.prototype.slice.call(arguments));
+	}
+
+	async container_array_status(strContainerArrayID)
+	{
+		return await this.rpc("container_array_status", Array.prototype.slice.call(arguments));
+	}
+
+	async container_cluster_container_arrays(strContainerClusterID, arrContainerArrayIDs = null)
+	{
+		return await this.rpc("container_cluster_container_arrays", Array.prototype.slice.call(arguments));
 	}
 
 	async instance_array_drive_arrays(strInstanceArrayID)

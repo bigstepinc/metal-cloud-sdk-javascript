@@ -1227,16 +1227,6 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("ip_custom_reverse_record_add", Array.prototype.slice.call(arguments));
 	}
 
-	async infrastructure_available_subnet_lan_pools(nInfrastructureID)
-	{
-		return await this.rpc("infrastructure_available_subnet_lan_pools", Array.prototype.slice.call(arguments));
-	}
-
-	async infrastructure_lan_subnet_available_prefixes(nInfrastructureID)
-	{
-		return await this.rpc("infrastructure_lan_subnet_available_prefixes", Array.prototype.slice.call(arguments));
-	}
-
 	async drive_attach_container(strDriveID, strContainerID)
 	{
 		return await this.rpc("drive_attach_container", Array.prototype.slice.call(arguments));
@@ -1342,6 +1332,11 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("server_instance_oob_allow_ip", Array.prototype.slice.call(arguments));
 	}
 
+	async server_instance_oob_disallow_ip(strInstanceID, strDisallowedIP)
+	{
+		return await this.rpc("server_instance_oob_disallow_ip", Array.prototype.slice.call(arguments));
+	}
+
 	async drive_array_filesystem_types_available()
 	{
 		return await this.rpc("drive_array_filesystem_types_available", Array.prototype.slice.call(arguments));
@@ -1352,9 +1347,14 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("drive_array_block_sizes_available", Array.prototype.slice.call(arguments));
 	}
 
-	async server_instance_oob_disallow_ip(strInstanceID, strDisallowedIP)
+	async dataset_readme_upload_url()
 	{
-		return await this.rpc("server_instance_oob_disallow_ip", Array.prototype.slice.call(arguments));
+		return await this.rpc("dataset_readme_upload_url", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_readme_download_url(nPublicDatasetID)
+	{
+		return await this.rpc("dataset_readme_download_url", Array.prototype.slice.call(arguments));
 	}
 
 	async dataset_readme_delete(nDatasetID)

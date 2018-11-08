@@ -1057,11 +1057,6 @@ class API extends JSONRPC.Client
 		return await this.rpc("drive_detach_container", Array.prototype.slice.call(arguments));
 	}
 
-	async infrastructure_overview_children_products(strInfrastructureID)
-	{
-		return await this.rpc("infrastructure_overview_children_products", Array.prototype.slice.call(arguments));
-	}
-
 	async datacenter_get(strUserID = null, strDatacenterName)
 	{
 		return await this.rpc("datacenter_get", Array.prototype.slice.call(arguments));
@@ -1195,6 +1190,11 @@ class API extends JSONRPC.Client
 	async dataset_readme_upload_url()
 	{
 		return await this.rpc("dataset_readme_upload_url", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_readme_download_url(nPublicDatasetID)
+	{
+		return await this.rpc("dataset_readme_download_url", Array.prototype.slice.call(arguments));
 	}
 
 	async dataset_readme_delete(nDatasetID)
