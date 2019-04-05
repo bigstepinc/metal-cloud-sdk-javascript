@@ -22,7 +22,7 @@ If you want to run the SDK inside the browser, you must bundle the project using
 npm run build
 ```
 	
-The generated bundles wil be placed in `builds/browser/` .
+The generated bundle wil be placed in `dist/` .
 
 ## Usage
 
@@ -36,7 +36,7 @@ const JSONRPC = require("jsonrpc-bidirectional");
 	const strEndpointURL = "https://fullmetal.bigstep.com/api/";
 	const strAPIKey = "00:pl34s3c0pyth34p1k3yfr0mth3bs14dm1n1nt3rf4c3"; // the API key can be found in the interface myBigstep > Metal Cloud > API
 
-	const api = await new MetalCloud.Clients.API(strEndpointURL);
+	const api = new MetalCloud.Clients.API(strEndpointURL);
 	api.addPlugin(new JSONRPC.Plugins.Client.SignatureAdd(strAPIKey));
 
 	// The client is now initialized and authenticated. You can now execute functions through the Metal Cloud API.
@@ -95,4 +95,3 @@ const JSONRPC = require("jsonrpc-bidirectional");
 ```
 
 You can find more usage examples in the `examples` folder.
-
