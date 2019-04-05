@@ -53,7 +53,7 @@ class InstanceCredentials extends ObjectBase
 	}
 
 	/**
-	 * IPMI credentials.
+	 * Deprecated, always null.
 	 */
 	get ipmi()
 	{
@@ -79,7 +79,7 @@ class InstanceCredentials extends ObjectBase
 	}
 
 	/**
-	 * iLO admin software panel credentials.
+	 * Deprecated, always null. iLO admin software panel credentials.
 	 */
 	get ilo()
 	{
@@ -92,7 +92,7 @@ class InstanceCredentials extends ObjectBase
 	}
 
 	/**
-	 * iDRAC admin software panel credentials.
+	 * Deprecated, always null. iDRAC admin software panel credentials.
 	 */
 	get idrac()
 	{

@@ -50,7 +50,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 239 functions available on endpoint.
+	// 244 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1245,6 +1245,31 @@ class API extends JSONRPC.Client
 	async threshold_delete(nThresholdID)
 	{
 		return await this.rpc("threshold_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_subscriptions(nDatasetID)
+	{
+		return await this.rpc("dataset_subscriptions", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_rows(strUserID, arrInstanceIDs = null)
+	{
+		return await this.rpc("instance_rows", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], strStorageType = "none", nStorageSizeMBytes = 0, strVolumeTemplateID = null)
+	{
+		return await this.rpc("independent_instance_create", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_delete(strInstanceID)
+	{
+		return await this.rpc("independent_instance_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_storage_expand(strInstanceID, nStorageSizeMBytes)
+	{
+		return await this.rpc("independent_instance_storage_expand", Array.prototype.slice.call(arguments));
 	}
 
 

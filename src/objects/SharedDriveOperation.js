@@ -136,13 +136,13 @@ class SharedDriveOperation extends ObjectBase
 	}
 
 	/**
-	 * Indicates if the instances attached to this SharedDrive will have GFS
-	 * installed and that they will mount this SharedDrive (only supported for
-	 * Centos 7.x).
+	 * This feature is no longer available. The flag is ignored. Indicates if the
+	 * instances attached to this SharedDrive will have GFS installed and that they
+	 * will mount this SharedDrive (only supported for Centos 7.x).
 	 */
 	get shared_drive_has_gfs()
 	{
-		return (this._shared_drive_has_gfs !== undefined ? this._shared_drive_has_gfs : true);
+		return (this._shared_drive_has_gfs !== undefined ? this._shared_drive_has_gfs : false);
 	}
 
 	set shared_drive_has_gfs(shared_drive_has_gfs)

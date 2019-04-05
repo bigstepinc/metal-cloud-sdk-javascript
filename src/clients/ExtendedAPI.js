@@ -1207,11 +1207,6 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("datacenter_get", Array.prototype.slice.call(arguments));
 	}
 
-	async infrastructure_overview_children_products(strInfrastructureID)
-	{
-		return await this.rpc("infrastructure_overview_children_products", Array.prototype.slice.call(arguments));
-	}
-
 	async ip_custom_reverse_records(strInfrastructureID)
 	{
 		return await this.rpc("ip_custom_reverse_records", Array.prototype.slice.call(arguments));
@@ -1400,6 +1395,11 @@ class ExtendedAPI extends JSONRPC.Client
 	async threshold_delete(nThresholdID)
 	{
 		return await this.rpc("threshold_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async dataset_subscriptions(nDatasetID)
+	{
+		return await this.rpc("dataset_subscriptions", Array.prototype.slice.call(arguments));
 	}
 
 

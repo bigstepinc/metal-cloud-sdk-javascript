@@ -9,7 +9,7 @@ const ObjectBase = require('./ObjectBase');
 module.exports = 
 class DatacenterConfig extends ObjectBase
 {
-	constructor(BSIInternalHAProxyIPs, SANRoutedSubnet, BSIVRRPListenIPv4, BSIMachineListenIPv4List, BSIExternallyVisibleIPv4, repoURLRoot, repoURLRootQuarantineNetwork, NTPServers, DNSServers, TFTPServerWANVRRPListenIPv4, dataLakeEnabled)
+	constructor(SANRoutedSubnet, BSIVRRPListenIPv4, BSIMachineListenIPv4List, BSIExternallyVisibleIPv4, repoURLRoot, repoURLRootQuarantineNetwork, NTPServers, DNSServers, TFTPServerWANVRRPListenIPv4, dataLakeEnabled)
 	{
 		super();
 
@@ -25,7 +25,7 @@ class DatacenterConfig extends ObjectBase
 			}
 		}
 
-		for(let index = 0; index < 11; index++)
+		for(let index = 0; index < 10; index++)
 		{
 			let arg = arguments[index];
 
@@ -33,7 +33,6 @@ class DatacenterConfig extends ObjectBase
 				throw new Error("Invalid params in DatacenterConfig constructor.");
 		}
 
-		this._BSIInternalHAProxyIPs = BSIInternalHAProxyIPs;
 		this._SANRoutedSubnet = SANRoutedSubnet;
 		this._BSIVRRPListenIPv4 = BSIVRRPListenIPv4;
 		this._BSIMachineListenIPv4List = BSIMachineListenIPv4List;
@@ -44,22 +43,6 @@ class DatacenterConfig extends ObjectBase
 		this._DNSServers = DNSServers;
 		this._TFTPServerWANVRRPListenIPv4 = TFTPServerWANVRRPListenIPv4;
 		this._dataLakeEnabled = dataLakeEnabled;
-	}
-
-	/**
-	 * Private IP addresses, configured permanently in Metal Cloud head servers on
-	 * network interfaces, for the inside network of a HA Proxy server. When Metal
-	 * Cloud deploy agents connect to Metal Cloud, unless the connection remote IP
-	 * is one of these HA Proxy servers, it will be rejected by Metal Cloud.
-	 */
-	get BSIInternalHAProxyIPs()
-	{
-		return (this._BSIInternalHAProxyIPs !== undefined ? this._BSIInternalHAProxyIPs : []);
-	}
-
-	set BSIInternalHAProxyIPs(BSIInternalHAProxyIPs)
-	{
-		this._BSIInternalHAProxyIPs = BSIInternalHAProxyIPs;
 	}
 
 	/**
@@ -268,7 +251,6 @@ class DatacenterConfig extends ObjectBase
 	static get JSONRequired()
 	{
 		return [
-			"BSIInternalHAProxyIPs",
 			"SANRoutedSubnet",
 			"BSIVRRPListenIPv4",
 			"BSIMachineListenIPv4List",

@@ -274,7 +274,7 @@ class Drive extends ObjectBase
 	}
 
 	/**
-	 * Drive file system information
+	 * Ignored if the drive_service_status property is SERVICE_STATUS_ACTIVE
 	 */
 	get drive_filesystem()
 	{

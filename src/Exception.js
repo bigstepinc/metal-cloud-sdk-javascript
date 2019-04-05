@@ -3,7 +3,7 @@ const JSONRPC = require("jsonrpc-bidirectional");
 class Exception extends JSONRPC.Exception
 {
 	/**
-	 * Metal Cloud, API v3.1
+	 * Metal Cloud, API v3.1.1
 	 */
 
 	/**
@@ -205,6 +205,19 @@ class Exception extends JSONRPC.Exception
 	static get DATACENTER_NOT_FOUND()
 	{
 		return 269;
+	}
+
+	/**
+	 * Delegate user login email is not verified.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get DELEGATE_USER_LOGIN_EMAIL_NOT_VERIFIED()
+	{
+		return 325;
 	}
 
 	/**
@@ -3033,6 +3046,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.CONTAINER_PLATFORM_NOT_ENOUGH_SPACE_FOR_PERSISTENT_DIRECTORIES,
 	Exception.DATA_LOSS_NOT_CONFIRMED,
 	Exception.DATACENTER_NOT_FOUND,
+	Exception.DELEGATE_USER_LOGIN_EMAIL_NOT_VERIFIED,
 	Exception.DISK_TYPE_INVALID,
 	Exception.DNS_LABEL_RESERVED,
 	Exception.DOMAIN_LABEL_ALREADY_IN_USE,

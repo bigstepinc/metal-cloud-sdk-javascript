@@ -9,7 +9,7 @@ const ObjectBase = require('./ObjectBase');
 module.exports = 
 class Dataset extends ObjectBase
 {
-	constructor(dataset_name, dataset_description, dataset_price, dataset_price_currency, dataset_tags, dataset_datacenter, dataset_source_display_name, dataset_maintainer_display_name, dataset_formats)
+	constructor(dataset_name, dataset_description, dataset_price, dataset_price_currency, dataset_tags, datacenter_name, dataset_source_display_name, dataset_maintainer_display_name, dataset_formats)
 	{
 		super();
 
@@ -38,7 +38,7 @@ class Dataset extends ObjectBase
 		this._dataset_price = dataset_price;
 		this._dataset_price_currency = dataset_price_currency;
 		this._dataset_tags = dataset_tags;
-		this._dataset_datacenter = dataset_datacenter;
+		this._datacenter_name = datacenter_name;
 		this._dataset_source_display_name = dataset_source_display_name;
 		this._dataset_maintainer_display_name = dataset_maintainer_display_name;
 		this._dataset_formats = dataset_formats;
@@ -177,14 +177,14 @@ class Dataset extends ObjectBase
 	/**
 	 * The datacenter in which the dataset is available
 	 */
-	get dataset_datacenter()
+	get datacenter_name()
 	{
-		return (this._dataset_datacenter !== undefined ? this._dataset_datacenter : null);
+		return (this._datacenter_name !== undefined ? this._datacenter_name : null);
 	}
 
-	set dataset_datacenter(dataset_datacenter)
+	set datacenter_name(datacenter_name)
 	{
-		this._dataset_datacenter = dataset_datacenter;
+		this._datacenter_name = datacenter_name;
 	}
 
 	/**
@@ -333,7 +333,7 @@ class Dataset extends ObjectBase
 			"dataset_price",
 			"dataset_price_currency",
 			"dataset_tags",
-			"dataset_datacenter",
+			"datacenter_name",
 			"dataset_source_display_name",
 			"dataset_maintainer_display_name",
 			"dataset_formats"

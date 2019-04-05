@@ -54,7 +54,8 @@ class ServerType extends ObjectBase
 	}
 
 	/**
-	 * The name of the server type.
+	 * The name of the server type. It does not contain whitespaces. It normally
+	 * never changes.
 	 */
 	get server_type_name()
 	{
@@ -67,7 +68,20 @@ class ServerType extends ObjectBase
 	}
 
 	/**
-	 * The label of the server type.
+	 * An comprehensive server type name, which may change at any time.
+	 */
+	get server_type_display_name()
+	{
+		return (this._server_type_display_name !== undefined ? this._server_type_display_name : null);
+	}
+
+	set server_type_display_name(server_type_display_name)
+	{
+		this._server_type_display_name = server_type_display_name;
+	}
+
+	/**
+	 * Deprecated, ignored and unused.
 	 */
 	get server_type_label()
 	{
