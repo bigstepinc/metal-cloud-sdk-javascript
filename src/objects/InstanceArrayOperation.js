@@ -54,6 +54,20 @@ class InstanceArrayOperation extends ObjectBase
 	}
 
 	/**
+	 * Determines wether the server will boot from local drives or from NAS over
+	 * iSCSI.
+	 */
+	get instance_array_boot_method()
+	{
+		return (this._instance_array_boot_method !== undefined ? this._instance_array_boot_method : "pxe_iscsi");
+	}
+
+	set instance_array_boot_method(instance_array_boot_method)
+	{
+		this._instance_array_boot_method = instance_array_boot_method;
+	}
+
+	/**
 	 * The operation applied to the InstanceArray.
 	 */
 	get instance_array_deploy_type()
@@ -355,11 +369,13 @@ class InstanceArrayOperation extends ObjectBase
 	}
 
 	/**
-	 * Contains the firewall rules.
+	 * Contains the firewall rules (an array of FirewallRule objects). When
+	 * creating a new InstanceArray, if null, default firewall rules are applied
+	 * (allow any source ICMP, any private IPv4, and others).
 	 */
 	get instance_array_firewall_rules()
 	{
-		return (this._instance_array_firewall_rules !== undefined ? this._instance_array_firewall_rules : []);
+		return (this._instance_array_firewall_rules !== undefined ? this._instance_array_firewall_rules : null);
 	}
 
 	set instance_array_firewall_rules(instance_array_firewall_rules)

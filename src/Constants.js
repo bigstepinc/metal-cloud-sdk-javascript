@@ -426,6 +426,15 @@ class Constants
 		}
 	
 		/**
+		 * Don't create a drive option.Used when indicating the absence of a drive
+		 * (like NULL).
+		 */
+		static get DRIVE_STORAGE_TYPE_NONE()
+		{
+			return "none";
+		}
+	
+		/**
 		 * Important event.
 		 */
 		static get EVENT_SEVERITY_IMPORTANT()

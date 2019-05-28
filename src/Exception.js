@@ -386,6 +386,19 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * Drive array is not attached.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get DRIVE_ARRAY_IS_NOT_ATTACHED()
+	{
+		return 328;
+	}
+
+	/**
 	 * A DriveArray cannot be attached to both an InstanceArray and a ContainerArray.
 	 * @public
 	 *
@@ -1786,6 +1799,19 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * Read-only property.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get PROPERTY_READ_ONLY()
+	{
+		return 326;
+	}
+
+	/**
 	 * Resource reservation not found.
 	 * @public
 	 *
@@ -2159,6 +2185,19 @@ class Exception extends JSONRPC.Exception
 	static get SSH_KEY_UNKWOWN_ALGORITHM_IDENTIFIER()
 	{
 		return 21;
+	}
+
+	/**
+	 * Storage allocation error.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get STORAGE_ALLOCATION_ERROR()
+	{
+		return 327;
 	}
 
 	/**
@@ -3056,6 +3095,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.DRIVE_ARRAY_DETACH_NOT_ALLOWED,
 	Exception.DRIVE_ARRAY_INSTANCE_ARRAY_DETACH_NOT_ALLOWED,
 	Exception.DRIVE_ARRAY_IS_ATTACHED,
+	Exception.DRIVE_ARRAY_IS_NOT_ATTACHED,
 	Exception.DRIVE_ARRAY_MULTIPLE_ATTACH_NOT_ALLOWED,
 	Exception.DRIVE_CANNOT_BE_ATTACHED_TO_A_DELETED_INSTANCE,
 	Exception.DRIVE_IS_NOT_ATTACHED,
@@ -3129,6 +3169,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.PRODUCT_WITH_CHANGES_CANNOT_BE_STOPPED,
 	Exception.PROPERTY_IS_MANDATORY,
 	Exception.PROPERTY_IS_UNKNOWN,
+	Exception.PROPERTY_READ_ONLY,
 	Exception.RESOURCE_RESERVATION_NOT_FOUND,
 	Exception.SELECTION_LIMIT_EXCEEDED,
 	Exception.SERVER_MIGHT_NOT_BE_READY_FOR_POWER_GET,
@@ -3147,6 +3188,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.SSH_KEY_INVALID_DATA_PKCS8,
 	Exception.SSH_KEY_UNKNOWN_FORMAT,
 	Exception.SSH_KEY_UNKWOWN_ALGORITHM_IDENTIFIER,
+	Exception.STORAGE_ALLOCATION_ERROR,
 	Exception.STORAGE_SNAPSHOT_NOT_FOUND,
 	Exception.STORAGE_VOLUME_TEMPLATE_NOT_FOUND,
 	Exception.SUBNET_EXHAUSTED,

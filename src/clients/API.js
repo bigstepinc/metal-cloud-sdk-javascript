@@ -50,7 +50,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 244 functions available on endpoint.
+	// 246 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -622,7 +622,7 @@ class API extends JSONRPC.Client
 		return await this.rpc("server_type_get", Array.prototype.slice.call(arguments));
 	}
 
-	async server_types(strDatacenterName = null)
+	async server_types(strDatacenterName = null, bOnlyAvailable = false)
 	{
 		return await this.rpc("server_types", Array.prototype.slice.call(arguments));
 	}
@@ -1270,6 +1270,16 @@ class API extends JSONRPC.Client
 	async independent_instance_storage_expand(strInstanceID, nStorageSizeMBytes)
 	{
 		return await this.rpc("independent_instance_storage_expand", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_label_is_available_assert(strUserIDOwner, strInstanceLabel)
+	{
+		return await this.rpc("instance_label_is_available_assert", Array.prototype.slice.call(arguments));
+	}
+
+	async jwt_session_cookies_types_to_cookies_names()
+	{
+		return await this.rpc("jwt_session_cookies_types_to_cookies_names", Array.prototype.slice.call(arguments));
 	}
 
 

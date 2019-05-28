@@ -92,6 +92,19 @@ class VolumeTemplate extends ObjectBase
 	}
 
 	/**
+	 * Wether the template supports booting and running from local disks.
+	 */
+	get volume_template_local_disk_supported()
+	{
+		return (this._volume_template_local_disk_supported !== undefined ? this._volume_template_local_disk_supported : false);
+	}
+
+	set volume_template_local_disk_supported(volume_template_local_disk_supported)
+	{
+		this._volume_template_local_disk_supported = volume_template_local_disk_supported;
+	}
+
+	/**
 	 * An arbitrary UTF-8 string which provides a description of the template.
 	 */
 	get volume_template_description()

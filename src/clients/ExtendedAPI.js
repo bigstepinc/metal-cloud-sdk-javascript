@@ -367,7 +367,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("infrastructure_deploy_shutdown_required", Array.prototype.slice.call(arguments));
 	}
 
-	async server_types(strDatacenterName = null)
+	async server_types(strDatacenterName = null, bOnlyAvailable = false)
 	{
 		return await this.rpc("server_types", Array.prototype.slice.call(arguments));
 	}
