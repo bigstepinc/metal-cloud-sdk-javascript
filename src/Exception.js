@@ -3,7 +3,7 @@ const JSONRPC = require("jsonrpc-bidirectional");
 class Exception extends JSONRPC.Exception
 {
 	/**
-	 * Metal Cloud, API v3.1.1
+	 * Metal Cloud, API v3.2.0
 	 */
 
 	/**

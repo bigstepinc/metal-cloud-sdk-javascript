@@ -46,7 +46,8 @@ class InstanceArray extends ObjectBase
 
 	/**
 	 * Automatically created based on instance_array_label. It is a unique
-	 * reference to the InstanceArray object.
+	 * reference to the InstanceArray object. In DNS it points to all the child
+	 * instances primary public IP addresses.
 	 */
 	get instance_array_subdomain()
 	{
@@ -56,6 +57,22 @@ class InstanceArray extends ObjectBase
 	set instance_array_subdomain(instance_array_subdomain)
 	{
 		this._instance_array_subdomain = instance_array_subdomain;
+	}
+
+	/**
+	 * Automatically created based on instance_array_id. It is a unique reference
+	 * to the InstanceArray object that never changes, so it can be used in various
+	 * configs. In DNS it points to all the child instances primary public IP
+	 * addresses.
+	 */
+	get instance_array_subdomain_permanent()
+	{
+		return (this._instance_array_subdomain_permanent !== undefined ? this._instance_array_subdomain_permanent : null);
+	}
+
+	set instance_array_subdomain_permanent(instance_array_subdomain_permanent)
+	{
+		this._instance_array_subdomain_permanent = instance_array_subdomain_permanent;
 	}
 
 	/**

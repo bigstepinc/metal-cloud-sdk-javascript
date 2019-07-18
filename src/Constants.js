@@ -2,7 +2,7 @@ module.exports =
 class Constants
 {
 		/**
-		 * Metal Cloud, API v3.1.1
+		 * Metal Cloud, API v3.2.0
 		 */
 	
 	
@@ -81,6 +81,14 @@ class Constants
 		static get CLUSTER_TYPE_HORTONWORKS()
 		{
 			return "hortonworks";
+		}
+	
+		/**
+		 * Kubernetes cluster type.SaaS cluster of type Kubernetes
+		 */
+		static get CLUSTER_TYPE_KUBERNETES()
+		{
+			return "kubernetes";
 		}
 	
 		/**

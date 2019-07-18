@@ -282,11 +282,6 @@ class API extends JSONRPC.Client
 		return await this.rpc("datacenters", Array.prototype.slice.call(arguments));
 	}
 
-	async events_delete(strInfrastructureID, arrEventIDs)
-	{
-		return await this.rpc("events_delete", Array.prototype.slice.call(arguments));
-	}
-
 	async fs_create(strFSURL, strType, strPermission = null)
 	{
 		return await this.rpc("fs_create", Array.prototype.slice.call(arguments));
@@ -882,17 +877,17 @@ class API extends JSONRPC.Client
 		return await this.rpc("user_api_key_regenerate", Array.prototype.slice.call(arguments));
 	}
 
-	async user_authenticate_password(strLoginEmail, strPassword, strOneTimePassword = null, bRememberLogin = false, bTestCredentials = false, bRenewKerberosTicket = false)
+	async user_authenticate_password(strLoginEmail, strPassword, strOneTimePassword = null, bRememberLogin = true, bTestCredentials = false, bRenewKerberosTicket = false)
 	{
 		return await this.rpc("user_authenticate_password", Array.prototype.slice.call(arguments));
 	}
 
-	async user_authenticate_api_key(strUserID, strAPIKey, strOneTimePassword = null, bRememberLogin = false)
+	async user_authenticate_api_key(strUserID, strAPIKey, strOneTimePassword = null, bRememberLogin = true)
 	{
 		return await this.rpc("user_authenticate_api_key", Array.prototype.slice.call(arguments));
 	}
 
-	async user_authenticate_password_encrypted(strLoginEmail, strAESCipherPassword, strRSACipherAESKey, strOneTimePassword = null, bRememberLogin = false, bTestCredentials = false, bRenewKerberosTicket = false)
+	async user_authenticate_password_encrypted(strLoginEmail, strAESCipherPassword, strRSACipherAESKey, strOneTimePassword = null, bRememberLogin = true, bTestCredentials = false, bRenewKerberosTicket = false)
 	{
 		return await this.rpc("user_authenticate_password_encrypted", Array.prototype.slice.call(arguments));
 	}
@@ -1280,6 +1275,11 @@ class API extends JSONRPC.Client
 	async jwt_session_cookies_types_to_cookies_names()
 	{
 		return await this.rpc("jwt_session_cookies_types_to_cookies_names", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_firewall_rules_update(strInstanceID, arrFirewallRules)
+	{
+		return await this.rpc("independent_instance_firewall_rules_update", Array.prototype.slice.call(arguments));
 	}
 
 

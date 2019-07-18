@@ -522,12 +522,12 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("infrastructures", Array.prototype.slice.call(arguments));
 	}
 
-	async user_authenticate_password(strLoginEmail, strPassword, strOneTimePassword = null, bRememberLogin = false, bTestCredentials = false, bRenewKerberosTicket = false)
+	async user_authenticate_password(strLoginEmail, strPassword, strOneTimePassword = null, bRememberLogin = true, bTestCredentials = false, bRenewKerberosTicket = false)
 	{
 		return await this.rpc("user_authenticate_password", Array.prototype.slice.call(arguments));
 	}
 
-	async user_authenticate_api_key(strUserID, strAPIKey, strOneTimePassword = null, bRememberLogin = false)
+	async user_authenticate_api_key(strUserID, strAPIKey, strOneTimePassword = null, bRememberLogin = true)
 	{
 		return await this.rpc("user_authenticate_api_key", Array.prototype.slice.call(arguments));
 	}
@@ -677,7 +677,7 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("user_change_password_encrypted", Array.prototype.slice.call(arguments));
 	}
 
-	async user_authenticate_password_encrypted(strLoginEmail, strAESCipherPassword, strRSACipherAESKey, strOneTimePassword = null, bRememberLogin = false, bTestCredentials = false, bRenewKerberosTicket = false)
+	async user_authenticate_password_encrypted(strLoginEmail, strAESCipherPassword, strRSACipherAESKey, strOneTimePassword = null, bRememberLogin = true, bTestCredentials = false, bRenewKerberosTicket = false)
 	{
 		return await this.rpc("user_authenticate_password_encrypted", Array.prototype.slice.call(arguments));
 	}

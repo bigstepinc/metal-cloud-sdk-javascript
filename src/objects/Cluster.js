@@ -63,6 +63,22 @@ class Cluster extends ObjectBase
 	}
 
 	/**
+	 * Automatically created based on cluster_id. It is a unique reference to the
+	 * Cluster object that never changes, so it can be trusted in various configs.
+	 * Starting with clusters created and deployed using API v3.2.0 it points to
+	 * all the child instances in DNS.
+	 */
+	get cluster_subdomain_permanent()
+	{
+		return (this._cluster_subdomain_permanent !== undefined ? this._cluster_subdomain_permanent : null);
+	}
+
+	set cluster_subdomain_permanent(cluster_subdomain_permanent)
+	{
+		this._cluster_subdomain_permanent = cluster_subdomain_permanent;
+	}
+
+	/**
 	 * The ID of the Cluster which can be used instead of the cluster_label or
 	 * cluster_subdomain when calling the API functions. It is automatically
 	 * generated and cannot be edited.
