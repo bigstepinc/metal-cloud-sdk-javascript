@@ -64,6 +64,22 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * Cannot automatically manage IP allocation for user managed hosts (containers,
+	 *  VMs, etc.).
+	 * @public
+	 *
+	 * Subnets destined to be used with Kubernetes, virtualization or special
+	 * multi-IP address needs, need to be managed by user software or manually
+	 * (must set subnet_automatic_allocation to false).
+	 *
+	 * @returns {number}
+	 */
+	static get CANNOT_AUTO_MANAGE_IP_ALLOCATION()
+	{
+		return 329;
+	}
+
+	/**
 	 * Cluster instance array isn't attached to WAN.
 	 * @public
 	 *
@@ -3076,6 +3092,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.API_KEY_MISMATCH,
 	Exception.API_KEY_NOT_FOUND,
 	Exception.AUTHENTICATOR_OTP_REJECTED,
+	Exception.CANNOT_AUTO_MANAGE_IP_ALLOCATION,
 	Exception.CLUSTER_INSTANCE_ARRAY_HAS_NO_WAN_INTERFACE,
 	Exception.CLUSTER_MIXING_NOT_ALLOWED,
 	Exception.COMPUTE_NODE_ARRAY_EDIT_DETACHING_DRIVES_INVALID_VALUE,

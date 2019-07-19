@@ -50,7 +50,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 246 functions available on endpoint.
+	// 248 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1177,9 +1177,9 @@ class API extends JSONRPC.Client
 		return await this.rpc("infrastructure_lan_subnet_pools_available", Array.prototype.slice.call(arguments));
 	}
 
-	async infrastructure_lan_subnet_prefixes_available(nInfrastructureID)
+	async infrastructure_lan_subnet_prefix_sizes_available(nInfrastructureID)
 	{
-		return await this.rpc("infrastructure_lan_subnet_prefixes_available", Array.prototype.slice.call(arguments));
+		return await this.rpc("infrastructure_lan_subnet_prefix_sizes_available", Array.prototype.slice.call(arguments));
 	}
 
 	async dataset_readme_upload_url()
@@ -1280,6 +1280,16 @@ class API extends JSONRPC.Client
 	async independent_instance_firewall_rules_update(strInstanceID, arrFirewallRules)
 	{
 		return await this.rpc("independent_instance_firewall_rules_update", Array.prototype.slice.call(arguments));
+	}
+
+	async subnet_prefix_sizes_wan(strSubnetType)
+	{
+		return await this.rpc("subnet_prefix_sizes_wan", Array.prototype.slice.call(arguments));
+	}
+
+	async subnet_prefix_sizes_wan_cluster_attached(strSubnetType)
+	{
+		return await this.rpc("subnet_prefix_sizes_wan_cluster_attached", Array.prototype.slice.call(arguments));
 	}
 
 

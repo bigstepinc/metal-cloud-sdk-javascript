@@ -1322,9 +1322,9 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("infrastructure_lan_subnet_pools_available", Array.prototype.slice.call(arguments));
 	}
 
-	async infrastructure_lan_subnet_prefixes_available(nInfrastructureID)
+	async infrastructure_lan_subnet_prefix_sizes_available(nInfrastructureID)
 	{
-		return await this.rpc("infrastructure_lan_subnet_prefixes_available", Array.prototype.slice.call(arguments));
+		return await this.rpc("infrastructure_lan_subnet_prefix_sizes_available", Array.prototype.slice.call(arguments));
 	}
 
 	async server_instance_oob_allowed_ips(strInstanceID)
