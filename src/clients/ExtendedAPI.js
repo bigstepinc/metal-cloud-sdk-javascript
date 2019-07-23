@@ -50,7 +50,7 @@ class ExtendedAPI extends JSONRPC.Client
 	}
 
 	
-	// 270 functions available on endpoint.
+	// 271 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1400,6 +1400,11 @@ class ExtendedAPI extends JSONRPC.Client
 	async dataset_subscriptions(nDatasetID)
 	{
 		return await this.rpc("dataset_subscriptions", Array.prototype.slice.call(arguments));
+	}
+
+	async subnet_prefix_sizes_wan(strSubnetType)
+	{
+		return await this.rpc("subnet_prefix_sizes_wan", Array.prototype.slice.call(arguments));
 	}
 
 
