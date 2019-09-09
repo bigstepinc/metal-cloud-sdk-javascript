@@ -231,6 +231,45 @@ class DatacenterConfig extends ObjectBase
 	}
 
 	/**
+	 * Coordinates latitude in decimal degrees.
+	 */
+	get latitude()
+	{
+		return (this._latitude !== undefined ? this._latitude : 0);
+	}
+
+	set latitude(latitude)
+	{
+		this._latitude = latitude;
+	}
+
+	/**
+	 * Coordinates longitude in decimal degrees.
+	 */
+	get longitude()
+	{
+		return (this._longitude !== undefined ? this._longitude : 0);
+	}
+
+	set longitude(longitude)
+	{
+		this._longitude = longitude;
+	}
+
+	/**
+	 * Address, such as: Chez Gusteau, Paris, France.
+	 */
+	get address()
+	{
+		return (this._address !== undefined ? this._address : "");
+	}
+
+	set address(address)
+	{
+		this._address = address;
+	}
+
+	/**
 	 * The schema type
 	 */
 	get type()
