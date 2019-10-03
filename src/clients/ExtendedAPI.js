@@ -20,8 +20,8 @@ class ExtendedAPI extends JSONRPC.Client
 		super(strEndpointURL);
 
 		this.addPlugin(new ClientBase.Plugins.ExceptionFilter(true));
-		this.addPlugin(new ClientBase.Plugins.SerializeParameters());
-		this.addPlugin(new ClientBase.Plugins.DeserializeOutput());
+		// this.addPlugin(new ClientBase.Plugins.SerializeParameters());
+		// this.addPlugin(new ClientBase.Plugins.DeserializeOutput());
 	}
 
 	/**
