@@ -125,8 +125,7 @@ class DriveArrayOperation extends ObjectBase
 	}
 
 	/**
-	 * Represents the Drive’s type of storage. For the moment, the only possible
-	 * value is "iscsi_ssd".
+	 *
 	 */
 	get drive_array_storage_type()
 	{

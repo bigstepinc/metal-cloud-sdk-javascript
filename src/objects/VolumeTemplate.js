@@ -105,6 +105,19 @@ class VolumeTemplate extends ObjectBase
 	}
 
 	/**
+	 * A set of all supported methods
+	 */
+	get volume_template_boot_methods_supported()
+	{
+		return (this._volume_template_boot_methods_supported !== undefined ? this._volume_template_boot_methods_supported : "pxe_iscsi");
+	}
+
+	set volume_template_boot_methods_supported(volume_template_boot_methods_supported)
+	{
+		this._volume_template_boot_methods_supported = volume_template_boot_methods_supported;
+	}
+
+	/**
 	 * An arbitrary UTF-8 string which provides a description of the template.
 	 */
 	get volume_template_description()

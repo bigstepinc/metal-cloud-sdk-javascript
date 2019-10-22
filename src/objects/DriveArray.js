@@ -85,11 +85,11 @@ class DriveArray extends ObjectBase
 	}
 
 	/**
-	 * Represents the child Drives’ type of storage.
+	 *
 	 */
 	get drive_array_storage_type()
 	{
-		return (this._drive_array_storage_type !== undefined ? this._drive_array_storage_type : "iscsi_ssd");
+		return (this._drive_array_storage_type !== undefined ? this._drive_array_storage_type : null);
 	}
 
 	set drive_array_storage_type(drive_array_storage_type)

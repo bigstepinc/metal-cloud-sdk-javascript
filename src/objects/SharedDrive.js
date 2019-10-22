@@ -84,11 +84,11 @@ class SharedDrive extends ObjectBase
 	}
 
 	/**
-	 * Represents the SharedDrive’s type of storage.
+	 * The storage type of the SharedDrive.
 	 */
 	get shared_drive_storage_type()
 	{
-		return (this._shared_drive_storage_type !== undefined ? this._shared_drive_storage_type : "iscsi_ssd");
+		return (this._shared_drive_storage_type !== undefined ? this._shared_drive_storage_type : null);
 	}
 
 	set shared_drive_storage_type(shared_drive_storage_type)

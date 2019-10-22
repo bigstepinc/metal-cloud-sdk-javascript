@@ -50,7 +50,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 250 functions available on endpoint.
+	// 248 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -277,7 +277,7 @@ class API extends JSONRPC.Client
 		return await this.rpc("data_lake_krb_conf_download_url", Array.prototype.slice.call(arguments));
 	}
 
-	async datacenters(strUserID = null, bOnlyActive = false, bIncludeConfigProperties = false)
+	async datacenters(strUserID = null, bOnlyActive = false)
 	{
 		return await this.rpc("datacenters", Array.prototype.slice.call(arguments));
 	}
@@ -507,7 +507,7 @@ class API extends JSONRPC.Client
 		return await this.rpc("instance_arrays", Array.prototype.slice.call(arguments));
 	}
 
-	async instance_array_interface_attach_network(strInstanceArrayID, nInstanceArrayInterfaceIndex = null, strNetworkID)
+	async instance_array_interface_attach_network(strInstanceArrayID, nInstanceArrayInterfaceIndex, strNetworkID)
 	{
 		return await this.rpc("instance_array_interface_attach_network", Array.prototype.slice.call(arguments));
 	}
@@ -1290,16 +1290,6 @@ class API extends JSONRPC.Client
 	async subnet_prefix_sizes_wan_cluster_attached(strSubnetType)
 	{
 		return await this.rpc("subnet_prefix_sizes_wan_cluster_attached", Array.prototype.slice.call(arguments));
-	}
-
-	async instance_sdp_for_webrtc(strInstanceID, strPurpose, strJSONSDPOffer)
-	{
-		return await this.rpc("instance_sdp_for_webrtc", Array.prototype.slice.call(arguments));
-	}
-
-	async instance_ice_for_webrtc_set(strInstanceID, strPurpose, strICECandidateJSON, strSSHClientID)
-	{
-		return await this.rpc("instance_ice_for_webrtc_set", Array.prototype.slice.call(arguments));
 	}
 
 
