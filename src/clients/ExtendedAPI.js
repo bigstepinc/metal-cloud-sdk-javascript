@@ -50,7 +50,7 @@ class ExtendedAPI extends JSONRPC.Client
 	}
 
 	
-	// 271 functions available on endpoint.
+	// 281 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1405,6 +1405,56 @@ class ExtendedAPI extends JSONRPC.Client
 	async subnet_prefix_sizes_wan(strSubnetType)
 	{
 		return await this.rpc("subnet_prefix_sizes_wan", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], strStorageType = "none", nStorageSizeMBytes = 0, strVolumeTemplateID = null)
+	{
+		return await this.rpc("independent_instance_create", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_label_is_available_assert(strUserIDOwner, strInstanceLabel)
+	{
+		return await this.rpc("instance_label_is_available_assert", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_rows(strUserID, arrInstanceIDs = null)
+	{
+		return await this.rpc("instance_rows", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_delete(strInstanceID)
+	{
+		return await this.rpc("independent_instance_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_storage_expand(strInstanceID, nStorageSizeMBytes)
+	{
+		return await this.rpc("independent_instance_storage_expand", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_firewall_rules_update(strInstanceID, arrFirewallRules)
+	{
+		return await this.rpc("independent_instance_firewall_rules_update", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_array_interface_create(strInstanceArrayID)
+	{
+		return await this.rpc("instance_array_interface_create", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_ansible_inventory_get(strInstanceArrayID)
+	{
+		return await this.rpc("infrastructure_ansible_inventory_get", Array.prototype.slice.call(arguments));
+	}
+
+	async jwt_session_cookies_types_to_cookies_names()
+	{
+		return await this.rpc("jwt_session_cookies_types_to_cookies_names", Array.prototype.slice.call(arguments));
+	}
+
+	async subnet_prefix_sizes_wan_cluster_attached(strSubnetType)
+	{
+		return await this.rpc("subnet_prefix_sizes_wan_cluster_attached", Array.prototype.slice.call(arguments));
 	}
 
 
