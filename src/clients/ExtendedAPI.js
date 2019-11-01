@@ -1407,7 +1407,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("subnet_prefix_sizes_wan", Array.prototype.slice.call(arguments));
 	}
 
-	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], strStorageType = "none", nStorageSizeMBytes = 0, strVolumeTemplateID = null)
+	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], strISCSIStorageType = "none", nISCSIStorageSizeMBytes = 0, strVolumeTemplateID = null)
 	{
 		return await this.rpc("independent_instance_create", Array.prototype.slice.call(arguments));
 	}
@@ -1427,7 +1427,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("independent_instance_delete", Array.prototype.slice.call(arguments));
 	}
 
-	async independent_instance_storage_expand(strInstanceID, nStorageSizeMBytes)
+	async independent_instance_storage_expand(strInstanceID, nISCSIStorageSizeMBytes)
 	{
 		return await this.rpc("independent_instance_storage_expand", Array.prototype.slice.call(arguments));
 	}

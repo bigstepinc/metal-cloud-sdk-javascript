@@ -7,6 +7,19 @@ class Exception extends JSONRPC.Exception
 	 */
 
 	/**
+	 * Ansible bundle not found.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get ANSIBLE_BUNDLE_NOT_FOUND()
+	{
+		return 330;
+	}
+
+	/**
 	 * API key mismatch.
 	 * @public
 	 *
@@ -3089,6 +3102,7 @@ Exception.arrPrivateErrorConstantNames = [
  * Public error codes are allowed on all endpoints.
  */
 Exception.arrPublicErrorConstantNames = [
+	Exception.ANSIBLE_BUNDLE_NOT_FOUND,
 	Exception.API_KEY_MISMATCH,
 	Exception.API_KEY_NOT_FOUND,
 	Exception.AUTHENTICATOR_OTP_REJECTED,

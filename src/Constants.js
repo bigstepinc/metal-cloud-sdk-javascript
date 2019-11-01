@@ -162,6 +162,25 @@ class Constants
 		}
 	
 		/**
+		 * Run the Ansible bundle at the end of a deploy.
+		 * Visibility: public.
+		 */
+		static get ANSIBLE_RUN_POST_DEPLOY()
+		{
+			return "post_deploy";
+		}
+	
+		/**
+		 * Run the Ansible bundle before a deploy starts.
+		 * Visibility: public.Useful in cases such as rebalancing a cluster before
+		 * removing healthy nodes.
+		 */
+		static get ANSIBLE_RUN_PRE_DEPLOY()
+		{
+			return "pre_deploy";
+		}
+	
+		/**
 		 * SaaS cluster of type Cloudera.
 		 * Visibility: public.See http://www.cloudera.com/ for more information on this
 		 * software.
@@ -600,6 +619,15 @@ class Constants
 		}
 	
 		/**
+		 * Automatically pick a disk type.
+		 * Visibility: public.
+		 */
+		static get DISK_TYPE_AUTO()
+		{
+			return "auto";
+		}
+	
+		/**
 		 * Disk Type HDD.
 		 * Visibility: public.Type of server local disk
 		 */
@@ -719,6 +747,15 @@ class Constants
 		static get DNS_RECORD_TYPE_TXT()
 		{
 			return "TXT";
+		}
+	
+		/**
+		 * Automatically pick a drive storage type.
+		 * Visibility: public.
+		 */
+		static get DRIVE_STORAGE_TYPE_AUTO()
+		{
+			return "auto";
 		}
 	
 		/**

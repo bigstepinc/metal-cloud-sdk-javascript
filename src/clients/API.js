@@ -50,7 +50,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 250 functions available on endpoint.
+	// 258 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1252,7 +1252,7 @@ class API extends JSONRPC.Client
 		return await this.rpc("instance_rows", Array.prototype.slice.call(arguments));
 	}
 
-	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], strStorageType = "none", nStorageSizeMBytes = 0, strVolumeTemplateID = null)
+	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], strISCSIStorageType = "none", nISCSIStorageSizeMBytes = 0, strVolumeTemplateID = null)
 	{
 		return await this.rpc("independent_instance_create", Array.prototype.slice.call(arguments));
 	}
@@ -1262,7 +1262,7 @@ class API extends JSONRPC.Client
 		return await this.rpc("independent_instance_delete", Array.prototype.slice.call(arguments));
 	}
 
-	async independent_instance_storage_expand(strInstanceID, nStorageSizeMBytes)
+	async independent_instance_storage_expand(strInstanceID, nISCSIStorageSizeMBytes)
 	{
 		return await this.rpc("independent_instance_storage_expand", Array.prototype.slice.call(arguments));
 	}
@@ -1300,6 +1300,46 @@ class API extends JSONRPC.Client
 	async instance_array_interface_create(strInstanceArrayID)
 	{
 		return await this.rpc("instance_array_interface_create", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_ansible_bundles(strInfrastructureID, strAnsibleBundleType)
+	{
+		return await this.rpc("infrastructure_ansible_bundles", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_ansible_bundle_add_into_runlevel(strInfrastructureID, nAnsibleBundleID, nRunLevel)
+	{
+		return await this.rpc("infrastructure_ansible_bundle_add_into_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_ansible_bundle_delete_from_runlevel(strInfrastructureID, nAnsibleBundleID, nRunLevel)
+	{
+		return await this.rpc("infrastructure_ansible_bundle_delete_from_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async ansible_bundles(strUserID)
+	{
+		return await this.rpc("ansible_bundles", Array.prototype.slice.call(arguments));
+	}
+
+	async ansible_bundle_get(nAnsibleBundleID)
+	{
+		return await this.rpc("ansible_bundle_get", Array.prototype.slice.call(arguments));
+	}
+
+	async ansible_bundle_create(strUserID, objAnsibleBundle)
+	{
+		return await this.rpc("ansible_bundle_create", Array.prototype.slice.call(arguments));
+	}
+
+	async ansible_bundle_update(nAnsibleBundleID, objAnsibleBundle)
+	{
+		return await this.rpc("ansible_bundle_update", Array.prototype.slice.call(arguments));
+	}
+
+	async ansible_bundle_delete(nAnsibleBundleID)
+	{
+		return await this.rpc("ansible_bundle_delete", Array.prototype.slice.call(arguments));
 	}
 
 

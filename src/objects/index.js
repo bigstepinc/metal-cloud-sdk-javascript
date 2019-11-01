@@ -1,5 +1,6 @@
 const objExports = {};
 
+objExports.AnsibleBundle = require('./AnsibleBundle');
 objExports.AppCloudera = require('./AppCloudera');
 objExports.AppClouderaInstance = require('./AppClouderaInstance');
 objExports.AppCouchbase = require('./AppCouchbase');
