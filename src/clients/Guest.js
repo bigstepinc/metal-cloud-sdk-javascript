@@ -87,7 +87,7 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("clusters", Array.prototype.slice.call(arguments));
 	}
 
-	async datacenters(strUserID = null, bOnlyActive = false, bIncludeConfigProperties = false)
+	async datacenters(strUserID = null, bOnlyActive = false)
 	{
 		return await this.rpc("datacenters", Array.prototype.slice.call(arguments));
 	}
@@ -217,7 +217,7 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("instance_arrays", Array.prototype.slice.call(arguments));
 	}
 
-	async instance_array_interface_attach_network(strInstanceArrayID, nInstanceArrayInterfaceIndex = null, strNetworkID)
+	async instance_array_interface_attach_network(strInstanceArrayID, nInstanceArrayInterfaceIndex, strNetworkID)
 	{
 		return await this.rpc("instance_array_interface_attach_network", Array.prototype.slice.call(arguments));
 	}
