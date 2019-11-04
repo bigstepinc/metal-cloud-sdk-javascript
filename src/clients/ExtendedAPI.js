@@ -50,7 +50,7 @@ class ExtendedAPI extends JSONRPC.Client
 	}
 
 	
-	// 281 functions available on endpoint.
+	// 289 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1455,6 +1455,46 @@ class ExtendedAPI extends JSONRPC.Client
 	async subnet_prefix_sizes_wan_cluster_attached(strSubnetType)
 	{
 		return await this.rpc("subnet_prefix_sizes_wan_cluster_attached", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_ansible_bundles(strInfrastructureID, strAnsibleBundleType)
+	{
+		return await this.rpc("infrastructure_ansible_bundles", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_ansible_bundle_delete_from_runlevel(strInfrastructureID, nAnsibleBundleID, nRunLevel)
+	{
+		return await this.rpc("infrastructure_ansible_bundle_delete_from_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_ansible_bundle_add_into_runlevel(strInfrastructureID, nAnsibleBundleID, nRunLevel)
+	{
+		return await this.rpc("infrastructure_ansible_bundle_add_into_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async ansible_bundles(strUserID)
+	{
+		return await this.rpc("ansible_bundles", Array.prototype.slice.call(arguments));
+	}
+
+	async ansible_bundle_update(nAnsibleBundleID, objAnsibleBundle)
+	{
+		return await this.rpc("ansible_bundle_update", Array.prototype.slice.call(arguments));
+	}
+
+	async ansible_bundle_get(nAnsibleBundleID)
+	{
+		return await this.rpc("ansible_bundle_get", Array.prototype.slice.call(arguments));
+	}
+
+	async ansible_bundle_delete(nAnsibleBundleID)
+	{
+		return await this.rpc("ansible_bundle_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async ansible_bundle_create(strUserID, objAnsibleBundle)
+	{
+		return await this.rpc("ansible_bundle_create", Array.prototype.slice.call(arguments));
 	}
 
 
