@@ -1,183 +1,101 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * An object which has instance labels as keys and AppSparkSQLInstance objects
- * as values.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class AppSparkSQL extends ObjectBase
 {
-	constructor(spark_master, spark_workers)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "An object which has instance labels as keys and <a:schema>AppSparkSQLInstance<\/a:schema> objects as values.",
+			"type": "object",
+			"properties": {
+				"spark_master": {
+					"type": "array",
+					"items": {
+						"type": "AppSparkSQLInstance",
+						"description": ""
+					},
+					"description": "The <a:schema>AppSparkSQLInstance<\/a:schema> object which represents the Master.",
+					"required": true
+				},
+				"spark_workers": {
+					"type": "array",
+					"items": {
+						"type": "AppSparkSQLInstance",
+						"description": ""
+					},
+					"description": "The <a:schema>AppSparkSQLInstance<\/a:schema> objects.",
+					"required": true
+				},
+				"spark_master_url": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The URL to access Spark Master.",
+					"required": true,
+					"readonly": true
+				},
+				"spark_master_web_ui_url": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The URL to access the Spark Master Web UI.",
+					"required": true,
+					"readonly": true
+				},
+				"spark_thrift_url": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The URL to access the Spark Thrift server.",
+					"required": true,
+					"readonly": true
+				},
+				"sparksql_jdbc_connection_url": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The SparkSQL JDBC connection URL.",
+					"required": true,
+					"readonly": true
+				},
+				"container_cluster_software_available_versions": {
+					"type": "array",
+					"description": "Cluster software available versions.",
+					"readonly": true
+				},
+				"container_cluster_software_version": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The software version detected on the container cluster.",
+					"readonly": true
+				},
+				"connectable_container_clusters": {
+					"type": "array",
+					"description": "Array of compatible and connectable clusters.",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"AppSparkSQL"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		for(let index = 0; index < 2; index++)
-		{
-			let arg = arguments[index];
-
-			if(arg === undefined || arg === null)
-				throw new Error("Invalid params in AppSparkSQL constructor.");
-		}
-
-		this._spark_master = spark_master;
-		this._spark_workers = spark_workers;
-	}
-
-	/**
-	 * The AppSparkSQLInstance object which represents the Master.
-	 */
-	get spark_master()
-	{
-		return (this._spark_master !== undefined ? this._spark_master : []);
-	}
-
-	set spark_master(spark_master)
-	{
-		this._spark_master = spark_master;
-	}
-
-	/**
-	 * The AppSparkSQLInstance objects.
-	 */
-	get spark_workers()
-	{
-		return (this._spark_workers !== undefined ? this._spark_workers : []);
-	}
-
-	set spark_workers(spark_workers)
-	{
-		this._spark_workers = spark_workers;
-	}
-
-	/**
-	 * The URL to access Spark Master.
-	 */
-	get spark_master_url()
-	{
-		return (this._spark_master_url !== undefined ? this._spark_master_url : null);
-	}
-
-	set spark_master_url(spark_master_url)
-	{
-		this._spark_master_url = spark_master_url;
-	}
-
-	/**
-	 * The URL to access the Spark Master Web UI.
-	 */
-	get spark_master_web_ui_url()
-	{
-		return (this._spark_master_web_ui_url !== undefined ? this._spark_master_web_ui_url : null);
-	}
-
-	set spark_master_web_ui_url(spark_master_web_ui_url)
-	{
-		this._spark_master_web_ui_url = spark_master_web_ui_url;
-	}
-
-	/**
-	 * The URL to access the Spark Thrift server.
-	 */
-	get spark_thrift_url()
-	{
-		return (this._spark_thrift_url !== undefined ? this._spark_thrift_url : null);
-	}
-
-	set spark_thrift_url(spark_thrift_url)
-	{
-		this._spark_thrift_url = spark_thrift_url;
-	}
-
-	/**
-	 * The SparkSQL JDBC connection URL.
-	 */
-	get sparksql_jdbc_connection_url()
-	{
-		return (this._sparksql_jdbc_connection_url !== undefined ? this._sparksql_jdbc_connection_url : null);
-	}
-
-	set sparksql_jdbc_connection_url(sparksql_jdbc_connection_url)
-	{
-		this._sparksql_jdbc_connection_url = sparksql_jdbc_connection_url;
-	}
-
-	/**
-	 * Cluster software available versions.
-	 */
-	get container_cluster_software_available_versions()
-	{
-		return (this._container_cluster_software_available_versions !== undefined ? this._container_cluster_software_available_versions : []);
-	}
-
-	set container_cluster_software_available_versions(container_cluster_software_available_versions)
-	{
-		this._container_cluster_software_available_versions = container_cluster_software_available_versions;
-	}
-
-	/**
-	 * The software version detected on the container cluster.
-	 */
-	get container_cluster_software_version()
-	{
-		return (this._container_cluster_software_version !== undefined ? this._container_cluster_software_version : null);
-	}
-
-	set container_cluster_software_version(container_cluster_software_version)
-	{
-		this._container_cluster_software_version = container_cluster_software_version;
-	}
-
-	/**
-	 * Array of compatible and connectable clusters.
-	 */
-	get connectable_container_clusters()
-	{
-		return (this._connectable_container_clusters !== undefined ? this._connectable_container_clusters : []);
-	}
-
-	set connectable_container_clusters(connectable_container_clusters)
-	{
-		this._connectable_container_clusters = connectable_container_clusters;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"spark_master",
-			"spark_workers"
-		];
+		};
 	}
 };

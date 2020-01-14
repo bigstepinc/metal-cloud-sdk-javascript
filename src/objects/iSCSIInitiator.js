@@ -1,131 +1,85 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Initiator IQN, username and password and other iSCSI connection details.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class iSCSIInitiator extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Initiator IQN, username and password and other iSCSI connection details.",
+			"type": "object",
+			"properties": {
+				"username": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The iSCSI username.",
+					"pattern": "^[A-Za-z0-9]+$",
+					"required": true,
+					"readonly": true
+				},
+				"password": {
+					"type": [
+						"string",
+						"null"
+					],
+					"required": true,
+					"description": "The iSCSI initial password.",
+					"readonly": true
+				},
+				"initiator_iqn": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "IQN of initiator iSCSI.",
+					"pattern": "^[A-Za-z0-9:.-]+$",
+					"required": true,
+					"readonly": true
+				},
+				"gateway": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "IPv4 gateway in decimal dotted notation.",
+					"default": null,
+					"readonly": true
+				},
+				"netmask": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "IPv4 dotted decimal notation netmask.",
+					"default": null,
+					"readonly": true
+				},
+				"initiator_ip_address": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "iSCSI client IP address.",
+					"default": null,
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"iSCSIInitiator"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The iSCSI username.
-	 */
-	get username()
-	{
-		return (this._username !== undefined ? this._username : null);
-	}
-
-	set username(username)
-	{
-		this._username = username;
-	}
-
-	/**
-	 * The iSCSI initial password.
-	 */
-	get password()
-	{
-		return (this._password !== undefined ? this._password : null);
-	}
-
-	set password(password)
-	{
-		this._password = password;
-	}
-
-	/**
-	 * IQN of initiator iSCSI.
-	 */
-	get initiator_iqn()
-	{
-		return (this._initiator_iqn !== undefined ? this._initiator_iqn : null);
-	}
-
-	set initiator_iqn(initiator_iqn)
-	{
-		this._initiator_iqn = initiator_iqn;
-	}
-
-	/**
-	 * IPv4 gateway in decimal dotted notation.
-	 */
-	get gateway()
-	{
-		return (this._gateway !== undefined ? this._gateway : null);
-	}
-
-	set gateway(gateway)
-	{
-		this._gateway = gateway;
-	}
-
-	/**
-	 * IPv4 dotted decimal notation netmask.
-	 */
-	get netmask()
-	{
-		return (this._netmask !== undefined ? this._netmask : null);
-	}
-
-	set netmask(netmask)
-	{
-		this._netmask = netmask;
-	}
-
-	/**
-	 * iSCSI client IP address.
-	 */
-	get initiator_ip_address()
-	{
-		return (this._initiator_ip_address !== undefined ? this._initiator_ip_address : null);
-	}
-
-	set initiator_ip_address(initiator_ip_address)
-	{
-		this._initiator_ip_address = initiator_ip_address;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

@@ -1,170 +1,109 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A Container is a child product of the ContainerArray and represents a
- * compute node.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ContainerOperation extends ObjectBase
 {
-	constructor(container_label)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A Container is a child product of the ContainerArray and represents a compute node.",
+			"type": "object",
+			"properties": {
+				"container_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the Container which can be used instead of the <code>container_label<\/code> or <code>container_subdomain<\/code> when calling the API functions. It is automatically generated and cannot be edited.",
+					"default": null,
+					"readonly": true
+				},
+				"container_change_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "This property helps ensure that edit operations don\u2019t overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
+					"default": null,
+					"required": true
+				},
+				"container_label": {
+					"type": "string",
+					"description": "The Container's unique label is used to create the <code>container_subdomain<\/code>. It is editable and can be used to call API functions.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": true,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$"
+				},
+				"container_subdomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>container_label<\/code>. It is a unique reference to the Container object.",
+					"readonly": true
+				},
+				"container_deploy_type": {
+					"enum": [
+						"create",
+						"delete",
+						"edit",
+						"start",
+						"stop",
+						"suspend"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The operation applied to the Container.",
+					"readonly": true
+				},
+				"container_deploy_status": {
+					"enum": [
+						"not_started",
+						"ongoing",
+						"finished"
+					],
+					"type": "string",
+					"description": "The status of the deploy process.",
+					"readonly": true
+				},
+				"container_interfaces": {
+					"type": "array",
+					"items": {
+						"description": "ContainerInterfaceOperation objects",
+						"type": "ContainerInterfaceOperation"
+					},
+					"description": "All <a:schema>ContainerInterfaceOperation<\/a:schema> objects.",
+					"default": [
+						
+					]
+				},
+				"container_updated_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the Container was edited. Example format: 2013-11-29T13:00:01Z.",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"ContainerOperation"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		if(container_label === undefined || container_label === null)
-			throw new Error("Invalid param in ContainerOperation constructor.");
-
-		this._container_label = container_label;
-	}
-
-	/**
-	 * The ID of the Container which can be used instead of the container_label or
-	 * container_subdomain when calling the API functions. It is automatically
-	 * generated and cannot be edited.
-	 */
-	get container_id()
-	{
-		return (this._container_id !== undefined ? this._container_id : null);
-	}
-
-	set container_id(container_id)
-	{
-		this._container_id = container_id;
-	}
-
-	/**
-	 * This property helps ensure that edit operations don’t overwrite other,
-	 * more recent changes made to the same object. It gets updated automatically
-	 * after each successful edit operation.
-	 */
-	get container_change_id()
-	{
-		return (this._container_change_id !== undefined ? this._container_change_id : null);
-	}
-
-	set container_change_id(container_change_id)
-	{
-		this._container_change_id = container_change_id;
-	}
-
-	/**
-	 * The Container's unique label is used to create the container_subdomain. It
-	 * is editable and can be used to call API functions.
-	 */
-	get container_label()
-	{
-		return (this._container_label !== undefined ? this._container_label : null);
-	}
-
-	set container_label(container_label)
-	{
-		this._container_label = container_label;
-	}
-
-	/**
-	 * Automatically created based on container_label. It is a unique reference to
-	 * the Container object.
-	 */
-	get container_subdomain()
-	{
-		return (this._container_subdomain !== undefined ? this._container_subdomain : null);
-	}
-
-	set container_subdomain(container_subdomain)
-	{
-		this._container_subdomain = container_subdomain;
-	}
-
-	/**
-	 * The operation applied to the Container.
-	 */
-	get container_deploy_type()
-	{
-		return (this._container_deploy_type !== undefined ? this._container_deploy_type : null);
-	}
-
-	set container_deploy_type(container_deploy_type)
-	{
-		this._container_deploy_type = container_deploy_type;
-	}
-
-	/**
-	 * The status of the deploy process.
-	 */
-	get container_deploy_status()
-	{
-		return (this._container_deploy_status !== undefined ? this._container_deploy_status : null);
-	}
-
-	set container_deploy_status(container_deploy_status)
-	{
-		this._container_deploy_status = container_deploy_status;
-	}
-
-	/**
-	 * All ContainerInterfaceOperation objects.
-	 */
-	get container_interfaces()
-	{
-		return (this._container_interfaces !== undefined ? this._container_interfaces : []);
-	}
-
-	set container_interfaces(container_interfaces)
-	{
-		this._container_interfaces = container_interfaces;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the Container was
-	 * edited. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get container_updated_timestamp()
-	{
-		return (this._container_updated_timestamp !== undefined ? this._container_updated_timestamp : null);
-	}
-
-	set container_updated_timestamp(container_updated_timestamp)
-	{
-		this._container_updated_timestamp = container_updated_timestamp;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"container_label"
-		];
+		};
 	}
 };

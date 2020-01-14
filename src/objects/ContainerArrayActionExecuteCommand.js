@@ -1,74 +1,38 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * ContainerArray action that executes a command on the Containers to asses
- * their readiness or liveness.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ContainerArrayActionExecuteCommand extends ObjectBase
 {
-	constructor(action_command)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "ContainerArray action that executes a command on the Containers to asses their readiness or liveness.",
+			"type": "object",
+			"properties": {
+				"action_command": {
+					"type": "array",
+					"items": {
+						"description": "An array of strings.",
+						"type": "string"
+					},
+					"description": "Command to execute on the Containers. The command is not executed using a shell and the root of each Container (/) is used as working directory. An exit status of 0 is treated as healthy and non-zero as unhealthy",
+					"required": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"ContainerArrayActionExecuteCommand"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		if(action_command === undefined || action_command === null)
-			throw new Error("Invalid param in ContainerArrayActionExecuteCommand constructor.");
-
-		this._action_command = action_command;
-	}
-
-	/**
-	 * Command to execute on the Containers. The command is not executed using a
-	 * shell and the root of each Container (/) is used as working directory. An
-	 * exit status of 0 is treated as healthy and non-zero as unhealthy
-	 */
-	get action_command()
-	{
-		return (this._action_command !== undefined ? this._action_command : []);
-	}
-
-	set action_command(action_command)
-	{
-		this._action_command = action_command;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"action_command"
-		];
+		};
 	}
 };

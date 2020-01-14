@@ -1,245 +1,166 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A Container is a child product of the ContainerArray and represents a
- * compute node.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class Container extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A Container is a child product of the ContainerArray and represents a compute node.",
+			"type": "object",
+			"properties": {
+				"container_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the Container which can be used instead of the <code>container_label<\/code> or <code>container_subdomain<\/code> when calling the API functions. It is automatically generated and cannot be edited.",
+					"default": null,
+					"readonly": true
+				},
+				"container_change_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "This property helps ensure that edit operations don\u2019t overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
+					"default": null,
+					"required": true
+				},
+				"container_array_id": {
+					"type": "integer",
+					"description": "The Container is a child of a ContainerArray.",
+					"readonly": true
+				},
+				"infrastructure_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "Represents the infrastructure ID to which the Container belongs.",
+					"default": null,
+					"readonly": true
+				},
+				"container_label": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The Container's unique label is used to create the <code>container_subdomain<\/code>. It is editable and can be used to call API functions.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": false,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$",
+					"default": null
+				},
+				"container_subdomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>container_label<\/code>. It is a unique reference to the Container object.",
+					"default": null,
+					"readonly": true
+				},
+				"container_subdomain_internal": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>container_label<\/code>. It is a unique reference to the Container object to be used within the ContainerPlatform network.",
+					"default": null,
+					"readonly": true
+				},
+				"container_service_status": {
+					"enum": [
+						"ordered",
+						"active",
+						"suspended",
+						"stopped",
+						"deleted"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The status of the Container.",
+					"default": null,
+					"readonly": true
+				},
+				"container_operation": {
+					"type": [
+						"ContainerOperation",
+						"null"
+					],
+					"description": "The operation type, operation status and modified Container object.",
+					"default": null,
+					"readonly": true
+				},
+				"container_credentials": {
+					"type": [
+						"ContainerCredentials",
+						"null"
+					],
+					"description": "Credentials used to connect to the Container.",
+					"default": null,
+					"readonly": true
+				},
+				"container_interfaces": {
+					"type": "array",
+					"items": {
+						"description": "ContainerInterface objects",
+						"type": "ContainerInterface"
+					},
+					"description": "All <a:schema>ContainerInterface<\/a:schema> objects.",
+					"default": [
+						
+					],
+					"readonly": true
+				},
+				"container_index": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "The index of the Container within the ContainerArray.",
+					"default": null,
+					"readonly": true
+				},
+				"container_created_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the Container was created. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"container_updated_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the Container was edited. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"Container"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The ID of the Container which can be used instead of the container_label or
-	 * container_subdomain when calling the API functions. It is automatically
-	 * generated and cannot be edited.
-	 */
-	get container_id()
-	{
-		return (this._container_id !== undefined ? this._container_id : null);
-	}
-
-	set container_id(container_id)
-	{
-		this._container_id = container_id;
-	}
-
-	/**
-	 * This property helps ensure that edit operations don’t overwrite other,
-	 * more recent changes made to the same object. It gets updated automatically
-	 * after each successful edit operation.
-	 */
-	get container_change_id()
-	{
-		return (this._container_change_id !== undefined ? this._container_change_id : null);
-	}
-
-	set container_change_id(container_change_id)
-	{
-		this._container_change_id = container_change_id;
-	}
-
-	/**
-	 * The Container is a child of a ContainerArray.
-	 */
-	get container_array_id()
-	{
-		return (this._container_array_id !== undefined ? this._container_array_id : null);
-	}
-
-	set container_array_id(container_array_id)
-	{
-		this._container_array_id = container_array_id;
-	}
-
-	/**
-	 * Represents the infrastructure ID to which the Container belongs.
-	 */
-	get infrastructure_id()
-	{
-		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
-	}
-
-	set infrastructure_id(infrastructure_id)
-	{
-		this._infrastructure_id = infrastructure_id;
-	}
-
-	/**
-	 * The Container's unique label is used to create the container_subdomain. It
-	 * is editable and can be used to call API functions.
-	 */
-	get container_label()
-	{
-		return (this._container_label !== undefined ? this._container_label : null);
-	}
-
-	set container_label(container_label)
-	{
-		this._container_label = container_label;
-	}
-
-	/**
-	 * Automatically created based on container_label. It is a unique reference to
-	 * the Container object.
-	 */
-	get container_subdomain()
-	{
-		return (this._container_subdomain !== undefined ? this._container_subdomain : null);
-	}
-
-	set container_subdomain(container_subdomain)
-	{
-		this._container_subdomain = container_subdomain;
-	}
-
-	/**
-	 * Automatically created based on container_label. It is a unique reference to
-	 * the Container object to be used within the ContainerPlatform network.
-	 */
-	get container_subdomain_internal()
-	{
-		return (this._container_subdomain_internal !== undefined ? this._container_subdomain_internal : null);
-	}
-
-	set container_subdomain_internal(container_subdomain_internal)
-	{
-		this._container_subdomain_internal = container_subdomain_internal;
-	}
-
-	/**
-	 * The status of the Container.
-	 */
-	get container_service_status()
-	{
-		return (this._container_service_status !== undefined ? this._container_service_status : null);
-	}
-
-	set container_service_status(container_service_status)
-	{
-		this._container_service_status = container_service_status;
-	}
-
-	/**
-	 * The operation type, operation status and modified Container object.
-	 */
-	get container_operation()
-	{
-		return (this._container_operation !== undefined ? this._container_operation : null);
-	}
-
-	set container_operation(container_operation)
-	{
-		this._container_operation = container_operation;
-	}
-
-	/**
-	 * Credentials used to connect to the Container.
-	 */
-	get container_credentials()
-	{
-		return (this._container_credentials !== undefined ? this._container_credentials : null);
-	}
-
-	set container_credentials(container_credentials)
-	{
-		this._container_credentials = container_credentials;
-	}
-
-	/**
-	 * All ContainerInterface objects.
-	 */
-	get container_interfaces()
-	{
-		return (this._container_interfaces !== undefined ? this._container_interfaces : []);
-	}
-
-	set container_interfaces(container_interfaces)
-	{
-		this._container_interfaces = container_interfaces;
-	}
-
-	/**
-	 * The index of the Container within the ContainerArray.
-	 */
-	get container_index()
-	{
-		return (this._container_index !== undefined ? this._container_index : null);
-	}
-
-	set container_index(container_index)
-	{
-		this._container_index = container_index;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the Container was
-	 * created. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get container_created_timestamp()
-	{
-		return (this._container_created_timestamp !== undefined ? this._container_created_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set container_created_timestamp(container_created_timestamp)
-	{
-		this._container_created_timestamp = container_created_timestamp;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the Container was
-	 * edited. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get container_updated_timestamp()
-	{
-		return (this._container_updated_timestamp !== undefined ? this._container_updated_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set container_updated_timestamp(container_updated_timestamp)
-	{
-		this._container_updated_timestamp = container_updated_timestamp;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

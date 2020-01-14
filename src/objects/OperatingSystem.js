@@ -1,92 +1,50 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Contains details about the operating system of a Drive.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class OperatingSystem extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Contains details about the operating system of a Drive.",
+			"type": "object",
+			"properties": {
+				"operating_system_type": {
+					"type": "string",
+					"description": "The operating system type. For example, Ubuntu or CentOS.",
+					"readonly": true
+				},
+				"operating_system_version": {
+					"type": "string",
+					"description": "The version of the operating system.",
+					"readonly": true
+				},
+				"operating_system_architecture": {
+					"type": "string",
+					"description": "",
+					"enum": [
+						"none",
+						"unknown",
+						"x86",
+						"x86_64"
+					],
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"OperatingSystem"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The operating system type. For example, Ubuntu or CentOS.
-	 */
-	get operating_system_type()
-	{
-		return (this._operating_system_type !== undefined ? this._operating_system_type : null);
-	}
-
-	set operating_system_type(operating_system_type)
-	{
-		this._operating_system_type = operating_system_type;
-	}
-
-	/**
-	 * The version of the operating system.
-	 */
-	get operating_system_version()
-	{
-		return (this._operating_system_version !== undefined ? this._operating_system_version : null);
-	}
-
-	set operating_system_version(operating_system_version)
-	{
-		this._operating_system_version = operating_system_version;
-	}
-
-	/**
-	 *
-	 */
-	get operating_system_architecture()
-	{
-		return (this._operating_system_architecture !== undefined ? this._operating_system_architecture : null);
-	}
-
-	set operating_system_architecture(operating_system_architecture)
-	{
-		this._operating_system_architecture = operating_system_architecture;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

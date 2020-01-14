@@ -2,7 +2,7 @@ const ObjectBase = require("./ObjectBase");
 
 
 module.exports = 
-class AnsibleBundle extends ObjectBase
+class Secret extends ObjectBase
 {
 	/**
 	 * @protected
@@ -12,15 +12,15 @@ class AnsibleBundle extends ObjectBase
 	_schemaDefinition()
 	{
 		return {
-			"description": "An Ansible bundle contains an Ansible project as a single archive file, usually .zip",
+			"description": "Secret item in a vault.",
 			"type": "object",
 			"properties": {
-				"ansible_bundle_id": {
+				"secret_id": {
 					"type": [
 						"integer",
 						"null"
 					],
-					"description": "Unique Ansible bundle ID.",
+					"description": "Unique secret ID.",
 					"required": false,
 					"default": null
 				},
@@ -29,7 +29,7 @@ class AnsibleBundle extends ObjectBase
 						"integer",
 						"null"
 					],
-					"description": "Owner. Delegates of this user can manage his Ansible bundles as well. When null, defaults to the API authenticated user.",
+					"description": "Owner. Delegates of this user can manage his secrets as well. When null, defaults to the API authenticated user.",
 					"required": false,
 					"readonly": false,
 					"default": null
@@ -39,64 +39,52 @@ class AnsibleBundle extends ObjectBase
 						"integer",
 						"null"
 					],
-					"description": "The user which last updated the bundle.",
+					"description": "The user which last updated the secret.",
 					"required": false,
 					"default": null,
 					"readonly": true
 				},
-				"ansible_bundle_title": {
+				"secret_label": {
 					"type": "string",
-					"description": "For example: Hello World!",
-					"required": false,
-					"default": "No title specified"
+					"description": "Must be lower case. When copied into the generated variables.json of an AnsibleBundle execution, the label is used as the variable name.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": true,
+					"pattern": "^[a-z]{1,1}[a-z0-9-]{0,61}[a-z0-9]{1,1}|[a-z]{1,1}$"
 				},
-				"ansible_bundle_description": {
+				"secret_usage": {
 					"type": [
 						"string",
 						"null"
 					],
-					"description": "",
-					"required": false,
-					"default": null
-				},
-				"ansible_bundle_type": {
-					"enum": [
-						"pre_deploy",
-						"post_deploy"
-					],
-					"type": "string",
-					"description": "",
-					"required": true
-				},
-				"ansible_bundle_archive_filename": {
-					"type": "string",
-					"description": "For example: ansible_install_some_stuff.zip",
-					"required": true
-				},
-				"ansible_bundle_archive_contents_base64": {
-					"type": [
-						"string",
-						"null"
-					],
-					"description": "ZIP archive in base64 format.",
+					"description": "If null, any kind of usage is enabled. Otherwise, a comma separated list of allowed usage types. Possible values: [null, \"ansible_bundle\"].",
 					"required": false,
 					"default": null
 				},
-				"ansible_bundle_created_timestamp": {
+				"secret_base64": {
 					"type": [
 						"string",
 						"null"
 					],
-					"description": "Date and time of the Ansible bundle's creation.",
+					"description": "Secret in base64 format. If the base64 contains binary data, it has to be utf8 encoded to work with Ansible. Cannot be null with <code>secret_create</code>. The secret_base64 property is always returned as <code>null</code> by <code>secrets()</code> and <code>secret_get()</code> (it is not retrievable). When using <code>secret_update()</code> null is allowed, in which case the secret contents are not updated.",
+					"required": false,
+					"default": null
+				},
+				"secret_created_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Date and time of the secret's creation.",
 					"default": null,
 					"readonly": true
 				},
-				"ansible_bundle_updated_timestamp": {
+				"secret_updated_timestamp": {
 					"type": [
 						"string",
 						"null"
 					],
-					"description": "Date and time of the Ansible bundle's update (replace).",
+					"description": "Date and time of the secret's update (replace).",
 					"default": null,
 					"readonly": true
 				},
@@ -104,7 +92,7 @@ class AnsibleBundle extends ObjectBase
 					"type": "string",
 					"description": "The schema type",
 					"enum": [
-						"AnsibleBundle"
+						"Secret"
 					],
 					"readonly": true
 				}

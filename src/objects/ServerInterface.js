@@ -1,66 +1,38 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Contains server connectivity information.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ServerInterface extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Contains server connectivity information.",
+			"type": "object",
+			"properties": {
+				"server_interface_mac_address": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The server's interface mac address.",
+					"default": null,
+					"required": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"ServerInterface"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The server's interface mac address.
-	 */
-	get server_interface_mac_address()
-	{
-		return (this._server_interface_mac_address !== undefined ? this._server_interface_mac_address : null);
-	}
-
-	set server_interface_mac_address(server_interface_mac_address)
-	{
-		this._server_interface_mac_address = server_interface_mac_address;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

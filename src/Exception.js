@@ -3,7 +3,7 @@ const JSONRPC = require("jsonrpc-bidirectional");
 class Exception extends JSONRPC.Exception
 {
 	/**
-	 * Metal Cloud, API v3.2.0
+	 * Metal Cloud, API v2.7.8
 	 */
 
 	/**
@@ -1579,6 +1579,19 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * OS asset not found.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get OS_ASSET_NOT_FOUND()
+	{
+		return 333;
+	}
+
+	/**
 	 * OS bootstrap failed.
 	 * @private
 	 *
@@ -1851,6 +1864,19 @@ class Exception extends JSONRPC.Exception
 	static get RESOURCE_RESERVATION_NOT_FOUND()
 	{
 		return 266;
+	}
+
+	/**
+	 * Secret not found.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get SECRET_NOT_FOUND()
+	{
+		return 332;
 	}
 
 	/**
@@ -2187,6 +2213,19 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * SSH key pair not set.
+	 * @private
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get SSH_KEY_PAIR_NOT_SET()
+	{
+		return 331;
+	}
+
+	/**
 	 * Unknown SSH key format.
 	 * @public
 	 *
@@ -2294,9 +2333,9 @@ class Exception extends JSONRPC.Exception
 	 * @public
 	 *
 	 * This error is thrown when an attempt to retrieve or use a volume template is
-	 * made, but the specified volume template is not found in storage. API clients
-	 * that receive this error should make the volume template public or use
-	 * volume_templates() to obtain a list of available templates before trying again.
+	 * made, but the specified volume template is not found on the storage. API
+	 * clients that receive this error should obtain a list of available templates
+	 * using volume_templates() before trying again.
 	 *
 	 * @returns {number}
 	 */
@@ -3071,6 +3110,7 @@ Exception.arrPrivateErrorConstantNames = [
 	Exception.SERVER_NOT_RESERVED,
 	Exception.SERVER_RESERVED,
 	Exception.SERVER_UUID_NOT_FOUND,
+	Exception.SSH_KEY_PAIR_NOT_SET,
 	Exception.STORAGE_POOL_DESTINATION_SAME_AS_SOURCE,
 	Exception.STORAGE_POOL_NOT_ENOUGH_FREE_SPACE,
 	Exception.STORAGE_POOL_NOT_FOUND,
@@ -3186,6 +3226,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.NOT_IMPLEMENTED,
 	Exception.NOTHING_TO_UPDATE,
 	Exception.OBJECT_IS_INVALID,
+	Exception.OS_ASSET_NOT_FOUND,
 	Exception.PARAM_TYPE_MISMATCH,
 	Exception.PARAM_VALUE_INVALID,
 	Exception.PASSWORD_COMPLEXITY_TOO_LOW,
@@ -3202,6 +3243,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.PROPERTY_IS_UNKNOWN,
 	Exception.PROPERTY_READ_ONLY,
 	Exception.RESOURCE_RESERVATION_NOT_FOUND,
+	Exception.SECRET_NOT_FOUND,
 	Exception.SELECTION_LIMIT_EXCEEDED,
 	Exception.SERVER_MIGHT_NOT_BE_READY_FOR_POWER_GET,
 	Exception.SERVER_POWER_LOCKED_BY_ONGOING_OPERATION,

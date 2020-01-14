@@ -1,123 +1,62 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A group of InstanceArray and DriveArray infrastructure elements
- * preconfigured for specific workloads or roles. Software (SaaS) is
- * automatically installed for new instances. The preinstalled software is
- * informed when instances are made available or removed.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class UserSuspendReason extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A group of InstanceArray and DriveArray infrastructure elements preconfigured for specific workloads or roles. Software (SaaS) is automatically installed for new instances. The preinstalled software is informed when instances are made available or removed.",
+			"type": "object",
+			"properties": {
+				"user_suspend_reason_id": {
+					"type": "integer",
+					"description": "",
+					"required": true,
+					"readonly": true
+				},
+				"user_id": {
+					"type": "integer",
+					"description": "",
+					"readonly": true,
+					"required": true
+				},
+				"user_suspend_reason_public_comment": {
+					"type": "string",
+					"description": "",
+					"required": true,
+					"readonly": true
+				},
+				"user_suspend_reason_created_timestamp": {
+					"type": "string",
+					"description": "ISO 8601 timestamp which holds the date and time when the user suspend reason was added.",
+					"required": true,
+					"readonly": true
+				},
+				"user_suspend_reason_end_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the user suspend reason was ended.",
+					"required": true,
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"UserSuspendReason"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 *
-	 */
-	get user_suspend_reason_id()
-	{
-		return (this._user_suspend_reason_id !== undefined ? this._user_suspend_reason_id : null);
-	}
-
-	set user_suspend_reason_id(user_suspend_reason_id)
-	{
-		this._user_suspend_reason_id = user_suspend_reason_id;
-	}
-
-	/**
-	 *
-	 */
-	get user_id()
-	{
-		return (this._user_id !== undefined ? this._user_id : null);
-	}
-
-	set user_id(user_id)
-	{
-		this._user_id = user_id;
-	}
-
-	/**
-	 *
-	 */
-	get user_suspend_reason_public_comment()
-	{
-		return (this._user_suspend_reason_public_comment !== undefined ? this._user_suspend_reason_public_comment : null);
-	}
-
-	set user_suspend_reason_public_comment(user_suspend_reason_public_comment)
-	{
-		this._user_suspend_reason_public_comment = user_suspend_reason_public_comment;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the user suspend
-	 * reason was added.
-	 */
-	get user_suspend_reason_created_timestamp()
-	{
-		return (this._user_suspend_reason_created_timestamp !== undefined ? this._user_suspend_reason_created_timestamp : null);
-	}
-
-	set user_suspend_reason_created_timestamp(user_suspend_reason_created_timestamp)
-	{
-		this._user_suspend_reason_created_timestamp = user_suspend_reason_created_timestamp;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the user suspend
-	 * reason was ended.
-	 */
-	get user_suspend_reason_end_timestamp()
-	{
-		return (this._user_suspend_reason_end_timestamp !== undefined ? this._user_suspend_reason_end_timestamp : null);
-	}
-
-	set user_suspend_reason_end_timestamp(user_suspend_reason_end_timestamp)
-	{
-		this._user_suspend_reason_end_timestamp = user_suspend_reason_end_timestamp;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

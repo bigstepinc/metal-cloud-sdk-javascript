@@ -1,447 +1,321 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A ContainerArray is a group of containers which share the same workload
- * (thus enabling scalability).
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ContainerArray extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A ContainerArray is a group of containers which share the same workload (thus enabling scalability).",
+			"type": "object",
+			"properties": {
+				"container_array_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the ContainerArray which can be used instead of the <code>container_array_label<\/code> or <code>container_array_subdomain<\/code> when calling the API functions. It is automatically generated and cannot be edited.",
+					"default": null,
+					"readonly": true
+				},
+				"container_array_change_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "This property helps ensure that edit operations don\u2019t overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
+					"default": null,
+					"required": true
+				},
+				"container_cluster_id": {
+					"type": "integer",
+					"description": "The ContainerArray is a child of a ContainerCluster.",
+					"readonly": true
+				},
+				"infrastructure_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "Represents the infrastructure ID to which the ContainerArray belongs.",
+					"default": null,
+					"readonly": true
+				},
+				"container_array_label": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The ContainerArray's unique label is used to create the <code>container_array_subdomain<\/code>. It is editable and can be used to call API functions.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": false,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$",
+					"default": null
+				},
+				"container_array_subdomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>container_array_label<\/code>. It is a unique reference to the ContainerArray object.",
+					"default": null,
+					"readonly": true
+				},
+				"container_array_subdomain_internal": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>container_array_id<\/code>. It is a unique reference to the ContainerArray object to be used within the ContainerPlatform network.",
+					"default": null,
+					"readonly": true
+				},
+				"container_array_load_balancer_subdomain_internal": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>container_array_id<\/code>. It is a unique reference to the load balancer of the ContainerArray object to be used within the ContainerPlatform network.",
+					"default": null,
+					"readonly": true
+				},
+				"container_array_service_status": {
+					"enum": [
+						"ordered",
+						"active",
+						"suspended",
+						"stopped",
+						"deleted"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The status of the ContainerArray.",
+					"default": null,
+					"readonly": true
+				},
+				"container_cluster_role_group": {
+					"type": "string",
+					"description": "",
+					"enum": [
+						"none",
+						"spark_master",
+						"spark_workers",
+						"zookeeper_nodes",
+						"kafka_brokers",
+						"zoomdata_node",
+						"postgresql_node",
+						"sparksql_node",
+						"elasticsearch_node",
+						"streamsets_node"
+					],
+					"default": "none",
+					"readonly": true
+				},
+				"container_array_operation": {
+					"type": [
+						"ContainerArrayOperation",
+						"null"
+					],
+					"description": "The operation type, operation status and modified ContainerArray object.",
+					"default": null,
+					"readonly": true
+				},
+				"container_array_interfaces": {
+					"type": "array",
+					"items": {
+						"description": "ContainerArrayInterface objects",
+						"type": "ContainerArrayInterface"
+					},
+					"description": "All <a:schema>ContainerArrayInterface<\/a:schema> objects.",
+					"default": [
+						
+					],
+					"readonly": true
+				},
+				"container_array_ram_mbytes": {
+					"type": "integer",
+					"minimum": 32,
+					"maximum": 30720,
+					"description": "The resource requirements in terms of RAM for a Container of the ContainerArray.",
+					"default": 1024
+				},
+				"container_array_processor_core_count": {
+					"type": "number",
+					"minimum": 0.1,
+					"maximum": 16,
+					"description": "The resource requirements in terms of CPU cores for a Container of the ContainerArray.",
+					"default": 1
+				},
+				"container_array_container_count": {
+					"type": "integer",
+					"description": "The number of Containers of the ContainerArray.",
+					"minimum": 0,
+					"maximum": 64,
+					"default": 1
+				},
+				"container_array_application_image": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The Docker image of the ContainerArray.",
+					"default": "bigstepinc\/hello-world",
+					"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])(\\.([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]))*(\\:[0-9]+)?\\/)?([a-z0-9]+(([._]|__|[-]*)[a-z0-9]+)*)(\\/[a-z0-9]+(([._]|__|[-]*)*[a-z0-9]+)*)*(\\:[\\w][\\w.-]{0,127})?(\\@[A-Za-z][A-Za-z0-9]*(?:[-_+.][A-Za-z][A-Za-z0-9]*)*[:][[:xdigit:]]{32,})?$",
+					"readonly": false
+				},
+				"container_array_entrypoint_command_override": {
+					"type": "array",
+					"items": {
+						"description": "An array of strings.",
+						"type": "string"
+					},
+					"description": "Container entrypoint command override for the ContainerArray.",
+					"default": [
+						
+					]
+				},
+				"container_array_entrypoint_args": {
+					"type": "array",
+					"items": {
+						"description": "An array of strings.",
+						"type": "string"
+					},
+					"description": "Container entrypoint arguments for the ContainerArray.",
+					"default": [
+						
+					]
+				},
+				"container_array_environment_variables": {
+					"type": "array",
+					"items": {
+						"description": "ContainerArrayEnvironmentVariable objects",
+						"type": "ContainerArrayEnvironmentVariable"
+					},
+					"description": "The <a:schema>ContainerArrayEnvironmentVariable<\/a:schema> objects of the ContainerArray.",
+					"default": [
+						
+					],
+					"readonly": false
+				},
+				"container_array_port_mappings": {
+					"type": "array",
+					"items": {
+						"description": "ContainerArrayPortMapping objects",
+						"type": "ContainerArrayPortMapping"
+					},
+					"description": "The <a:schema>ContainerArrayPortMapping<\/a:schema> objects of the ContainerArray.",
+					"default": [
+						
+					],
+					"readonly": false
+				},
+				"container_array_config_map": {
+					"type": [
+						"ContainerArrayConfigMap",
+						"null"
+					],
+					"description": "<a:schema>ContainerArrayConfigMap<\/a:schema> object.",
+					"default": null,
+					"readonly": false
+				},
+				"container_array_secrets": {
+					"type": "array",
+					"items": {
+						"description": "ContainerArraySecret objects",
+						"type": "ContainerArraySecret"
+					},
+					"description": "The <a:schema>ContainerArraySecret<\/a:schema> objects of the ContainerArray.",
+					"default": [
+						
+					],
+					"readonly": false
+				},
+				"container_array_volatile_volumes": {
+					"type": "array",
+					"items": {
+						"description": "ContainerArrayVolatileVolume objects",
+						"type": "ContainerArrayVolatileVolume"
+					},
+					"description": "The <a:schema>ContainerArrayVolatileVolume<\/a:schema> objects of the ContainerArray.",
+					"default": [
+						
+					],
+					"readonly": false
+				},
+				"container_array_persistent_volumes": {
+					"type": "array",
+					"items": {
+						"description": "ContainerArrayPersistentVolume objects",
+						"type": "ContainerArrayPersistentVolume"
+					},
+					"description": "The <a:schema>ContainerArrayPersistentVolume<\/a:schema> objects of the ContainerArray.",
+					"default": [
+						
+					],
+					"readonly": false
+				},
+				"container_array_readiness_check": {
+					"type": [
+						"ContainerArrayReadinessCheck",
+						"null"
+					],
+					"description": "<a:schema>ContainerArrayReadinessCheck<\/a:schema> object that asseses the readiness of the ContainerArray Containers.",
+					"default": null,
+					"readonly": false
+				},
+				"container_array_liveness_check": {
+					"type": [
+						"ContainerArrayLivenessCheck",
+						"null"
+					],
+					"description": "<a:schema>ContainerArrayLivenessCheck<\/a:schema> object that asseses the liveness of the ContainerArray Containers.",
+					"default": null,
+					"readonly": false
+				},
+				"container_array_gui_settings_json": {
+					"type": "string",
+					"description": "Reserved for GUI users.",
+					"default": "",
+					"readonly": true
+				},
+				"container_array_created_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the ContainerArray was created. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"container_array_updated_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the ContainerArray was edited. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"ContainerArray"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The ID of the ContainerArray which can be used instead of the
-	 * container_array_label or container_array_subdomain when calling the API
-	 * functions. It is automatically generated and cannot be edited.
-	 */
-	get container_array_id()
-	{
-		return (this._container_array_id !== undefined ? this._container_array_id : null);
-	}
-
-	set container_array_id(container_array_id)
-	{
-		this._container_array_id = container_array_id;
-	}
-
-	/**
-	 * This property helps ensure that edit operations don’t overwrite other,
-	 * more recent changes made to the same object. It gets updated automatically
-	 * after each successful edit operation.
-	 */
-	get container_array_change_id()
-	{
-		return (this._container_array_change_id !== undefined ? this._container_array_change_id : null);
-	}
-
-	set container_array_change_id(container_array_change_id)
-	{
-		this._container_array_change_id = container_array_change_id;
-	}
-
-	/**
-	 * The ContainerArray is a child of a ContainerCluster.
-	 */
-	get container_cluster_id()
-	{
-		return (this._container_cluster_id !== undefined ? this._container_cluster_id : null);
-	}
-
-	set container_cluster_id(container_cluster_id)
-	{
-		this._container_cluster_id = container_cluster_id;
-	}
-
-	/**
-	 * Represents the infrastructure ID to which the ContainerArray belongs.
-	 */
-	get infrastructure_id()
-	{
-		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
-	}
-
-	set infrastructure_id(infrastructure_id)
-	{
-		this._infrastructure_id = infrastructure_id;
-	}
-
-	/**
-	 * The ContainerArray's unique label is used to create the
-	 * container_array_subdomain. It is editable and can be used to call API
-	 * functions.
-	 */
-	get container_array_label()
-	{
-		return (this._container_array_label !== undefined ? this._container_array_label : null);
-	}
-
-	set container_array_label(container_array_label)
-	{
-		this._container_array_label = container_array_label;
-	}
-
-	/**
-	 * Automatically created based on container_array_label. It is a unique
-	 * reference to the ContainerArray object.
-	 */
-	get container_array_subdomain()
-	{
-		return (this._container_array_subdomain !== undefined ? this._container_array_subdomain : null);
-	}
-
-	set container_array_subdomain(container_array_subdomain)
-	{
-		this._container_array_subdomain = container_array_subdomain;
-	}
-
-	/**
-	 * Automatically created based on container_array_id. It is a unique reference
-	 * to the ContainerArray object to be used within the ContainerPlatform network.
-	 */
-	get container_array_subdomain_internal()
-	{
-		return (this._container_array_subdomain_internal !== undefined ? this._container_array_subdomain_internal : null);
-	}
-
-	set container_array_subdomain_internal(container_array_subdomain_internal)
-	{
-		this._container_array_subdomain_internal = container_array_subdomain_internal;
-	}
-
-	/**
-	 * Automatically created based on container_array_id. It is a unique reference
-	 * to the load balancer of the ContainerArray object to be used within the
-	 * ContainerPlatform network.
-	 */
-	get container_array_load_balancer_subdomain_internal()
-	{
-		return (this._container_array_load_balancer_subdomain_internal !== undefined ? this._container_array_load_balancer_subdomain_internal : null);
-	}
-
-	set container_array_load_balancer_subdomain_internal(container_array_load_balancer_subdomain_internal)
-	{
-		this._container_array_load_balancer_subdomain_internal = container_array_load_balancer_subdomain_internal;
-	}
-
-	/**
-	 * The status of the ContainerArray.
-	 */
-	get container_array_service_status()
-	{
-		return (this._container_array_service_status !== undefined ? this._container_array_service_status : null);
-	}
-
-	set container_array_service_status(container_array_service_status)
-	{
-		this._container_array_service_status = container_array_service_status;
-	}
-
-	/**
-	 *
-	 */
-	get container_cluster_role_group()
-	{
-		return (this._container_cluster_role_group !== undefined ? this._container_cluster_role_group : "none");
-	}
-
-	set container_cluster_role_group(container_cluster_role_group)
-	{
-		this._container_cluster_role_group = container_cluster_role_group;
-	}
-
-	/**
-	 * The operation type, operation status and modified ContainerArray object.
-	 */
-	get container_array_operation()
-	{
-		return (this._container_array_operation !== undefined ? this._container_array_operation : null);
-	}
-
-	set container_array_operation(container_array_operation)
-	{
-		this._container_array_operation = container_array_operation;
-	}
-
-	/**
-	 * All ContainerArrayInterface objects.
-	 */
-	get container_array_interfaces()
-	{
-		return (this._container_array_interfaces !== undefined ? this._container_array_interfaces : []);
-	}
-
-	set container_array_interfaces(container_array_interfaces)
-	{
-		this._container_array_interfaces = container_array_interfaces;
-	}
-
-	/**
-	 * The resource requirements in terms of RAM for a Container of the
-	 * ContainerArray.
-	 */
-	get container_array_ram_mbytes()
-	{
-		return (this._container_array_ram_mbytes !== undefined ? this._container_array_ram_mbytes : 1024);
-	}
-
-	set container_array_ram_mbytes(container_array_ram_mbytes)
-	{
-		this._container_array_ram_mbytes = container_array_ram_mbytes;
-	}
-
-	/**
-	 * The resource requirements in terms of CPU cores for a Container of the
-	 * ContainerArray.
-	 */
-	get container_array_processor_core_count()
-	{
-		return (this._container_array_processor_core_count !== undefined ? this._container_array_processor_core_count : 1);
-	}
-
-	set container_array_processor_core_count(container_array_processor_core_count)
-	{
-		this._container_array_processor_core_count = container_array_processor_core_count;
-	}
-
-	/**
-	 * The number of Containers of the ContainerArray.
-	 */
-	get container_array_container_count()
-	{
-		return (this._container_array_container_count !== undefined ? this._container_array_container_count : 1);
-	}
-
-	set container_array_container_count(container_array_container_count)
-	{
-		this._container_array_container_count = container_array_container_count;
-	}
-
-	/**
-	 * The Docker image of the ContainerArray.
-	 */
-	get container_array_application_image()
-	{
-		return (this._container_array_application_image !== undefined ? this._container_array_application_image : "bigstepinc/hello-world");
-	}
-
-	set container_array_application_image(container_array_application_image)
-	{
-		this._container_array_application_image = container_array_application_image;
-	}
-
-	/**
-	 * Container entrypoint command override for the ContainerArray.
-	 */
-	get container_array_entrypoint_command_override()
-	{
-		return (this._container_array_entrypoint_command_override !== undefined ? this._container_array_entrypoint_command_override : []);
-	}
-
-	set container_array_entrypoint_command_override(container_array_entrypoint_command_override)
-	{
-		this._container_array_entrypoint_command_override = container_array_entrypoint_command_override;
-	}
-
-	/**
-	 * Container entrypoint arguments for the ContainerArray.
-	 */
-	get container_array_entrypoint_args()
-	{
-		return (this._container_array_entrypoint_args !== undefined ? this._container_array_entrypoint_args : []);
-	}
-
-	set container_array_entrypoint_args(container_array_entrypoint_args)
-	{
-		this._container_array_entrypoint_args = container_array_entrypoint_args;
-	}
-
-	/**
-	 * The ContainerArrayEnvironmentVariable objects of the ContainerArray.
-	 */
-	get container_array_environment_variables()
-	{
-		return (this._container_array_environment_variables !== undefined ? this._container_array_environment_variables : []);
-	}
-
-	set container_array_environment_variables(container_array_environment_variables)
-	{
-		this._container_array_environment_variables = container_array_environment_variables;
-	}
-
-	/**
-	 * The ContainerArrayPortMapping objects of the ContainerArray.
-	 */
-	get container_array_port_mappings()
-	{
-		return (this._container_array_port_mappings !== undefined ? this._container_array_port_mappings : []);
-	}
-
-	set container_array_port_mappings(container_array_port_mappings)
-	{
-		this._container_array_port_mappings = container_array_port_mappings;
-	}
-
-	/**
-	 * ContainerArrayConfigMap object.
-	 */
-	get container_array_config_map()
-	{
-		return (this._container_array_config_map !== undefined ? this._container_array_config_map : null);
-	}
-
-	set container_array_config_map(container_array_config_map)
-	{
-		this._container_array_config_map = container_array_config_map;
-	}
-
-	/**
-	 * The ContainerArraySecret objects of the ContainerArray.
-	 */
-	get container_array_secrets()
-	{
-		return (this._container_array_secrets !== undefined ? this._container_array_secrets : []);
-	}
-
-	set container_array_secrets(container_array_secrets)
-	{
-		this._container_array_secrets = container_array_secrets;
-	}
-
-	/**
-	 * The ContainerArrayVolatileVolume objects of the ContainerArray.
-	 */
-	get container_array_volatile_volumes()
-	{
-		return (this._container_array_volatile_volumes !== undefined ? this._container_array_volatile_volumes : []);
-	}
-
-	set container_array_volatile_volumes(container_array_volatile_volumes)
-	{
-		this._container_array_volatile_volumes = container_array_volatile_volumes;
-	}
-
-	/**
-	 * The ContainerArrayPersistentVolume objects of the ContainerArray.
-	 */
-	get container_array_persistent_volumes()
-	{
-		return (this._container_array_persistent_volumes !== undefined ? this._container_array_persistent_volumes : []);
-	}
-
-	set container_array_persistent_volumes(container_array_persistent_volumes)
-	{
-		this._container_array_persistent_volumes = container_array_persistent_volumes;
-	}
-
-	/**
-	 * ContainerArrayReadinessCheck object that asseses the readiness of the
-	 * ContainerArray Containers.
-	 */
-	get container_array_readiness_check()
-	{
-		return (this._container_array_readiness_check !== undefined ? this._container_array_readiness_check : null);
-	}
-
-	set container_array_readiness_check(container_array_readiness_check)
-	{
-		this._container_array_readiness_check = container_array_readiness_check;
-	}
-
-	/**
-	 * ContainerArrayLivenessCheck object that asseses the liveness of the
-	 * ContainerArray Containers.
-	 */
-	get container_array_liveness_check()
-	{
-		return (this._container_array_liveness_check !== undefined ? this._container_array_liveness_check : null);
-	}
-
-	set container_array_liveness_check(container_array_liveness_check)
-	{
-		this._container_array_liveness_check = container_array_liveness_check;
-	}
-
-	/**
-	 * Reserved for GUI users.
-	 */
-	get container_array_gui_settings_json()
-	{
-		return (this._container_array_gui_settings_json !== undefined ? this._container_array_gui_settings_json : "");
-	}
-
-	set container_array_gui_settings_json(container_array_gui_settings_json)
-	{
-		this._container_array_gui_settings_json = container_array_gui_settings_json;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the ContainerArray was
-	 * created. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get container_array_created_timestamp()
-	{
-		return (this._container_array_created_timestamp !== undefined ? this._container_array_created_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set container_array_created_timestamp(container_array_created_timestamp)
-	{
-		this._container_array_created_timestamp = container_array_created_timestamp;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the ContainerArray was
-	 * edited. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get container_array_updated_timestamp()
-	{
-		return (this._container_array_updated_timestamp !== undefined ? this._container_array_updated_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set container_array_updated_timestamp(container_array_updated_timestamp)
-	{
-		this._container_array_updated_timestamp = container_array_updated_timestamp;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

@@ -1,40 +1,23 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * SharedDrive credentials.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class SharedDriveCredentials extends ObjectBase
 {
-	constructor()
-	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
-			}
-		}
-	}
-
 	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
 	 */
-	static get JSONRequired()
+	_schemaDefinition()
 	{
-		return [
-
-		];
+		return {
+			"description": "SharedDrive credentials.",
+			"type": "array",
+			"items": {
+				"type": "iSCSI",
+				"description": "iSCSI credentials"
+			}
+		};
 	}
 };

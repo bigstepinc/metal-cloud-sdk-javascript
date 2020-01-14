@@ -1,92 +1,51 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A subscription to a Dataset.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class DatasetSubscription extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A subscription to a Dataset.",
+			"type": "object",
+			"properties": {
+				"dataset": {
+					"description": "The Dataset for which the subscription was created.",
+					"type": "Dataset",
+					"readonly": true
+				},
+				"user_id": {
+					"description": "The ID of the user that owns the dataset subscription.",
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"readonly": true
+				},
+				"dataset_subscription_id": {
+					"description": "The ID of the dataset subscription.",
+					"type": [
+						"integer",
+						"string"
+					],
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"DatasetSubscription"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The Dataset for which the subscription was created.
-	 */
-	get dataset()
-	{
-		return (this._dataset !== undefined ? this._dataset : null);
-	}
-
-	set dataset(dataset)
-	{
-		this._dataset = dataset;
-	}
-
-	/**
-	 * The ID of the user that owns the dataset subscription.
-	 */
-	get user_id()
-	{
-		return (this._user_id !== undefined ? this._user_id : null);
-	}
-
-	set user_id(user_id)
-	{
-		this._user_id = user_id;
-	}
-
-	/**
-	 * The ID of the dataset subscription.
-	 */
-	get dataset_subscription_id()
-	{
-		return (this._dataset_subscription_id !== undefined ? this._dataset_subscription_id : null);
-	}
-
-	set dataset_subscription_id(dataset_subscription_id)
-	{
-		this._dataset_subscription_id = dataset_subscription_id;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

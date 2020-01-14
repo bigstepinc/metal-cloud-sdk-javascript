@@ -1,107 +1,70 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A snapshot of a drive created at a specific time.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class Snapshot extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A snapshot of a drive created at a specific time.",
+			"type": "object",
+			"properties": {
+				"drive_snapshot_label": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The snapshot's unique label is formed based on the <code>snapshot_id<\/code> and the <code>snapshot_created_timestamp<\/code>.",
+					"minLength": 1,
+					"maxLength": 63,
+					"default": null,
+					"readonly": true,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$"
+				},
+				"drive_snapshot_id": {
+					"type": [
+						"string",
+						"integer",
+						"null"
+					],
+					"description": "The ID of the snapshot.",
+					"default": null,
+					"readonly": true
+				},
+				"drive_id": {
+					"type": [
+						"string",
+						"integer",
+						"null"
+					],
+					"description": "The ID of the Drive after which the snapshot was created.",
+					"default": null,
+					"readonly": true
+				},
+				"drive_snapshot_created_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Date and time when the drive snapshot was created. An ISO 8601 timestamp showing UTC time. Example format: 2013-11-29T13:00:01Z.",
+					"default": null,
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"Snapshot"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The snapshot's unique label is formed based on the snapshot_id and the
-	 * snapshot_created_timestamp.
-	 */
-	get drive_snapshot_label()
-	{
-		return (this._drive_snapshot_label !== undefined ? this._drive_snapshot_label : null);
-	}
-
-	set drive_snapshot_label(drive_snapshot_label)
-	{
-		this._drive_snapshot_label = drive_snapshot_label;
-	}
-
-	/**
-	 * The ID of the snapshot.
-	 */
-	get drive_snapshot_id()
-	{
-		return (this._drive_snapshot_id !== undefined ? this._drive_snapshot_id : null);
-	}
-
-	set drive_snapshot_id(drive_snapshot_id)
-	{
-		this._drive_snapshot_id = drive_snapshot_id;
-	}
-
-	/**
-	 * The ID of the Drive after which the snapshot was created.
-	 */
-	get drive_id()
-	{
-		return (this._drive_id !== undefined ? this._drive_id : null);
-	}
-
-	set drive_id(drive_id)
-	{
-		this._drive_id = drive_id;
-	}
-
-	/**
-	 * Date and time when the drive snapshot was created. An ISO 8601 timestamp
-	 * showing UTC time. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get drive_snapshot_created_timestamp()
-	{
-		return (this._drive_snapshot_created_timestamp !== undefined ? this._drive_snapshot_created_timestamp : null);
-	}
-
-	set drive_snapshot_created_timestamp(drive_snapshot_created_timestamp)
-	{
-		this._drive_snapshot_created_timestamp = drive_snapshot_created_timestamp;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

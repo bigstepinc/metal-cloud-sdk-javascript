@@ -1,158 +1,83 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * An object which has instance labels as keys and AppHortonworksInstance
- * objects as values. AppHortonworksInstance objects are divided into head
- * nodes and data nodes.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class AppHortonworks extends ObjectBase
 {
-	constructor(hortonworks_masternodes, hortonworks_slavenodes)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "An object which has instance labels as keys and <a:schema>AppHortonworksInstance<\/a:schema> objects as values. <a:schema>AppHortonworksInstance<\/a:schema> objects are divided into head nodes and data nodes.",
+			"type": "object",
+			"properties": {
+				"hortonworks_masternodes": {
+					"type": "array",
+					"items": {
+						"type": "AppHortonworksInstance",
+						"description": ""
+					},
+					"description": "The <a:schema>AppHortonworksInstance<\/a:schema> objects, part of the head nodes group.",
+					"required": true
+				},
+				"hortonworks_slavenodes": {
+					"type": "array",
+					"items": {
+						"type": "AppHortonworksInstance",
+						"description": ""
+					},
+					"description": "The <a:schema>AppHortonworksInstance<\/a:schema> objects, part of the data nodes group.",
+					"required": true
+				},
+				"admin_username": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The admin username on the cluster.",
+					"required": true,
+					"readonly": true
+				},
+				"admin_initial_password": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The initial admin password on the cluster.",
+					"required": true,
+					"readonly": true
+				},
+				"cluster_software_available_versions": {
+					"type": "array",
+					"description": "Cluster software available versions.",
+					"readonly": true
+				},
+				"cluster_software_version": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The software version detected on the cluster.",
+					"readonly": true
+				},
+				"connectable_clusters": {
+					"type": "array",
+					"description": "Array of compatible and connectable clusters.",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"AppHortonworks"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		for(let index = 0; index < 2; index++)
-		{
-			let arg = arguments[index];
-
-			if(arg === undefined || arg === null)
-				throw new Error("Invalid params in AppHortonworks constructor.");
-		}
-
-		this._hortonworks_masternodes = hortonworks_masternodes;
-		this._hortonworks_slavenodes = hortonworks_slavenodes;
-	}
-
-	/**
-	 * The AppHortonworksInstance objects, part of the head nodes group.
-	 */
-	get hortonworks_masternodes()
-	{
-		return (this._hortonworks_masternodes !== undefined ? this._hortonworks_masternodes : []);
-	}
-
-	set hortonworks_masternodes(hortonworks_masternodes)
-	{
-		this._hortonworks_masternodes = hortonworks_masternodes;
-	}
-
-	/**
-	 * The AppHortonworksInstance objects, part of the data nodes group.
-	 */
-	get hortonworks_slavenodes()
-	{
-		return (this._hortonworks_slavenodes !== undefined ? this._hortonworks_slavenodes : []);
-	}
-
-	set hortonworks_slavenodes(hortonworks_slavenodes)
-	{
-		this._hortonworks_slavenodes = hortonworks_slavenodes;
-	}
-
-	/**
-	 * The admin username on the cluster.
-	 */
-	get admin_username()
-	{
-		return (this._admin_username !== undefined ? this._admin_username : null);
-	}
-
-	set admin_username(admin_username)
-	{
-		this._admin_username = admin_username;
-	}
-
-	/**
-	 * The initial admin password on the cluster.
-	 */
-	get admin_initial_password()
-	{
-		return (this._admin_initial_password !== undefined ? this._admin_initial_password : null);
-	}
-
-	set admin_initial_password(admin_initial_password)
-	{
-		this._admin_initial_password = admin_initial_password;
-	}
-
-	/**
-	 * Cluster software available versions.
-	 */
-	get cluster_software_available_versions()
-	{
-		return (this._cluster_software_available_versions !== undefined ? this._cluster_software_available_versions : []);
-	}
-
-	set cluster_software_available_versions(cluster_software_available_versions)
-	{
-		this._cluster_software_available_versions = cluster_software_available_versions;
-	}
-
-	/**
-	 * The software version detected on the cluster.
-	 */
-	get cluster_software_version()
-	{
-		return (this._cluster_software_version !== undefined ? this._cluster_software_version : null);
-	}
-
-	set cluster_software_version(cluster_software_version)
-	{
-		this._cluster_software_version = cluster_software_version;
-	}
-
-	/**
-	 * Array of compatible and connectable clusters.
-	 */
-	get connectable_clusters()
-	{
-		return (this._connectable_clusters !== undefined ? this._connectable_clusters : []);
-	}
-
-	set connectable_clusters(connectable_clusters)
-	{
-		this._connectable_clusters = connectable_clusters;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"hortonworks_masternodes",
-			"hortonworks_slavenodes"
-		];
+		};
 	}
 };

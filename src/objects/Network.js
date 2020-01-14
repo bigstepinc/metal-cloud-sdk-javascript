@@ -1,237 +1,156 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A Network object contains information regarding a network, including type,
- * parent Infrastructure and creation time.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class Network extends ObjectBase
 {
-	constructor(network_type)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A Network object contains information regarding a network, including type, parent <a:schema>Infrastructure<\/a:schema> and creation time.",
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"network_label": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "The network's label which is unique and it is used to form the <code>network_subdomain<\/code>. Can be used to call API functions.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": false,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$",
+					"default": null
+				},
+				"network_subdomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>network_label<\/code>. It is a unique reference to the Network object.",
+					"default": null,
+					"readonly": true
+				},
+				"network_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "Represents the ID of the network which can be used instead of the <code>network_label<\/code> or <code>network_subdomain<\/code> when calling the API functions.  It is automatically generated and cannot be edited.",
+					"default": null,
+					"readonly": true
+				},
+				"network_type": {
+					"enum": [
+						"lan",
+						"wan",
+						"san"
+					],
+					"type": "string",
+					"description": "The network type.",
+					"required": true
+				},
+				"infrastructure_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "Represents the infrastructure ID to which the network belongs.",
+					"default": null,
+					"readonly": true
+				},
+				"network_service_status": {
+					"enum": [
+						"ordered",
+						"active",
+						"stopped",
+						"deleted"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "It shows the status of the network.",
+					"default": null,
+					"readonly": true
+				},
+				"network_operation": {
+					"type": [
+						"NetworkOperation",
+						"null"
+					],
+					"description": "The operation type, operation status and modified Network object.",
+					"default": null,
+					"readonly": true
+				},
+				"network_created_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the network was created. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"network_updated_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the network was edited. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"network_gui_settings_json": {
+					"type": "string",
+					"description": "Reserved for GUI users.",
+					"default": "",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"Network"
+					],
+					"readonly": true
+				},
+				"network_change_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "This property helps ensure that edit operations don\u2019t overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
+					"default": null,
+					"required": true
+				},
+				"network_suspend_status": {
+					"type": "string",
+					"description": "The network suspend status.",
+					"enum": [
+						"not_suspended",
+						"suspending",
+						"suspended",
+						"unsuspending"
+					],
+					"readonly": true
+				},
+				"network_lan_autoallocate_ips": {
+					"type": "boolean",
+					"description": "This property specify whether the allocation of the private IPS is done automatically or manually.",
+					"default": false,
+					"readonly": false,
+					"required": true
+				}
 			}
-		}
-
-		if(network_type === undefined || network_type === null)
-			throw new Error("Invalid param in Network constructor.");
-
-		this._network_type = network_type;
-	}
-
-	/**
-	 * The network's label which is unique and it is used to form the
-	 * network_subdomain. Can be used to call API functions.
-	 */
-	get network_label()
-	{
-		return (this._network_label !== undefined ? this._network_label : null);
-	}
-
-	set network_label(network_label)
-	{
-		this._network_label = network_label;
-	}
-
-	/**
-	 * Automatically created based on network_label. It is a unique reference to
-	 * the Network object.
-	 */
-	get network_subdomain()
-	{
-		return (this._network_subdomain !== undefined ? this._network_subdomain : null);
-	}
-
-	set network_subdomain(network_subdomain)
-	{
-		this._network_subdomain = network_subdomain;
-	}
-
-	/**
-	 * Represents the ID of the network which can be used instead of the
-	 * network_label or network_subdomain when calling the API functions.  It is
-	 * automatically generated and cannot be edited.
-	 */
-	get network_id()
-	{
-		return (this._network_id !== undefined ? this._network_id : null);
-	}
-
-	set network_id(network_id)
-	{
-		this._network_id = network_id;
-	}
-
-	/**
-	 * The network type.
-	 */
-	get network_type()
-	{
-		return (this._network_type !== undefined ? this._network_type : null);
-	}
-
-	set network_type(network_type)
-	{
-		this._network_type = network_type;
-	}
-
-	/**
-	 * Represents the infrastructure ID to which the network belongs.
-	 */
-	get infrastructure_id()
-	{
-		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
-	}
-
-	set infrastructure_id(infrastructure_id)
-	{
-		this._infrastructure_id = infrastructure_id;
-	}
-
-	/**
-	 * It shows the status of the network.
-	 */
-	get network_service_status()
-	{
-		return (this._network_service_status !== undefined ? this._network_service_status : null);
-	}
-
-	set network_service_status(network_service_status)
-	{
-		this._network_service_status = network_service_status;
-	}
-
-	/**
-	 * The operation type, operation status and modified Network object.
-	 */
-	get network_operation()
-	{
-		return (this._network_operation !== undefined ? this._network_operation : null);
-	}
-
-	set network_operation(network_operation)
-	{
-		this._network_operation = network_operation;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the network was
-	 * created. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get network_created_timestamp()
-	{
-		return (this._network_created_timestamp !== undefined ? this._network_created_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set network_created_timestamp(network_created_timestamp)
-	{
-		this._network_created_timestamp = network_created_timestamp;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the network was
-	 * edited. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get network_updated_timestamp()
-	{
-		return (this._network_updated_timestamp !== undefined ? this._network_updated_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set network_updated_timestamp(network_updated_timestamp)
-	{
-		this._network_updated_timestamp = network_updated_timestamp;
-	}
-
-	/**
-	 * Reserved for GUI users.
-	 */
-	get network_gui_settings_json()
-	{
-		return (this._network_gui_settings_json !== undefined ? this._network_gui_settings_json : "");
-	}
-
-	set network_gui_settings_json(network_gui_settings_json)
-	{
-		this._network_gui_settings_json = network_gui_settings_json;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * This property helps ensure that edit operations don’t overwrite other,
-	 * more recent changes made to the same object. It gets updated automatically
-	 * after each successful edit operation.
-	 */
-	get network_change_id()
-	{
-		return (this._network_change_id !== undefined ? this._network_change_id : null);
-	}
-
-	set network_change_id(network_change_id)
-	{
-		this._network_change_id = network_change_id;
-	}
-
-	/**
-	 * The network suspend status.
-	 */
-	get network_suspend_status()
-	{
-		return (this._network_suspend_status !== undefined ? this._network_suspend_status : null);
-	}
-
-	set network_suspend_status(network_suspend_status)
-	{
-		this._network_suspend_status = network_suspend_status;
-	}
-
-	/**
-	 * This property specify whether the allocation of the private IPS is done
-	 * automatically or manually.
-	 */
-	get network_lan_autoallocate_ips()
-	{
-		return (this._network_lan_autoallocate_ips !== undefined ? this._network_lan_autoallocate_ips : false);
-	}
-
-	set network_lan_autoallocate_ips(network_lan_autoallocate_ips)
-	{
-		this._network_lan_autoallocate_ips = network_lan_autoallocate_ips;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"network_type"
-		];
+		};
 	}
 };

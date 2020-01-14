@@ -1,136 +1,76 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * An object which has instance labels as keys and AppKafkaInstance objects as values.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class AppKafka extends ObjectBase
 {
-	constructor(kafka_brokers)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "An object which has instance labels as keys and <a:schema>AppKafkaInstance<\/a:schema> objects as values.",
+			"type": "object",
+			"properties": {
+				"kafka_brokers": {
+					"type": "array",
+					"items": {
+						"type": "AppKafkaInstance",
+						"description": ""
+					},
+					"description": "The <a:schema>AppKafkaInstance<\/a:schema> object which represents the Master.",
+					"required": true
+				},
+				"kafka_brokers_connection_strings": {
+					"type": [
+						"array",
+						"null"
+					],
+					"description": "The connection strings to the Kafka brokers.",
+					"default": [
+						
+					],
+					"readonly": true
+				},
+				"kafka_manager_url": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The URL to access Kafka Manager.",
+					"required": true,
+					"readonly": true
+				},
+				"container_cluster_software_available_versions": {
+					"type": "array",
+					"description": "Cluster software available versions.",
+					"readonly": true
+				},
+				"container_cluster_software_version": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The software version detected on the container cluster.",
+					"readonly": true
+				},
+				"connectable_container_clusters": {
+					"type": "array",
+					"description": "Array of compatible and connectable clusters.",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"AppKafka"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		if(kafka_brokers === undefined || kafka_brokers === null)
-			throw new Error("Invalid param in AppKafka constructor.");
-
-		this._kafka_brokers = kafka_brokers;
-	}
-
-	/**
-	 * The AppKafkaInstance object which represents the Master.
-	 */
-	get kafka_brokers()
-	{
-		return (this._kafka_brokers !== undefined ? this._kafka_brokers : []);
-	}
-
-	set kafka_brokers(kafka_brokers)
-	{
-		this._kafka_brokers = kafka_brokers;
-	}
-
-	/**
-	 * The connection strings to the Kafka brokers.
-	 */
-	get kafka_brokers_connection_strings()
-	{
-		return (this._kafka_brokers_connection_strings !== undefined ? this._kafka_brokers_connection_strings : []);
-	}
-
-	set kafka_brokers_connection_strings(kafka_brokers_connection_strings)
-	{
-		this._kafka_brokers_connection_strings = kafka_brokers_connection_strings;
-	}
-
-	/**
-	 * The URL to access Kafka Manager.
-	 */
-	get kafka_manager_url()
-	{
-		return (this._kafka_manager_url !== undefined ? this._kafka_manager_url : null);
-	}
-
-	set kafka_manager_url(kafka_manager_url)
-	{
-		this._kafka_manager_url = kafka_manager_url;
-	}
-
-	/**
-	 * Cluster software available versions.
-	 */
-	get container_cluster_software_available_versions()
-	{
-		return (this._container_cluster_software_available_versions !== undefined ? this._container_cluster_software_available_versions : []);
-	}
-
-	set container_cluster_software_available_versions(container_cluster_software_available_versions)
-	{
-		this._container_cluster_software_available_versions = container_cluster_software_available_versions;
-	}
-
-	/**
-	 * The software version detected on the container cluster.
-	 */
-	get container_cluster_software_version()
-	{
-		return (this._container_cluster_software_version !== undefined ? this._container_cluster_software_version : null);
-	}
-
-	set container_cluster_software_version(container_cluster_software_version)
-	{
-		this._container_cluster_software_version = container_cluster_software_version;
-	}
-
-	/**
-	 * Array of compatible and connectable clusters.
-	 */
-	get connectable_container_clusters()
-	{
-		return (this._connectable_container_clusters !== undefined ? this._connectable_container_clusters : []);
-	}
-
-	set connectable_container_clusters(connectable_container_clusters)
-	{
-		this._connectable_container_clusters = connectable_container_clusters;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"kafka_brokers"
-		];
+		};
 	}
 };

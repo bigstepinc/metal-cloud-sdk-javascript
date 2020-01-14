@@ -1,471 +1,309 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * An InstanceArray is a group of instances which share the same workload (thus
- * enabling scalability). All instances are configured simultaneously through
- * their InstanceArray. Deploying an InstanceArray has the effect of allocating
- * servers to instances and activating network configurations.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class InstanceArray extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "An InstanceArray is a group of instances which share the same workload (thus enabling scalability). All instances are configured simultaneously through their InstanceArray. Deploying an InstanceArray has the effect of allocating servers to instances and activating network configurations.",
+			"type": "object",
+			"properties": {
+				"instance_array_label": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The InstanceArray's unique label is used to create the <code>instance_array_subdomain<\/code>. It is editable and can be used to call API functions.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": false,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$",
+					"default": null
+				},
+				"instance_array_subdomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>instance_array_label<\/code>. It is a unique reference to the InstanceArray object. In DNS it points to all the child instances primary public IP addresses.",
+					"default": null,
+					"readonly": true
+				},
+				"instance_array_subdomain_permanent": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>instance_array_id<\/code>. It is a unique reference to the InstanceArray object that never changes, so it can be used in various configs. In DNS it points to all the child instances primary public IP addresses.",
+					"default": null,
+					"readonly": true
+				},
+				"instance_array_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the InstanceArray which can be used instead of the <code>instance_array_label<\/code> or <code>instance_array_subdomain<\/code> when calling the API functions. It is automatically generated and cannot be edited.",
+					"default": null,
+					"readonly": true
+				},
+				"instance_array_instance_count": {
+					"type": "integer",
+					"description": "The number of instances to be created on the InstanceArray.",
+					"minimum": 0,
+					"maximum": 1000,
+					"default": 1
+				},
+				"instance_array_ipv4_subnet_create_auto": {
+					"type": "boolean",
+					"description": "Automatically create or expand Subnet elements until the necessary IPv4 addresses are allocated.",
+					"default": true
+				},
+				"instance_array_virtual_interfaces_enabled": {
+					"type": "boolean",
+					"description": "Enable virtual interfaces",
+					"default": false
+				},
+				"instance_array_ip_allocate_auto": {
+					"type": "boolean",
+					"description": "Automatically allocate IP addresses to child Instance's InstanceInterface elements.",
+					"default": true
+				},
+				"instance_array_ram_gbytes": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 4096,
+					"description": "The minimum RAM capacity of each instance.",
+					"default": 1
+				},
+				"instance_array_processor_count": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 16,
+					"description": "The CPU count on each instance.",
+					"default": 1
+				},
+				"instance_array_processor_core_mhz": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 16000,
+					"description": "The minimum clock speed of a CPU.",
+					"default": 1000
+				},
+				"instance_array_processor_core_count": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 500,
+					"description": "The minimum cores of a CPU.",
+					"default": 1
+				},
+				"instance_array_disk_count": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 500,
+					"description": "The minimum number of physical disks.",
+					"default": 0
+				},
+				"instance_array_disk_size_mbytes": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 4194304,
+					"description": "The minimum size of a single disk.",
+					"default": 0
+				},
+				"instance_array_disk_types": {
+					"type": [
+						"array",
+						"null"
+					],
+					"description": "The types of physical disks.",
+					"default": [
+						
+					]
+				},
+				"infrastructure_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "Represents the infrastructure ID to which the InstanceArray belongs.",
+					"default": null,
+					"readonly": true
+				},
+				"drive_array_id_boot": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The <a:schema>DriveArray<\/a:schema> from which the servers boot. If <code>null<\/code>, and the servers in the InstanceArray don't have local disks, then the instances will not boot even if <a:schema>DriveArray<\/a:schema> elements are attached.",
+					"default": null
+				},
+				"instance_array_service_status": {
+					"enum": [
+						"ordered",
+						"active",
+						"suspended",
+						"stopped",
+						"deleted"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The status of the InstanceArray.",
+					"default": null,
+					"readonly": true
+				},
+				"instance_array_operation": {
+					"type": [
+						"InstanceArrayOperation",
+						"null"
+					],
+					"description": "The operation type, operation status and modified InstanceArray object.",
+					"default": null,
+					"readonly": true
+				},
+				"instance_array_interfaces": {
+					"type": "array",
+					"items": {
+						"description": "InstanceArrayInterface objects",
+						"type": "InstanceArrayInterface"
+					},
+					"description": "An array of <a:schema>InstanceArrayInterface<\/a:schema> objects indexed from 0 to 3.",
+					"default": [
+						
+					],
+					"readonly": true
+				},
+				"instance_array_boot_method": {
+					"enum": [
+						"pxe_iscsi",
+						"local_drives"
+					],
+					"type": "string",
+					"default": "pxe_iscsi",
+					"description": "Determines wether the server will boot from local drives or from NAS over iSCSI."
+				},
+				"cluster_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "If not <code>null<\/code>, then the InstanceArray is part of the specified <a:schema>Cluster<\/a:schema>.",
+					"default": null,
+					"readonly": true
+				},
+				"cluster_role_group": {
+					"type": "string",
+					"description": "",
+					"enum": [
+						"none",
+						"cloudera_headnodes",
+						"cloudera_datanodes",
+						"splunk_searchheads",
+						"splunk_indexers",
+						"elasticsearch_nodes",
+						"elasticsearch_masternodes",
+						"elasticsearch_datanodes",
+						"couchbase_nodes",
+						"datameer_nodes",
+						"datastax_seeds",
+						"datastax_nodes",
+						"exasol_license_servers",
+						"exasol_nodes",
+						"mesos_headnodes",
+						"mesos_slavenodes",
+						"kubernetes_master",
+						"kubernetes_node",
+						"mapr_masternodes",
+						"mapr_slavenodes",
+						"mapr_nodes",
+						"tableau_nodes",
+						"hortonworks_masternodes",
+						"hortonworks_slavenodes",
+						"mysql_percona_nodes"
+					],
+					"default": "none",
+					"readonly": true
+				},
+				"instance_array_gui_settings_json": {
+					"type": "string",
+					"description": "Reserved for GUI users.",
+					"default": "",
+					"readonly": true
+				},
+				"instance_array_created_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the InstanceArray was created. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"instance_array_updated_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the InstanceArray was edited. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"InstanceArray"
+					],
+					"readonly": true
+				},
+				"instance_array_change_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "This property helps ensure that edit operations don\u2019t overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
+					"default": null,
+					"required": true
+				},
+				"instance_array_firewall_managed": {
+					"type": "boolean",
+					"description": "When set to true, all firewall rules on the server are removed and the firewall rules specified in the instance_array_firewall_rules property are applied on the server. When set to false, the firewall rules specified in the instance_array_firewall_rules property are ignored. The feature only works for drives that are using a supported OS template.",
+					"default": true
+				},
+				"instance_array_firewall_rules": {
+					"type": [
+						"array",
+						"null"
+					],
+					"items": {
+						"type": "FirewallRule",
+						"description": "Contains the firewall rules."
+					},
+					"default": null,
+					"description": "Contains the firewall rules (an array of <a:schema>FirewallRule<\/a:schema> objects). When creating a new InstanceArray, if null, default firewall rules are applied (allow any source ICMP, any private IPv4, and others)."
+				},
+				"volume_template_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The volume template ID (or name) to use if the servers in the InstanceArray have local disks. ",
+					"default": null
+				}
 			}
-		}
-	}
-
-	/**
-	 * The InstanceArray's unique label is used to create the
-	 * instance_array_subdomain. It is editable and can be used to call API
-	 * functions.
-	 */
-	get instance_array_label()
-	{
-		return (this._instance_array_label !== undefined ? this._instance_array_label : null);
-	}
-
-	set instance_array_label(instance_array_label)
-	{
-		this._instance_array_label = instance_array_label;
-	}
-
-	/**
-	 * Automatically created based on instance_array_label. It is a unique
-	 * reference to the InstanceArray object. In DNS it points to all the child
-	 * instances primary public IP addresses.
-	 */
-	get instance_array_subdomain()
-	{
-		return (this._instance_array_subdomain !== undefined ? this._instance_array_subdomain : null);
-	}
-
-	set instance_array_subdomain(instance_array_subdomain)
-	{
-		this._instance_array_subdomain = instance_array_subdomain;
-	}
-
-	/**
-	 * Automatically created based on instance_array_id. It is a unique reference
-	 * to the InstanceArray object that never changes, so it can be used in various
-	 * configs. In DNS it points to all the child instances primary public IP
-	 * addresses.
-	 */
-	get instance_array_subdomain_permanent()
-	{
-		return (this._instance_array_subdomain_permanent !== undefined ? this._instance_array_subdomain_permanent : null);
-	}
-
-	set instance_array_subdomain_permanent(instance_array_subdomain_permanent)
-	{
-		this._instance_array_subdomain_permanent = instance_array_subdomain_permanent;
-	}
-
-	/**
-	 * The ID of the InstanceArray which can be used instead of the
-	 * instance_array_label or instance_array_subdomain when calling the API
-	 * functions. It is automatically generated and cannot be edited.
-	 */
-	get instance_array_id()
-	{
-		return (this._instance_array_id !== undefined ? this._instance_array_id : null);
-	}
-
-	set instance_array_id(instance_array_id)
-	{
-		this._instance_array_id = instance_array_id;
-	}
-
-	/**
-	 * The number of instances to be created on the InstanceArray.
-	 */
-	get instance_array_instance_count()
-	{
-		return (this._instance_array_instance_count !== undefined ? this._instance_array_instance_count : 1);
-	}
-
-	set instance_array_instance_count(instance_array_instance_count)
-	{
-		this._instance_array_instance_count = instance_array_instance_count;
-	}
-
-	/**
-	 * Automatically create or expand Subnet elements until the necessary IPv4
-	 * addresses are allocated.
-	 */
-	get instance_array_ipv4_subnet_create_auto()
-	{
-		return (this._instance_array_ipv4_subnet_create_auto !== undefined ? this._instance_array_ipv4_subnet_create_auto : true);
-	}
-
-	set instance_array_ipv4_subnet_create_auto(instance_array_ipv4_subnet_create_auto)
-	{
-		this._instance_array_ipv4_subnet_create_auto = instance_array_ipv4_subnet_create_auto;
-	}
-
-	/**
-	 * Enable virtual interfaces
-	 */
-	get instance_array_virtual_interfaces_enabled()
-	{
-		return (this._instance_array_virtual_interfaces_enabled !== undefined ? this._instance_array_virtual_interfaces_enabled : false);
-	}
-
-	set instance_array_virtual_interfaces_enabled(instance_array_virtual_interfaces_enabled)
-	{
-		this._instance_array_virtual_interfaces_enabled = instance_array_virtual_interfaces_enabled;
-	}
-
-	/**
-	 * Automatically allocate IP addresses to child Instance's InstanceInterface
-	 * elements.
-	 */
-	get instance_array_ip_allocate_auto()
-	{
-		return (this._instance_array_ip_allocate_auto !== undefined ? this._instance_array_ip_allocate_auto : true);
-	}
-
-	set instance_array_ip_allocate_auto(instance_array_ip_allocate_auto)
-	{
-		this._instance_array_ip_allocate_auto = instance_array_ip_allocate_auto;
-	}
-
-	/**
-	 * The minimum RAM capacity of each instance.
-	 */
-	get instance_array_ram_gbytes()
-	{
-		return (this._instance_array_ram_gbytes !== undefined ? this._instance_array_ram_gbytes : 1);
-	}
-
-	set instance_array_ram_gbytes(instance_array_ram_gbytes)
-	{
-		this._instance_array_ram_gbytes = instance_array_ram_gbytes;
-	}
-
-	/**
-	 * The CPU count on each instance.
-	 */
-	get instance_array_processor_count()
-	{
-		return (this._instance_array_processor_count !== undefined ? this._instance_array_processor_count : 1);
-	}
-
-	set instance_array_processor_count(instance_array_processor_count)
-	{
-		this._instance_array_processor_count = instance_array_processor_count;
-	}
-
-	/**
-	 * The minimum clock speed of a CPU.
-	 */
-	get instance_array_processor_core_mhz()
-	{
-		return (this._instance_array_processor_core_mhz !== undefined ? this._instance_array_processor_core_mhz : 1000);
-	}
-
-	set instance_array_processor_core_mhz(instance_array_processor_core_mhz)
-	{
-		this._instance_array_processor_core_mhz = instance_array_processor_core_mhz;
-	}
-
-	/**
-	 * The minimum cores of a CPU.
-	 */
-	get instance_array_processor_core_count()
-	{
-		return (this._instance_array_processor_core_count !== undefined ? this._instance_array_processor_core_count : 1);
-	}
-
-	set instance_array_processor_core_count(instance_array_processor_core_count)
-	{
-		this._instance_array_processor_core_count = instance_array_processor_core_count;
-	}
-
-	/**
-	 * The minimum number of physical disks.
-	 */
-	get instance_array_disk_count()
-	{
-		return (this._instance_array_disk_count !== undefined ? this._instance_array_disk_count : 0);
-	}
-
-	set instance_array_disk_count(instance_array_disk_count)
-	{
-		this._instance_array_disk_count = instance_array_disk_count;
-	}
-
-	/**
-	 * The minimum size of a single disk.
-	 */
-	get instance_array_disk_size_mbytes()
-	{
-		return (this._instance_array_disk_size_mbytes !== undefined ? this._instance_array_disk_size_mbytes : 0);
-	}
-
-	set instance_array_disk_size_mbytes(instance_array_disk_size_mbytes)
-	{
-		this._instance_array_disk_size_mbytes = instance_array_disk_size_mbytes;
-	}
-
-	/**
-	 * The types of physical disks.
-	 */
-	get instance_array_disk_types()
-	{
-		return (this._instance_array_disk_types !== undefined ? this._instance_array_disk_types : []);
-	}
-
-	set instance_array_disk_types(instance_array_disk_types)
-	{
-		this._instance_array_disk_types = instance_array_disk_types;
-	}
-
-	/**
-	 * Represents the infrastructure ID to which the InstanceArray belongs.
-	 */
-	get infrastructure_id()
-	{
-		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
-	}
-
-	set infrastructure_id(infrastructure_id)
-	{
-		this._infrastructure_id = infrastructure_id;
-	}
-
-	/**
-	 * The DriveArray from which the servers boot. If null, and the servers in the
-	 * InstanceArray don't have local disks, then the instances will not boot even
-	 * if DriveArray elements are attached.
-	 */
-	get drive_array_id_boot()
-	{
-		return (this._drive_array_id_boot !== undefined ? this._drive_array_id_boot : null);
-	}
-
-	set drive_array_id_boot(drive_array_id_boot)
-	{
-		this._drive_array_id_boot = drive_array_id_boot;
-	}
-
-	/**
-	 * The status of the InstanceArray.
-	 */
-	get instance_array_service_status()
-	{
-		return (this._instance_array_service_status !== undefined ? this._instance_array_service_status : null);
-	}
-
-	set instance_array_service_status(instance_array_service_status)
-	{
-		this._instance_array_service_status = instance_array_service_status;
-	}
-
-	/**
-	 * The operation type, operation status and modified InstanceArray object.
-	 */
-	get instance_array_operation()
-	{
-		return (this._instance_array_operation !== undefined ? this._instance_array_operation : null);
-	}
-
-	set instance_array_operation(instance_array_operation)
-	{
-		this._instance_array_operation = instance_array_operation;
-	}
-
-	/**
-	 * An array of InstanceArrayInterface objects indexed from 0 to 3.
-	 */
-	get instance_array_interfaces()
-	{
-		return (this._instance_array_interfaces !== undefined ? this._instance_array_interfaces : []);
-	}
-
-	set instance_array_interfaces(instance_array_interfaces)
-	{
-		this._instance_array_interfaces = instance_array_interfaces;
-	}
-
-	/**
-	 * Determines wether the server will boot from local drives or from NAS over
-	 * iSCSI.
-	 */
-	get instance_array_boot_method()
-	{
-		return (this._instance_array_boot_method !== undefined ? this._instance_array_boot_method : "pxe_iscsi");
-	}
-
-	set instance_array_boot_method(instance_array_boot_method)
-	{
-		this._instance_array_boot_method = instance_array_boot_method;
-	}
-
-	/**
-	 * If not null, then the InstanceArray is part of the specified Cluster.
-	 */
-	get cluster_id()
-	{
-		return (this._cluster_id !== undefined ? this._cluster_id : null);
-	}
-
-	set cluster_id(cluster_id)
-	{
-		this._cluster_id = cluster_id;
-	}
-
-	/**
-	 *
-	 */
-	get cluster_role_group()
-	{
-		return (this._cluster_role_group !== undefined ? this._cluster_role_group : "none");
-	}
-
-	set cluster_role_group(cluster_role_group)
-	{
-		this._cluster_role_group = cluster_role_group;
-	}
-
-	/**
-	 * Reserved for GUI users.
-	 */
-	get instance_array_gui_settings_json()
-	{
-		return (this._instance_array_gui_settings_json !== undefined ? this._instance_array_gui_settings_json : "");
-	}
-
-	set instance_array_gui_settings_json(instance_array_gui_settings_json)
-	{
-		this._instance_array_gui_settings_json = instance_array_gui_settings_json;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the InstanceArray was
-	 * created. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get instance_array_created_timestamp()
-	{
-		return (this._instance_array_created_timestamp !== undefined ? this._instance_array_created_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set instance_array_created_timestamp(instance_array_created_timestamp)
-	{
-		this._instance_array_created_timestamp = instance_array_created_timestamp;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the InstanceArray was
-	 * edited. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get instance_array_updated_timestamp()
-	{
-		return (this._instance_array_updated_timestamp !== undefined ? this._instance_array_updated_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set instance_array_updated_timestamp(instance_array_updated_timestamp)
-	{
-		this._instance_array_updated_timestamp = instance_array_updated_timestamp;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * This property helps ensure that edit operations don’t overwrite other,
-	 * more recent changes made to the same object. It gets updated automatically
-	 * after each successful edit operation.
-	 */
-	get instance_array_change_id()
-	{
-		return (this._instance_array_change_id !== undefined ? this._instance_array_change_id : null);
-	}
-
-	set instance_array_change_id(instance_array_change_id)
-	{
-		this._instance_array_change_id = instance_array_change_id;
-	}
-
-	/**
-	 * When set to true, all firewall rules on the server are removed and the
-	 * firewall rules specified in the instance_array_firewall_rules property are
-	 * applied on the server. When set to false, the firewall rules specified in
-	 * the instance_array_firewall_rules property are ignored. The feature only
-	 * works for drives that are using a supported OS template.
-	 */
-	get instance_array_firewall_managed()
-	{
-		return (this._instance_array_firewall_managed !== undefined ? this._instance_array_firewall_managed : true);
-	}
-
-	set instance_array_firewall_managed(instance_array_firewall_managed)
-	{
-		this._instance_array_firewall_managed = instance_array_firewall_managed;
-	}
-
-	/**
-	 * Contains the firewall rules (an array of FirewallRule objects). When
-	 * creating a new InstanceArray, if null, default firewall rules are applied
-	 * (allow any source ICMP, any private IPv4, and others).
-	 */
-	get instance_array_firewall_rules()
-	{
-		return (this._instance_array_firewall_rules !== undefined ? this._instance_array_firewall_rules : null);
-	}
-
-	set instance_array_firewall_rules(instance_array_firewall_rules)
-	{
-		this._instance_array_firewall_rules = instance_array_firewall_rules;
-	}
-
-	/**
-	 * The volume template ID (or name) to use if the servers in the InstanceArray
-	 * have local disks.
-	 */
-	get volume_template_id()
-	{
-		return (this._volume_template_id !== undefined ? this._volume_template_id : null);
-	}
-
-	set volume_template_id(volume_template_id)
-	{
-		this._volume_template_id = volume_template_id;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

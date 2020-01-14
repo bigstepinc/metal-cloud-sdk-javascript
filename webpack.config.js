@@ -1,9 +1,6 @@
 const path = require("path");
 const fs = require("fs");
 const webpack = require("webpack");
-const recursiveKeys = require('recursive-keys');
-
-const objPackageJSON = JSON.parse(fs.readFileSync("package.json"));
 
 module.exports = {
 	entry: "./index_webpack",
@@ -16,9 +13,17 @@ module.exports = {
 		"ws": "WebSocket", 
 		"uws": "WebSocket", 
 		"node-fetch": "fetch",
-		"cluster": "",
-		"fs-promise": "",
-		"electron": "null"
+		"cluster": "null",
+		"fs-promise": "null", 
+		"fs-extra": "null", 
+		"fs": "null", 
+		"electron": "null", 
+		"typescript": "null", 
+		"typescript-parser": "null", 
+		"worker_threads": "null", 
+		"http": "null", 
+		"https": "null", 
+		"node-forge": "forge"
 	},
 	devtool: "source-map",
 	module: {
@@ -50,33 +55,6 @@ module.exports = {
 		new webpack.DefinePlugin({
 			"process.env": {
 				"NODE_ENV": JSON.stringify("production")
-			}
-		}),
-		new webpack.optimize.UglifyJsPlugin({
-			minimize: true,
-			sourceMap: true,
-			compress: {
-				screw_ie8: true,
-				unused: true,
-				dead_code: true
-			},
-			mangle: {
-				screw_ie8: true,
-				except: recursiveKeys.dumpKeysRecursively(require("./index_webpack")).map(
-					(strClassName) => {
-						return strClassName.split(".").pop();
-					}
-				)
-			},
-			output: {
-				screw_ie8: true,
-				comments: false,
-				preamble: `/**
-					${objPackageJSON.name} v${objPackageJSON.version}
-					${objPackageJSON.description}
-					${objPackageJSON.homepage}
-					\n\n${fs.readFileSync("./LICENSE.md")}
-				*/`.replace(/\t+/g, "")
 			}
 		})
 	]

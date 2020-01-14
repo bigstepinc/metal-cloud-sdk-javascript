@@ -1,118 +1,59 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Contains information regarding the backend proxied by secure gateway
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class SecureGatewayBackend extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Contains information regarding the backend proxied by secure gateway",
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": [
+						"string"
+					],
+					"description": "The name of the backend"
+				},
+				"ip": {
+					"type": [
+						"string"
+					],
+					"description": "The IP of the backend"
+				},
+				"port": {
+					"type": [
+						"integer"
+					],
+					"description": "The port of the backend"
+				},
+				"check_enabled": {
+					"type": [
+						"boolean"
+					],
+					"description": "Should Secure Gateway send probes to check if this backend is working?"
+				},
+				"ssl_enabled": {
+					"type": [
+						"boolean"
+					],
+					"description": "Should Secure Gateway send SSL encrypted requests to the backend?"
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"SecureGatewayBackend"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The name of the backend
-	 */
-	get name()
-	{
-		return (this._name !== undefined ? this._name : null);
-	}
-
-	set name(name)
-	{
-		this._name = name;
-	}
-
-	/**
-	 * The IP of the backend
-	 */
-	get ip()
-	{
-		return (this._ip !== undefined ? this._ip : null);
-	}
-
-	set ip(ip)
-	{
-		this._ip = ip;
-	}
-
-	/**
-	 * The port of the backend
-	 */
-	get port()
-	{
-		return (this._port !== undefined ? this._port : null);
-	}
-
-	set port(port)
-	{
-		this._port = port;
-	}
-
-	/**
-	 * Should Secure Gateway send probes to check if this backend is working?
-	 */
-	get check_enabled()
-	{
-		return (this._check_enabled !== undefined ? this._check_enabled : null);
-	}
-
-	set check_enabled(check_enabled)
-	{
-		this._check_enabled = check_enabled;
-	}
-
-	/**
-	 * Should Secure Gateway send SSL encrypted requests to the backend?
-	 */
-	get ssl_enabled()
-	{
-		return (this._ssl_enabled !== undefined ? this._ssl_enabled : null);
-	}
-
-	set ssl_enabled(ssl_enabled)
-	{
-		this._ssl_enabled = ssl_enabled;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

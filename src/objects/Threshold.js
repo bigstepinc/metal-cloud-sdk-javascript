@@ -1,227 +1,155 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Threshold represents a certain property that if reached an infrastructure
- * owner would be notified.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class Threshold extends ObjectBase
 {
-	constructor(infrastructure_id, threshold_value, threshold_unit)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Threshold represents a certain property that if reached an infrastructure owner would be notified.",
+			"type": "object",
+			"properties": {
+				"threshold_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the Threshold",
+					"default": null,
+					"readonly": true
+				},
+				"user_id_owner": {
+					"type": [
+						"null",
+						"integer",
+						"string"
+					],
+					"description": "The ID of the user that owns the threshold",
+					"default": null,
+					"required": true
+				},
+				"infrastructure_id": {
+					"type": [
+						"integer",
+						"string"
+					],
+					"description": "The ID of the infrastructure",
+					"required": true
+				},
+				"network_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "The ID of the network",
+					"required": false,
+					"default": null
+				},
+				"threshold_description": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "A string which provides a description of the threshold.",
+					"required": true,
+					"maxLength": 1024,
+					"default": ""
+				},
+				"threshold_value": {
+					"type": [
+						"integer"
+					],
+					"description": "The value for the threshold",
+					"minimum": 0,
+					"required": true
+				},
+				"threshold_unit": {
+					"type": [
+						"string"
+					],
+					"enum": [
+						"USD",
+						"GBP",
+						"EUR",
+						"BYTE"
+					],
+					"description": "The measurement unit associated with the threshold value",
+					"required": true
+				},
+				"threshold_action_repeat_interval_hours": {
+					"type": [
+						"integer"
+					],
+					"default": 0,
+					"description": "The period of time in hours that must pass before another warning is issued. For a one time warning, null is required",
+					"required": true,
+					"maximum": 744
+				},
+				"threshold_type": {
+					"enum": [
+						"infrastructure_on_demand_and_metered_costs",
+						"network_traffic_billing_cycle_total"
+					],
+					"type": [
+						"string"
+					],
+					"description": "How is the threshold calculated",
+					"default": "infrastructure_on_demand_and_metered_costs",
+					"required": true
+				},
+				"threshold_action": {
+					"enum": [
+						"email"
+					],
+					"type": [
+						"string"
+					],
+					"description": "What action to be taken when the threshold is reached",
+					"required": true,
+					"default": "email"
+				},
+				"threshold_bound_type": {
+					"enum": [
+						"lower",
+						"upper"
+					],
+					"type": [
+						"string"
+					],
+					"description": "Defines whether the event must be triggered when the measured value is greater than or less than the threshold_value",
+					"default": "upper",
+					"required": true
+				},
+				"threshold_value_destination": {
+					"enum": [
+						"infrastructure_total_costs",
+						"network_traffic_upload",
+						"network_traffic_download",
+						"network_traffic_upload_download"
+					],
+					"type": [
+						"string"
+					],
+					"required": false,
+					"description": "Defines the destination for the threshold value. It can be seen as a subtype of the threshold_type",
+					"default": "infrastructure_total_costs"
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"Threshold"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		for(let index = 0; index < 3; index++)
-		{
-			let arg = arguments[index];
-
-			if(arg === undefined || arg === null)
-				throw new Error("Invalid params in Threshold constructor.");
-		}
-
-		this._infrastructure_id = infrastructure_id;
-		this._threshold_value = threshold_value;
-		this._threshold_unit = threshold_unit;
-	}
-
-	/**
-	 * The ID of the Threshold
-	 */
-	get threshold_id()
-	{
-		return (this._threshold_id !== undefined ? this._threshold_id : null);
-	}
-
-	set threshold_id(threshold_id)
-	{
-		this._threshold_id = threshold_id;
-	}
-
-	/**
-	 * The ID of the user that owns the threshold
-	 */
-	get user_id_owner()
-	{
-		return (this._user_id_owner !== undefined ? this._user_id_owner : null);
-	}
-
-	set user_id_owner(user_id_owner)
-	{
-		this._user_id_owner = user_id_owner;
-	}
-
-	/**
-	 * The ID of the infrastructure
-	 */
-	get infrastructure_id()
-	{
-		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
-	}
-
-	set infrastructure_id(infrastructure_id)
-	{
-		this._infrastructure_id = infrastructure_id;
-	}
-
-	/**
-	 * The ID of the network
-	 */
-	get network_id()
-	{
-		return (this._network_id !== undefined ? this._network_id : null);
-	}
-
-	set network_id(network_id)
-	{
-		this._network_id = network_id;
-	}
-
-	/**
-	 * A string which provides a description of the threshold.
-	 */
-	get threshold_description()
-	{
-		return (this._threshold_description !== undefined ? this._threshold_description : "");
-	}
-
-	set threshold_description(threshold_description)
-	{
-		this._threshold_description = threshold_description;
-	}
-
-	/**
-	 * The value for the threshold
-	 */
-	get threshold_value()
-	{
-		return (this._threshold_value !== undefined ? this._threshold_value : null);
-	}
-
-	set threshold_value(threshold_value)
-	{
-		this._threshold_value = threshold_value;
-	}
-
-	/**
-	 * The measurement unit associated with the threshold value
-	 */
-	get threshold_unit()
-	{
-		return (this._threshold_unit !== undefined ? this._threshold_unit : null);
-	}
-
-	set threshold_unit(threshold_unit)
-	{
-		this._threshold_unit = threshold_unit;
-	}
-
-	/**
-	 * The period of time in hours that must pass before another warning is issued.
-	 * For a one time warning, null is required
-	 */
-	get threshold_action_repeat_interval_hours()
-	{
-		return (this._threshold_action_repeat_interval_hours !== undefined ? this._threshold_action_repeat_interval_hours : 0);
-	}
-
-	set threshold_action_repeat_interval_hours(threshold_action_repeat_interval_hours)
-	{
-		this._threshold_action_repeat_interval_hours = threshold_action_repeat_interval_hours;
-	}
-
-	/**
-	 * How is the threshold calculated
-	 */
-	get threshold_type()
-	{
-		return (this._threshold_type !== undefined ? this._threshold_type : "infrastructure_on_demand_and_metered_costs");
-	}
-
-	set threshold_type(threshold_type)
-	{
-		this._threshold_type = threshold_type;
-	}
-
-	/**
-	 * What action to be taken when the threshold is reached
-	 */
-	get threshold_action()
-	{
-		return (this._threshold_action !== undefined ? this._threshold_action : "email");
-	}
-
-	set threshold_action(threshold_action)
-	{
-		this._threshold_action = threshold_action;
-	}
-
-	/**
-	 * Defines whether the event must be triggered when the measured value is
-	 * greater than or less than the threshold_value
-	 */
-	get threshold_bound_type()
-	{
-		return (this._threshold_bound_type !== undefined ? this._threshold_bound_type : "upper");
-	}
-
-	set threshold_bound_type(threshold_bound_type)
-	{
-		this._threshold_bound_type = threshold_bound_type;
-	}
-
-	/**
-	 * Defines the destination for the threshold value. It can be seen as a subtype
-	 * of the threshold_type
-	 */
-	get threshold_value_destination()
-	{
-		return (this._threshold_value_destination !== undefined ? this._threshold_value_destination : "infrastructure_total_costs");
-	}
-
-	set threshold_value_destination(threshold_value_destination)
-	{
-		this._threshold_value_destination = threshold_value_destination;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"infrastructure_id",
-			"threshold_value",
-			"threshold_unit"
-		];
+		};
 	}
 };

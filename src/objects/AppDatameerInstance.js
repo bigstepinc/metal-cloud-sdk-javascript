@@ -1,105 +1,62 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Details about the Datameer instances.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class AppDatameerInstance extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Details about the Datameer instances.",
+			"type": "object",
+			"properties": {
+				"ipAddress": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The host IP address.",
+					"readonly": true
+				},
+				"url": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The URL of the Datameer GUI.",
+					"readonly": true
+				},
+				"instance_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the instance associated with the node.",
+					"readonly": true
+				},
+				"instance_label": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "The label of the instance associated with the node.",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"AppDatameerInstance"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The host IP address.
-	 */
-	get ipAddress()
-	{
-		return (this._ipAddress !== undefined ? this._ipAddress : null);
-	}
-
-	set ipAddress(ipAddress)
-	{
-		this._ipAddress = ipAddress;
-	}
-
-	/**
-	 * The URL of the Datameer GUI.
-	 */
-	get url()
-	{
-		return (this._url !== undefined ? this._url : null);
-	}
-
-	set url(url)
-	{
-		this._url = url;
-	}
-
-	/**
-	 * The ID of the instance associated with the node.
-	 */
-	get instance_id()
-	{
-		return (this._instance_id !== undefined ? this._instance_id : null);
-	}
-
-	set instance_id(instance_id)
-	{
-		this._instance_id = instance_id;
-	}
-
-	/**
-	 * The label of the instance associated with the node.
-	 */
-	get instance_label()
-	{
-		return (this._instance_label !== undefined ? this._instance_label : null);
-	}
-
-	set instance_label(instance_label)
-	{
-		this._instance_label = instance_label;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

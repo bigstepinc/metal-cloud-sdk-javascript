@@ -20,8 +20,6 @@ class ExtendedAPI extends JSONRPC.Client
 		super(strEndpointURL);
 
 		this.addPlugin(new ClientBase.Plugins.ExceptionFilter(true));
-		// this.addPlugin(new ClientBase.Plugins.SerializeParameters());
-		// this.addPlugin(new ClientBase.Plugins.DeserializeOutput());
 	}
 
 	/**
@@ -50,7 +48,7 @@ class ExtendedAPI extends JSONRPC.Client
 	}
 
 	
-	// 289 functions available on endpoint.
+	// 295 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -87,14 +85,9 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("clusters", Array.prototype.slice.call(arguments));
 	}
 
-	async datacenters(strUserID = null, bOnlyActive = false)
+	async datacenters(strUserID = null, bOnlyActive = false, bIncludeConfigProperties = false)
 	{
 		return await this.rpc("datacenters", Array.prototype.slice.call(arguments));
-	}
-
-	async events_delete(strInfrastructureID, arrEventIDs)
-	{
-		return await this.rpc("events_delete", Array.prototype.slice.call(arguments));
 	}
 
 	async infrastructure_create(strUserID, objInfrastructure, strInfrastructureIDAsTemplate = null)
@@ -197,7 +190,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("instance_array_create", Array.prototype.slice.call(arguments));
 	}
 
-	async instance_array_edit(strInstanceArrayID, objInstanceArrayOperation, bSwapExistingInstancesHardware = false, bKeepDetachingDrives = null, objServerTypeMatches = null, arrInstancesToBeDeleted = null)
+	async instance_array_edit(strInstanceArrayID, objInstanceArrayOperation, bSwapExistingInstancesHardware = false, bKeepDetachingDrives = null, objServerTypeMatches = null, arrInstanceIDsPreferredForDelete = null)
 	{
 		return await this.rpc("instance_array_edit", Array.prototype.slice.call(arguments));
 	}
@@ -222,7 +215,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("instance_arrays", Array.prototype.slice.call(arguments));
 	}
 
-	async instance_array_interface_attach_network(strInstanceArrayID, nInstanceArrayInterfaceIndex, strNetworkID)
+	async instance_array_interface_attach_network(strInstanceArrayID, nInstanceArrayInterfaceIndex = null, strNetworkID)
 	{
 		return await this.rpc("instance_array_interface_attach_network", Array.prototype.slice.call(arguments));
 	}
@@ -1407,7 +1400,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("subnet_prefix_sizes_wan", Array.prototype.slice.call(arguments));
 	}
 
-	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], strStorageType = "none", nStorageSizeMBytes = 0, strVolumeTemplateID = null)
+	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], strISCSIStorageType = "none", nISCSIStorageSizeMBytes = 0, strVolumeTemplateID = null)
 	{
 		return await this.rpc("independent_instance_create", Array.prototype.slice.call(arguments));
 	}
@@ -1427,7 +1420,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("independent_instance_delete", Array.prototype.slice.call(arguments));
 	}
 
-	async independent_instance_storage_expand(strInstanceID, nStorageSizeMBytes)
+	async independent_instance_storage_expand(strInstanceID, nISCSIStorageSizeMBytes)
 	{
 		return await this.rpc("independent_instance_storage_expand", Array.prototype.slice.call(arguments));
 	}
@@ -1495,6 +1488,41 @@ class ExtendedAPI extends JSONRPC.Client
 	async ansible_bundle_create(strUserID, objAnsibleBundle)
 	{
 		return await this.rpc("ansible_bundle_create", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_ansible_bundle_move_into_runlevel(strInfrastructureID, nAnsibleBundleID, nSourceRunLevel, nDestinationRunLevel)
+	{
+		return await this.rpc("infrastructure_ansible_bundle_move_into_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_ansible_bundle_exec(strInfrastructureID, nInfrastructureAnsibleBundleID, objExtraAnsibleVariables = [])
+	{
+		return await this.rpc("infrastructure_ansible_bundle_exec", Array.prototype.slice.call(arguments));
+	}
+
+	async secrets(strUserID, strUsage = null)
+	{
+		return await this.rpc("secrets", Array.prototype.slice.call(arguments));
+	}
+
+	async secret_get(nSecretID)
+	{
+		return await this.rpc("secret_get", Array.prototype.slice.call(arguments));
+	}
+
+	async secret_create(strUserID, objSecret)
+	{
+		return await this.rpc("secret_create", Array.prototype.slice.call(arguments));
+	}
+
+	async secret_update(nSecretID, objSecret)
+	{
+		return await this.rpc("secret_update", Array.prototype.slice.call(arguments));
+	}
+
+	async secret_delete(nSecretID)
+	{
+		return await this.rpc("secret_delete", Array.prototype.slice.call(arguments));
 	}
 
 

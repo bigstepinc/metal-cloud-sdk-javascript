@@ -1,274 +1,179 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A centralised view of all child ContainerArray and Container products.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ContainerPlatform extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A centralised view of all child ContainerArray and Container products.",
+			"type": "object",
+			"properties": {
+				"container_platform_label": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The ContainerPlatform's unique label is used to create the <code>container_platform_subdomain<\/code>. It is editable and can be used to call API functions.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": false,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$",
+					"default": null
+				},
+				"container_platform_subdomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>container_platform_label<\/code>. It is a unique reference to the ContainerPlatform object.",
+					"default": null,
+					"readonly": true
+				},
+				"container_platform_maximum_hosts_count": {
+					"type": [
+						"integer",
+						"string"
+					],
+					"description": "The maximum number of hosts that should be used for all existing or future child ContainerArray products.",
+					"required": false,
+					"readonly": false,
+					"default": 10
+				},
+				"container_platform_minimum_hosts_count": {
+					"type": [
+						"integer",
+						"string"
+					],
+					"description": "The desired minimum number of hosts that should be used for all existing or future child ContainerArray products.",
+					"required": false,
+					"readonly": false,
+					"default": 0
+				},
+				"container_platform_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the ContainerPlatform which can be used instead of the <code>container_platform_label<\/code> or <code>container_platform_subdomain<\/code> when calling the API functions. It is automatically generated and cannot be edited.",
+					"default": null,
+					"readonly": true
+				},
+				"infrastructure_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "Represents the infrastructure ID to which the ContainerPlatform belongs.",
+					"default": null,
+					"readonly": true
+				},
+				"container_platform_data_drive_size_mbytes": {
+					"type": "integer",
+					"minimum": 40960,
+					"maximum": 3072000,
+					"default": 102400,
+					"description": "Represents the capacity of the Data Drive.",
+					"required": true
+				},
+				"container_platform_service_status": {
+					"enum": [
+						"ordered",
+						"active",
+						"stopped",
+						"deleted",
+						"suspended"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The status of the ContainerPlatform.",
+					"default": null,
+					"readonly": true
+				},
+				"container_platform_operation": {
+					"type": [
+						"ContainerPlatformOperation",
+						"null"
+					],
+					"description": "The operation type, operation status and modified ContainerPlatform object.",
+					"default": null,
+					"readonly": true
+				},
+				"container_platform_gui_settings_json": {
+					"type": "string",
+					"description": "Reserved for GUI users.",
+					"default": "",
+					"readonly": true
+				},
+				"container_platform_firewall_managed": {
+					"type": "boolean",
+					"description": "When set to true, all firewall rules on the underlying hosts are removed and the firewall rules specified in the instance_array_firewall_rules property are applied on the servers. When set to false, the firewall rules specified in the instance_array_firewall_rules property are ignored. The feature only works for drives that are using a supported OS template.",
+					"default": true
+				},
+				"container_platform_hardware_configuration": {
+					"type": [
+						"array",
+						"null"
+					],
+					"description": "Contains the hardware configuration for this ContainerPlatform.",
+					"default": null
+				},
+				"container_platform_hosts": {
+					"type": [
+						"array",
+						"null"
+					],
+					"description": "Information about hosts regarding servers to allocate"
+				},
+				"container_platform_firewall_rules": {
+					"type": "array",
+					"items": {
+						"type": "FirewallRule",
+						"description": "Contains the firewall rules."
+					},
+					"default": [
+						
+					],
+					"description": "Contains the firewall rules."
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"ContainerPlatform"
+					],
+					"readonly": true
+				},
+				"container_platform_change_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "This property helps ensure that edit operations don't overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
+					"default": null,
+					"required": true
+				},
+				"container_platform_resource_report": {
+					"type": [
+						"array",
+						"null"
+					],
+					"description": "Contains the resource report of the ContainerPlatform.",
+					"default": null,
+					"required": false,
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The ContainerPlatform's unique label is used to create the
-	 * container_platform_subdomain. It is editable and can be used to call API
-	 * functions.
-	 */
-	get container_platform_label()
-	{
-		return (this._container_platform_label !== undefined ? this._container_platform_label : null);
-	}
-
-	set container_platform_label(container_platform_label)
-	{
-		this._container_platform_label = container_platform_label;
-	}
-
-	/**
-	 * Automatically created based on container_platform_label. It is a unique
-	 * reference to the ContainerPlatform object.
-	 */
-	get container_platform_subdomain()
-	{
-		return (this._container_platform_subdomain !== undefined ? this._container_platform_subdomain : null);
-	}
-
-	set container_platform_subdomain(container_platform_subdomain)
-	{
-		this._container_platform_subdomain = container_platform_subdomain;
-	}
-
-	/**
-	 * The maximum number of hosts that should be used for all existing or future
-	 * child ContainerArray products.
-	 */
-	get container_platform_maximum_hosts_count()
-	{
-		return (this._container_platform_maximum_hosts_count !== undefined ? this._container_platform_maximum_hosts_count : 10);
-	}
-
-	set container_platform_maximum_hosts_count(container_platform_maximum_hosts_count)
-	{
-		this._container_platform_maximum_hosts_count = container_platform_maximum_hosts_count;
-	}
-
-	/**
-	 * The desired minimum number of hosts that should be used for all existing or
-	 * future child ContainerArray products.
-	 */
-	get container_platform_minimum_hosts_count()
-	{
-		return (this._container_platform_minimum_hosts_count !== undefined ? this._container_platform_minimum_hosts_count : 0);
-	}
-
-	set container_platform_minimum_hosts_count(container_platform_minimum_hosts_count)
-	{
-		this._container_platform_minimum_hosts_count = container_platform_minimum_hosts_count;
-	}
-
-	/**
-	 * The ID of the ContainerPlatform which can be used instead of the
-	 * container_platform_label or container_platform_subdomain when calling the
-	 * API functions. It is automatically generated and cannot be edited.
-	 */
-	get container_platform_id()
-	{
-		return (this._container_platform_id !== undefined ? this._container_platform_id : null);
-	}
-
-	set container_platform_id(container_platform_id)
-	{
-		this._container_platform_id = container_platform_id;
-	}
-
-	/**
-	 * Represents the infrastructure ID to which the ContainerPlatform belongs.
-	 */
-	get infrastructure_id()
-	{
-		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
-	}
-
-	set infrastructure_id(infrastructure_id)
-	{
-		this._infrastructure_id = infrastructure_id;
-	}
-
-	/**
-	 * Represents the capacity of the Data Drive.
-	 */
-	get container_platform_data_drive_size_mbytes()
-	{
-		return (this._container_platform_data_drive_size_mbytes !== undefined ? this._container_platform_data_drive_size_mbytes : 102400);
-	}
-
-	set container_platform_data_drive_size_mbytes(container_platform_data_drive_size_mbytes)
-	{
-		this._container_platform_data_drive_size_mbytes = container_platform_data_drive_size_mbytes;
-	}
-
-	/**
-	 * The status of the ContainerPlatform.
-	 */
-	get container_platform_service_status()
-	{
-		return (this._container_platform_service_status !== undefined ? this._container_platform_service_status : null);
-	}
-
-	set container_platform_service_status(container_platform_service_status)
-	{
-		this._container_platform_service_status = container_platform_service_status;
-	}
-
-	/**
-	 * The operation type, operation status and modified ContainerPlatform object.
-	 */
-	get container_platform_operation()
-	{
-		return (this._container_platform_operation !== undefined ? this._container_platform_operation : null);
-	}
-
-	set container_platform_operation(container_platform_operation)
-	{
-		this._container_platform_operation = container_platform_operation;
-	}
-
-	/**
-	 * Reserved for GUI users.
-	 */
-	get container_platform_gui_settings_json()
-	{
-		return (this._container_platform_gui_settings_json !== undefined ? this._container_platform_gui_settings_json : "");
-	}
-
-	set container_platform_gui_settings_json(container_platform_gui_settings_json)
-	{
-		this._container_platform_gui_settings_json = container_platform_gui_settings_json;
-	}
-
-	/**
-	 * When set to true, all firewall rules on the underlying hosts are removed and
-	 * the firewall rules specified in the instance_array_firewall_rules property
-	 * are applied on the servers. When set to false, the firewall rules specified
-	 * in the instance_array_firewall_rules property are ignored. The feature only
-	 * works for drives that are using a supported OS template.
-	 */
-	get container_platform_firewall_managed()
-	{
-		return (this._container_platform_firewall_managed !== undefined ? this._container_platform_firewall_managed : true);
-	}
-
-	set container_platform_firewall_managed(container_platform_firewall_managed)
-	{
-		this._container_platform_firewall_managed = container_platform_firewall_managed;
-	}
-
-	/**
-	 * Contains the hardware configuration for this ContainerPlatform.
-	 */
-	get container_platform_hardware_configuration()
-	{
-		return (this._container_platform_hardware_configuration !== undefined ? this._container_platform_hardware_configuration : null);
-	}
-
-	set container_platform_hardware_configuration(container_platform_hardware_configuration)
-	{
-		this._container_platform_hardware_configuration = container_platform_hardware_configuration;
-	}
-
-	/**
-	 * Information about hosts regarding servers to allocate
-	 */
-	get container_platform_hosts()
-	{
-		return (this._container_platform_hosts !== undefined ? this._container_platform_hosts : []);
-	}
-
-	set container_platform_hosts(container_platform_hosts)
-	{
-		this._container_platform_hosts = container_platform_hosts;
-	}
-
-	/**
-	 * Contains the firewall rules.
-	 */
-	get container_platform_firewall_rules()
-	{
-		return (this._container_platform_firewall_rules !== undefined ? this._container_platform_firewall_rules : []);
-	}
-
-	set container_platform_firewall_rules(container_platform_firewall_rules)
-	{
-		this._container_platform_firewall_rules = container_platform_firewall_rules;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * This property helps ensure that edit operations don't overwrite other, more
-	 * recent changes made to the same object. It gets updated automatically after
-	 * each successful edit operation.
-	 */
-	get container_platform_change_id()
-	{
-		return (this._container_platform_change_id !== undefined ? this._container_platform_change_id : null);
-	}
-
-	set container_platform_change_id(container_platform_change_id)
-	{
-		this._container_platform_change_id = container_platform_change_id;
-	}
-
-	/**
-	 * Contains the resource report of the ContainerPlatform.
-	 */
-	get container_platform_resource_report()
-	{
-		return (this._container_platform_resource_report !== undefined ? this._container_platform_resource_report : null);
-	}
-
-	set container_platform_resource_report(container_platform_resource_report)
-	{
-		this._container_platform_resource_report = container_platform_resource_report;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

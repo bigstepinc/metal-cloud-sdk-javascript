@@ -1,93 +1,58 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * iDRAC control panel credentials. iDRAC is a control panel for Dell servers.
- * The iDRAC card has a separate network connection and its own IP address.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class iDRAC extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "iDRAC control panel credentials. iDRAC is a control panel for Dell servers. The iDRAC card has a separate network connection and its own IP address.",
+			"type": "object",
+			"properties": {
+				"control_panel_url": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "URL for the server's administration interface.",
+					"pattern": "^http(s)?:\\/\\/(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
+					"required": true,
+					"readonly": true
+				},
+				"username": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The username for the server's administration interface.",
+					"pattern": "^[A-Za-z0-9]+$",
+					"required": true,
+					"readonly": true
+				},
+				"initial_password": {
+					"type": [
+						"string",
+						"null"
+					],
+					"required": true,
+					"description": "The initial password for the server's administration interface.",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"iDRAC"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * URL for the server's administration interface.
-	 */
-	get control_panel_url()
-	{
-		return (this._control_panel_url !== undefined ? this._control_panel_url : null);
-	}
-
-	set control_panel_url(control_panel_url)
-	{
-		this._control_panel_url = control_panel_url;
-	}
-
-	/**
-	 * The username for the server's administration interface.
-	 */
-	get username()
-	{
-		return (this._username !== undefined ? this._username : null);
-	}
-
-	set username(username)
-	{
-		this._username = username;
-	}
-
-	/**
-	 * The initial password for the server's administration interface.
-	 */
-	get initial_password()
-	{
-		return (this._initial_password !== undefined ? this._initial_password : null);
-	}
-
-	set initial_password(initial_password)
-	{
-		this._initial_password = initial_password;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

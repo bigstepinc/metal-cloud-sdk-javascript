@@ -1,352 +1,266 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A DriveArray is a collection of storage devices mounted via iSCSI.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class DriveArray extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A DriveArray is a collection of storage devices mounted via iSCSI.",
+			"type": "object",
+			"properties": {
+				"drive_array_label": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The Drive array's unique label is used to create the <code>drive_array_subdomain<\/code>. It is editable and can be used to call API functions.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": false,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$",
+					"default": null
+				},
+				"drive_array_subdomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>drive_array_label<\/code>. It is a unique reference to the Drive array object.",
+					"default": null,
+					"readonly": true
+				},
+				"drive_array_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the Drive array which can be used instead of the <code>drive_array_label<\/code> or <code>drive_array_subdomain<\/code> when calling the API functions. It is automatically generated and cannot be edited.",
+					"default": null,
+					"readonly": true
+				},
+				"volume_template_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The volume template ID or name. At the moment, the available templates are <code>\"ubuntu14-04\"<\/code>, <code>\"ubuntu16-04\"<\/code>, <code>\"centos6-5\"<\/code>, <code>\"centos6-6\"<\/code>, <code>\"centos6-8\"<\/code>, <code>\"centos6-9\"<\/code>, <code>\"centos71v1\"<\/code>, <code>\"centos7-2\"<\/code>, and <code>\"centos7-3\"<\/code>",
+					"default": null
+				},
+				"drive_array_storage_type": {
+					"enum": [
+						"iscsi_ssd",
+						"iscsi_hdd",
+						"dummy",
+						null
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "",
+					"default": null
+				},
+				"drive_array_count": {
+					"type": "integer",
+					"description": "The Drive count on the Drive array.",
+					"minimum": 0,
+					"maximum": 1000,
+					"default": 1
+				},
+				"drive_size_mbytes_default": {
+					"type": "integer",
+					"description": "The capacity of each Drive in MBytes.",
+					"minimum": 1024,
+					"maximum": 2046976,
+					"default": 40960
+				},
+				"drive_array_expand_with_instance_array": {
+					"type": "boolean",
+					"description": "If true, the Drive array and the InstanceArray expand simultaneously. If not enough Drives are available, new Drives will be created automatically and attached.",
+					"default": true
+				},
+				"infrastructure_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The infrastructure ID to which the Drive array belongs.",
+					"default": null,
+					"readonly": true
+				},
+				"instance_array_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The InstanceArray ID to which the Drive array is attached.",
+					"default": null
+				},
+				"container_array_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ContainerArray ID to which the Drive array is attached.",
+					"default": null
+				},
+				"drive_array_service_status": {
+					"enum": [
+						"ordered",
+						"active",
+						"suspended",
+						"stopped",
+						"deleted"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The status of the Drive array.",
+					"default": null,
+					"readonly": true
+				},
+				"drive_array_operation": {
+					"type": [
+						"DriveArrayOperation",
+						"null"
+					],
+					"description": "The operation type, operation status and modified Drive array object.",
+					"default": null,
+					"readonly": true
+				},
+				"cluster_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "If not <code>null<\/code>, then the InstanceArray is part of the specified Cluster.",
+					"default": null,
+					"readonly": true
+				},
+				"container_cluster_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "If not <code>null<\/code>, then the InstanceArray is part of the specified ContainerCluster.",
+					"default": null,
+					"readonly": true
+				},
+				"cluster_role_group": {
+					"type": "string",
+					"description": "",
+					"enum": [
+						"none",
+						"cloudera_headnodes",
+						"cloudera_datanodes",
+						"splunk_searchheads",
+						"splunk_indexers",
+						"elasticsearch_nodes",
+						"elasticsearch_masternodes",
+						"elasticsearch_datanodes",
+						"couchbase_nodes",
+						"datameer_nodes",
+						"datastax_seeds",
+						"datastax_nodes",
+						"exasol_license_servers",
+						"exasol_nodes",
+						"mesos_headnodes",
+						"mesos_slavenodes",
+						"kubernetes_master",
+						"kubernetes_node",
+						"mapr_masternodes",
+						"mapr_slavenodes",
+						"mapr_nodes",
+						"tableau_nodes",
+						"hortonworks_masternodes",
+						"hortonworks_slavenodes",
+						"spark_master",
+						"spark_workers",
+						"zookeeper_nodes",
+						"kafka_brokers",
+						"zoomdata_node",
+						"postgresql_node",
+						"sparksql_node",
+						"mysql_percona_nodes"
+					],
+					"default": "none",
+					"readonly": true
+				},
+				"drive_array_gui_settings_json": {
+					"type": "string",
+					"description": "Reserved for GUI users.",
+					"default": "",
+					"readonly": true
+				},
+				"drive_array_created_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the Drive array was created. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"drive_array_updated_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the Drive array was edited. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"license_utilization_type": {
+					"enum": [
+						"demand",
+						"subscription"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "License utilization type for the license.",
+					"default": "subscription"
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"DriveArray"
+					],
+					"readonly": true
+				},
+				"drive_array_change_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "This property helps ensure that edit operations don\u2019t overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
+					"default": null,
+					"required": true
+				},
+				"drive_array_filesystem": {
+					"type": [
+						"DriveArrayFilesystem",
+						"null"
+					],
+					"description": "Drive array file system information",
+					"default": null
+				}
 			}
-		}
-	}
-
-	/**
-	 * The Drive array's unique label is used to create the drive_array_subdomain.
-	 * It is editable and can be used to call API functions.
-	 */
-	get drive_array_label()
-	{
-		return (this._drive_array_label !== undefined ? this._drive_array_label : null);
-	}
-
-	set drive_array_label(drive_array_label)
-	{
-		this._drive_array_label = drive_array_label;
-	}
-
-	/**
-	 * Automatically created based on drive_array_label. It is a unique reference
-	 * to the Drive array object.
-	 */
-	get drive_array_subdomain()
-	{
-		return (this._drive_array_subdomain !== undefined ? this._drive_array_subdomain : null);
-	}
-
-	set drive_array_subdomain(drive_array_subdomain)
-	{
-		this._drive_array_subdomain = drive_array_subdomain;
-	}
-
-	/**
-	 * The ID of the Drive array which can be used instead of the drive_array_label
-	 * or drive_array_subdomain when calling the API functions. It is automatically
-	 * generated and cannot be edited.
-	 */
-	get drive_array_id()
-	{
-		return (this._drive_array_id !== undefined ? this._drive_array_id : null);
-	}
-
-	set drive_array_id(drive_array_id)
-	{
-		this._drive_array_id = drive_array_id;
-	}
-
-	/**
-	 * The volume template ID or name. At the moment, the available templates are
-	 * "ubuntu14-04", "ubuntu16-04", "centos6-5", "centos6-6", "centos6-8",
-	 * "centos6-9", "centos71v1", "centos7-2", and "centos7-3"
-	 */
-	get volume_template_id()
-	{
-		return (this._volume_template_id !== undefined ? this._volume_template_id : null);
-	}
-
-	set volume_template_id(volume_template_id)
-	{
-		this._volume_template_id = volume_template_id;
-	}
-
-	/**
-	 *
-	 */
-	get drive_array_storage_type()
-	{
-		return (this._drive_array_storage_type !== undefined ? this._drive_array_storage_type : null);
-	}
-
-	set drive_array_storage_type(drive_array_storage_type)
-	{
-		this._drive_array_storage_type = drive_array_storage_type;
-	}
-
-	/**
-	 * The Drive count on the Drive array.
-	 */
-	get drive_array_count()
-	{
-		return (this._drive_array_count !== undefined ? this._drive_array_count : 1);
-	}
-
-	set drive_array_count(drive_array_count)
-	{
-		this._drive_array_count = drive_array_count;
-	}
-
-	/**
-	 * The capacity of each Drive in MBytes.
-	 */
-	get drive_size_mbytes_default()
-	{
-		return (this._drive_size_mbytes_default !== undefined ? this._drive_size_mbytes_default : 40960);
-	}
-
-	set drive_size_mbytes_default(drive_size_mbytes_default)
-	{
-		this._drive_size_mbytes_default = drive_size_mbytes_default;
-	}
-
-	/**
-	 * If true, the Drive array and the InstanceArray expand simultaneously. If not
-	 * enough Drives are available, new Drives will be created automatically and
-	 * attached.
-	 */
-	get drive_array_expand_with_instance_array()
-	{
-		return (this._drive_array_expand_with_instance_array !== undefined ? this._drive_array_expand_with_instance_array : true);
-	}
-
-	set drive_array_expand_with_instance_array(drive_array_expand_with_instance_array)
-	{
-		this._drive_array_expand_with_instance_array = drive_array_expand_with_instance_array;
-	}
-
-	/**
-	 * The infrastructure ID to which the Drive array belongs.
-	 */
-	get infrastructure_id()
-	{
-		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
-	}
-
-	set infrastructure_id(infrastructure_id)
-	{
-		this._infrastructure_id = infrastructure_id;
-	}
-
-	/**
-	 * The InstanceArray ID to which the Drive array is attached.
-	 */
-	get instance_array_id()
-	{
-		return (this._instance_array_id !== undefined ? this._instance_array_id : null);
-	}
-
-	set instance_array_id(instance_array_id)
-	{
-		this._instance_array_id = instance_array_id;
-	}
-
-	/**
-	 * The ContainerArray ID to which the Drive array is attached.
-	 */
-	get container_array_id()
-	{
-		return (this._container_array_id !== undefined ? this._container_array_id : null);
-	}
-
-	set container_array_id(container_array_id)
-	{
-		this._container_array_id = container_array_id;
-	}
-
-	/**
-	 * The status of the Drive array.
-	 */
-	get drive_array_service_status()
-	{
-		return (this._drive_array_service_status !== undefined ? this._drive_array_service_status : null);
-	}
-
-	set drive_array_service_status(drive_array_service_status)
-	{
-		this._drive_array_service_status = drive_array_service_status;
-	}
-
-	/**
-	 * The operation type, operation status and modified Drive array object.
-	 */
-	get drive_array_operation()
-	{
-		return (this._drive_array_operation !== undefined ? this._drive_array_operation : null);
-	}
-
-	set drive_array_operation(drive_array_operation)
-	{
-		this._drive_array_operation = drive_array_operation;
-	}
-
-	/**
-	 * If not null, then the InstanceArray is part of the specified Cluster.
-	 */
-	get cluster_id()
-	{
-		return (this._cluster_id !== undefined ? this._cluster_id : null);
-	}
-
-	set cluster_id(cluster_id)
-	{
-		this._cluster_id = cluster_id;
-	}
-
-	/**
-	 * If not null, then the InstanceArray is part of the specified
-	 * ContainerCluster.
-	 */
-	get container_cluster_id()
-	{
-		return (this._container_cluster_id !== undefined ? this._container_cluster_id : null);
-	}
-
-	set container_cluster_id(container_cluster_id)
-	{
-		this._container_cluster_id = container_cluster_id;
-	}
-
-	/**
-	 *
-	 */
-	get cluster_role_group()
-	{
-		return (this._cluster_role_group !== undefined ? this._cluster_role_group : "none");
-	}
-
-	set cluster_role_group(cluster_role_group)
-	{
-		this._cluster_role_group = cluster_role_group;
-	}
-
-	/**
-	 * Reserved for GUI users.
-	 */
-	get drive_array_gui_settings_json()
-	{
-		return (this._drive_array_gui_settings_json !== undefined ? this._drive_array_gui_settings_json : "");
-	}
-
-	set drive_array_gui_settings_json(drive_array_gui_settings_json)
-	{
-		this._drive_array_gui_settings_json = drive_array_gui_settings_json;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the Drive array was
-	 * created. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get drive_array_created_timestamp()
-	{
-		return (this._drive_array_created_timestamp !== undefined ? this._drive_array_created_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set drive_array_created_timestamp(drive_array_created_timestamp)
-	{
-		this._drive_array_created_timestamp = drive_array_created_timestamp;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the Drive array was
-	 * edited. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get drive_array_updated_timestamp()
-	{
-		return (this._drive_array_updated_timestamp !== undefined ? this._drive_array_updated_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set drive_array_updated_timestamp(drive_array_updated_timestamp)
-	{
-		this._drive_array_updated_timestamp = drive_array_updated_timestamp;
-	}
-
-	/**
-	 * License utilization type for the license.
-	 */
-	get license_utilization_type()
-	{
-		return (this._license_utilization_type !== undefined ? this._license_utilization_type : "subscription");
-	}
-
-	set license_utilization_type(license_utilization_type)
-	{
-		this._license_utilization_type = license_utilization_type;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * This property helps ensure that edit operations don’t overwrite other,
-	 * more recent changes made to the same object. It gets updated automatically
-	 * after each successful edit operation.
-	 */
-	get drive_array_change_id()
-	{
-		return (this._drive_array_change_id !== undefined ? this._drive_array_change_id : null);
-	}
-
-	set drive_array_change_id(drive_array_change_id)
-	{
-		this._drive_array_change_id = drive_array_change_id;
-	}
-
-	/**
-	 * Drive array file system information
-	 */
-	get drive_array_filesystem()
-	{
-		return (this._drive_array_filesystem !== undefined ? this._drive_array_filesystem : null);
-	}
-
-	set drive_array_filesystem(drive_array_filesystem)
-	{
-		this._drive_array_filesystem = drive_array_filesystem;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

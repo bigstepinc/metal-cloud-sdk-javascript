@@ -1,100 +1,54 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * An object with the required information to obtain the authentication ticket
- * from Kerberos SPNEGO.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class Kerberos extends ObjectBase
 {
-	constructor(username)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "An object with the required information to obtain the authentication ticket from Kerberos SPNEGO.",
+			"type": "object",
+			"properties": {
+				"username": {
+					"type": [
+						"null",
+						"string"
+					],
+					"required": true,
+					"description": "A Bigstep user's account ID prefixed with the letter \"k\". For example: <code>k123</code>."
+				},
+				"initial_password": {
+					"type": [
+						"null"
+					],
+					"required": true,
+					"description": "Bigstep users may log in using their account password, as the DataLake HDFS Kerberos service is integrated with Bigstep Metal Cloud (also for admin rights). This will always be <code>null</code>. Reserved for future use.",
+					"readonly": true
+				},
+				"realm": {
+					"type": [
+						"string",
+						"null"
+					],
+					"required": true,
+					"description": "The Kerberos realm. ",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "Schema type.",
+					"enum": [
+						"Kerberos"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		if(username === undefined || username === null)
-			throw new Error("Invalid param in Kerberos constructor.");
-
-		this._username = username;
-	}
-
-	/**
-	 * A Bigstep user's account ID prefixed with the letter "k". For example: k123.
-	 */
-	get username()
-	{
-		return (this._username !== undefined ? this._username : null);
-	}
-
-	set username(username)
-	{
-		this._username = username;
-	}
-
-	/**
-	 * Bigstep users may log in using their account password, as the DataLake HDFS
-	 * Kerberos service is integrated with Bigstep Metal Cloud (also for admin
-	 * rights). This will always be null. Reserved for future use.
-	 */
-	get initial_password()
-	{
-		return (this._initial_password !== undefined ? this._initial_password : null);
-	}
-
-	set initial_password(initial_password)
-	{
-		this._initial_password = initial_password;
-	}
-
-	/**
-	 * The Kerberos realm.
-	 */
-	get realm()
-	{
-		return (this._realm !== undefined ? this._realm : null);
-	}
-
-	set realm(realm)
-	{
-		this._realm = realm;
-	}
-
-	/**
-	 * Schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"username"
-		];
+		};
 	}
 };

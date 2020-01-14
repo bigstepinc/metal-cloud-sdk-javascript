@@ -1,109 +1,72 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * SSH credentials for the installed OS.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class SSH extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "SSH credentials for the installed OS.",
+			"type": "object",
+			"properties": {
+				"port": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "The port used to connect through SSH.",
+					"minimum": 1,
+					"maximum": 65535,
+					"required": true,
+					"readonly": true
+				},
+				"username": {
+					"type": [
+						"string",
+						"null"
+					],
+					"required": true,
+					"description": "Administrator account. Only defined for Drives created from a template with an installed OS.",
+					"readonly": true
+				},
+				"initial_password": {
+					"type": [
+						"string",
+						"null"
+					],
+					"required": true,
+					"description": "Administrator account's initial password. Only defined for Drives created from a template with an installed OS.",
+					"readonly": true
+				},
+				"initial_ssh_keys": {
+					"description": "The SSH keys (<a:schema>SSHKey<\/a:schema> objects) of all the users that had access to the <a:schema>Drive<\/a:schema> when disk space was allocated. Applicable only to Linux OS's created from a Linux template.",
+					"type": "object",
+					"additionalProperties": {
+						"type": "array",
+						"items": {
+							"description": "The user's SSH key.",
+							"type": "SSHKey"
+						},
+						"description": "All the SSH keys of users which had access to the Drive when it was deployed. The SSH keys are grouped by the user's email address.",
+						"required": true,
+						"readonly": true
+					}
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"SSH"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The port used to connect through SSH.
-	 */
-	get port()
-	{
-		return (this._port !== undefined ? this._port : null);
-	}
-
-	set port(port)
-	{
-		this._port = port;
-	}
-
-	/**
-	 * Administrator account. Only defined for Drives created from a template with
-	 * an installed OS.
-	 */
-	get username()
-	{
-		return (this._username !== undefined ? this._username : null);
-	}
-
-	set username(username)
-	{
-		this._username = username;
-	}
-
-	/**
-	 * Administrator account's initial password. Only defined for Drives created
-	 * from a template with an installed OS.
-	 */
-	get initial_password()
-	{
-		return (this._initial_password !== undefined ? this._initial_password : null);
-	}
-
-	set initial_password(initial_password)
-	{
-		this._initial_password = initial_password;
-	}
-
-	/**
-	 * The SSH keys (SSHKey objects) of all the users that had access to the Drive
-	 * when disk space was allocated. Applicable only to Linux OS's created from a
-	 * Linux template.
-	 */
-	get initial_ssh_keys()
-	{
-		return (this._initial_ssh_keys !== undefined ? this._initial_ssh_keys : {});
-	}
-
-	set initial_ssh_keys(initial_ssh_keys)
-	{
-		this._initial_ssh_keys = initial_ssh_keys;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

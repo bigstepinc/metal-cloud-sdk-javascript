@@ -1,184 +1,141 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Contains the results of tests performed before commencing an Infrastructure
- * deploy operation in order to identify reasons that would lead to it failing.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class InfrastructureDeployBlocker extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Contains the results of tests performed before commencing an Infrastructure deploy operation in order to identify reasons that would lead to it failing.",
+			"type": "object",
+			"properties": {
+				"instance": {
+					"type": [
+						"Instance",
+						"null"
+					],
+					"description": "",
+					"required": false,
+					"default": null
+				},
+				"cluster": {
+					"type": [
+						"Cluster",
+						"null"
+					],
+					"description": "",
+					"required": false,
+					"default": null
+				},
+				"instanceArray": {
+					"type": [
+						"InstanceArray",
+						"null"
+					],
+					"description": "",
+					"required": false,
+					"default": null
+				},
+				"sshConnectivity": {
+					"enum": [
+						"connectable",
+						"connection_refused",
+						"destination_unreachable",
+						"connection_timed_out",
+						"protocol_error",
+						null
+					],
+					"description": "",
+					"default": null,
+					"type": [
+						"string",
+						"null"
+					]
+				},
+				"sshAuthentication": {
+					"enum": [
+						"connectable",
+						"authentication_error",
+						null
+					],
+					"description": "",
+					"default": null,
+					"type": [
+						"string",
+						"null"
+					]
+				},
+				"apiConnectivity": {
+					"enum": [
+						"connectable",
+						"connection_refused",
+						"destination_unreachable",
+						null
+					],
+					"description": "",
+					"default": null,
+					"type": [
+						"string",
+						"null"
+					]
+				},
+				"apiAuthentication": {
+					"enum": [
+						"connectable",
+						"authentication_error",
+						null
+					],
+					"description": "",
+					"default": null,
+					"type": [
+						"string",
+						"null"
+					]
+				},
+				"memoryUsageReport": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "",
+					"default": null
+				},
+				"saasVersion": {
+					"enum": [
+						"unknown_version",
+						"unsupported_version",
+						null
+					],
+					"description": "",
+					"default": null,
+					"type": [
+						"string",
+						"null"
+					]
+				},
+				"errorMessage": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "",
+					"default": null
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"InfrastructureDeployBlocker"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 *
-	 */
-	get instance()
-	{
-		return (this._instance !== undefined ? this._instance : null);
-	}
-
-	set instance(instance)
-	{
-		this._instance = instance;
-	}
-
-	/**
-	 *
-	 */
-	get cluster()
-	{
-		return (this._cluster !== undefined ? this._cluster : null);
-	}
-
-	set cluster(cluster)
-	{
-		this._cluster = cluster;
-	}
-
-	/**
-	 *
-	 */
-	get instanceArray()
-	{
-		return (this._instanceArray !== undefined ? this._instanceArray : null);
-	}
-
-	set instanceArray(instanceArray)
-	{
-		this._instanceArray = instanceArray;
-	}
-
-	/**
-	 *
-	 */
-	get sshConnectivity()
-	{
-		return (this._sshConnectivity !== undefined ? this._sshConnectivity : null);
-	}
-
-	set sshConnectivity(sshConnectivity)
-	{
-		this._sshConnectivity = sshConnectivity;
-	}
-
-	/**
-	 *
-	 */
-	get sshAuthentication()
-	{
-		return (this._sshAuthentication !== undefined ? this._sshAuthentication : null);
-	}
-
-	set sshAuthentication(sshAuthentication)
-	{
-		this._sshAuthentication = sshAuthentication;
-	}
-
-	/**
-	 *
-	 */
-	get apiConnectivity()
-	{
-		return (this._apiConnectivity !== undefined ? this._apiConnectivity : null);
-	}
-
-	set apiConnectivity(apiConnectivity)
-	{
-		this._apiConnectivity = apiConnectivity;
-	}
-
-	/**
-	 *
-	 */
-	get apiAuthentication()
-	{
-		return (this._apiAuthentication !== undefined ? this._apiAuthentication : null);
-	}
-
-	set apiAuthentication(apiAuthentication)
-	{
-		this._apiAuthentication = apiAuthentication;
-	}
-
-	/**
-	 *
-	 */
-	get memoryUsageReport()
-	{
-		return (this._memoryUsageReport !== undefined ? this._memoryUsageReport : null);
-	}
-
-	set memoryUsageReport(memoryUsageReport)
-	{
-		this._memoryUsageReport = memoryUsageReport;
-	}
-
-	/**
-	 *
-	 */
-	get saasVersion()
-	{
-		return (this._saasVersion !== undefined ? this._saasVersion : null);
-	}
-
-	set saasVersion(saasVersion)
-	{
-		this._saasVersion = saasVersion;
-	}
-
-	/**
-	 *
-	 */
-	get errorMessage()
-	{
-		return (this._errorMessage !== undefined ? this._errorMessage : null);
-	}
-
-	set errorMessage(errorMessage)
-	{
-		this._errorMessage = errorMessage;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

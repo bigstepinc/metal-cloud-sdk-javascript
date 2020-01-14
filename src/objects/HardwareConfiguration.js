@@ -1,171 +1,96 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * HardwareConfiguration holds the desired hardware configuration when trying
- * to find available servers for provisioning.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class HardwareConfiguration extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "HardwareConfiguration holds the desired hardware configuration when trying to find available servers for provisioning.",
+			"type": "object",
+			"properties": {
+				"instance_array_ram_gbytes": {
+					"type": "integer",
+					"default": 0,
+					"minimum": 0,
+					"maximum": 4096,
+					"required": true,
+					"description": "The minimum RAM capacity of each instance."
+				},
+				"instance_array_processor_count": {
+					"type": "integer",
+					"default": 0,
+					"minimum": 0,
+					"maximum": 96,
+					"description": "The CPU count on each instance."
+				},
+				"instance_array_processor_core_mhz": {
+					"type": "integer",
+					"default": 0,
+					"minimum": 0,
+					"maximum": 50000,
+					"description": "The minimum clock speed of a CPU."
+				},
+				"instance_array_processor_core_count": {
+					"type": "integer",
+					"default": 0,
+					"minimum": 0,
+					"maximum": 4096,
+					"description": "The minimum cores of a CPU."
+				},
+				"instance_array_total_mhz": {
+					"default": 0,
+					"type": "integer",
+					"minimum": 0,
+					"description": "The minumim of total MHz of the instance."
+				},
+				"instance_array_instance_count": {
+					"type": "integer",
+					"default": 0,
+					"minimum": 0,
+					"maximum": 100000,
+					"required": true,
+					"description": "The maximum number of instances in an InstanceArray."
+				},
+				"instance_array_disk_count": {
+					"type": "integer",
+					"default": 0,
+					"minimum": 0,
+					"maximum": 100000,
+					"description": "The minimum number of physical disks.",
+					"default": 0
+				},
+				"instance_array_disk_size_mbytes": {
+					"type": "integer",
+					"default": 0,
+					"minimum": 0,
+					"maximum": 419430400,
+					"description": "The minimum size of a single disk.",
+					"default": 0
+				},
+				"instance_array_disk_types": {
+					"type": [
+						"array",
+						"null"
+					],
+					"description": "The types of physical disks.",
+					"default": null
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"HardwareConfiguration"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The minimum RAM capacity of each instance.
-	 */
-	get instance_array_ram_gbytes()
-	{
-		return (this._instance_array_ram_gbytes !== undefined ? this._instance_array_ram_gbytes : 0);
-	}
-
-	set instance_array_ram_gbytes(instance_array_ram_gbytes)
-	{
-		this._instance_array_ram_gbytes = instance_array_ram_gbytes;
-	}
-
-	/**
-	 * The CPU count on each instance.
-	 */
-	get instance_array_processor_count()
-	{
-		return (this._instance_array_processor_count !== undefined ? this._instance_array_processor_count : 0);
-	}
-
-	set instance_array_processor_count(instance_array_processor_count)
-	{
-		this._instance_array_processor_count = instance_array_processor_count;
-	}
-
-	/**
-	 * The minimum clock speed of a CPU.
-	 */
-	get instance_array_processor_core_mhz()
-	{
-		return (this._instance_array_processor_core_mhz !== undefined ? this._instance_array_processor_core_mhz : 0);
-	}
-
-	set instance_array_processor_core_mhz(instance_array_processor_core_mhz)
-	{
-		this._instance_array_processor_core_mhz = instance_array_processor_core_mhz;
-	}
-
-	/**
-	 * The minimum cores of a CPU.
-	 */
-	get instance_array_processor_core_count()
-	{
-		return (this._instance_array_processor_core_count !== undefined ? this._instance_array_processor_core_count : 0);
-	}
-
-	set instance_array_processor_core_count(instance_array_processor_core_count)
-	{
-		this._instance_array_processor_core_count = instance_array_processor_core_count;
-	}
-
-	/**
-	 * The minumim of total MHz of the instance.
-	 */
-	get instance_array_total_mhz()
-	{
-		return (this._instance_array_total_mhz !== undefined ? this._instance_array_total_mhz : 0);
-	}
-
-	set instance_array_total_mhz(instance_array_total_mhz)
-	{
-		this._instance_array_total_mhz = instance_array_total_mhz;
-	}
-
-	/**
-	 * The maximum number of instances in an InstanceArray.
-	 */
-	get instance_array_instance_count()
-	{
-		return (this._instance_array_instance_count !== undefined ? this._instance_array_instance_count : 0);
-	}
-
-	set instance_array_instance_count(instance_array_instance_count)
-	{
-		this._instance_array_instance_count = instance_array_instance_count;
-	}
-
-	/**
-	 * The minimum number of physical disks.
-	 */
-	get instance_array_disk_count()
-	{
-		return (this._instance_array_disk_count !== undefined ? this._instance_array_disk_count : 0);
-	}
-
-	set instance_array_disk_count(instance_array_disk_count)
-	{
-		this._instance_array_disk_count = instance_array_disk_count;
-	}
-
-	/**
-	 * The minimum size of a single disk.
-	 */
-	get instance_array_disk_size_mbytes()
-	{
-		return (this._instance_array_disk_size_mbytes !== undefined ? this._instance_array_disk_size_mbytes : 0);
-	}
-
-	set instance_array_disk_size_mbytes(instance_array_disk_size_mbytes)
-	{
-		this._instance_array_disk_size_mbytes = instance_array_disk_size_mbytes;
-	}
-
-	/**
-	 * The types of physical disks.
-	 */
-	get instance_array_disk_types()
-	{
-		return (this._instance_array_disk_types !== undefined ? this._instance_array_disk_types : null);
-	}
-
-	set instance_array_disk_types(instance_array_disk_types)
-	{
-		this._instance_array_disk_types = instance_array_disk_types;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

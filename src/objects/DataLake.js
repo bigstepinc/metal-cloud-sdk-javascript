@@ -1,218 +1,146 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A DataLake is a network file system or distributed file system for holding
- * large amounts of data.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class DataLake extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A DataLake is a network file system or distributed file system for holding large amounts of data.",
+			"type": "object",
+			"properties": {
+				"data_lake_label": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Read-only property which defaults to a value derived from the datacenter name. The datacenter is inherited from the parent infrastructure.",
+					"default": null,
+					"minLength": 1,
+					"maxLength": 63,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$",
+					"required": false
+				},
+				"data_lake_subdomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>data_lake_label<\/code>. It is a unique reference to the DataLake object.",
+					"default": null,
+					"readonly": true
+				},
+				"data_lake_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the DataLake which can be used instead of the <code>data_lake_label<\/code> or <code>data_lake_subdomain<\/code> when calling the API functions. It is automatically generated and cannot be edited.",
+					"default": null,
+					"readonly": true
+				},
+				"data_lake_type": {
+					"enum": [
+						"hdfs"
+					],
+					"type": "string",
+					"description": "File system or protocol type.",
+					"default": "hdfs",
+					"readonly": true
+				},
+				"infrastructure_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The infrastructure ID to which the DataLake belongs.",
+					"default": null,
+					"readonly": true
+				},
+				"data_lake_service_status": {
+					"enum": [
+						"ordered",
+						"active",
+						"suspended",
+						"stopped",
+						"deleted"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The status of the DataLake.",
+					"default": null,
+					"readonly": true
+				},
+				"data_lake_credentials": {
+					"type": [
+						"DataLakeCredentials",
+						"null"
+					],
+					"description": "Information needed to connect to the HDFS File System.",
+					"default": null,
+					"readonly": true
+				},
+				"data_lake_operation": {
+					"type": [
+						"DataLakeOperation",
+						"null"
+					],
+					"description": "The operation type, operation status and modified DataLake object.",
+					"default": null,
+					"readonly": true
+				},
+				"data_lake_gui_settings_json": {
+					"type": "string",
+					"description": "Reserved for GUI users.",
+					"default": "",
+					"readonly": true
+				},
+				"data_lake_created_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the DataLake was created. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"data_lake_updated_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the DataLake was edited. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"DataLake"
+					],
+					"readonly": true
+				},
+				"data_lake_change_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "This property helps ensure that edit operations don\u2019t overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
+					"default": null,
+					"required": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * Read-only property which defaults to a value derived from the datacenter
-	 * name. The datacenter is inherited from the parent infrastructure.
-	 */
-	get data_lake_label()
-	{
-		return (this._data_lake_label !== undefined ? this._data_lake_label : null);
-	}
-
-	set data_lake_label(data_lake_label)
-	{
-		this._data_lake_label = data_lake_label;
-	}
-
-	/**
-	 * Automatically created based on data_lake_label. It is a unique reference to
-	 * the DataLake object.
-	 */
-	get data_lake_subdomain()
-	{
-		return (this._data_lake_subdomain !== undefined ? this._data_lake_subdomain : null);
-	}
-
-	set data_lake_subdomain(data_lake_subdomain)
-	{
-		this._data_lake_subdomain = data_lake_subdomain;
-	}
-
-	/**
-	 * The ID of the DataLake which can be used instead of the data_lake_label or
-	 * data_lake_subdomain when calling the API functions. It is automatically
-	 * generated and cannot be edited.
-	 */
-	get data_lake_id()
-	{
-		return (this._data_lake_id !== undefined ? this._data_lake_id : null);
-	}
-
-	set data_lake_id(data_lake_id)
-	{
-		this._data_lake_id = data_lake_id;
-	}
-
-	/**
-	 * File system or protocol type.
-	 */
-	get data_lake_type()
-	{
-		return (this._data_lake_type !== undefined ? this._data_lake_type : "hdfs");
-	}
-
-	set data_lake_type(data_lake_type)
-	{
-		this._data_lake_type = data_lake_type;
-	}
-
-	/**
-	 * The infrastructure ID to which the DataLake belongs.
-	 */
-	get infrastructure_id()
-	{
-		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
-	}
-
-	set infrastructure_id(infrastructure_id)
-	{
-		this._infrastructure_id = infrastructure_id;
-	}
-
-	/**
-	 * The status of the DataLake.
-	 */
-	get data_lake_service_status()
-	{
-		return (this._data_lake_service_status !== undefined ? this._data_lake_service_status : null);
-	}
-
-	set data_lake_service_status(data_lake_service_status)
-	{
-		this._data_lake_service_status = data_lake_service_status;
-	}
-
-	/**
-	 * Information needed to connect to the HDFS File System.
-	 */
-	get data_lake_credentials()
-	{
-		return (this._data_lake_credentials !== undefined ? this._data_lake_credentials : null);
-	}
-
-	set data_lake_credentials(data_lake_credentials)
-	{
-		this._data_lake_credentials = data_lake_credentials;
-	}
-
-	/**
-	 * The operation type, operation status and modified DataLake object.
-	 */
-	get data_lake_operation()
-	{
-		return (this._data_lake_operation !== undefined ? this._data_lake_operation : null);
-	}
-
-	set data_lake_operation(data_lake_operation)
-	{
-		this._data_lake_operation = data_lake_operation;
-	}
-
-	/**
-	 * Reserved for GUI users.
-	 */
-	get data_lake_gui_settings_json()
-	{
-		return (this._data_lake_gui_settings_json !== undefined ? this._data_lake_gui_settings_json : "");
-	}
-
-	set data_lake_gui_settings_json(data_lake_gui_settings_json)
-	{
-		this._data_lake_gui_settings_json = data_lake_gui_settings_json;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the DataLake was
-	 * created. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get data_lake_created_timestamp()
-	{
-		return (this._data_lake_created_timestamp !== undefined ? this._data_lake_created_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set data_lake_created_timestamp(data_lake_created_timestamp)
-	{
-		this._data_lake_created_timestamp = data_lake_created_timestamp;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the DataLake was
-	 * edited. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get data_lake_updated_timestamp()
-	{
-		return (this._data_lake_updated_timestamp !== undefined ? this._data_lake_updated_timestamp : "0000-00-00T00:00:00Z");
-	}
-
-	set data_lake_updated_timestamp(data_lake_updated_timestamp)
-	{
-		this._data_lake_updated_timestamp = data_lake_updated_timestamp;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * This property helps ensure that edit operations don’t overwrite other,
-	 * more recent changes made to the same object. It gets updated automatically
-	 * after each successful edit operation.
-	 */
-	get data_lake_change_id()
-	{
-		return (this._data_lake_change_id !== undefined ? this._data_lake_change_id : null);
-	}
-
-	set data_lake_change_id(data_lake_change_id)
-	{
-		this._data_lake_change_id = data_lake_change_id;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

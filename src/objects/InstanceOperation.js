@@ -1,230 +1,137 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * InstanceOperation contains information regarding the changes that are to be
- * made to a product. Edit and deploy functions have to be called in order to
- * apply the changes. The operation type and status are unique to each
- * operation object.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class InstanceOperation extends ObjectBase
 {
-	constructor(instance_label, instance_change_id)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "InstanceOperation contains information regarding the changes that are to be made to a product. Edit and deploy functions have to be called in order to apply the changes. The operation type and status are unique to each operation object.",
+			"type": "object",
+			"properties": {
+				"instance_deploy_type": {
+					"enum": [
+						"create",
+						"edit",
+						"delete",
+						"start",
+						"stop",
+						"suspend"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The operation applied to the instance.",
+					"readonly": true
+				},
+				"instance_deploy_status": {
+					"enum": [
+						"not_started",
+						"ongoing",
+						"finished"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The status of the deploy process.",
+					"readonly": true
+				},
+				"instance_label": {
+					"type": "string",
+					"description": "The instance's label which is unique and it is used to form the <code>instance_subdomain<\/code>. Can be used to call API functions.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": true,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$"
+				},
+				"instance_subdomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>instance_label<\/code>. It is a unique reference to the Instance object.",
+					"readonly": true
+				},
+				"instance_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the instance which can be used instead of the <code>instance_label<\/code> or <code>instance_subdomain<\/code> when calling the API functions.",
+					"readonly": true
+				},
+				"instance_array_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the InstanceArray.",
+					"readonly": true
+				},
+				"instance_updated_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the instance was edited. Example format: 2013-11-29T13:00:01Z.",
+					"readonly": true
+				},
+				"server_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "The ID of the associated server.",
+					"readonly": true
+				},
+				"server_type_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "The instance's server_type_id."
+				},
+				"drive_id_bootable": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "The ID of the drive the instance boots from.",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"InstanceOperation"
+					],
+					"readonly": true
+				},
+				"instance_change_id": {
+					"type": "integer",
+					"description": "This property helps ensure that edit operations don’t overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
+					"required": true
+				},
+				"template_id_origin": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "Represents the volume template.",
+					"default": null,
+					"readonly": true
+				}
 			}
-		}
-
-		for(let index = 0; index < 2; index++)
-		{
-			let arg = arguments[index];
-
-			if(arg === undefined || arg === null)
-				throw new Error("Invalid params in InstanceOperation constructor.");
-		}
-
-		this._instance_label = instance_label;
-		this._instance_change_id = instance_change_id;
-	}
-
-	/**
-	 * The operation applied to the instance.
-	 */
-	get instance_deploy_type()
-	{
-		return (this._instance_deploy_type !== undefined ? this._instance_deploy_type : null);
-	}
-
-	set instance_deploy_type(instance_deploy_type)
-	{
-		this._instance_deploy_type = instance_deploy_type;
-	}
-
-	/**
-	 * The status of the deploy process.
-	 */
-	get instance_deploy_status()
-	{
-		return (this._instance_deploy_status !== undefined ? this._instance_deploy_status : null);
-	}
-
-	set instance_deploy_status(instance_deploy_status)
-	{
-		this._instance_deploy_status = instance_deploy_status;
-	}
-
-	/**
-	 * The instance's label which is unique and it is used to form the
-	 * instance_subdomain. Can be used to call API functions.
-	 */
-	get instance_label()
-	{
-		return (this._instance_label !== undefined ? this._instance_label : null);
-	}
-
-	set instance_label(instance_label)
-	{
-		this._instance_label = instance_label;
-	}
-
-	/**
-	 * Automatically created based on instance_label. It is a unique reference to
-	 * the Instance object.
-	 */
-	get instance_subdomain()
-	{
-		return (this._instance_subdomain !== undefined ? this._instance_subdomain : null);
-	}
-
-	set instance_subdomain(instance_subdomain)
-	{
-		this._instance_subdomain = instance_subdomain;
-	}
-
-	/**
-	 * The ID of the instance which can be used instead of the instance_label or
-	 * instance_subdomain when calling the API functions.
-	 */
-	get instance_id()
-	{
-		return (this._instance_id !== undefined ? this._instance_id : null);
-	}
-
-	set instance_id(instance_id)
-	{
-		this._instance_id = instance_id;
-	}
-
-	/**
-	 * The ID of the InstanceArray.
-	 */
-	get instance_array_id()
-	{
-		return (this._instance_array_id !== undefined ? this._instance_array_id : null);
-	}
-
-	set instance_array_id(instance_array_id)
-	{
-		this._instance_array_id = instance_array_id;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the instance was
-	 * edited. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get instance_updated_timestamp()
-	{
-		return (this._instance_updated_timestamp !== undefined ? this._instance_updated_timestamp : null);
-	}
-
-	set instance_updated_timestamp(instance_updated_timestamp)
-	{
-		this._instance_updated_timestamp = instance_updated_timestamp;
-	}
-
-	/**
-	 * The ID of the associated server.
-	 */
-	get server_id()
-	{
-		return (this._server_id !== undefined ? this._server_id : null);
-	}
-
-	set server_id(server_id)
-	{
-		this._server_id = server_id;
-	}
-
-	/**
-	 * The instance's server_type_id.
-	 */
-	get server_type_id()
-	{
-		return (this._server_type_id !== undefined ? this._server_type_id : null);
-	}
-
-	set server_type_id(server_type_id)
-	{
-		this._server_type_id = server_type_id;
-	}
-
-	/**
-	 * The ID of the drive the instance boots from.
-	 */
-	get drive_id_bootable()
-	{
-		return (this._drive_id_bootable !== undefined ? this._drive_id_bootable : null);
-	}
-
-	set drive_id_bootable(drive_id_bootable)
-	{
-		this._drive_id_bootable = drive_id_bootable;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * This property helps ensure that edit operations don’t overwrite other,
-	 * more recent changes made to the same object. It gets updated automatically
-	 * after each successful edit operation.
-	 */
-	get instance_change_id()
-	{
-		return (this._instance_change_id !== undefined ? this._instance_change_id : null);
-	}
-
-	set instance_change_id(instance_change_id)
-	{
-		this._instance_change_id = instance_change_id;
-	}
-
-	/**
-	 * Represents the volume template.
-	 */
-	get template_id_origin()
-	{
-		return (this._template_id_origin !== undefined ? this._template_id_origin : null);
-	}
-
-	set template_id_origin(template_id_origin)
-	{
-		this._template_id_origin = template_id_origin;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"instance_label",
-			"instance_change_id"
-		];
+		};
 	}
 };

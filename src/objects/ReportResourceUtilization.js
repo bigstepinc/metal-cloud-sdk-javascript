@@ -1,106 +1,44 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * All the detailed costs for Drives, Instances and Subnets.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ReportResourceUtilization extends ObjectBase
 {
-	constructor(drives, instances, subnets)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "All the detailed costs for Drives, Instances and Subnets.",
+			"type": "object",
+			"properties": {
+				"drives": {
+					"type": "ReportUtilization",
+					"description": "",
+					"required": true
+				},
+				"instances": {
+					"type": "ReportUtilization",
+					"description": "",
+					"required": true
+				},
+				"subnets": {
+					"type": "ReportUtilization",
+					"description": "",
+					"required": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"ReportResourceUtilization"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		for(let index = 0; index < 3; index++)
-		{
-			let arg = arguments[index];
-
-			if(arg === undefined || arg === null)
-				throw new Error("Invalid params in ReportResourceUtilization constructor.");
-		}
-
-		this._drives = drives;
-		this._instances = instances;
-		this._subnets = subnets;
-	}
-
-	/**
-	 *
-	 */
-	get drives()
-	{
-		return (this._drives !== undefined ? this._drives : null);
-	}
-
-	set drives(drives)
-	{
-		this._drives = drives;
-	}
-
-	/**
-	 *
-	 */
-	get instances()
-	{
-		return (this._instances !== undefined ? this._instances : null);
-	}
-
-	set instances(instances)
-	{
-		this._instances = instances;
-	}
-
-	/**
-	 *
-	 */
-	get subnets()
-	{
-		return (this._subnets !== undefined ? this._subnets : null);
-	}
-
-	set subnets(subnets)
-	{
-		this._subnets = subnets;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"drives",
-			"instances",
-			"subnets"
-		];
+		};
 	}
 };

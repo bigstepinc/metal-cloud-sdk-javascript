@@ -1,278 +1,204 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A group of InstanceArray and DriveArray infrastructure elements
- * preconfigured for specific workloads or roles. Software (SaaS) is
- * automatically installed for new instances. The preinstalled software is
- * informed when instances are made available or removed.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class Cluster extends ObjectBase
 {
-	constructor(cluster_type)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A group of InstanceArray and DriveArray infrastructure elements preconfigured for specific workloads or roles. Software (SaaS) is automatically installed for new instances. The preinstalled software is informed when instances are made available or removed.",
+			"type": "object",
+			"properties": {
+				"cluster_label": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The Cluster's unique label is used to create the <code>cluster_subdomain<\/code>. It is editable and can be used to call API functions.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": false,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$",
+					"default": null
+				},
+				"cluster_subdomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>cluster_label<\/code>. It is a unique reference to the Cluster object.",
+					"default": null,
+					"readonly": true
+				},
+				"cluster_subdomain_permanent": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>cluster_id<\/code>. It is a unique reference to the Cluster object that never changes, so it can be trusted in various configs. Starting with clusters created and deployed using API v3.2.0 it points to all the child instances in DNS.",
+					"default": null,
+					"readonly": true
+				},
+				"cluster_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the Cluster which can be used instead of the <code>cluster_label<\/code> or <code>cluster_subdomain<\/code> when calling the API functions. It is automatically generated and cannot be edited.",
+					"default": null,
+					"readonly": true
+				},
+				"infrastructure_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "Represents the infrastructure ID to which the Cluster belongs.",
+					"default": null,
+					"readonly": true
+				},
+				"cluster_type": {
+					"enum": [
+						"vanilla",
+						"splunk",
+						"elasticsearch_legacy",
+						"elasticsearch",
+						"cloudera",
+						"couchbase",
+						"datameer",
+						"datastax",
+						"exasol",
+						"mesos",
+						"mapr_legacy",
+						"mapr",
+						"kubernetes",
+						"mysql_percona",
+						"tableau",
+						"hortonworks"
+					],
+					"type": "string",
+					"description": "Type of the Cluster. This property is not editable.",
+					"required": true
+				},
+				"cluster_service_status": {
+					"enum": [
+						"ordered",
+						"active",
+						"stopped",
+						"deleted",
+						"suspended"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The status of the Cluster.",
+					"default": null,
+					"readonly": true
+				},
+				"cluster_software_version": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The installed cluster software version.",
+					"required": false
+				},
+				"cluster_service_assignment": {
+					"type": "object",
+					"additionalProperties": true,
+					"description": "Cluster services as assigned to each instance",
+					"required": false
+				},
+				"cluster_automatic_management": {
+					"type": "boolean",
+					"description": "Specifies if the cluster will be automatically managed or not.",
+					"default": true
+				},
+				"cluster_app": {
+					"type": [
+						"AppSplunk",
+						"AppElasticsearch",
+						"AppElasticsearchLegacy",
+						"AppCloudera",
+						"AppDatastax",
+						"AppCouchbase",
+						"AppDatameer",
+						"AppMapRLegacy",
+						"AppMapR",
+						"AppKubernetes",
+						"AppMysqlPercona",
+						"AppExasol",
+						"AppMesos",
+						"AppTableau",
+						"AppHortonworks",
+						"null"
+					],
+					"description": "Information about the instances and the Cluster software.",
+					"default": null,
+					"readonly": true
+				},
+				"cluster_operation": {
+					"type": [
+						"ClusterOperation",
+						"null"
+					],
+					"description": "The operation type, operation status and modified Cluster object.",
+					"default": null,
+					"readonly": true
+				},
+				"cluster_gui_settings_json": {
+					"type": "string",
+					"description": "Reserved for GUI users.",
+					"default": "",
+					"readonly": true
+				},
+				"cluster_connections": {
+					"type": "array",
+					"items": {
+						"type": "ClusterConnection",
+						"description": "A Cluster Connection object."
+					},
+					"default": [
+						
+					],
+					"description": "Information about connections between the current Cluster and other clusters.",
+					"readonly": true
+				},
+				"cluster_ssh_management_public_key": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The public SSH key used for managing the Cluster.",
+					"default": null,
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"Cluster"
+					],
+					"readonly": true
+				},
+				"cluster_change_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "This property helps ensure that edit operations don\u2019t overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
+					"default": null
+				}
 			}
-		}
-
-		if(cluster_type === undefined || cluster_type === null)
-			throw new Error("Invalid param in Cluster constructor.");
-
-		this._cluster_type = cluster_type;
-	}
-
-	/**
-	 * The Cluster's unique label is used to create the cluster_subdomain. It is
-	 * editable and can be used to call API functions.
-	 */
-	get cluster_label()
-	{
-		return (this._cluster_label !== undefined ? this._cluster_label : null);
-	}
-
-	set cluster_label(cluster_label)
-	{
-		this._cluster_label = cluster_label;
-	}
-
-	/**
-	 * Automatically created based on cluster_label. It is a unique reference to
-	 * the Cluster object.
-	 */
-	get cluster_subdomain()
-	{
-		return (this._cluster_subdomain !== undefined ? this._cluster_subdomain : null);
-	}
-
-	set cluster_subdomain(cluster_subdomain)
-	{
-		this._cluster_subdomain = cluster_subdomain;
-	}
-
-	/**
-	 * Automatically created based on cluster_id. It is a unique reference to the
-	 * Cluster object that never changes, so it can be trusted in various configs.
-	 * Starting with clusters created and deployed using API v3.2.0 it points to
-	 * all the child instances in DNS.
-	 */
-	get cluster_subdomain_permanent()
-	{
-		return (this._cluster_subdomain_permanent !== undefined ? this._cluster_subdomain_permanent : null);
-	}
-
-	set cluster_subdomain_permanent(cluster_subdomain_permanent)
-	{
-		this._cluster_subdomain_permanent = cluster_subdomain_permanent;
-	}
-
-	/**
-	 * The ID of the Cluster which can be used instead of the cluster_label or
-	 * cluster_subdomain when calling the API functions. It is automatically
-	 * generated and cannot be edited.
-	 */
-	get cluster_id()
-	{
-		return (this._cluster_id !== undefined ? this._cluster_id : null);
-	}
-
-	set cluster_id(cluster_id)
-	{
-		this._cluster_id = cluster_id;
-	}
-
-	/**
-	 * Represents the infrastructure ID to which the Cluster belongs.
-	 */
-	get infrastructure_id()
-	{
-		return (this._infrastructure_id !== undefined ? this._infrastructure_id : null);
-	}
-
-	set infrastructure_id(infrastructure_id)
-	{
-		this._infrastructure_id = infrastructure_id;
-	}
-
-	/**
-	 * Type of the Cluster. This property is not editable.
-	 */
-	get cluster_type()
-	{
-		return (this._cluster_type !== undefined ? this._cluster_type : null);
-	}
-
-	set cluster_type(cluster_type)
-	{
-		this._cluster_type = cluster_type;
-	}
-
-	/**
-	 * The status of the Cluster.
-	 */
-	get cluster_service_status()
-	{
-		return (this._cluster_service_status !== undefined ? this._cluster_service_status : null);
-	}
-
-	set cluster_service_status(cluster_service_status)
-	{
-		this._cluster_service_status = cluster_service_status;
-	}
-
-	/**
-	 * The installed cluster software version.
-	 */
-	get cluster_software_version()
-	{
-		return (this._cluster_software_version !== undefined ? this._cluster_software_version : null);
-	}
-
-	set cluster_software_version(cluster_software_version)
-	{
-		this._cluster_software_version = cluster_software_version;
-	}
-
-	/**
-	 * Cluster services as assigned to each instance
-	 */
-	get cluster_service_assignment()
-	{
-		return (this._cluster_service_assignment !== undefined ? this._cluster_service_assignment : {});
-	}
-
-	set cluster_service_assignment(cluster_service_assignment)
-	{
-		this._cluster_service_assignment = cluster_service_assignment;
-	}
-
-	/**
-	 * Specifies if the cluster will be automatically managed or not.
-	 */
-	get cluster_automatic_management()
-	{
-		return (this._cluster_automatic_management !== undefined ? this._cluster_automatic_management : true);
-	}
-
-	set cluster_automatic_management(cluster_automatic_management)
-	{
-		this._cluster_automatic_management = cluster_automatic_management;
-	}
-
-	/**
-	 * Information about the instances and the Cluster software.
-	 */
-	get cluster_app()
-	{
-		return (this._cluster_app !== undefined ? this._cluster_app : null);
-	}
-
-	set cluster_app(cluster_app)
-	{
-		this._cluster_app = cluster_app;
-	}
-
-	/**
-	 * The operation type, operation status and modified Cluster object.
-	 */
-	get cluster_operation()
-	{
-		return (this._cluster_operation !== undefined ? this._cluster_operation : null);
-	}
-
-	set cluster_operation(cluster_operation)
-	{
-		this._cluster_operation = cluster_operation;
-	}
-
-	/**
-	 * Reserved for GUI users.
-	 */
-	get cluster_gui_settings_json()
-	{
-		return (this._cluster_gui_settings_json !== undefined ? this._cluster_gui_settings_json : "");
-	}
-
-	set cluster_gui_settings_json(cluster_gui_settings_json)
-	{
-		this._cluster_gui_settings_json = cluster_gui_settings_json;
-	}
-
-	/**
-	 * Information about connections between the current Cluster and other clusters.
-	 */
-	get cluster_connections()
-	{
-		return (this._cluster_connections !== undefined ? this._cluster_connections : []);
-	}
-
-	set cluster_connections(cluster_connections)
-	{
-		this._cluster_connections = cluster_connections;
-	}
-
-	/**
-	 * The public SSH key used for managing the Cluster.
-	 */
-	get cluster_ssh_management_public_key()
-	{
-		return (this._cluster_ssh_management_public_key !== undefined ? this._cluster_ssh_management_public_key : null);
-	}
-
-	set cluster_ssh_management_public_key(cluster_ssh_management_public_key)
-	{
-		this._cluster_ssh_management_public_key = cluster_ssh_management_public_key;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * This property helps ensure that edit operations don’t overwrite other,
-	 * more recent changes made to the same object. It gets updated automatically
-	 * after each successful edit operation.
-	 */
-	get cluster_change_id()
-	{
-		return (this._cluster_change_id !== undefined ? this._cluster_change_id : null);
-	}
-
-	set cluster_change_id(cluster_change_id)
-	{
-		this._cluster_change_id = cluster_change_id;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"cluster_type"
-		];
+		};
 	}
 };

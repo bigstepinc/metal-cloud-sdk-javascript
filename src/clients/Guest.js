@@ -20,8 +20,6 @@ class Guest extends JSONRPC.Client
 		super(strEndpointURL);
 
 		this.addPlugin(new ClientBase.Plugins.ExceptionFilter(true));
-		// this.addPlugin(new ClientBase.Plugins.SerializeParameters());
-		// this.addPlugin(new ClientBase.Plugins.DeserializeOutput());
 	}
 
 	/**
@@ -87,7 +85,7 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("clusters", Array.prototype.slice.call(arguments));
 	}
 
-	async datacenters(strUserID = null, bOnlyActive = false)
+	async datacenters(strUserID = null, bOnlyActive = false, bIncludeConfigProperties = false)
 	{
 		return await this.rpc("datacenters", Array.prototype.slice.call(arguments));
 	}
@@ -192,7 +190,7 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("instance_array_create", Array.prototype.slice.call(arguments));
 	}
 
-	async instance_array_edit(strInstanceArrayID, objInstanceArrayOperation, bSwapExistingInstancesHardware = false, bKeepDetachingDrives = null, objServerTypeMatches = null, arrInstancesToBeDeleted = null)
+	async instance_array_edit(strInstanceArrayID, objInstanceArrayOperation, bSwapExistingInstancesHardware = false, bKeepDetachingDrives = null, objServerTypeMatches = null, arrInstanceIDsPreferredForDelete = null)
 	{
 		return await this.rpc("instance_array_edit", Array.prototype.slice.call(arguments));
 	}
@@ -217,7 +215,7 @@ class Guest extends JSONRPC.Client
 		return await this.rpc("instance_arrays", Array.prototype.slice.call(arguments));
 	}
 
-	async instance_array_interface_attach_network(strInstanceArrayID, nInstanceArrayInterfaceIndex, strNetworkID)
+	async instance_array_interface_attach_network(strInstanceArrayID, nInstanceArrayInterfaceIndex = null, strNetworkID)
 	{
 		return await this.rpc("instance_array_interface_attach_network", Array.prototype.slice.call(arguments));
 	}

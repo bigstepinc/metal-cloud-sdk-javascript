@@ -1,163 +1,91 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * An object which has instance labels as keys and AppElasticsearchContainer
- * objects as values.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class AppElasticsearchContainer extends ObjectBase
 {
-	constructor(elasticsearch_node)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "An object which has instance labels as keys and <a:schema>AppElasticsearchContainer<\/a:schema> objects as values.",
+			"type": "object",
+			"properties": {
+				"elasticsearch_node": {
+					"type": "array",
+					"items": {
+						"type": "AppElasticsearchContainerInstance",
+						"description": ""
+					},
+					"description": "The <a:schema>AppElasticsearchContainerInstance<\/a:schema> object which represents the Master.",
+					"required": true
+				},
+				"connection_strings": {
+					"type": [
+						"array",
+						"null"
+					],
+					"description": "The connection strings to the ElasticsearchContainer app.",
+					"default": [
+						
+					],
+					"readonly": true
+				},
+				"container_cluster_software_available_versions": {
+					"type": "array",
+					"description": "Cluster software available versions.",
+					"readonly": true
+				},
+				"container_cluster_software_version": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The software version detected on the container cluster.",
+					"readonly": true
+				},
+				"connectable_container_clusters": {
+					"type": "array",
+					"description": "Array of compatible and connectable clusters.",
+					"readonly": true
+				},
+				"username": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The default username.",
+					"readonly": true
+				},
+				"password": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The default password.",
+					"readonly": true
+				},
+				"cluster_name": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The name of the cluster.",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"AppElasticsearchContainer"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		if(elasticsearch_node === undefined || elasticsearch_node === null)
-			throw new Error("Invalid param in AppElasticsearchContainer constructor.");
-
-		this._elasticsearch_node = elasticsearch_node;
-	}
-
-	/**
-	 * The AppElasticsearchContainerInstance object which represents the Master.
-	 */
-	get elasticsearch_node()
-	{
-		return (this._elasticsearch_node !== undefined ? this._elasticsearch_node : []);
-	}
-
-	set elasticsearch_node(elasticsearch_node)
-	{
-		this._elasticsearch_node = elasticsearch_node;
-	}
-
-	/**
-	 * The connection strings to the ElasticsearchContainer app.
-	 */
-	get connection_strings()
-	{
-		return (this._connection_strings !== undefined ? this._connection_strings : []);
-	}
-
-	set connection_strings(connection_strings)
-	{
-		this._connection_strings = connection_strings;
-	}
-
-	/**
-	 * Cluster software available versions.
-	 */
-	get container_cluster_software_available_versions()
-	{
-		return (this._container_cluster_software_available_versions !== undefined ? this._container_cluster_software_available_versions : []);
-	}
-
-	set container_cluster_software_available_versions(container_cluster_software_available_versions)
-	{
-		this._container_cluster_software_available_versions = container_cluster_software_available_versions;
-	}
-
-	/**
-	 * The software version detected on the container cluster.
-	 */
-	get container_cluster_software_version()
-	{
-		return (this._container_cluster_software_version !== undefined ? this._container_cluster_software_version : null);
-	}
-
-	set container_cluster_software_version(container_cluster_software_version)
-	{
-		this._container_cluster_software_version = container_cluster_software_version;
-	}
-
-	/**
-	 * Array of compatible and connectable clusters.
-	 */
-	get connectable_container_clusters()
-	{
-		return (this._connectable_container_clusters !== undefined ? this._connectable_container_clusters : []);
-	}
-
-	set connectable_container_clusters(connectable_container_clusters)
-	{
-		this._connectable_container_clusters = connectable_container_clusters;
-	}
-
-	/**
-	 * The default username.
-	 */
-	get username()
-	{
-		return (this._username !== undefined ? this._username : null);
-	}
-
-	set username(username)
-	{
-		this._username = username;
-	}
-
-	/**
-	 * The default password.
-	 */
-	get password()
-	{
-		return (this._password !== undefined ? this._password : null);
-	}
-
-	set password(password)
-	{
-		this._password = password;
-	}
-
-	/**
-	 * The name of the cluster.
-	 */
-	get cluster_name()
-	{
-		return (this._cluster_name !== undefined ? this._cluster_name : null);
-	}
-
-	set cluster_name(cluster_name)
-	{
-		this._cluster_name = cluster_name;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"elasticsearch_node"
-		];
+		};
 	}
 };

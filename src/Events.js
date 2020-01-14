@@ -1,11 +1,11 @@
 /**
  * @class
  */
-module.exports = 
+
 class EventTypes
 {
 	/**
-	 * Metal Cloud, API v3.2.0
+	 * Metal Cloud, API v2.7.8
 	 */
 
 

@@ -1,105 +1,69 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Target IQN, IP address, port number and the LUN ID.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class iSCSI extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Target IQN, IP address, port number and the LUN ID.",
+			"type": "object",
+			"properties": {
+				"target_iqn": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "IQN of target iSCSI.",
+					"pattern": "^[A-Za-z0-9:.-]+$",
+					"required": true,
+					"readonly": true
+				},
+				"storage_ip_address": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "iSCSI server IP address.",
+					"default": null,
+					"readonly": true
+				},
+				"storage_port": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "Server listening port number.",
+					"default": null,
+					"readonly": true,
+					"minimum": 1,
+					"maximum": 65535
+				},
+				"lun_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "Storage LUN ID.",
+					"default": null,
+					"readonly": true,
+					"minimum": 0
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"iSCSI"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * IQN of target iSCSI.
-	 */
-	get target_iqn()
-	{
-		return (this._target_iqn !== undefined ? this._target_iqn : null);
-	}
-
-	set target_iqn(target_iqn)
-	{
-		this._target_iqn = target_iqn;
-	}
-
-	/**
-	 * iSCSI server IP address.
-	 */
-	get storage_ip_address()
-	{
-		return (this._storage_ip_address !== undefined ? this._storage_ip_address : null);
-	}
-
-	set storage_ip_address(storage_ip_address)
-	{
-		this._storage_ip_address = storage_ip_address;
-	}
-
-	/**
-	 * Server listening port number.
-	 */
-	get storage_port()
-	{
-		return (this._storage_port !== undefined ? this._storage_port : null);
-	}
-
-	set storage_port(storage_port)
-	{
-		this._storage_port = storage_port;
-	}
-
-	/**
-	 * Storage LUN ID.
-	 */
-	get lun_id()
-	{
-		return (this._lun_id !== undefined ? this._lun_id : null);
-	}
-
-	set lun_id(lun_id)
-	{
-		this._lun_id = lun_id;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

@@ -1,71 +1,43 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Information about the ContainerCluster's Containers and its application.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ContainerClusterApp extends ObjectBase
 {
-	constructor(container_cluster_app)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Information about the ContainerCluster's Containers and its application.",
+			"type": "object",
+			"properties": {
+				"container_cluster_app": {
+					"type": [
+						"AppSpark",
+						"AppZookeeper",
+						"AppKafka",
+						"AppZoomdata",
+						"AppPostgreSQL",
+						"AppSparkSQL",
+						"AppElasticsearchContainer",
+						"AppStreamSets",
+						"null"
+					],
+					"description": "The ContainerCluster's Containers and application information.",
+					"required": true
+				},
+				"type": {
+					"description": "The schema type",
+					"enum": [
+						"ContainerClusterApp"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		if(container_cluster_app === undefined || container_cluster_app === null)
-			throw new Error("Invalid param in ContainerClusterApp constructor.");
-
-		this._container_cluster_app = container_cluster_app;
-	}
-
-	/**
-	 * The ContainerCluster's Containers and application information.
-	 */
-	get container_cluster_app()
-	{
-		return (this._container_cluster_app !== undefined ? this._container_cluster_app : null);
-	}
-
-	set container_cluster_app(container_cluster_app)
-	{
-		this._container_cluster_app = container_cluster_app;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"container_cluster_app"
-		];
+		};
 	}
 };

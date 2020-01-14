@@ -1,277 +1,160 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * A type of server available in a datacenter. Contains hardware information.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ServerType extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "A type of server available in a datacenter. Contains hardware information.",
+			"type": "object",
+			"properties": {
+				"server_type_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "The ID of the server type. It is automatically generated and cannot be edited.",
+					"default": null,
+					"readonly": true
+				},
+				"server_network_total_capacity_mbps": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "Full bandwidth available.",
+					"default": null,
+					"readonly": true
+				},
+				"server_type_name": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The name of the server type. It does not contain whitespaces. It normally never changes.",
+					"default": null,
+					"readonly": true
+				},
+				"server_type_display_name": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "An comprehensive server type name, which may change at any time.",
+					"default": null,
+					"readonly": true
+				},
+				"server_type_label": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Deprecated, ignored and unused.",
+					"default": null
+				},
+				"server_processor_core_count": {
+					"type": "integer",
+					"description": "The cores of a CPU.",
+					"default": 1
+				},
+				"server_processor_core_mhz": {
+					"type": "integer",
+					"description": "The clock speed of a CPU.",
+					"default": 1000
+				},
+				"server_processor_count": {
+					"type": "integer",
+					"description": "The CPU count on the server.",
+					"default": 1
+				},
+				"server_ram_gbytes": {
+					"type": "integer",
+					"description": "The RAM capacity.",
+					"default": 1
+				},
+				"server_disk_count": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 100,
+					"description": "The minimum number of physical disks.",
+					"default": 0
+				},
+				"server_disk_size_mbytes": {
+					"type": "integer",
+					"minimum": 0,
+					"description": "The minimum size of a single disk.",
+					"default": 0
+				},
+				"server_disk_type": {
+					"enum": [
+						"SSD",
+						"HDD",
+						"NVME",
+						"none"
+					],
+					"type": [
+						"string"
+					],
+					"description": "The type of physical disks.",
+					"default": "none"
+				},
+				"server_processor_names_json": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The names of the server processors.",
+					"default": null
+				},
+				"server_processor_name": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The name of the processor.",
+					"default": null
+				},
+				"server_class": {
+					"enum": [
+						"bigdata",
+						"hdfs",
+						"unknown"
+					],
+					"type": [
+						"string"
+					],
+					"description": "Server type very general workload type.",
+					"default": "unknown"
+				},
+				"server_type_is_experimental": {
+					"type": "boolean",
+					"description": "Specifies if the server_type is experimental and only developers have access to servers of this type.",
+					"default": false
+				},
+				"server_count": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "Number of servers provisioned. Used only for <code>infrastructure_deploy()<\/code>.",
+					"default": null
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"ServerType"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The ID of the server type. It is automatically generated and cannot be
-	 * edited.
-	 */
-	get server_type_id()
-	{
-		return (this._server_type_id !== undefined ? this._server_type_id : null);
-	}
-
-	set server_type_id(server_type_id)
-	{
-		this._server_type_id = server_type_id;
-	}
-
-	/**
-	 * Full bandwidth available.
-	 */
-	get server_network_total_capacity_mbps()
-	{
-		return (this._server_network_total_capacity_mbps !== undefined ? this._server_network_total_capacity_mbps : null);
-	}
-
-	set server_network_total_capacity_mbps(server_network_total_capacity_mbps)
-	{
-		this._server_network_total_capacity_mbps = server_network_total_capacity_mbps;
-	}
-
-	/**
-	 * The name of the server type. It does not contain whitespaces. It normally
-	 * never changes.
-	 */
-	get server_type_name()
-	{
-		return (this._server_type_name !== undefined ? this._server_type_name : null);
-	}
-
-	set server_type_name(server_type_name)
-	{
-		this._server_type_name = server_type_name;
-	}
-
-	/**
-	 * An comprehensive server type name, which may change at any time.
-	 */
-	get server_type_display_name()
-	{
-		return (this._server_type_display_name !== undefined ? this._server_type_display_name : null);
-	}
-
-	set server_type_display_name(server_type_display_name)
-	{
-		this._server_type_display_name = server_type_display_name;
-	}
-
-	/**
-	 * Deprecated, ignored and unused.
-	 */
-	get server_type_label()
-	{
-		return (this._server_type_label !== undefined ? this._server_type_label : null);
-	}
-
-	set server_type_label(server_type_label)
-	{
-		this._server_type_label = server_type_label;
-	}
-
-	/**
-	 * The cores of a CPU.
-	 */
-	get server_processor_core_count()
-	{
-		return (this._server_processor_core_count !== undefined ? this._server_processor_core_count : 1);
-	}
-
-	set server_processor_core_count(server_processor_core_count)
-	{
-		this._server_processor_core_count = server_processor_core_count;
-	}
-
-	/**
-	 * The clock speed of a CPU.
-	 */
-	get server_processor_core_mhz()
-	{
-		return (this._server_processor_core_mhz !== undefined ? this._server_processor_core_mhz : 1000);
-	}
-
-	set server_processor_core_mhz(server_processor_core_mhz)
-	{
-		this._server_processor_core_mhz = server_processor_core_mhz;
-	}
-
-	/**
-	 * The CPU count on the server.
-	 */
-	get server_processor_count()
-	{
-		return (this._server_processor_count !== undefined ? this._server_processor_count : 1);
-	}
-
-	set server_processor_count(server_processor_count)
-	{
-		this._server_processor_count = server_processor_count;
-	}
-
-	/**
-	 * The RAM capacity.
-	 */
-	get server_ram_gbytes()
-	{
-		return (this._server_ram_gbytes !== undefined ? this._server_ram_gbytes : 1);
-	}
-
-	set server_ram_gbytes(server_ram_gbytes)
-	{
-		this._server_ram_gbytes = server_ram_gbytes;
-	}
-
-	/**
-	 * The minimum number of physical disks.
-	 */
-	get server_disk_count()
-	{
-		return (this._server_disk_count !== undefined ? this._server_disk_count : 0);
-	}
-
-	set server_disk_count(server_disk_count)
-	{
-		this._server_disk_count = server_disk_count;
-	}
-
-	/**
-	 * The minimum size of a single disk.
-	 */
-	get server_disk_size_mbytes()
-	{
-		return (this._server_disk_size_mbytes !== undefined ? this._server_disk_size_mbytes : 0);
-	}
-
-	set server_disk_size_mbytes(server_disk_size_mbytes)
-	{
-		this._server_disk_size_mbytes = server_disk_size_mbytes;
-	}
-
-	/**
-	 * The type of physical disks.
-	 */
-	get server_disk_type()
-	{
-		return (this._server_disk_type !== undefined ? this._server_disk_type : "none");
-	}
-
-	set server_disk_type(server_disk_type)
-	{
-		this._server_disk_type = server_disk_type;
-	}
-
-	/**
-	 * The names of the server processors.
-	 */
-	get server_processor_names_json()
-	{
-		return (this._server_processor_names_json !== undefined ? this._server_processor_names_json : null);
-	}
-
-	set server_processor_names_json(server_processor_names_json)
-	{
-		this._server_processor_names_json = server_processor_names_json;
-	}
-
-	/**
-	 * The name of the processor.
-	 */
-	get server_processor_name()
-	{
-		return (this._server_processor_name !== undefined ? this._server_processor_name : null);
-	}
-
-	set server_processor_name(server_processor_name)
-	{
-		this._server_processor_name = server_processor_name;
-	}
-
-	/**
-	 * Server type very general workload type.
-	 */
-	get server_class()
-	{
-		return (this._server_class !== undefined ? this._server_class : "unknown");
-	}
-
-	set server_class(server_class)
-	{
-		this._server_class = server_class;
-	}
-
-	/**
-	 * Specifies if the server_type is experimental and only developers have access
-	 * to servers of this type.
-	 */
-	get server_type_is_experimental()
-	{
-		return (this._server_type_is_experimental !== undefined ? this._server_type_is_experimental : false);
-	}
-
-	set server_type_is_experimental(server_type_is_experimental)
-	{
-		this._server_type_is_experimental = server_type_is_experimental;
-	}
-
-	/**
-	 * Number of servers provisioned. Used only for infrastructure_deploy().
-	 */
-	get server_count()
-	{
-		return (this._server_count !== undefined ? this._server_count : null);
-	}
-
-	set server_count(server_count)
-	{
-		this._server_count = server_count;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

@@ -1,71 +1,38 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * All the detailed costs for server reservations.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ReportReservationInstallments extends ObjectBase
 {
-	constructor(server_types)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "All the detailed costs for server reservations.",
+			"type": "object",
+			"properties": {
+				"server_types": {
+					"type": "array",
+					"items": {
+						"type": "ReportServerTypeUtilization",
+						"description": "The costs for each server type."
+					},
+					"description": "<a:schema>ReportServerTypeUtilization<\/a:schema> objects. The costs for all the servers.",
+					"required": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"ReportReservationInstallments"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		if(server_types === undefined || server_types === null)
-			throw new Error("Invalid param in ReportReservationInstallments constructor.");
-
-		this._server_types = server_types;
-	}
-
-	/**
-	 * ReportServerTypeUtilization objects. The costs for all the servers.
-	 */
-	get server_types()
-	{
-		return (this._server_types !== undefined ? this._server_types : []);
-	}
-
-	set server_types(server_types)
-	{
-		this._server_types = server_types;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"server_types"
-		];
+		};
 	}
 };

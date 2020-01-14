@@ -1,411 +1,216 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * InstanceArrayOperation contains information regarding the changes that are
- * to be made to a product. Edit and deploy functions have to be called in
- * order to apply the changes. The operation type and status are unique to each
- * operation object.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class InstanceArrayOperation extends ObjectBase
 {
-	constructor(instance_array_label, instance_array_change_id)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "InstanceArrayOperation contains information regarding the changes that are to be made to a product. Edit and deploy functions have to be called in order to apply the changes. The operation type and status are unique to each operation object.",
+			"type": "object",
+			"properties": {
+				"instance_array_deploy_status": {
+					"enum": [
+						"not_started",
+						"ongoing",
+						"finished"
+					],
+					"type": "string",
+					"description": "The status of the deploy process.",
+					"readonly": true
+				},
+				"instance_array_boot_method": {
+					"enum": [
+						"pxe_iscsi",
+						"local_drives"
+					],
+					"type": "string",
+					"default": "pxe_iscsi",
+					"description": "Determines wether the server will boot from local drives or from NAS over iSCSI."
+				},
+				"instance_array_deploy_type": {
+					"enum": [
+						"create",
+						"delete",
+						"edit",
+						"start",
+						"stop",
+						"suspend"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The operation applied to the InstanceArray.",
+					"readonly": true
+				},
+				"instance_array_label": {
+					"type": "string",
+					"description": "The InstanceArray's unique label is used to create the <code>instance_array_subdomain<\/code>. It is editable and can be used to call API functions.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": true,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$"
+				},
+				"instance_array_subdomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Automatically created based on <code>instance_array_label<\/code>. It is a unique reference to the InstanceArray object.",
+					"readonly": true
+				},
+				"instance_array_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the InstanceArray which can be used instead of the <code>instance_array_label<\/code> or <code>instance_array_subdomain<\/code> when calling the API functions. It is automatically generated and cannot be edited.",
+					"readonly": true
+				},
+				"instance_array_instance_count": {
+					"type": "integer",
+					"description": "The number of instances to be created on the InstanceArray.",
+					"minimum": 0
+				},
+				"instance_array_ipv4_subnet_create_auto": {
+					"type": "boolean",
+					"description": "If <code>true<\/code> and no Subnet has already been allocated, a public IPv4 will be allocated. If there are no Subnets with free IPs available, a public Subnet will be automatically created, as many times as needed."
+				},
+				"instance_array_virtual_interfaces_enabled": {
+					"type": "boolean",
+					"description": "Enable virtual interfaces"
+				},
+				"instance_array_ip_allocate_auto": {
+					"type": "boolean",
+					"description": "Automatically allocate IP addresses to child Instance's InstanceInterface elements."
+				},
+				"instance_array_ram_gbytes": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 1024,
+					"description": "The minimum RAM capacity of each instance."
+				},
+				"instance_array_processor_count": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 16,
+					"description": "The CPU count on each instance."
+				},
+				"instance_array_processor_core_mhz": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 16000,
+					"description": "The minimum clock speed of a CPU."
+				},
+				"instance_array_processor_core_count": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 500,
+					"description": "The minimum cores of a CPU."
+				},
+				"instance_array_disk_count": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 500,
+					"description": "The minimum number of physical disks.",
+					"default": 0
+				},
+				"instance_array_disk_size_mbytes": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 4194304,
+					"description": "The minimum size of a single disk.",
+					"default": 0
+				},
+				"instance_array_disk_types": {
+					"type": [
+						"array",
+						"null"
+					],
+					"description": "The types of physical disks.",
+					"default": [
+						
+					]
+				},
+				"instance_array_updated_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the InstanceArray was edited. Example format: 2013-11-29T13:00:01Z.",
+					"readonly": true
+				},
+				"drive_array_id_boot": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The Drive array ID associated to the InstanceArray."
+				},
+				"instance_array_gui_settings_json": {
+					"type": "string",
+					"description": "Reserved for GUI users.",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"InstanceArrayOperation"
+					],
+					"readonly": true
+				},
+				"instance_array_change_id": {
+					"type": "integer",
+					"description": "This property helps ensure that edit operations don’t overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
+					"required": true
+				},
+				"instance_array_interfaces": {
+					"type": "array",
+					"items": {
+						"description": "InstanceArrayInterfaceOperation objects",
+						"type": "InstanceArrayInterfaceOperation"
+					},
+					"description": "An array of <a:schema>InstanceArrayInterfaceOperation<\/a:schema> objects indexed from 0 to 3.",
+					"default": [
+						
+					]
+				},
+				"instance_array_firewall_managed": {
+					"type": "boolean",
+					"description": "When set to false, all firewall rules on the server are removed and the firewall rules specified in the instance_array_firewall_rules property will no longer be applied on the server. When set to true, the firewall rules specified in the instance_array_firewall_rules property will be applied on the server."
+				},
+				"instance_array_firewall_rules": {
+					"type": [
+						"array",
+						"null"
+					],
+					"items": {
+						"type": "FirewallRule",
+						"description": "Contains the firewall rules."
+					},
+					"default": null,
+					"description": "Contains the firewall rules (an array of <a:schema>FirewallRule<\/a:schema> objects). When creating a new InstanceArray, if null, default firewall rules are applied (allow any source ICMP, any private IPv4, and others)."
+				},
+				"volume_template_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The volume template ID or name. ",
+					"default": null
+				}
 			}
-		}
-
-		for(let index = 0; index < 2; index++)
-		{
-			let arg = arguments[index];
-
-			if(arg === undefined || arg === null)
-				throw new Error("Invalid params in InstanceArrayOperation constructor.");
-		}
-
-		this._instance_array_label = instance_array_label;
-		this._instance_array_change_id = instance_array_change_id;
-	}
-
-	/**
-	 * The status of the deploy process.
-	 */
-	get instance_array_deploy_status()
-	{
-		return (this._instance_array_deploy_status !== undefined ? this._instance_array_deploy_status : null);
-	}
-
-	set instance_array_deploy_status(instance_array_deploy_status)
-	{
-		this._instance_array_deploy_status = instance_array_deploy_status;
-	}
-
-	/**
-	 * Determines wether the server will boot from local drives or from NAS over
-	 * iSCSI.
-	 */
-	get instance_array_boot_method()
-	{
-		return (this._instance_array_boot_method !== undefined ? this._instance_array_boot_method : "pxe_iscsi");
-	}
-
-	set instance_array_boot_method(instance_array_boot_method)
-	{
-		this._instance_array_boot_method = instance_array_boot_method;
-	}
-
-	/**
-	 * The operation applied to the InstanceArray.
-	 */
-	get instance_array_deploy_type()
-	{
-		return (this._instance_array_deploy_type !== undefined ? this._instance_array_deploy_type : null);
-	}
-
-	set instance_array_deploy_type(instance_array_deploy_type)
-	{
-		this._instance_array_deploy_type = instance_array_deploy_type;
-	}
-
-	/**
-	 * The InstanceArray's unique label is used to create the
-	 * instance_array_subdomain. It is editable and can be used to call API
-	 * functions.
-	 */
-	get instance_array_label()
-	{
-		return (this._instance_array_label !== undefined ? this._instance_array_label : null);
-	}
-
-	set instance_array_label(instance_array_label)
-	{
-		this._instance_array_label = instance_array_label;
-	}
-
-	/**
-	 * Automatically created based on instance_array_label. It is a unique
-	 * reference to the InstanceArray object.
-	 */
-	get instance_array_subdomain()
-	{
-		return (this._instance_array_subdomain !== undefined ? this._instance_array_subdomain : null);
-	}
-
-	set instance_array_subdomain(instance_array_subdomain)
-	{
-		this._instance_array_subdomain = instance_array_subdomain;
-	}
-
-	/**
-	 * The ID of the InstanceArray which can be used instead of the
-	 * instance_array_label or instance_array_subdomain when calling the API
-	 * functions. It is automatically generated and cannot be edited.
-	 */
-	get instance_array_id()
-	{
-		return (this._instance_array_id !== undefined ? this._instance_array_id : null);
-	}
-
-	set instance_array_id(instance_array_id)
-	{
-		this._instance_array_id = instance_array_id;
-	}
-
-	/**
-	 * The number of instances to be created on the InstanceArray.
-	 */
-	get instance_array_instance_count()
-	{
-		return (this._instance_array_instance_count !== undefined ? this._instance_array_instance_count : null);
-	}
-
-	set instance_array_instance_count(instance_array_instance_count)
-	{
-		this._instance_array_instance_count = instance_array_instance_count;
-	}
-
-	/**
-	 * If true and no Subnet has already been allocated, a public IPv4 will be
-	 * allocated. If there are no Subnets with free IPs available, a public Subnet
-	 * will be automatically created, as many times as needed.
-	 */
-	get instance_array_ipv4_subnet_create_auto()
-	{
-		return (this._instance_array_ipv4_subnet_create_auto !== undefined ? this._instance_array_ipv4_subnet_create_auto : null);
-	}
-
-	set instance_array_ipv4_subnet_create_auto(instance_array_ipv4_subnet_create_auto)
-	{
-		this._instance_array_ipv4_subnet_create_auto = instance_array_ipv4_subnet_create_auto;
-	}
-
-	/**
-	 * Enable virtual interfaces
-	 */
-	get instance_array_virtual_interfaces_enabled()
-	{
-		return (this._instance_array_virtual_interfaces_enabled !== undefined ? this._instance_array_virtual_interfaces_enabled : null);
-	}
-
-	set instance_array_virtual_interfaces_enabled(instance_array_virtual_interfaces_enabled)
-	{
-		this._instance_array_virtual_interfaces_enabled = instance_array_virtual_interfaces_enabled;
-	}
-
-	/**
-	 * Automatically allocate IP addresses to child Instance's InstanceInterface
-	 * elements.
-	 */
-	get instance_array_ip_allocate_auto()
-	{
-		return (this._instance_array_ip_allocate_auto !== undefined ? this._instance_array_ip_allocate_auto : null);
-	}
-
-	set instance_array_ip_allocate_auto(instance_array_ip_allocate_auto)
-	{
-		this._instance_array_ip_allocate_auto = instance_array_ip_allocate_auto;
-	}
-
-	/**
-	 * The minimum RAM capacity of each instance.
-	 */
-	get instance_array_ram_gbytes()
-	{
-		return (this._instance_array_ram_gbytes !== undefined ? this._instance_array_ram_gbytes : null);
-	}
-
-	set instance_array_ram_gbytes(instance_array_ram_gbytes)
-	{
-		this._instance_array_ram_gbytes = instance_array_ram_gbytes;
-	}
-
-	/**
-	 * The CPU count on each instance.
-	 */
-	get instance_array_processor_count()
-	{
-		return (this._instance_array_processor_count !== undefined ? this._instance_array_processor_count : null);
-	}
-
-	set instance_array_processor_count(instance_array_processor_count)
-	{
-		this._instance_array_processor_count = instance_array_processor_count;
-	}
-
-	/**
-	 * The minimum clock speed of a CPU.
-	 */
-	get instance_array_processor_core_mhz()
-	{
-		return (this._instance_array_processor_core_mhz !== undefined ? this._instance_array_processor_core_mhz : null);
-	}
-
-	set instance_array_processor_core_mhz(instance_array_processor_core_mhz)
-	{
-		this._instance_array_processor_core_mhz = instance_array_processor_core_mhz;
-	}
-
-	/**
-	 * The minimum cores of a CPU.
-	 */
-	get instance_array_processor_core_count()
-	{
-		return (this._instance_array_processor_core_count !== undefined ? this._instance_array_processor_core_count : null);
-	}
-
-	set instance_array_processor_core_count(instance_array_processor_core_count)
-	{
-		this._instance_array_processor_core_count = instance_array_processor_core_count;
-	}
-
-	/**
-	 * The minimum number of physical disks.
-	 */
-	get instance_array_disk_count()
-	{
-		return (this._instance_array_disk_count !== undefined ? this._instance_array_disk_count : 0);
-	}
-
-	set instance_array_disk_count(instance_array_disk_count)
-	{
-		this._instance_array_disk_count = instance_array_disk_count;
-	}
-
-	/**
-	 * The minimum size of a single disk.
-	 */
-	get instance_array_disk_size_mbytes()
-	{
-		return (this._instance_array_disk_size_mbytes !== undefined ? this._instance_array_disk_size_mbytes : 0);
-	}
-
-	set instance_array_disk_size_mbytes(instance_array_disk_size_mbytes)
-	{
-		this._instance_array_disk_size_mbytes = instance_array_disk_size_mbytes;
-	}
-
-	/**
-	 * The types of physical disks.
-	 */
-	get instance_array_disk_types()
-	{
-		return (this._instance_array_disk_types !== undefined ? this._instance_array_disk_types : []);
-	}
-
-	set instance_array_disk_types(instance_array_disk_types)
-	{
-		this._instance_array_disk_types = instance_array_disk_types;
-	}
-
-	/**
-	 * ISO 8601 timestamp which holds the date and time when the InstanceArray was
-	 * edited. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get instance_array_updated_timestamp()
-	{
-		return (this._instance_array_updated_timestamp !== undefined ? this._instance_array_updated_timestamp : null);
-	}
-
-	set instance_array_updated_timestamp(instance_array_updated_timestamp)
-	{
-		this._instance_array_updated_timestamp = instance_array_updated_timestamp;
-	}
-
-	/**
-	 * The Drive array ID associated to the InstanceArray.
-	 */
-	get drive_array_id_boot()
-	{
-		return (this._drive_array_id_boot !== undefined ? this._drive_array_id_boot : null);
-	}
-
-	set drive_array_id_boot(drive_array_id_boot)
-	{
-		this._drive_array_id_boot = drive_array_id_boot;
-	}
-
-	/**
-	 * Reserved for GUI users.
-	 */
-	get instance_array_gui_settings_json()
-	{
-		return (this._instance_array_gui_settings_json !== undefined ? this._instance_array_gui_settings_json : null);
-	}
-
-	set instance_array_gui_settings_json(instance_array_gui_settings_json)
-	{
-		this._instance_array_gui_settings_json = instance_array_gui_settings_json;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * This property helps ensure that edit operations don’t overwrite other,
-	 * more recent changes made to the same object. It gets updated automatically
-	 * after each successful edit operation.
-	 */
-	get instance_array_change_id()
-	{
-		return (this._instance_array_change_id !== undefined ? this._instance_array_change_id : null);
-	}
-
-	set instance_array_change_id(instance_array_change_id)
-	{
-		this._instance_array_change_id = instance_array_change_id;
-	}
-
-	/**
-	 * An array of InstanceArrayInterfaceOperation objects indexed from 0 to 3.
-	 */
-	get instance_array_interfaces()
-	{
-		return (this._instance_array_interfaces !== undefined ? this._instance_array_interfaces : []);
-	}
-
-	set instance_array_interfaces(instance_array_interfaces)
-	{
-		this._instance_array_interfaces = instance_array_interfaces;
-	}
-
-	/**
-	 * When set to false, all firewall rules on the server are removed and the
-	 * firewall rules specified in the instance_array_firewall_rules property will
-	 * no longer be applied on the server. When set to true, the firewall rules
-	 * specified in the instance_array_firewall_rules property will be applied on
-	 * the server.
-	 */
-	get instance_array_firewall_managed()
-	{
-		return (this._instance_array_firewall_managed !== undefined ? this._instance_array_firewall_managed : null);
-	}
-
-	set instance_array_firewall_managed(instance_array_firewall_managed)
-	{
-		this._instance_array_firewall_managed = instance_array_firewall_managed;
-	}
-
-	/**
-	 * Contains the firewall rules (an array of FirewallRule objects). When
-	 * creating a new InstanceArray, if null, default firewall rules are applied
-	 * (allow any source ICMP, any private IPv4, and others).
-	 */
-	get instance_array_firewall_rules()
-	{
-		return (this._instance_array_firewall_rules !== undefined ? this._instance_array_firewall_rules : null);
-	}
-
-	set instance_array_firewall_rules(instance_array_firewall_rules)
-	{
-		this._instance_array_firewall_rules = instance_array_firewall_rules;
-	}
-
-	/**
-	 * The volume template ID or name.
-	 */
-	get volume_template_id()
-	{
-		return (this._volume_template_id !== undefined ? this._volume_template_id : null);
-	}
-
-	set volume_template_id(volume_template_id)
-	{
-		this._volume_template_id = volume_template_id;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"instance_array_label",
-			"instance_array_change_id"
-		];
+		};
 	}
 };

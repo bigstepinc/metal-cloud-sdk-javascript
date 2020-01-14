@@ -1,133 +1,88 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Details about the Instance object specific to Hortonworks. The information
- * presented here is obtained by interrogating the Hortonworks API. Backward
- * compatibility object will not be ensured when the underlying Hortonworks API changes.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class AppHortonworksInstance extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Details about the Instance object specific to Hortonworks. The information presented here is obtained by interrogating the Hortonworks API. Backward compatibility object will not be ensured when the underlying Hortonworks API changes.",
+			"type": "object",
+			"properties": {
+				"instance_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The instance ID of the node",
+					"required": true,
+					"readonly": true
+				},
+				"instance_label": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "The instance label of the node",
+					"required": true,
+					"readonly": true
+				},
+				"instance_service_status": {
+					"enum": [
+						"ordered",
+						"active",
+						"suspended",
+						"stopped",
+						"deleted"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The status of the instance.",
+					"default": null,
+					"readonly": true
+				},
+				"instance_hostname": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "The subdomain of the node",
+					"required": true,
+					"readonly": true
+				},
+				"instance_cluster_url": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "The cluster UI url of the node",
+					"required": true,
+					"readonly": true
+				},
+				"instance_health": {
+					"type": "string",
+					"description": "The health status of the node",
+					"required": true,
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"AppHortonworksInstance"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The instance ID of the node
-	 */
-	get instance_id()
-	{
-		return (this._instance_id !== undefined ? this._instance_id : null);
-	}
-
-	set instance_id(instance_id)
-	{
-		this._instance_id = instance_id;
-	}
-
-	/**
-	 * The instance label of the node
-	 */
-	get instance_label()
-	{
-		return (this._instance_label !== undefined ? this._instance_label : null);
-	}
-
-	set instance_label(instance_label)
-	{
-		this._instance_label = instance_label;
-	}
-
-	/**
-	 * The status of the instance.
-	 */
-	get instance_service_status()
-	{
-		return (this._instance_service_status !== undefined ? this._instance_service_status : null);
-	}
-
-	set instance_service_status(instance_service_status)
-	{
-		this._instance_service_status = instance_service_status;
-	}
-
-	/**
-	 * The subdomain of the node
-	 */
-	get instance_hostname()
-	{
-		return (this._instance_hostname !== undefined ? this._instance_hostname : null);
-	}
-
-	set instance_hostname(instance_hostname)
-	{
-		this._instance_hostname = instance_hostname;
-	}
-
-	/**
-	 * The cluster UI url of the node
-	 */
-	get instance_cluster_url()
-	{
-		return (this._instance_cluster_url !== undefined ? this._instance_cluster_url : null);
-	}
-
-	set instance_cluster_url(instance_cluster_url)
-	{
-		this._instance_cluster_url = instance_cluster_url;
-	}
-
-	/**
-	 * The health status of the node
-	 */
-	get instance_health()
-	{
-		return (this._instance_health !== undefined ? this._instance_health : null);
-	}
-
-	set instance_health(instance_health)
-	{
-		this._instance_health = instance_health;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

@@ -1,161 +1,105 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Represents a cyclical installment of a reservation created with a specific
- * Subnet prefix size.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class SubnetReservationInstallment extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Represents a cyclical installment of a reservation created with a specific Subnet prefix size.",
+			"type": "object",
+			"properties": {
+				"subnet_reservation_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "The ID of the reservation.",
+					"default": null,
+					"readonly": true
+				},
+				"subnet_reservation_installment_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "The ID of the reservation installment.",
+					"default": null,
+					"readonly": true
+				},
+				"resource_reservation_installment_created_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Date and time when the reservation installment was created. Is an ISO 8601 timestamp using UTC time. Example format: 2013-11-29T13:00:01Z.",
+					"default": null,
+					"readonly": true
+				},
+				"resource_reservation_installment_start_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Date and time when the reservation becomes active. Is an ISO 8601 timestamp using UTC time. Example format: 2013-11-29T13:00:01Z.",
+					"default": null,
+					"readonly": true
+				},
+				"resource_reservation_installment_end_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Date and time when the reservation installment expires. Is an ISO 8601 timestamp using UTC time. Example format: 2013-11-29T13:00:01Z.",
+					"default": null,
+					"readonly": true
+				},
+				"resource_reservation_installment_price": {
+					"type": [
+						"number",
+						"null"
+					],
+					"description": "The costs of all the reserved resources for the duration of the installment.",
+					"default": null,
+					"readonly": true
+				},
+				"resource_reservation_installment_price_currency": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The currency used to calculate the price.",
+					"default": null,
+					"readonly": true
+				},
+				"resource_reservation_installment_status": {
+					"enum": [
+						"active",
+						"stopped"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The status of the reservation installment.",
+					"default": null,
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"SubnetReservationInstallment"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The ID of the reservation.
-	 */
-	get subnet_reservation_id()
-	{
-		return (this._subnet_reservation_id !== undefined ? this._subnet_reservation_id : null);
-	}
-
-	set subnet_reservation_id(subnet_reservation_id)
-	{
-		this._subnet_reservation_id = subnet_reservation_id;
-	}
-
-	/**
-	 * The ID of the reservation installment.
-	 */
-	get subnet_reservation_installment_id()
-	{
-		return (this._subnet_reservation_installment_id !== undefined ? this._subnet_reservation_installment_id : null);
-	}
-
-	set subnet_reservation_installment_id(subnet_reservation_installment_id)
-	{
-		this._subnet_reservation_installment_id = subnet_reservation_installment_id;
-	}
-
-	/**
-	 * Date and time when the reservation installment was created. Is an ISO 8601
-	 * timestamp using UTC time. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get resource_reservation_installment_created_timestamp()
-	{
-		return (this._resource_reservation_installment_created_timestamp !== undefined ? this._resource_reservation_installment_created_timestamp : null);
-	}
-
-	set resource_reservation_installment_created_timestamp(resource_reservation_installment_created_timestamp)
-	{
-		this._resource_reservation_installment_created_timestamp = resource_reservation_installment_created_timestamp;
-	}
-
-	/**
-	 * Date and time when the reservation becomes active. Is an ISO 8601 timestamp
-	 * using UTC time. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get resource_reservation_installment_start_timestamp()
-	{
-		return (this._resource_reservation_installment_start_timestamp !== undefined ? this._resource_reservation_installment_start_timestamp : null);
-	}
-
-	set resource_reservation_installment_start_timestamp(resource_reservation_installment_start_timestamp)
-	{
-		this._resource_reservation_installment_start_timestamp = resource_reservation_installment_start_timestamp;
-	}
-
-	/**
-	 * Date and time when the reservation installment expires. Is an ISO 8601
-	 * timestamp using UTC time. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get resource_reservation_installment_end_timestamp()
-	{
-		return (this._resource_reservation_installment_end_timestamp !== undefined ? this._resource_reservation_installment_end_timestamp : null);
-	}
-
-	set resource_reservation_installment_end_timestamp(resource_reservation_installment_end_timestamp)
-	{
-		this._resource_reservation_installment_end_timestamp = resource_reservation_installment_end_timestamp;
-	}
-
-	/**
-	 * The costs of all the reserved resources for the duration of the installment.
-	 */
-	get resource_reservation_installment_price()
-	{
-		return (this._resource_reservation_installment_price !== undefined ? this._resource_reservation_installment_price : null);
-	}
-
-	set resource_reservation_installment_price(resource_reservation_installment_price)
-	{
-		this._resource_reservation_installment_price = resource_reservation_installment_price;
-	}
-
-	/**
-	 * The currency used to calculate the price.
-	 */
-	get resource_reservation_installment_price_currency()
-	{
-		return (this._resource_reservation_installment_price_currency !== undefined ? this._resource_reservation_installment_price_currency : null);
-	}
-
-	set resource_reservation_installment_price_currency(resource_reservation_installment_price_currency)
-	{
-		this._resource_reservation_installment_price_currency = resource_reservation_installment_price_currency;
-	}
-
-	/**
-	 * The status of the reservation installment.
-	 */
-	get resource_reservation_installment_status()
-	{
-		return (this._resource_reservation_installment_status !== undefined ? this._resource_reservation_installment_status : null);
-	}
-
-	set resource_reservation_installment_status(resource_reservation_installment_status)
-	{
-		this._resource_reservation_installment_status = resource_reservation_installment_status;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

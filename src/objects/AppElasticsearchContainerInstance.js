@@ -1,79 +1,46 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Details about the Container object specific to Elasticsearch.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class AppElasticsearchContainerInstance extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Details about the Container object specific to Elasticsearch.",
+			"type": "object",
+			"properties": {
+				"container_array_id": {
+					"type": [
+						"integer",
+						"null",
+						"string"
+					],
+					"description": "The ID of the ContainerArray associated with the node.",
+					"readonly": true
+				},
+				"container_array_label": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "The label of the ContainerArray associated with the node.",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"AppElasticsearchContainerInstance"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The ID of the ContainerArray associated with the node.
-	 */
-	get container_array_id()
-	{
-		return (this._container_array_id !== undefined ? this._container_array_id : null);
-	}
-
-	set container_array_id(container_array_id)
-	{
-		this._container_array_id = container_array_id;
-	}
-
-	/**
-	 * The label of the ContainerArray associated with the node.
-	 */
-	get container_array_label()
-	{
-		return (this._container_array_label !== undefined ? this._container_array_label : null);
-	}
-
-	set container_array_label(container_array_label)
-	{
-		this._container_array_label = container_array_label;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

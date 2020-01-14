@@ -1,309 +1,199 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Represents a reservation created for a specific server type.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ServerTypeReservation extends ObjectBase
 {
-	constructor(user_id, server_type_id, datacenter_name)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Represents a reservation created for a specific server type.",
+			"type": "object",
+			"properties": {
+				"user_id": {
+					"type": [
+						"integer"
+					],
+					"description": "The user who owns and pays for the reservation.",
+					"readonly": false,
+					"required": true
+				},
+				"resource_reservation_created_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Date and time when the reservation was created. Is an ISO 8601 timestamp using UTC time. Example format: 2013-11-29T13:00:01Z.",
+					"default": null,
+					"readonly": true
+				},
+				"resource_reservation_cycle_months": {
+					"type": [
+						"integer"
+					],
+					"description": "Contract period size, which gets renewed automatically if this reservation is recurring.",
+					"default": 12,
+					"readonly": false,
+					"required": false
+				},
+				"resource_reservation_installment_cycle_months": {
+					"type": [
+						"integer"
+					],
+					"description": "Billing cycle in months.",
+					"default": 1,
+					"readonly": false,
+					"required": false
+				},
+				"resource_reservation_end_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Date and time when the reservation expires. Is an ISO 8601 timestamp using UTC time. Example format: 2013-11-29T13:00:01Z.",
+					"default": null,
+					"readonly": true
+				},
+				"resource_reservation_price": {
+					"type": [
+						"number",
+						"null"
+					],
+					"description": "The cost of the reserved resource for a 30-day period.",
+					"default": null,
+					"readonly": false,
+					"required": false
+				},
+				"resource_reservation_price_currency": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The currency used to calculate the price.",
+					"default": null,
+					"readonly": true
+				},
+				"resource_reservation_recurring": {
+					"type": "boolean",
+					"description": "If <code>true<\/code>, the reservation is automatically renewed for another cycle when reaching its expiration date.",
+					"default": true,
+					"required": false,
+					"readonly": false
+				},
+				"resource_reservation_start_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Date and time when the reservation becomes active. It is an hour later than <code>resource_reservation_created_timestamp<\/code>. Is an ISO 8601 timestamp using UTC time. Example format: 2013-11-29T13:00:01Z.",
+					"default": null,
+					"readonly": false,
+					"required": false
+				},
+				"resource_utilization_price": {
+					"type": [
+						"number",
+						"null"
+					],
+					"description": "This value overwrites the on-demand price when costs are calculated. If it is 0, using this resource will register no on-demand costs.",
+					"default": null,
+					"readonly": true
+				},
+				"resource_utilization_price_currency": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The currency used to calculate the price for a single unit of time.",
+					"default": null,
+					"readonly": true
+				},
+				"resource_utilization_price_unit_seconds": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "The unit of time measured in seconds.",
+					"default": null,
+					"readonly": true
+				},
+				"server_type_reservation_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "The ID of the reservation.",
+					"default": null,
+					"readonly": true
+				},
+				"server_type_id": {
+					"type": [
+						"integer"
+					],
+					"description": "The ID of the reserved server type.",
+					"readonly": false,
+					"required": true
+				},
+				"resource_reservation_installments": {
+					"type": "array",
+					"items": {
+						"description": "ServerTypeReservationInstallment objects",
+						"type": "ServerTypeReservationInstallment"
+					},
+					"description": "All the <a:schema>ServerTypeReservationInstallment<\/a:schema> objects associated with the reservation.",
+					"default": [
+						
+					],
+					"readonly": true
+				},
+				"resource_reservation_status": {
+					"enum": [
+						"active",
+						"stopped"
+					],
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The status of the reservation.",
+					"default": null,
+					"readonly": true
+				},
+				"datacenter_name": {
+					"type": [
+						"string"
+					],
+					"description": "The datacenter on which the reservation is made.",
+					"readonly": false,
+					"required": true
+				},
+				"user_plan_type": {
+					"type": "string",
+					"enum": [
+						"vanilla",
+						"starter",
+						"starter_redundant",
+						"custom"
+					],
+					"description": "The user plan type based on wich the reservation is made.",
+					"default": "vanilla",
+					"readonly": false,
+					"required": false
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"ServerTypeReservation"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		for(let index = 0; index < 3; index++)
-		{
-			let arg = arguments[index];
-
-			if(arg === undefined || arg === null)
-				throw new Error("Invalid params in ServerTypeReservation constructor.");
-		}
-
-		this._user_id = user_id;
-		this._server_type_id = server_type_id;
-		this._datacenter_name = datacenter_name;
-	}
-
-	/**
-	 * The user who owns and pays for the reservation.
-	 */
-	get user_id()
-	{
-		return (this._user_id !== undefined ? this._user_id : null);
-	}
-
-	set user_id(user_id)
-	{
-		this._user_id = user_id;
-	}
-
-	/**
-	 * Date and time when the reservation was created. Is an ISO 8601 timestamp
-	 * using UTC time. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get resource_reservation_created_timestamp()
-	{
-		return (this._resource_reservation_created_timestamp !== undefined ? this._resource_reservation_created_timestamp : null);
-	}
-
-	set resource_reservation_created_timestamp(resource_reservation_created_timestamp)
-	{
-		this._resource_reservation_created_timestamp = resource_reservation_created_timestamp;
-	}
-
-	/**
-	 * Contract period size, which gets renewed automatically if this reservation
-	 * is recurring.
-	 */
-	get resource_reservation_cycle_months()
-	{
-		return (this._resource_reservation_cycle_months !== undefined ? this._resource_reservation_cycle_months : 12);
-	}
-
-	set resource_reservation_cycle_months(resource_reservation_cycle_months)
-	{
-		this._resource_reservation_cycle_months = resource_reservation_cycle_months;
-	}
-
-	/**
-	 * Billing cycle in months.
-	 */
-	get resource_reservation_installment_cycle_months()
-	{
-		return (this._resource_reservation_installment_cycle_months !== undefined ? this._resource_reservation_installment_cycle_months : 1);
-	}
-
-	set resource_reservation_installment_cycle_months(resource_reservation_installment_cycle_months)
-	{
-		this._resource_reservation_installment_cycle_months = resource_reservation_installment_cycle_months;
-	}
-
-	/**
-	 * Date and time when the reservation expires. Is an ISO 8601 timestamp using
-	 * UTC time. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get resource_reservation_end_timestamp()
-	{
-		return (this._resource_reservation_end_timestamp !== undefined ? this._resource_reservation_end_timestamp : null);
-	}
-
-	set resource_reservation_end_timestamp(resource_reservation_end_timestamp)
-	{
-		this._resource_reservation_end_timestamp = resource_reservation_end_timestamp;
-	}
-
-	/**
-	 * The cost of the reserved resource for a 30-day period.
-	 */
-	get resource_reservation_price()
-	{
-		return (this._resource_reservation_price !== undefined ? this._resource_reservation_price : null);
-	}
-
-	set resource_reservation_price(resource_reservation_price)
-	{
-		this._resource_reservation_price = resource_reservation_price;
-	}
-
-	/**
-	 * The currency used to calculate the price.
-	 */
-	get resource_reservation_price_currency()
-	{
-		return (this._resource_reservation_price_currency !== undefined ? this._resource_reservation_price_currency : null);
-	}
-
-	set resource_reservation_price_currency(resource_reservation_price_currency)
-	{
-		this._resource_reservation_price_currency = resource_reservation_price_currency;
-	}
-
-	/**
-	 * If true, the reservation is automatically renewed for another cycle when
-	 * reaching its expiration date.
-	 */
-	get resource_reservation_recurring()
-	{
-		return (this._resource_reservation_recurring !== undefined ? this._resource_reservation_recurring : true);
-	}
-
-	set resource_reservation_recurring(resource_reservation_recurring)
-	{
-		this._resource_reservation_recurring = resource_reservation_recurring;
-	}
-
-	/**
-	 * Date and time when the reservation becomes active. It is an hour later than
-	 * resource_reservation_created_timestamp. Is an ISO 8601 timestamp using UTC
-	 * time. Example format: 2013-11-29T13:00:01Z.
-	 */
-	get resource_reservation_start_timestamp()
-	{
-		return (this._resource_reservation_start_timestamp !== undefined ? this._resource_reservation_start_timestamp : null);
-	}
-
-	set resource_reservation_start_timestamp(resource_reservation_start_timestamp)
-	{
-		this._resource_reservation_start_timestamp = resource_reservation_start_timestamp;
-	}
-
-	/**
-	 * This value overwrites the on-demand price when costs are calculated. If it
-	 * is 0, using this resource will register no on-demand costs.
-	 */
-	get resource_utilization_price()
-	{
-		return (this._resource_utilization_price !== undefined ? this._resource_utilization_price : null);
-	}
-
-	set resource_utilization_price(resource_utilization_price)
-	{
-		this._resource_utilization_price = resource_utilization_price;
-	}
-
-	/**
-	 * The currency used to calculate the price for a single unit of time.
-	 */
-	get resource_utilization_price_currency()
-	{
-		return (this._resource_utilization_price_currency !== undefined ? this._resource_utilization_price_currency : null);
-	}
-
-	set resource_utilization_price_currency(resource_utilization_price_currency)
-	{
-		this._resource_utilization_price_currency = resource_utilization_price_currency;
-	}
-
-	/**
-	 * The unit of time measured in seconds.
-	 */
-	get resource_utilization_price_unit_seconds()
-	{
-		return (this._resource_utilization_price_unit_seconds !== undefined ? this._resource_utilization_price_unit_seconds : null);
-	}
-
-	set resource_utilization_price_unit_seconds(resource_utilization_price_unit_seconds)
-	{
-		this._resource_utilization_price_unit_seconds = resource_utilization_price_unit_seconds;
-	}
-
-	/**
-	 * The ID of the reservation.
-	 */
-	get server_type_reservation_id()
-	{
-		return (this._server_type_reservation_id !== undefined ? this._server_type_reservation_id : null);
-	}
-
-	set server_type_reservation_id(server_type_reservation_id)
-	{
-		this._server_type_reservation_id = server_type_reservation_id;
-	}
-
-	/**
-	 * The ID of the reserved server type.
-	 */
-	get server_type_id()
-	{
-		return (this._server_type_id !== undefined ? this._server_type_id : null);
-	}
-
-	set server_type_id(server_type_id)
-	{
-		this._server_type_id = server_type_id;
-	}
-
-	/**
-	 * All the ServerTypeReservationInstallment objects associated with the
-	 * reservation.
-	 */
-	get resource_reservation_installments()
-	{
-		return (this._resource_reservation_installments !== undefined ? this._resource_reservation_installments : []);
-	}
-
-	set resource_reservation_installments(resource_reservation_installments)
-	{
-		this._resource_reservation_installments = resource_reservation_installments;
-	}
-
-	/**
-	 * The status of the reservation.
-	 */
-	get resource_reservation_status()
-	{
-		return (this._resource_reservation_status !== undefined ? this._resource_reservation_status : null);
-	}
-
-	set resource_reservation_status(resource_reservation_status)
-	{
-		this._resource_reservation_status = resource_reservation_status;
-	}
-
-	/**
-	 * The datacenter on which the reservation is made.
-	 */
-	get datacenter_name()
-	{
-		return (this._datacenter_name !== undefined ? this._datacenter_name : null);
-	}
-
-	set datacenter_name(datacenter_name)
-	{
-		this._datacenter_name = datacenter_name;
-	}
-
-	/**
-	 * The user plan type based on wich the reservation is made.
-	 */
-	get user_plan_type()
-	{
-		return (this._user_plan_type !== undefined ? this._user_plan_type : "vanilla");
-	}
-
-	set user_plan_type(user_plan_type)
-	{
-		this._user_plan_type = user_plan_type;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"user_id",
-			"server_type_id",
-			"datacenter_name"
-		];
+		};
 	}
 };

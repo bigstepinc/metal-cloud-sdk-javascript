@@ -1,91 +1,39 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * ContainerArray environment variable.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ContainerArrayEnvironmentVariable extends ObjectBase
 {
-	constructor(environment_variable_name, environment_variable_value)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "ContainerArray environment variable.",
+			"type": "object",
+			"properties": {
+				"environment_variable_name": {
+					"type": "string",
+					"description": "Environment variable name.",
+					"required": true
+				},
+				"environment_variable_value": {
+					"type": "string",
+					"description": "Environment variable value.",
+					"required": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"ContainerArrayEnvironmentVariable"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		for(let index = 0; index < 2; index++)
-		{
-			let arg = arguments[index];
-
-			if(arg === undefined || arg === null)
-				throw new Error("Invalid params in ContainerArrayEnvironmentVariable constructor.");
-		}
-
-		this._environment_variable_name = environment_variable_name;
-		this._environment_variable_value = environment_variable_value;
-	}
-
-	/**
-	 * Environment variable name.
-	 */
-	get environment_variable_name()
-	{
-		return (this._environment_variable_name !== undefined ? this._environment_variable_name : null);
-	}
-
-	set environment_variable_name(environment_variable_name)
-	{
-		this._environment_variable_name = environment_variable_name;
-	}
-
-	/**
-	 * Environment variable value.
-	 */
-	get environment_variable_value()
-	{
-		return (this._environment_variable_value !== undefined ? this._environment_variable_value : null);
-	}
-
-	set environment_variable_value(environment_variable_value)
-	{
-		this._environment_variable_value = environment_variable_value;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"environment_variable_name",
-			"environment_variable_value"
-		];
+		};
 	}
 };

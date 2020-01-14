@@ -1,79 +1,46 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- *
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ServerDisk extends ObjectBase
 {
-	constructor()
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "",
+			"type": "object",
+			"properties": {
+				"server_disk_type": {
+					"enum": [
+						"SSD",
+						"HDD",
+						"NVME"
+					],
+					"type": [
+						"string"
+					],
+					"description": "The type of physical disk.",
+					"readonly": true
+				},
+				"server_disk_size_gb": {
+					"type": "integer",
+					"description": "",
+					"readonly": true
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type",
+					"enum": [
+						"ServerDisk"
+					],
+					"readonly": true
+				}
 			}
-		}
-	}
-
-	/**
-	 * The type of physical disk.
-	 */
-	get server_disk_type()
-	{
-		return (this._server_disk_type !== undefined ? this._server_disk_type : null);
-	}
-
-	set server_disk_type(server_disk_type)
-	{
-		this._server_disk_type = server_disk_type;
-	}
-
-	/**
-	 *
-	 */
-	get server_disk_size_gb()
-	{
-		return (this._server_disk_size_gb !== undefined ? this._server_disk_size_gb : null);
-	}
-
-	set server_disk_size_gb(server_disk_size_gb)
-	{
-		this._server_disk_size_gb = server_disk_size_gb;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-
-		];
+		};
 	}
 };

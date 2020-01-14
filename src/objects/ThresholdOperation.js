@@ -1,155 +1,88 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * ThresholdOperation contains information regarding the changes that are to be
- * made to a threshold
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ThresholdOperation extends ObjectBase
 {
-	constructor(threshold_description, threshold_value, threshold_action_repeat_interval_hours, threshold_action, threshold_bound_type, threshold_value_destination)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "ThresholdOperation contains information regarding the changes that are to be made to a threshold",
+			"type": "object",
+			"properties": {
+				"threshold_description": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "A string which provides a description of the threshold.",
+					"maxLength": 1024,
+					"required": true
+				},
+				"threshold_value": {
+					"type": [
+						"integer"
+					],
+					"description": "The value for the threshold",
+					"minimum": 0,
+					"required": true
+				},
+				"threshold_action_repeat_interval_hours": {
+					"type": [
+						"integer"
+					],
+					"description": "The period of time in hours that must pass before another warning is issued. For a one time warning, null is required",
+					"required": true,
+					"maximum": 744
+				},
+				"threshold_action": {
+					"enum": [
+						"email"
+					],
+					"type": [
+						"string"
+					],
+					"description": "What action to be taken when the threshold is reached",
+					"required": true
+				},
+				"threshold_bound_type": {
+					"enum": [
+						"lower",
+						"upper"
+					],
+					"type": [
+						"string"
+					],
+					"description": "Defines whether the event must be triggered when the measured value is greater than or less than the threashold_value",
+					"required": true
+				},
+				"threshold_value_destination": {
+					"enum": [
+						"infrastructure_total_costs",
+						"network_traffic_upload",
+						"network_traffic_download",
+						"network_traffic_upload_download"
+					],
+					"type": [
+						"string"
+					],
+					"required": true,
+					"description": "Defines the destination for the threshold value. It can be seen as a subtype of the threshold_type"
+				},
+				"type": {
+					"type": "string",
+					"description": "The schema type.",
+					"enum": [
+						"ThresholdOperation"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		for(let index = 0; index < 6; index++)
-		{
-			let arg = arguments[index];
-
-			if(arg === undefined || arg === null)
-				throw new Error("Invalid params in ThresholdOperation constructor.");
-		}
-
-		this._threshold_description = threshold_description;
-		this._threshold_value = threshold_value;
-		this._threshold_action_repeat_interval_hours = threshold_action_repeat_interval_hours;
-		this._threshold_action = threshold_action;
-		this._threshold_bound_type = threshold_bound_type;
-		this._threshold_value_destination = threshold_value_destination;
-	}
-
-	/**
-	 * A string which provides a description of the threshold.
-	 */
-	get threshold_description()
-	{
-		return (this._threshold_description !== undefined ? this._threshold_description : null);
-	}
-
-	set threshold_description(threshold_description)
-	{
-		this._threshold_description = threshold_description;
-	}
-
-	/**
-	 * The value for the threshold
-	 */
-	get threshold_value()
-	{
-		return (this._threshold_value !== undefined ? this._threshold_value : null);
-	}
-
-	set threshold_value(threshold_value)
-	{
-		this._threshold_value = threshold_value;
-	}
-
-	/**
-	 * The period of time in hours that must pass before another warning is issued.
-	 * For a one time warning, null is required
-	 */
-	get threshold_action_repeat_interval_hours()
-	{
-		return (this._threshold_action_repeat_interval_hours !== undefined ? this._threshold_action_repeat_interval_hours : null);
-	}
-
-	set threshold_action_repeat_interval_hours(threshold_action_repeat_interval_hours)
-	{
-		this._threshold_action_repeat_interval_hours = threshold_action_repeat_interval_hours;
-	}
-
-	/**
-	 * What action to be taken when the threshold is reached
-	 */
-	get threshold_action()
-	{
-		return (this._threshold_action !== undefined ? this._threshold_action : null);
-	}
-
-	set threshold_action(threshold_action)
-	{
-		this._threshold_action = threshold_action;
-	}
-
-	/**
-	 * Defines whether the event must be triggered when the measured value is
-	 * greater than or less than the threashold_value
-	 */
-	get threshold_bound_type()
-	{
-		return (this._threshold_bound_type !== undefined ? this._threshold_bound_type : null);
-	}
-
-	set threshold_bound_type(threshold_bound_type)
-	{
-		this._threshold_bound_type = threshold_bound_type;
-	}
-
-	/**
-	 * Defines the destination for the threshold value. It can be seen as a subtype
-	 * of the threshold_type
-	 */
-	get threshold_value_destination()
-	{
-		return (this._threshold_value_destination !== undefined ? this._threshold_value_destination : null);
-	}
-
-	set threshold_value_destination(threshold_value_destination)
-	{
-		this._threshold_value_destination = threshold_value_destination;
-	}
-
-	/**
-	 * The schema type.
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"threshold_description",
-			"threshold_value",
-			"threshold_action_repeat_interval_hours",
-			"threshold_action",
-			"threshold_bound_type",
-			"threshold_value_destination"
-		];
+		};
 	}
 };

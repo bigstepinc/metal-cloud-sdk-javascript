@@ -1,71 +1,50 @@
-const ObjectBase = require('./ObjectBase');
+const ObjectBase = require("./ObjectBase");
 
-/**
- * Information about the Cluster's Instances and its application.
- *
- * @class
- * @extends ObjectBase
- */
+
 module.exports = 
 class ClusterApp extends ObjectBase
 {
-	constructor(cluster_app)
+	/**
+	 * @protected
+	 * 
+	 * @returns {{description: string, type: string, properties: Object<propertyName, {type: string|string[], description: string, required: boolean, enum: undefined|string[], items: undefined|{description: string, type: string}, default: string|number|null|boolean, pattern: string|undefined, minLength: number|undefined, maxLength: string|undefined, readonly: boolean|undefined, required: boolean|undefined}>}}
+	 */
+	_schemaDefinition()
 	{
-		super();
-
-		const arrPropertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-		arrPropertyNames.shift();
-
-		for(let strProperty in arrPropertyNames)
-		{
-			if(arrPropertyNames.hasOwnProperty(strProperty))
-			{
-				const strPropertyProtected = "_" + arrPropertyNames[strProperty];
-				this[strPropertyProtected] = this[arrPropertyNames[strProperty]];
+		return {
+			"description": "Information about the Cluster's Instances and its application.",
+			"type": "object",
+			"properties": {
+				"cluster_app": {
+					"type": [
+						"AppSplunk",
+						"AppElasticsearch",
+						"AppElasticsearchLegacy",
+						"AppCloudera",
+						"AppDatastax",
+						"AppCouchbase",
+						"AppDatameer",
+						"AppMapRLegacy",
+						"AppMapR",
+						"AppKubernetes",
+						"AppExasol",
+						"AppMesos",
+						"AppTableau",
+						"AppHortonworks",
+						"AppMysqlPercona",
+						"null"
+					],
+					"description": "The Cluster's Instances and application information.",
+					"required": true
+				},
+				"type": {
+					"description": "The schema type",
+					"enum": [
+						"ClusterApp"
+					],
+					"readonly": true
+				}
 			}
-		}
-
-		if(cluster_app === undefined || cluster_app === null)
-			throw new Error("Invalid param in ClusterApp constructor.");
-
-		this._cluster_app = cluster_app;
-	}
-
-	/**
-	 * The Cluster's Instances and application information.
-	 */
-	get cluster_app()
-	{
-		return (this._cluster_app !== undefined ? this._cluster_app : null);
-	}
-
-	set cluster_app(cluster_app)
-	{
-		this._cluster_app = cluster_app;
-	}
-
-	/**
-	 * The schema type
-	 */
-	get type()
-	{
-		return (this._type !== undefined ? this._type : null);
-	}
-
-	set type(type)
-	{
-		this._type = type;
-	}
-
-	/**
-	 * The required JSON fields for deserialization.
-	 *
-	 * @returns {Array}
-	 */
-	static get JSONRequired()
-	{
-		return [
-			"cluster_app"
-		];
+		};
 	}
 };
