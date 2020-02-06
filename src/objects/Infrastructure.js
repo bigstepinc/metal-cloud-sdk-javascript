@@ -193,6 +193,18 @@ class Infrastructure extends ObjectBase
 						
 					],
 					"description": "Contains the reserved LAN IP ranges on the infrastructure."
+				},
+				"infrastructure_tags": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"description": ""
+					},
+					"description": "List of tags representative for the Infrastructure.",
+					"default": [
+						
+					],
+					"required": false
 				}
 			}
 		};

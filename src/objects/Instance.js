@@ -177,6 +177,18 @@ class Instance extends ObjectBase
 					"description": "Represents the volume template.",
 					"default": null,
 					"readonly": true
+				},
+				"instance_tags": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"description": ""
+					},
+					"description": "List of tags representative for the Instance.",
+					"default": [
+						
+					],
+					"required": false
 				}
 			}
 		};

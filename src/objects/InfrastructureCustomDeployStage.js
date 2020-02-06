@@ -2,7 +2,7 @@ const ObjectBase = require("./ObjectBase");
 
 
 module.exports = 
-class InfrastructureAnsibleBundle extends ObjectBase
+class InfrastructureCustomDeployStage extends ObjectBase
 {
 	/**
 	 * @protected
@@ -12,18 +12,18 @@ class InfrastructureAnsibleBundle extends ObjectBase
 	_schemaDefinition()
 	{
 		return {
-			"description": "An Infrastructure Ansible bundle is an association of an AnsibleBundle, an Infrastructure and a run level priority index.",
+			"description": "An Infrastructure custom deploy stage is an association of an StageDefinition, an Infrastructure and a run level priority index.",
 			"type": "object",
 			"properties": {
-				"infrastructure_ansible_bundle_id": {
+				"infrastructure_deploy_custom_stage_id": {
 					"type": "integer",
-					"description": "Unique Infrastructure, AnsibleBundle and run level index association ID.",
+					"description": "Unique Infrastructure, StageDefinition and run level index association ID.",
 					"required": true,
 					"minimum": 1
 				},
-				"ansible_bundle_id": {
+				"stage_definition_id": {
 					"type": "integer",
-					"description": "Represents an <a:schema>AnsibleBundle</a:schema>.",
+					"description": "Represents an <a:schema>StageDefinition</a:schema>.",
 					"required": true,
 					"minimum": 1
 				},
@@ -33,22 +33,13 @@ class InfrastructureAnsibleBundle extends ObjectBase
 					"required": true,
 					"minimum": 1
 				},
-				"infrastructure_deploy_custom_stage_type": {
-					"type": "string",
-					"description": "",
-					"enum": [
-						"pre_deploy",
-						"post_deploy"
-					],
-					"readonly": false
-				},
-				"infrastructure_ansible_bundle_run_level": {
+				"infrastructure_deploy_custom_stage_run_level": {
 					"type": "integer",
-					"description": "Run priority index. 0 runs first. If multiple AnsibleBundles are on the same priority they run in parallel.",
+					"description": "Run priority index. 0 runs first. If multiple StageDefinitions are on the same priority they run in parallel.",
 					"required": true,
 					"minimum": 0
 				},
-				"infrastructure_ansible_runner_output_json": {
+				"infrastructure_deploy_custom_stage_exec_output_json": {
 					"type": [
 						"string",
 						"null"
@@ -61,7 +52,7 @@ class InfrastructureAnsibleBundle extends ObjectBase
 					"type": "string",
 					"description": "The schema type",
 					"enum": [
-						"InfrastructureAnsibleBundle"
+						"InfrastructureCustomDeployStage"
 					],
 					"readonly": true
 				}

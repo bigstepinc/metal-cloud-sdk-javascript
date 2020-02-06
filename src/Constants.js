@@ -1,7 +1,5 @@
 module.exports =
-class Constants
-{
-	/**
+/**
 	 * @class
 	 */
 	
@@ -2537,4 +2535,3 @@ class Constants
 		}
 	};
 	
-}

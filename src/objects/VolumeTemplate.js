@@ -30,11 +30,22 @@ class VolumeTemplate extends ObjectBase
 						"null",
 						"string"
 					],
-					"description": "The volume template's unique label. It is editable and can be used to call API functions.",
+					"description": "The volume template's label. It is editable and can be used to call API functions.",
 					"minLength": 1,
 					"maxLength": 63,
 					"required": true,
 					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$"
+				},
+				"volume_template_label_unique": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "The volume template's unique label. Is <volume_template_label>@<user_id>.",
+					"minLength": 1,
+					"maxLength": 83,
+					"required": false,
+					"readonly": true
 				},
 				"volume_template_display_name": {
 					"type": "string",
@@ -86,6 +97,15 @@ class VolumeTemplate extends ObjectBase
 					"default": null,
 					"readonly": true
 				},
+				"volume_template_updated_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "ISO 8601 timestamp which holds the date and time when the VolumeTemplate was edited. Example format: 2013-11-29T13:00:01Z.",
+					"default": "0000-00-00T00:00:00Z",
+					"readonly": true
+				},
 				"user_id": {
 					"type": [
 						"integer",
@@ -125,45 +145,52 @@ class VolumeTemplate extends ObjectBase
 					"default": "not_deprecated",
 					"description": "The deprecation status of the volume template."
 				},
-				"os_asset_id_bootloader_c0_pcx86_local_install": {
+				"os_template_architecture": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "The architecture of the OS template."
+				},
+				"os_template_credentials": {
+					"type": [
+						"OSTemplateCredentials",
+						"null"
+					],
+					"description": "OSTemplate credentials.",
+					"default": null
+				},
+				"os_asset_id_bootloader_local_install": {
 					"type": [
 						"integer",
 						"string",
 						"null"
 					],
-					"description": "PCX86 bootloader used for the local install of OS templates.",
+					"description": "Bootloader used for the local install of OS templates.",
 					"required": false,
 					"default": null
 				},
-				"os_asset_id_bootloader_c0_pcx86_os_boot": {
+				"os_asset_id_bootloader_os_boot": {
 					"type": [
 						"integer",
 						"string",
 						"null"
 					],
-					"description": "PCX86 bootloader used for the OS boot of OS templates.",
+					"description": "Bootloader used for the OS boot of OS templates.",
 					"required": false,
 					"default": null
 				},
-				"os_asset_id_bootloader_c7_efi_local_install": {
-					"type": [
-						"integer",
-						"string",
-						"null"
+				"volume_template_tags": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"description": ""
+					},
+					"description": "List of tags representative for the VolumeTemplate.",
+					"default": [
+						
 					],
-					"description": "EFI bootloader used for the local install of OS templates.",
-					"required": false,
-					"default": null
-				},
-				"os_asset_id_bootloader_c7_efi_os_boot": {
-					"type": [
-						"integer",
-						"string",
-						"null"
-					],
-					"description": "EFI bootloader used for the OS boot of OS templates.",
-					"required": false,
-					"default": null
+					"required": false
 				},
 				"type": {
 					"type": "string",

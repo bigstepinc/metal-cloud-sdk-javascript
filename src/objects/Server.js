@@ -151,6 +151,18 @@ class Server extends ObjectBase
 					"description": "The <a:schema>ServerDisk<\/a:schema> objects",
 					"default": null
 				},
+				"server_tags": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"description": ""
+					},
+					"description": "List of tags representative for the Server.",
+					"default": [
+						
+					],
+					"required": false
+				},
 				"type": {
 					"type": "string",
 					"description": "The schema type",

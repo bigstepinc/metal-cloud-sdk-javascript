@@ -2,7 +2,7 @@ const ObjectBase = require("./ObjectBase");
 
 
 module.exports = 
-class AnsibleBundle extends ObjectBase
+class HTTPRequest extends ObjectBase
 {
 	/**
 	 * @protected
@@ -12,32 +12,30 @@ class AnsibleBundle extends ObjectBase
 	_schemaDefinition()
 	{
 		return {
-			"description": "An Ansible bundle contains an Ansible project as a single archive file, usually .zip",
+			"description": "A HTTP request definition compatible with the standard Web Fetch API.",
 			"type": "object",
 			"properties": {
-				"ansible_bundle_archive_filename": {
+				"url": {
 					"type": "string",
-					"description": "For example: ansible_install_some_stuff.zip",
-					"maxLength": 200,
-					"minLength": 1,
-					"required": true
+					"description": "For example: https://api.dummy.com/something?m=3. Template-like variables are supported: https://${{instance_subdomain_permanent}}/some-app-endpoint/?key=${{secret_id_of_something}}",
+					"required": true,
+					"minLength": 4,
+					"maxLength": 2083
 				},
-				"ansible_bundle_archive_contents_base64": {
+				"options": {
 					"type": [
-						"string",
+						"WebFetchAPIOptions",
 						"null"
 					],
-					"description": "ZIP archive in base64 format.",
-					"maxLength": 67108864,
-					"minLength": 4,
-					"required": false,
-					"default": null
+					"description": "Web Fetch API options such as the HTTP method (GET, PUT, POST, DELETE, etc.), body, headers, etc.",
+					"default": null,
+					"readonly": false
 				},
 				"type": {
 					"type": "string",
 					"description": "The schema type",
 					"enum": [
-						"AnsibleBundle"
+						"HTTPRequest"
 					],
 					"readonly": false
 				}

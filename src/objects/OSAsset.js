@@ -31,7 +31,6 @@ class OSAsset extends ObjectBase
 						"null"
 					],
 					"description": "Owner. Delegates of this user can manage his Ansible bundles as well. When null, defaults to the API authenticated user.",
-					"default": null,
 					"readonly": false,
 					"required": false
 				},
@@ -41,22 +40,15 @@ class OSAsset extends ObjectBase
 						"null"
 					],
 					"description": "The user which last updated the bundle.",
-					"default": null,
 					"readonly": true,
 					"required": false
-				},
-				"os_asset_is_public": {
-					"type": "boolean",
-					"description": "Public assets are published by us and are accessible by all users.",
-					"default": false,
-					"readonly": true
 				},
 				"os_asset_filename": {
 					"type": "string",
 					"description": "Filename of the OS asset file.",
 					"minLength": 1,
 					"maxLength": 100,
-					"required": true
+					"required": false
 				},
 				"os_asset_file_size_bytes": {
 					"type": "integer",
@@ -68,8 +60,7 @@ class OSAsset extends ObjectBase
 						"text/plain"
 					],
 					"description": "File mime of the OS asset file.",
-					"type": "string",
-					"default": "application/octet-stream"
+					"type": "string"
 				},
 				"os_asset_contents_base64": {
 					"type": [
@@ -77,7 +68,6 @@ class OSAsset extends ObjectBase
 						"null"
 					],
 					"description": "Stored contents in base 64.",
-					"default": null,
 					"required": false
 				},
 				"os_asset_contents_sha256_hex": {
@@ -104,9 +94,24 @@ class OSAsset extends ObjectBase
 						"string",
 						"null"
 					],
-					"default": null,
 					"description": "URL from which to serve the file. If just absolute pathname, the file will be served from our repo. If a complete http(s) URL it will be used as is. If os_asset_contents_base64 is set this will be ignored.",
 					"readonly": false,
+					"required": false
+				},
+				"os_asset_secret_names": {
+					"type": [
+						"array",
+						"null"
+					],
+					"description": "Names of the secrets used on this OSAsset.",
+					"required": false
+				},
+				"os_asset_variable_names": {
+					"type": [
+						"array",
+						"null"
+					],
+					"description": "Names of the variables used on this OSAsset.",
 					"required": false
 				},
 				"os_asset_created_timestamp": {
