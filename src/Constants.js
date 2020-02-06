@@ -1,7 +1,5 @@
 module.exports =
-class Constants
-{
-	/**
+/**
 	 * @class
 	 */
 	
@@ -249,34 +247,6 @@ class Constants
 		static get AFC_TYPE_DEBUG_RPC_SERVER()
 		{
 			return "debug_rpc_server";
-		}
-	
-	
-		/**
-		 * Run the Ansible bundle at the end of a deploy.
-		 * Visibility: public.
-		 *
-		 *
-		 *
-		 * @returns {string}
-		 */
-		static get ANSIBLE_RUN_POST_DEPLOY()
-		{
-			return "post_deploy";
-		}
-	
-	
-		/**
-		 * Run the Ansible bundle before a deploy starts.
-		 * Visibility: public.
-		 *
-		 * Useful in cases such as rebalancing a cluster before removing healthy nodes.
-		 *
-		 * @returns {string}
-		 */
-		static get ANSIBLE_RUN_PRE_DEPLOY()
-		{
-			return "pre_deploy";
 		}
 	
 	
@@ -2439,6 +2409,104 @@ class Constants
 	
 	
 		/**
+		 * OSAsset usage bootloader.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get OS_ASSET_USAGE_BOOTLOADER()
+		{
+			return "bootloader";
+		}
+	
+	
+		/**
+		 * OSAsset usage bootloader config.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get OS_ASSET_USAGE_BOOTLOADER_CONFIG()
+		{
+			return "bootloader_config";
+		}
+	
+	
+		/**
+		 * OSAsset usage ipxe config local install.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get OS_ASSET_USAGE_IPXE_CONFIG_LOCAL_INSTALL()
+		{
+			return "ipxe_config_local_install";
+		}
+	
+	
+		/**
+		 * OSAsset usage ipxe config os boot.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get OS_ASSET_USAGE_IPXE_CONFIG_OS_BOOT()
+		{
+			return "ipxe_config_os_boot";
+		}
+	
+	
+		/**
+		 * OSAsset usage ONIE installer.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get OS_ASSET_USAGE_ONIE_INSTALLER()
+		{
+			return "onie_installer";
+		}
+	
+	
+		/**
+		 * OSTemplate architecture PCx86.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get OS_TEMPLATE_ARCHITECTURE_PCX86()
+		{
+			return "pcx86";
+		}
+	
+	
+		/**
+		 * OSTemplate architecture UEFI.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get OS_TEMPLATE_ARCHITECTURE_UEFI()
+		{
+			return "uefi";
+		}
+	
+	
+		/**
 		 * Prices key for private datacenters default prices.
 		 * Visibility: public.
 		 *
@@ -3635,6 +3703,34 @@ class Constants
 	
 	
 		/**
+		 * Execute the stage at the end of a deploy.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get STAGE_EXEC_POST_DEPLOY()
+		{
+			return "post_deploy";
+		}
+	
+	
+		/**
+		 * Execute the stage before a deploy starts.
+		 * Visibility: public.
+		 *
+		 * Useful in cases such as rebalancing a cluster before removing healthy nodes.
+		 *
+		 * @returns {string}
+		 */
+		static get STAGE_EXEC_PRE_DEPLOY()
+		{
+			return "pre_deploy";
+		}
+	
+	
+		/**
 		 * Storage Drive.
 		 * Visibility: private.
 		 *
@@ -4251,20 +4347,6 @@ class Constants
 	
 	
 		/**
-		 * Volume template ansible bundle local installer.
-		 * Visibility: public.
-		 *
-		 * Ansible bundle for local install.
-		 *
-		 * @returns {string}
-		 */
-		static get VOLUME_TEMPLATE_ANSIBLE_BUNDLE_LOCAL_INSTALLER()
-		{
-			return "ansible_bundle_local_installer";
-		}
-	
-	
-		/**
 		 * Volume template ansible bundle OS boot post install.
 		 * Visibility: public.
 		 *
@@ -4275,6 +4357,20 @@ class Constants
 		static get VOLUME_TEMPLATE_ANSIBLE_BUNDLE_OS_BOOT_POST_INSTALL()
 		{
 			return "ansible_bundle_os_boot_post_install";
+		}
+	
+	
+		/**
+		 * Volume template ansible bundle OS install.
+		 * Visibility: public.
+		 *
+		 * Ansible bundle for the OS install.
+		 *
+		 * @returns {string}
+		 */
+		static get VOLUME_TEMPLATE_ANSIBLE_BUNDLE_OS_INSTALL()
+		{
+			return "ansible_bundle_os_install";
 		}
 	
 	
@@ -4446,4 +4542,3 @@ class Constants
 		}
 	};
 	
-}

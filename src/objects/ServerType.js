@@ -146,6 +146,18 @@ class ServerType extends ObjectBase
 					"description": "Number of servers provisioned. Used only for <code>infrastructure_deploy()<\/code>.",
 					"default": null
 				},
+				"server_type_tags": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"description": ""
+					},
+					"description": "List of tags representative for the ServerType.",
+					"default": [
+						
+					],
+					"required": false
+				},
 				"type": {
 					"type": "string",
 					"description": "The schema type",

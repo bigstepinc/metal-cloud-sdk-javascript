@@ -302,6 +302,18 @@ class InstanceArray extends ObjectBase
 					],
 					"description": "The volume template ID (or name) to use if the servers in the InstanceArray have local disks. ",
 					"default": null
+				},
+				"instance_array_tags": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"description": ""
+					},
+					"description": "List of tags representative for the InstanceArray.",
+					"default": [
+						
+					],
+					"required": false
 				}
 			}
 		};

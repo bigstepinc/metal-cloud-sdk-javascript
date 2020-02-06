@@ -48,7 +48,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 282 functions available on endpoint.
+	// 310 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1375,66 +1375,6 @@ class API extends JSONRPC.Client
 		return await this.rpc("secret_delete", Array.prototype.slice.call(arguments));
 	}
 
-	async infrastructure_refresh_usage_stats(strInfrastructureID)
-	{
-		return await this.rpc("infrastructure_refresh_usage_stats", Array.prototype.slice.call(arguments));
-	}
-
-	async os_asset_assign_to_os_template(nOSAssetID, strVolumeTemplateID)
-	{
-		return await this.rpc("os_asset_assign_to_os_template", Array.prototype.slice.call(arguments));
-	}
-
-	async os_asset_is_assigned_to_os_template(nOSAssetID, strVolumeTemplateID)
-	{
-		return await this.rpc("os_asset_is_assigned_to_os_template", Array.prototype.slice.call(arguments));
-	}
-
-	async os_template_os_assets(nVolumeTemplateID)
-	{
-		return await this.rpc("os_template_os_assets", Array.prototype.slice.call(arguments));
-	}
-
-	async infrastructures_statistics()
-	{
-		return await this.rpc("infrastructures_statistics", Array.prototype.slice.call(arguments));
-	}
-
-	async subnet_pools_statistics()
-	{
-		return await this.rpc("subnet_pools_statistics", Array.prototype.slice.call(arguments));
-	}
-
-	async os_asset_create(strUserID, objOSAsset)
-	{
-		return await this.rpc("os_asset_create", Array.prototype.slice.call(arguments));
-	}
-
-	async os_assets(strUserID, strUserIDOwner = null)
-	{
-		return await this.rpc("os_assets", Array.prototype.slice.call(arguments));
-	}
-
-	async os_asset_get(nOSAssetID)
-	{
-		return await this.rpc("os_asset_get", Array.prototype.slice.call(arguments));
-	}
-
-	async os_asset_update(nOSAssetID, objOSAsset)
-	{
-		return await this.rpc("os_asset_update", Array.prototype.slice.call(arguments));
-	}
-
-	async os_asset_delete(nOSAssetID)
-	{
-		return await this.rpc("os_asset_delete", Array.prototype.slice.call(arguments));
-	}
-
-	async os_asset_get_stored_content(nOSAssetID)
-	{
-		return await this.rpc("os_asset_get_stored_content", Array.prototype.slice.call(arguments));
-	}
-
 	async os_template_create(strUserID, objOSTemplate)
 	{
 		return await this.rpc("os_template_create", Array.prototype.slice.call(arguments));
@@ -1445,19 +1385,219 @@ class API extends JSONRPC.Client
 		return await this.rpc("os_templates", Array.prototype.slice.call(arguments));
 	}
 
-	async os_template_get(strVolumeTemplateID)
+	async os_template_get(nOSTemplateID)
 	{
 		return await this.rpc("os_template_get", Array.prototype.slice.call(arguments));
 	}
 
-	async os_template_update(strVolumeTemplateID, objOSTemplate)
+	async os_template_update(nOSTemplateID, objOSTemplate)
 	{
 		return await this.rpc("os_template_update", Array.prototype.slice.call(arguments));
 	}
 
-	async os_template_delete(strVolumeTemplateID)
+	async os_template_delete(nOSTemplateID)
 	{
 		return await this.rpc("os_template_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_tags_add(strInfrastructureID, arrInfrastructureTagsNames)
+	{
+		return await this.rpc("infrastructure_tags_add", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_tags_set(strInfrastructureID, arrInfrastructureTagsNames)
+	{
+		return await this.rpc("infrastructure_tags_set", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_tags(strInfrastructureID)
+	{
+		return await this.rpc("infrastructure_tags", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_tags_remove(strInfrastructureID, arrInfrastructureTagsNames)
+	{
+		return await this.rpc("infrastructure_tags_remove", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_tags_add(strInstanceID, arrInstanceTagsNames)
+	{
+		return await this.rpc("instance_tags_add", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_tags_set(strInstanceID, arrInstanceTagsNames)
+	{
+		return await this.rpc("instance_tags_set", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_tags(strInstanceID)
+	{
+		return await this.rpc("instance_tags", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_tags_remove(strInstanceID, arrInstanceTagsNames)
+	{
+		return await this.rpc("instance_tags_remove", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_array_tags_add(strInstanceArrayID, arrInstanceArrayTagsNames)
+	{
+		return await this.rpc("instance_array_tags_add", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_array_tags_set(strInstanceArrayID, arrInstanceArrayTagsNames)
+	{
+		return await this.rpc("instance_array_tags_set", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_array_tags(strInstanceArrayID)
+	{
+		return await this.rpc("instance_array_tags", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_array_tags_remove(strInstanceArrayID, arrInstanceArrayTags)
+	{
+		return await this.rpc("instance_array_tags_remove", Array.prototype.slice.call(arguments));
+	}
+
+	async os_template_tags_add(strVolumeTemplateID, arrOSTemplateTagsNames)
+	{
+		return await this.rpc("os_template_tags_add", Array.prototype.slice.call(arguments));
+	}
+
+	async os_template_tags_set(strVolumeTemplateID, arrOSTemplateTagsNames)
+	{
+		return await this.rpc("os_template_tags_set", Array.prototype.slice.call(arguments));
+	}
+
+	async os_template_tags(strVolumeTemplateID)
+	{
+		return await this.rpc("os_template_tags", Array.prototype.slice.call(arguments));
+	}
+
+	async os_template_tags_remove(strVolumeTemplateID, arrOSTemplateTagsNames)
+	{
+		return await this.rpc("os_template_tags_remove", Array.prototype.slice.call(arguments));
+	}
+
+	async variables(strUserID, strUsage = null)
+	{
+		return await this.rpc("variables", Array.prototype.slice.call(arguments));
+	}
+
+	async variable_get(nVariableID)
+	{
+		return await this.rpc("variable_get", Array.prototype.slice.call(arguments));
+	}
+
+	async variable_create(strUserID, objVariable)
+	{
+		return await this.rpc("variable_create", Array.prototype.slice.call(arguments));
+	}
+
+	async variable_update(nVariableID, objVariable)
+	{
+		return await this.rpc("variable_update", Array.prototype.slice.call(arguments));
+	}
+
+	async variable_delete(nVariableID)
+	{
+		return await this.rpc("variable_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async os_template_add_os_asset(nOSTemplateID, nOSAssetID, strOSAssetFilePath)
+	{
+		return await this.rpc("os_template_add_os_asset", Array.prototype.slice.call(arguments));
+	}
+
+	async os_template_remove_os_asset(nOSTemplateID, nOSAssetID)
+	{
+		return await this.rpc("os_template_remove_os_asset", Array.prototype.slice.call(arguments));
+	}
+
+	async os_template_update_os_asset_path(nOSTemplateID, nOSAssetID, strOSAssetFilePath)
+	{
+		return await this.rpc("os_template_update_os_asset_path", Array.prototype.slice.call(arguments));
+	}
+
+	async os_template_has_os_asset(nOSTemplateID, nOSAssetID)
+	{
+		return await this.rpc("os_template_has_os_asset", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_deploy_custom_stages(strInfrastructureID, strStageDefinitionType)
+	{
+		return await this.rpc("infrastructure_deploy_custom_stages", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_deploy_custom_stage_add_into_runlevel(strInfrastructureID, nStageDefinitionID, nRunLevel, strStageRunGroup)
+	{
+		return await this.rpc("infrastructure_deploy_custom_stage_add_into_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_deploy_custom_stage_move_into_runlevel(strInfrastructureID, nStageDefinitionID, strStageRunGroup, nSourceRunLevel, nDestinationRunLevel)
+	{
+		return await this.rpc("infrastructure_deploy_custom_stage_move_into_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_deploy_custom_stage_delete_from_runlevel(strInfrastructureID, nStageDefinitionID, nRunLevel, strStageRunGroup)
+	{
+		return await this.rpc("infrastructure_deploy_custom_stage_delete_from_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async stage_definitions(strUserID)
+	{
+		return await this.rpc("stage_definitions", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_deploy_custom_stage_exec(strInfrastructureID, nInfrastructureCustomDeployStageID, objExtraVariables = [])
+	{
+		return await this.rpc("infrastructure_deploy_custom_stage_exec", Array.prototype.slice.call(arguments));
+	}
+
+	async stage_definition_get(nStageDefinitionID)
+	{
+		return await this.rpc("stage_definition_get", Array.prototype.slice.call(arguments));
+	}
+
+	async stage_definition_create(strUserID, objStageDefinition)
+	{
+		return await this.rpc("stage_definition_create", Array.prototype.slice.call(arguments));
+	}
+
+	async stage_definition_update(nStageDefinitionID, objStageDefinition)
+	{
+		return await this.rpc("stage_definition_update", Array.prototype.slice.call(arguments));
+	}
+
+	async stage_definition_delete(nStageDefinitionID)
+	{
+		return await this.rpc("stage_definition_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async server_efibootmgr_cleanup(nServerID)
+	{
+		return await this.rpc("server_efibootmgr_cleanup", Array.prototype.slice.call(arguments));
+	}
+
+	async server_ipmi_users_and_networking_cleanup(nServerID)
+	{
+		return await this.rpc("server_ipmi_users_and_networking_cleanup", Array.prototype.slice.call(arguments));
+	}
+
+	async server_interfaces_cleanup(nServerID)
+	{
+		return await this.rpc("server_interfaces_cleanup", Array.prototype.slice.call(arguments));
+	}
+
+	async server_networking_intel_cleanup(nServerID)
+	{
+		return await this.rpc("server_networking_intel_cleanup", Array.prototype.slice.call(arguments));
+	}
+
+	async server_disks_cleanup(nServerID)
+	{
+		return await this.rpc("server_disks_cleanup", Array.prototype.slice.call(arguments));
 	}
 
 

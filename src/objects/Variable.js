@@ -2,7 +2,7 @@ const ObjectBase = require("./ObjectBase");
 
 
 module.exports = 
-class Secret extends ObjectBase
+class Variable extends ObjectBase
 {
 	/**
 	 * @protected
@@ -12,15 +12,15 @@ class Secret extends ObjectBase
 	_schemaDefinition()
 	{
 		return {
-			"description": "Secret item in a vault.",
+			"description": "Variable item in a vault.",
 			"type": "object",
 			"properties": {
-				"secret_id": {
+				"variable_id": {
 					"type": [
 						"integer",
 						"null"
 					],
-					"description": "Unique secret ID.",
+					"description": "Unique variable ID.",
 					"required": false,
 					"default": null
 				},
@@ -29,7 +29,7 @@ class Secret extends ObjectBase
 						"integer",
 						"null"
 					],
-					"description": "Owner. Delegates of this user can manage his secrets as well. When null, defaults to the API authenticated user.",
+					"description": "Owner. Delegates of this user can manage his variables as well. When null, defaults to the API authenticated user.",
 					"required": false,
 					"readonly": false,
 					"default": null
@@ -39,55 +39,48 @@ class Secret extends ObjectBase
 						"integer",
 						"null"
 					],
-					"description": "The user which last updated the secret.",
+					"description": "The user which last updated the variable.",
 					"required": false,
 					"default": null,
 					"readonly": true
 				},
-				"secret_name": {
+				"variable_name": {
 					"type": "string",
-					"description": "Must start with a letter and end with a letter or digit. May contain underscores, latin characters and digits. When copied into the generated variables JSON of an AnsibleBundle execution context, the secret name is used as-is.",
+					"description": "Must start with a letter and end with a letter or digit. May contain underscores, latin characters and digits. When copied into the generated variables JSON of an AnsibleBundle execution context, the variable name is used as-is.",
 					"minLength": 1,
 					"maxLength": 63,
 					"required": true,
 					"pattern": "^[a-z]{1,1}[a-z0-9_]{0,61}[a-z0-9]{1,1}|[a-z]{1,1}$"
 				},
-				"secret_usage": {
+				"variable_usage": {
 					"type": [
 						"string",
 						"null"
 					],
-					"description": "If null, any kind of usage is enabled. Otherwise, a comma separated list of allowed usage types.",
-					"enum": [
-						"ansible_bundle"
-					],
+					"description": "If null, any kind of usage is enabled. Otherwise, a comma separated list of allowed usage types. Possible values: [null, \"ansible_bundle\"].",
 					"required": false,
 					"default": null
 				},
-				"secret_base64": {
-					"type": [
-						"string",
-						"null"
-					],
-					"description": "Secret in base64 format. If the base64 contains binary data, it has to be utf8 encoded to work with Ansible. Cannot be null with <code>secret_create</code>. The secret_base64 property is always returned as <code>null</code> by <code>secrets()</code> and <code>secret_get()</code> (it is not retrievable). When using <code>secret_update()</code> null is allowed, in which case the secret contents are not updated.",
-					"required": false,
-					"default": null
+				"variable_json": {
+					"type": "string",
+					"description": "Variable value in JSON format.",
+					"required": true
 				},
-				"secret_created_timestamp": {
+				"variable_created_timestamp": {
 					"type": [
 						"string",
 						"null"
 					],
-					"description": "Date and time of the secret's creation.",
+					"description": "Date and time of the variable's creation.",
 					"default": null,
 					"readonly": true
 				},
-				"secret_updated_timestamp": {
+				"variable_updated_timestamp": {
 					"type": [
 						"string",
 						"null"
 					],
-					"description": "Date and time of the secret's update (replace).",
+					"description": "Date and time of the variable's update (replace).",
 					"default": null,
 					"readonly": true
 				},
@@ -95,7 +88,7 @@ class Secret extends ObjectBase
 					"type": "string",
 					"description": "The schema type",
 					"enum": [
-						"Secret"
+						"Variable"
 					],
 					"readonly": true
 				}

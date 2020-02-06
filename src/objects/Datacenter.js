@@ -26,6 +26,17 @@ class Datacenter extends ObjectBase
 					"required": true,
 					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$"
 				},
+				"datacenter_name_parent": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Uniquely identifies the datacenter's parent.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": false,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$"
+				},
 				"user_id": {
 					"type": [
 						"integer",
@@ -83,6 +94,17 @@ class Datacenter extends ObjectBase
 					"description": "True for datacenters which are under construction, beeing phased out, are to be avoided temporarily, or no longer exist.",
 					"default": false,
 					"readonly": false,
+					"required": false
+				},
+				"datacenter_tags": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": "string",
+						"description": ""
+					},
+					"description": "List of tags representative for the Datacenter.",
 					"required": false
 				},
 				"type": {

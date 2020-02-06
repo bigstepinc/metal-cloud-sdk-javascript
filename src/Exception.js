@@ -7,6 +7,19 @@ class Exception extends JSONRPC.Exception
 	 */
 
 	/**
+	 * Agent not found.
+	 * @private
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get AGENT_NOT_FOUND()
+	{
+		return 341;
+	}
+
+	/**
 	 * Ansible bundle not found.
 	 * @public
 	 *
@@ -234,6 +247,19 @@ class Exception extends JSONRPC.Exception
 	static get DATACENTER_NOT_FOUND()
 	{
 		return 269;
+	}
+
+	/**
+	 * Datacenter parent not found.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_PARENT_NOT_FOUND()
+	{
+		return 336;
 	}
 
 	/**
@@ -784,6 +810,19 @@ class Exception extends JSONRPC.Exception
 	static get ILLEGAL_ARGUMENT()
 	{
 		return 315;
+	}
+
+	/**
+	 * Can't deploy empty infrastructure.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get INFRASTRUCTURE_DEPLOY_WITH_NO_CHANGES()
+	{
+		return 339;
 	}
 
 	/**
@@ -2256,6 +2295,33 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * The stage definition is deprecated.
+	 * @public
+	 *
+	 * Once a stage definition is deprecated it can no longer be updated or
+	 * referenced in workflows. Existing references are preserved.
+	 *
+	 * @returns {number}
+	 */
+	static get STAGE_DEFINITION_DEPRECATED()
+	{
+		return 340;
+	}
+
+	/**
+	 * Stage definition not found.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get STAGE_DEFINITION_NOT_FOUND()
+	{
+		return 337;
+	}
+
+	/**
 	 * Storage allocation error.
 	 * @public
 	 *
@@ -2892,6 +2958,47 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * Variable name invalid.
+	 * @public
+	 *
+	 * Variable names must start with a letter (a-z), end with a letter or digit
+	 * (a-z0-9), and have as interior characters only letters, digits, and
+	 * underscores. For example: Number_1.
+	 *
+	 * @returns {number}
+	 */
+	static get VARIABLE_NAME_INVALID()
+	{
+		return 335;
+	}
+
+	/**
+	 * Variable name reserved.
+	 * @public
+	 *
+	 * The specified variable name is reserved.
+	 *
+	 * @returns {number}
+	 */
+	static get VARIABLE_NAME_RESERVED()
+	{
+		return 338;
+	}
+
+	/**
+	 * Variable not found.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get VARIABLE_NOT_FOUND()
+	{
+		return 334;
+	}
+
+	/**
 	 * Drive import already cancelled.
 	 * @private
 	 *
@@ -3073,6 +3180,7 @@ class Exception extends JSONRPC.Exception
  * Private error codes are not allowed on public RPC endpoints.
  */
 Exception.arrPrivateErrorConstantNames = [
+	Exception.AGENT_NOT_FOUND,
 	Exception.BOOT_BOOTABLE_DRIVES_NOT_FOUND,
 	Exception.COOKIE_TYPE_NOT_ALLOWED,
 	Exception.DHCP_LEASE_COULD_NOT_FIND_FOR_MAC,
@@ -3156,6 +3264,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.CONTAINER_PLATFORM_NOT_ENOUGH_SPACE_FOR_PERSISTENT_DIRECTORIES,
 	Exception.DATA_LOSS_NOT_CONFIRMED,
 	Exception.DATACENTER_NOT_FOUND,
+	Exception.DATACENTER_PARENT_NOT_FOUND,
 	Exception.DELEGATE_USER_LOGIN_EMAIL_NOT_VERIFIED,
 	Exception.DISK_TYPE_INVALID,
 	Exception.DNS_LABEL_RESERVED,
@@ -3191,6 +3300,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.GENERIC_PUBLIC_ERROR,
 	Exception.HARDWARE_CONFIGURATIONS_NOT_FOUND,
 	Exception.ILLEGAL_ARGUMENT,
+	Exception.INFRASTRUCTURE_DEPLOY_WITH_NO_CHANGES,
 	Exception.INFRASTRUCTURE_NOT_FOUND,
 	Exception.INFRASTRUCTURE_READ_ONLY_WHILE_DEPLOYING,
 	Exception.INFRASTRUCTURE_USER_REMOVE_NOT_ALLOWED,
@@ -3261,6 +3371,8 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.SSH_KEY_INVALID_DATA_PKCS8,
 	Exception.SSH_KEY_UNKNOWN_FORMAT,
 	Exception.SSH_KEY_UNKWOWN_ALGORITHM_IDENTIFIER,
+	Exception.STAGE_DEFINITION_DEPRECATED,
+	Exception.STAGE_DEFINITION_NOT_FOUND,
 	Exception.STORAGE_ALLOCATION_ERROR,
 	Exception.STORAGE_SNAPSHOT_NOT_FOUND,
 	Exception.STORAGE_VOLUME_TEMPLATE_NOT_FOUND,
@@ -3293,6 +3405,9 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.USER_SSH_KEYS_MAXIMUM_COUNT_EXCEEDED,
 	Exception.USER_SUSPENDED,
 	Exception.USER_TEST_CREDENTIALS_EMAIL_MISMATCH,
+	Exception.VARIABLE_NAME_INVALID,
+	Exception.VARIABLE_NAME_RESERVED,
+	Exception.VARIABLE_NOT_FOUND,
 	Exception.VOLUME_TEMPLATE_DEPRECATED
 ];
 
