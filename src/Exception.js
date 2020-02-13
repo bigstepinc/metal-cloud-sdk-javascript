@@ -2513,6 +2513,32 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * Tag already exists.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get TAG_ALREADY_EXISTS()
+	{
+		return 344;
+	}
+
+	/**
+	 * Tag not found.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get TAG_NOT_FOUND()
+	{
+		return 343;
+	}
+
+	/**
 	 * Specified timespan is greater than allowed.
 	 * @public
 	 *
@@ -2958,6 +2984,19 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * Variable already declared.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get VARIABLE_ALREADY_DECLARED()
+	{
+		return 342;
+	}
+
+	/**
 	 * Variable name invalid.
 	 * @public
 	 *
@@ -3380,6 +3419,8 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.SUBNET_MAXIMUM_COUNT_REACHED,
 	Exception.SUBNET_NETWORK_CHANGING_NOT_ALLOWED,
 	Exception.TABLE_NOT_FOUND,
+	Exception.TAG_ALREADY_EXISTS,
+	Exception.TAG_NOT_FOUND,
 	Exception.TIMESPAN_TOO_GREAT,
 	Exception.TIMESTAMP_INVALID,
 	Exception.UNSUPPORTED_HASH_ALGO,
@@ -3405,6 +3446,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.USER_SSH_KEYS_MAXIMUM_COUNT_EXCEEDED,
 	Exception.USER_SUSPENDED,
 	Exception.USER_TEST_CREDENTIALS_EMAIL_MISMATCH,
+	Exception.VARIABLE_ALREADY_DECLARED,
 	Exception.VARIABLE_NAME_INVALID,
 	Exception.VARIABLE_NAME_RESERVED,
 	Exception.VARIABLE_NOT_FOUND,

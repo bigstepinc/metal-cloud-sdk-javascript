@@ -15,25 +15,25 @@ class OSTemplateCredentials extends ObjectBase
 			"description": "Information needed to connect to an OS installed by an OSTemplate.",
 			"type": "object",
 			"properties": {
-				"initial_user": {
+				"os_template_initial_user": {
 					"type": "string",
 					"description": "User used to connect to the OS installed by the OSTemplate",
 					"default": null,
 					"required": false
 				},
-				"initial_password": {
+				"os_template_initial_password": {
 					"type": "string",
 					"description": "Password of the initial_user property.",
 					"default": null,
 					"required": false
 				},
-				"initial_ssh_port": {
+				"os_template_initial_ssh_port": {
 					"type": "integer",
 					"description": "SSH port used to connect to the installed OS.",
 					"default": null,
 					"required": false
 				},
-				"change_password_after_deploy": {
+				"os_template_change_password_after_deploy": {
 					"type": "boolean",
 					"description": "Option to change the initial_user password on the installed OS after deploy.",
 					"default": null,

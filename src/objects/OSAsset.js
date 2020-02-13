@@ -132,6 +132,17 @@ class OSAsset extends ObjectBase
 					"default": null,
 					"readonly": true
 				},
+				"os_asset_tags": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": "string",
+						"description": ""
+					},
+					"description": "List of tags representative for the OS Asset.",
+					"required": false
+				},
 				"type": {
 					"type": "string",
 					"description": "The schema type.",

@@ -48,7 +48,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 310 functions available on endpoint.
+	// 314 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1598,6 +1598,26 @@ class API extends JSONRPC.Client
 	async server_disks_cleanup(nServerID)
 	{
 		return await this.rpc("server_disks_cleanup", Array.prototype.slice.call(arguments));
+	}
+
+	async os_asset_tags_add(nOSAssetID, arrOSAssetTagsNames)
+	{
+		return await this.rpc("os_asset_tags_add", Array.prototype.slice.call(arguments));
+	}
+
+	async os_asset_tags_set(nOSAssetID, arrOSAssetTagsNames)
+	{
+		return await this.rpc("os_asset_tags_set", Array.prototype.slice.call(arguments));
+	}
+
+	async os_asset_tags(nOSAssetID)
+	{
+		return await this.rpc("os_asset_tags", Array.prototype.slice.call(arguments));
+	}
+
+	async os_asset_tags_remove(nOSAssetID, arrOSAssetTagsNames)
+	{
+		return await this.rpc("os_asset_tags_remove", Array.prototype.slice.call(arguments));
 	}
 
 

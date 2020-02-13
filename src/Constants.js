@@ -3055,6 +3055,76 @@ module.exports =
 	
 	
 		/**
+		 * SERVER_FIRMWARE_UPGRADE_POLICY_ACTION_ACCEPT.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SERVER_FIRMWARE_UPGRADE_POLICY_ACTION_ACCEPT()
+		{
+			return "accept";
+		}
+	
+	
+		/**
+		 * SERVER_FIRMWARE_UPGRADE_POLICY_ACTION_ACCEPT_WITH_CONFIRMATION.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SERVER_FIRMWARE_UPGRADE_POLICY_ACTION_ACCEPT_WITH_CONFIRMATION()
+		{
+			return "accept_with_confirmation";
+		}
+	
+	
+		/**
+		 * SERVER_FIRMWARE_UPGRADE_POLICY_ACTION_DENY.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SERVER_FIRMWARE_UPGRADE_POLICY_ACTION_DENY()
+		{
+			return "deny";
+		}
+	
+	
+		/**
+		 * SERVER_FIRMWARE_UPGRADE_POLICY_STATUS_ACTIVE.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SERVER_FIRMWARE_UPGRADE_POLICY_STATUS_ACTIVE()
+		{
+			return "active";
+		}
+	
+	
+		/**
+		 * SERVER_FIRMWARE_UPGRADE_POLICY_STATUS_STOPPED.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SERVER_FIRMWARE_UPGRADE_POLICY_STATUS_STOPPED()
+		{
+			return "stopped";
+		}
+	
+	
+		/**
 		 * Server interface add-on device role HBA.
 		 * Visibility: private.
 		 *
@@ -3699,6 +3769,34 @@ module.exports =
 		static get SSH_RSA_ALGORITHM_IDENTIFIER()
 		{
 			return "ssh-rsa";
+		}
+	
+	
+		/**
+		 * Ansible bundle stage definition.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get STAGE_DEFINITION_TYPE_ANSIBLE_BUNDLE()
+		{
+			return "AnsibleBundle";
+		}
+	
+	
+		/**
+		 * HTTP request stage definition.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get STAGE_DEFINITION_TYPE_HTTP_REQUEST()
+		{
+			return "HTTPRequest";
 		}
 	
 	
