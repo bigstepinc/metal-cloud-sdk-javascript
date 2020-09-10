@@ -1400,15 +1400,20 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("subnet_prefix_sizes_wan", Array.prototype.slice.call(arguments));
 	}
 
-	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], strISCSIStorageType = "none", nISCSIStorageSizeMBytes = 0, strVolumeTemplateID = null)
+	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], objIndependentInstanceBootDriveConfig = null, arrIndependentInstanceExtraDrivesConfig = null)
 	{
 		return await this.rpc("independent_instance_create", Array.prototype.slice.call(arguments));
 	}
 
-	async instance_label_is_available_assert(strUserIDOwner, strInstanceLabel)
+	async independent_instance_label_is_available_assert (strUserIDOwner, strInstanceLabel)
 	{
-		return await this.rpc("instance_label_is_available_assert", Array.prototype.slice.call(arguments));
-	}
+		return await this.rpc("independent_instance_label_is_available_assert", Array.prototype.slice.call(arguments));
+  }
+  
+  async independent_instance_drive_label_is_available_assert(strInstanceID, strDriveLabel)
+	{
+		return await this.rpc("independent_instance_drive_label_is_available_assert", Array.prototype.slice.call(arguments));
+  }
 
 	async instance_rows(strUserID, arrInstanceIDs = null)
 	{
@@ -1420,10 +1425,40 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("independent_instance_delete", Array.prototype.slice.call(arguments));
 	}
 
-	async independent_instance_storage_expand(strInstanceID, nISCSIStorageSizeMBytes)
+	async independent_instance_boot_drive_replace(strInstanceID, objIndependentInstanceBootDriveConfig)
 	{
-		return await this.rpc("independent_instance_storage_expand", Array.prototype.slice.call(arguments));
-	}
+		return await this.rpc("independent_instance_boot_drive_replace", Array.prototype.slice.call(arguments));
+  }
+
+	async independent_instance_secondary_drive_create(strInstanceID, objIndependentInstanceSecondaryDriveConfig)
+	{
+		return await this.rpc("independent_instance_secondary_drive_create", Array.prototype.slice.call(arguments));
+  }
+
+	async independent_instance_secondary_drive_delete(strDriveID)
+	{
+		return await this.rpc("independent_instance_secondary_drive_delete", Array.prototype.slice.call(arguments));
+  }
+
+	async independent_instance_secondary_drive_replace(strDriveID, objIndependentInstanceBootDriveConfig)
+	{
+		return await this.rpc("independent_instance_secondary_drive_replace", Array.prototype.slice.call(arguments));
+  }
+
+	async independent_instance_drive_storage_expand(strDriveID, nISCSIStorageSizeMBytes)
+	{
+		return await this.rpc("independent_instance_drive_storage_expand", Array.prototype.slice.call(arguments));
+  }
+
+	async independent_instance_get(strInstanceID)
+	{
+		return await this.rpc("independent_instance_get", Array.prototype.slice.call(arguments));
+  }
+
+	async independent_instances(strUserIDOwner)
+	{
+		return await this.rpc("independent_instances", Array.prototype.slice.call(arguments));
+  }
 
 	async independent_instance_firewall_rules_update(strInstanceID, arrFirewallRules)
 	{
@@ -1525,7 +1560,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("secret_delete", Array.prototype.slice.call(arguments));
 	}
 
-	async instance_array_tags_add(strInstanceArrayID, arrInstanceArrayTagsNames)
+  async instance_array_tags_add(strInstanceArrayID, arrInstanceArrayTagsNames)
 	{
 		return await this.rpc("instance_array_tags_add", Array.prototype.slice.call(arguments));
 	}
