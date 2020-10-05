@@ -743,6 +743,11 @@ class ExtendedAPI extends JSONRPC.Client
 	async volume_template_get(strVolumeTemplateID)
 	{
 		return await this.rpc("volume_template_get", Array.prototype.slice.call(arguments));
+  }
+  
+  async volume_template_create(strDriveID, strNewVolumeTemplateLabel, strDescription, strVolumeTemplateDisplayName, strVolumeTemplateBootType = "legacy_only", strVolumeTemplateDeprecationStatus = "not_deprecated", strVolumeTemplateBootMethodsSupported = "pxe_iscsi", arrVolumeTemplateTags = [])
+	{
+		return await this.rpc("volume_template_create", Array.prototype.slice.call(arguments));
 	}
 
 	async user_change_password_encrypted(strUserID, strAESCipherPassword, strRSACipherAESKey, strOldPassword = null)
