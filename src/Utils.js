@@ -1,4 +1,4 @@
-const APIObjects = require("./objects");
+const APIObjects = require("./Objects");
 
 /**
  * @class

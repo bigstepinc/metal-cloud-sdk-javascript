@@ -868,6 +868,19 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * Infrastructure deploy custom stage definition reference not found.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get INFRASTRUCTURE_STAGE_NOT_FOUND()
+	{
+		return 349;
+	}
+
+	/**
 	 * Infrastructure user removal is not allowed.
 	 * @public
 	 *
@@ -1850,6 +1863,21 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * Invalid property.
+	 * @public
+	 *
+	 * When creating/editing products or performing database interrogations, some
+	 * properties and clauses need to be valid in order for the operation to be
+	 * performed. This error is thrown when a function call has invalid elements.
+	 *
+	 * @returns {number}
+	 */
+	static get PROPERTY_IS_INVALID()
+	{
+		return 345;
+	}
+
+	/**
 	 * Mandatory property.
 	 * @public
 	 *
@@ -1959,6 +1987,19 @@ class Exception extends JSONRPC.Exception
 	static get SERVER_DOES_NOT_HAVE_INSTANCE()
 	{
 		return 37;
+	}
+
+	/**
+	 * Server firmware policy label too long.
+	 * @private
+	 *
+	 * Server firmware policy label too long.
+	 *
+	 * @returns {number}
+	 */
+	static get SERVER_FIRMWARE_POLICY_LABEL_TOO_LONG()
+	{
+		return 346;
 	}
 
 	/**
@@ -2498,6 +2539,19 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * Switch device does not exist.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get SWITCH_DEVICE_NOT_FOUND()
+	{
+		return 351;
+	}
+
+	/**
 	 * Table not found.
 	 * @public
 	 *
@@ -3025,10 +3079,23 @@ class Exception extends JSONRPC.Exception
 	}
 
 	/**
+	 * Variable is not defined.
+	 * @public
+	 *
+	 * A variable referenced in a StageDefinition is not defined in the execution context.
+	 *
+	 * @returns {number}
+	 */
+	static get VARIABLE_NOT_DEFINED()
+	{
+		return 350;
+	}
+
+	/**
 	 * Variable not found.
 	 * @public
 	 *
-	 * .
+	 * <schema>Variable</schema> definition object not found.
 	 *
 	 * @returns {number}
 	 */
@@ -3213,6 +3280,32 @@ class Exception extends JSONRPC.Exception
 	{
 		return 215;
 	}
+
+	/**
+	 * Workflow not found.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get WORKFLOW_NOT_FOUND()
+	{
+		return 347;
+	}
+
+	/**
+	 * Workflow stage not found.
+	 * @public
+	 *
+	 * .
+	 *
+	 * @returns {number}
+	 */
+	static get WORKFLOW_STAGE_NOT_FOUND()
+	{
+		return 348;
+	}
 };
 
 /**
@@ -3251,6 +3344,7 @@ Exception.arrPrivateErrorConstantNames = [
 	Exception.PRODUCT_CHANGE_OPERATION_NOT_FOUND,
 	Exception.SERVER_DISK_NOT_FOUND,
 	Exception.SERVER_DOES_NOT_HAVE_INSTANCE,
+	Exception.SERVER_FIRMWARE_POLICY_LABEL_TOO_LONG,
 	Exception.SERVER_HAS_INSTANCE,
 	Exception.SERVER_INTERFACE_NOT_FOUND,
 	Exception.SERVER_NOT_FOUND,
@@ -3342,6 +3436,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.INFRASTRUCTURE_DEPLOY_WITH_NO_CHANGES,
 	Exception.INFRASTRUCTURE_NOT_FOUND,
 	Exception.INFRASTRUCTURE_READ_ONLY_WHILE_DEPLOYING,
+	Exception.INFRASTRUCTURE_STAGE_NOT_FOUND,
 	Exception.INFRASTRUCTURE_USER_REMOVE_NOT_ALLOWED,
 	Exception.INFRASTRUCTURES_MIXING_NOT_ALLOWED,
 	Exception.INSTANCE_ARRAY_EDIT_DETACHING_DRIVES_INVALID_VALUE,
@@ -3388,6 +3483,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.PRODUCT_OPERATION_TYPE_CONFLICTS_PARENT,
 	Exception.PRODUCT_WITH_CHANGES_CANNOT_BE_STARTED,
 	Exception.PRODUCT_WITH_CHANGES_CANNOT_BE_STOPPED,
+	Exception.PROPERTY_IS_INVALID,
 	Exception.PROPERTY_IS_MANDATORY,
 	Exception.PROPERTY_IS_UNKNOWN,
 	Exception.PROPERTY_READ_ONLY,
@@ -3418,6 +3514,7 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.SUBNET_EXHAUSTED,
 	Exception.SUBNET_MAXIMUM_COUNT_REACHED,
 	Exception.SUBNET_NETWORK_CHANGING_NOT_ALLOWED,
+	Exception.SWITCH_DEVICE_NOT_FOUND,
 	Exception.TABLE_NOT_FOUND,
 	Exception.TAG_ALREADY_EXISTS,
 	Exception.TAG_NOT_FOUND,
@@ -3449,8 +3546,11 @@ Exception.arrPublicErrorConstantNames = [
 	Exception.VARIABLE_ALREADY_DECLARED,
 	Exception.VARIABLE_NAME_INVALID,
 	Exception.VARIABLE_NAME_RESERVED,
+	Exception.VARIABLE_NOT_DEFINED,
 	Exception.VARIABLE_NOT_FOUND,
-	Exception.VOLUME_TEMPLATE_DEPRECATED
+	Exception.VOLUME_TEMPLATE_DEPRECATED,
+	Exception.WORKFLOW_NOT_FOUND,
+	Exception.WORKFLOW_STAGE_NOT_FOUND
 ];
 
 module.exports = Exception;

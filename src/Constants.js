@@ -251,6 +251,137 @@ module.exports =
 	
 	
 		/**
+		 * Automanaged instance deferred drive operation create secondary drive.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get AUTOMANAGED_INSTANCE_DEFERRED_DRIVE_OPERATION_TYPE_CREATE_SECONDARY_DRIVE()
+		{
+			return "create_secondary_drive";
+		}
+	
+	
+		/**
+		 * Automanaged instance deferred drive operation delete secondary drive.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get AUTOMANAGED_INSTANCE_DEFERRED_DRIVE_OPERATION_TYPE_DELETE_SECONDARY_DRIVE()
+		{
+			return "delete_secondary_drive";
+		}
+	
+	
+		/**
+		 * Automanaged instance deferred drive operation expand drive.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get AUTOMANAGED_INSTANCE_DEFERRED_DRIVE_OPERATION_TYPE_EXPAND()
+		{
+			return "expand_drive";
+		}
+	
+	
+		/**
+		 * Automanaged instance deferred drive operation replace boot drive.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get AUTOMANAGED_INSTANCE_DEFERRED_DRIVE_OPERATION_TYPE_REPLACE_BOOT_DRIVE()
+		{
+			return "replace_boot_drive";
+		}
+	
+	
+		/**
+		 * Child datacenter management subnet.
+		 * Visibility: private.
+		 *
+		 * Management subnet used for allocating IP addresses to network equipments on
+		 * child datacenters.
+		 *
+		 * @returns {string}
+		 */
+		static get CHILD_DATACENTER_MANAGEMENT_SUBNET()
+		{
+			return "managementSubnet";
+		}
+	
+	
+		/**
+		 * Child datacenter management subnet gateway index.
+		 * Visibility: private.
+		 *
+		 * Management subnet used for allocating IP addresses to network equipments on
+		 * child datacenters.
+		 *
+		 * @returns {string}
+		 */
+		static get CHILD_DATACENTER_MANAGEMENT_SUBNET_GATEWAY_INDEX()
+		{
+			return "managementSubnetGatewayIndex";
+		}
+	
+	
+		/**
+		 * Child datacenter management subnet mask.
+		 * Visibility: private.
+		 *
+		 * Management subnet used for allocating IP addresses to network equipments on
+		 * child datacenters.
+		 *
+		 * @returns {string}
+		 */
+		static get CHILD_DATACENTER_MANAGEMENT_SUBNET_MASK()
+		{
+			return "managementSubnetMask";
+		}
+	
+	
+		/**
+		 * Child datacenter management subnet range.
+		 * Visibility: private.
+		 *
+		 * Management subnet range indexes used for allocating IP addresses to network
+		 * equipments on child datacenters. Range extremities must be separated by '-'.
+		 *
+		 * @returns {string}
+		 */
+		static get CHILD_DATACENTER_MANAGEMENT_SUBNET_RANGE()
+		{
+			return "managementSubnetRange";
+		}
+	
+	
+		/**
+		 * Cisco ACI pod id.
+		 * Visibility: private.
+		 *
+		 * This is the hardcoded pod id for Cisco ACI. It could be removed in the
+		 * future, but for now we will use it.
+		 *
+		 * @returns {string}
+		 */
+		static get CISCO_ACI_POD_ID()
+		{
+			return 1;
+		}
+	
+	
+		/**
 		 * SaaS cluster of type Cloudera.
 		 * Visibility: public.
 		 *
@@ -516,6 +647,20 @@ module.exports =
 		static get CLUSTER_TYPE_VANILLA()
 		{
 			return "vanilla";
+		}
+	
+	
+		/**
+		 * VMware vSphere cluster type.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get CLUSTER_TYPE_VMWARE_VSPHERE()
+		{
+			return "vmware_vsphere";
 		}
 	
 	
@@ -909,6 +1054,76 @@ module.exports =
 		static get DATA_LAKE_TYPE_HDFS()
 		{
 			return "hdfs";
+		}
+	
+	
+		/**
+		 * Datacenter config LAN switch provisioner.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get DATACENTER_CONFIG_SWITCH_PROVISIONER_LAN()
+		{
+			return "LANProvisioner";
+		}
+	
+	
+		/**
+		 * Datacenter config SDN switch provisioner.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get DATACENTER_CONFIG_SWITCH_PROVISIONER_SDN()
+		{
+			return "SDNProvisioner";
+		}
+	
+	
+		/**
+		 * Datacenter config VLAN switch provisioner.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get DATACENTER_CONFIG_SWITCH_PROVISIONER_VLAN()
+		{
+			return "VLANProvisioner";
+		}
+	
+	
+		/**
+		 * Datacenter config VPLS switch provisioner.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get DATACENTER_CONFIG_SWITCH_PROVISIONER_VPLS()
+		{
+			return "VPLSProvisioner";
+		}
+	
+	
+		/**
+		 * Datacenter config VXLAN switch provisioner.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get DATACENTER_CONFIG_SWITCH_PROVISIONER_VXLAN()
+		{
+			return "VXLANProvisioner";
 		}
 	
 	
@@ -2073,6 +2288,34 @@ module.exports =
 	
 	
 		/**
+		 * Network equipment status active.
+		 * Visibility: private.
+		 *
+		 * Active network equipment
+		 *
+		 * @returns {string}
+		 */
+		static get NETWORK_EQUIPMENT_STATUS_ACTIVE()
+		{
+			return "active";
+		}
+	
+	
+		/**
+		 * Network equipment status decommissioned.
+		 * Visibility: private.
+		 *
+		 * Decommissioned network equipment
+		 *
+		 * @returns {string}
+		 */
+		static get NETWORK_EQUIPMENT_STATUS_DECOMMISSIONED()
+		{
+			return "decommissioned";
+		}
+	
+	
+		/**
 		 * Network suspend status not suspended.
 		 * Visibility: public.
 		 *
@@ -2283,6 +2526,20 @@ module.exports =
 	
 	
 		/**
+		 * Operating System ESXi.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get OPERATING_SYSTEM_ESXI()
+		{
+			return "ESXi";
+		}
+	
+	
+		/**
 		 * Operating System None.
 		 * Visibility: public.
 		 *
@@ -2293,6 +2550,20 @@ module.exports =
 		static get OPERATING_SYSTEM_NONE()
 		{
 			return "none";
+		}
+	
+	
+		/**
+		 * Operating System RHEL.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get OPERATING_SYSTEM_RHEL()
+		{
+			return "RHEL";
 		}
 	
 	
@@ -2367,6 +2638,20 @@ module.exports =
 	
 	
 		/**
+		 * Order operation.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get OPERATION_TYPE_ORDERED()
+		{
+			return "ordered";
+		}
+	
+	
+		/**
 		 * Start operation.
 		 * Visibility: public.
 		 *
@@ -2423,86 +2708,730 @@ module.exports =
 	
 	
 		/**
-		 * OSAsset usage bootloader config.
-		 * Visibility: public.
+		 * Admin maintenance write permission.
+		 * Visibility: private.
 		 *
 		 *
 		 *
 		 * @returns {string}
 		 */
-		static get OS_ASSET_USAGE_BOOTLOADER_CONFIG()
+		static get PERMISSION_ADMIN_MAINTENANCE_WRITE()
 		{
-			return "bootloader_config";
+			return "admin_maintenance_write";
 		}
 	
 	
 		/**
-		 * OSAsset usage ipxe config local install.
-		 * Visibility: public.
+		 * AFC Read permission.
+		 * Visibility: private.
 		 *
 		 *
 		 *
 		 * @returns {string}
 		 */
-		static get OS_ASSET_USAGE_IPXE_CONFIG_LOCAL_INSTALL()
+		static get PERMISSION_AFC_READ()
 		{
-			return "ipxe_config_local_install";
+			return "afc_read";
 		}
 	
 	
 		/**
-		 * OSAsset usage ipxe config os boot.
-		 * Visibility: public.
+		 * AFC Write permission.
+		 * Visibility: private.
 		 *
 		 *
 		 *
 		 * @returns {string}
 		 */
-		static get OS_ASSET_USAGE_IPXE_CONFIG_OS_BOOT()
+		static get PERMISSION_AFC_WRITE()
 		{
-			return "ipxe_config_os_boot";
+			return "afc_write";
 		}
 	
 	
 		/**
-		 * OSAsset usage ONIE installer.
-		 * Visibility: public.
+		 * Cloudinit read permission.
+		 * Visibility: private.
 		 *
 		 *
 		 *
 		 * @returns {string}
 		 */
-		static get OS_ASSET_USAGE_ONIE_INSTALLER()
+		static get PERMISSION_CLOUD_INIT_READ()
 		{
-			return "onie_installer";
+			return "cloudinit_read";
 		}
 	
 	
 		/**
-		 * OSTemplate architecture PCx86.
-		 * Visibility: public.
+		 * Cluster read permission.
+		 * Visibility: private.
 		 *
 		 *
 		 *
 		 * @returns {string}
 		 */
-		static get OS_TEMPLATE_ARCHITECTURE_PCX86()
+		static get PERMISSION_CLUSTER_READ()
 		{
-			return "pcx86";
+			return "cluster_read";
 		}
 	
 	
 		/**
-		 * OSTemplate architecture UEFI.
-		 * Visibility: public.
+		 * Cluster write permission.
+		 * Visibility: private.
 		 *
 		 *
 		 *
 		 * @returns {string}
 		 */
-		static get OS_TEMPLATE_ARCHITECTURE_UEFI()
+		static get PERMISSION_CLUSTER_WRITE()
 		{
-			return "uefi";
+			return "cluster_write";
+		}
+	
+	
+		/**
+		 * Container platform read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_CONTAINER_PLATFORM_READ()
+		{
+			return "container_platform_read";
+		}
+	
+	
+		/**
+		 * Container platform write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_CONTAINER_PLATFORM_WRITE()
+		{
+			return "container_platform_write";
+		}
+	
+	
+		/**
+		 * Datacenter read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_DATACENTER_READ()
+		{
+			return "datacenter_read";
+		}
+	
+	
+		/**
+		 * Datacenter write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_DATACENTER_WRITE()
+		{
+			return "datacenter_write";
+		}
+	
+	
+		/**
+		 * Datalake read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_DATALAKE_READ()
+		{
+			return "datalake_read";
+		}
+	
+	
+		/**
+		 * Datalake write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_DATALAKE_WRITE()
+		{
+			return "datalake_write";
+		}
+	
+	
+		/**
+		 * Dataset read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_DATASET_READ()
+		{
+			return "dataset_read";
+		}
+	
+	
+		/**
+		 * Dataset write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_DATASET_WRITE()
+		{
+			return "dataset_write";
+		}
+	
+	
+		/**
+		 * Permission for emails.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_EMAILS_WRITE()
+		{
+			return "emails_write";
+		}
+	
+	
+		/**
+		 * Events read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_EVENTS_READ()
+		{
+			return "events_read";
+		}
+	
+	
+		/**
+		 * Events write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_EVENTS_WRITE()
+		{
+			return "events_write";
+		}
+	
+	
+		/**
+		 * Permission for franchises.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_FRANCHISES_WRITE()
+		{
+			return "franchises_write";
+		}
+	
+	
+		/**
+		 * Infrastructures read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_INFRASTRUCTURES_READ()
+		{
+			return "infrastructures_read";
+		}
+	
+	
+		/**
+		 * Infrastructures write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_INFRASTRUCTURES_WRITE()
+		{
+			return "infrastructures_write";
+		}
+	
+	
+		/**
+		 * Licenses read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_LICENSES_READ()
+		{
+			return "licenses_read";
+		}
+	
+	
+		/**
+		 * Licenses write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_LICENSES_WRITE()
+		{
+			return "licenses_write";
+		}
+	
+	
+		/**
+		 * Maintenance read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_MAINTENANCE_READ()
+		{
+			return "maintenance_read";
+		}
+	
+	
+		/**
+		 * Maintenance write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_MAINTENANCE_WRITE()
+		{
+			return "maintenance_write";
+		}
+	
+	
+		/**
+		 * Permission for reading from monitoring agent.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_MONITORING_AGENT_READ()
+		{
+			return "monitoring_agent_read";
+		}
+	
+	
+		/**
+		 * Permission for writing to monitoring agent.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_MONITORING_AGENT_WRITE()
+		{
+			return "monitoring_agent_write";
+		}
+	
+	
+		/**
+		 * Prices read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_PRICES_READ()
+		{
+			return "prices_read";
+		}
+	
+	
+		/**
+		 * Prices write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_PRICES_WRITE()
+		{
+			return "prices_write";
+		}
+	
+	
+		/**
+		 * Permission for accessing and manipulating resources.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_RESOURCES_WRITE()
+		{
+			return "resources_write";
+		}
+	
+	
+		/**
+		 * Server types read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_SERVER_TYPES_READ()
+		{
+			return "server_types_read";
+		}
+	
+	
+		/**
+		 * Servers read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_SERVERS_READ()
+		{
+			return "servers_read";
+		}
+	
+	
+		/**
+		 * Servers write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_SERVERS_WRITE()
+		{
+			return "servers_write";
+		}
+	
+	
+		/**
+		 * Skip user authenticator.
+		 * Visibility: private.
+		 *
+		 * Use this permission to allow user to not configure a 2FA one time password.
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_SKIP_AUTHENTICATOR()
+		{
+			return "skip_authenticator";
+		}
+	
+	
+		/**
+		 * Skip user limits.
+		 * Visibility: private.
+		 *
+		 * Use this permission to remove user limits.
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_SKIP_USER_LIMITS()
+		{
+			return "skip_user_limits";
+		}
+	
+	
+		/**
+		 * Storage read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_STORAGE_READ()
+		{
+			return "storage_read";
+		}
+	
+	
+		/**
+		 * Storage write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_STORAGE_WRITE()
+		{
+			return "storage_write";
+		}
+	
+	
+		/**
+		 * Subnets read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_SUBNETS_READ()
+		{
+			return "subnets_read";
+		}
+	
+	
+		/**
+		 * Subnets write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_SUBNETS_WRITE()
+		{
+			return "subnets_write";
+		}
+	
+	
+		/**
+		 * Suspend reasons write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_SUSPEND_REASONS_WRITE()
+		{
+			return "suspend_reasons_write";
+		}
+	
+	
+		/**
+		 * Switches read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_SWITCHES_READ()
+		{
+			return "switches_read";
+		}
+	
+	
+		/**
+		 * Switches write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_SWITCHES_WRITE()
+		{
+			return "switches_write";
+		}
+	
+	
+		/**
+		 * Templates read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_TEMPLATES_READ()
+		{
+			return "templates_read";
+		}
+	
+	
+		/**
+		 * Templates write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_TEMPLATES_WRITE()
+		{
+			return "templates_write";
+		}
+	
+	
+		/**
+		 * Threshold read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_THRESHOLD_READ()
+		{
+			return "threshold_read";
+		}
+	
+	
+		/**
+		 * Threshold write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_THRESHOLD_WRITE()
+		{
+			return "threshold_write";
+		}
+	
+	
+		/**
+		 * Users and permission read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_USERS_AND_PERMISSIONS_READ()
+		{
+			return "users_and_permissions_read";
+		}
+	
+	
+		/**
+		 * Users and permission write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_USERS_AND_PERMISSIONS_WRITE()
+		{
+			return "users_and_permissions_write";
+		}
+	
+	
+		/**
+		 * Utilization reports read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_UTILIZATION_REPORTS_READ()
+		{
+			return "utilization_reports_read";
+		}
+	
+	
+		/**
+		 * Variables and secrets read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_VARIABLES_AND_SECRETS_READ()
+		{
+			return "variables_and_secrets_read";
+		}
+	
+	
+		/**
+		 * Variables and secrets write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_VARIABLES_AND_SECRETS_WRITE()
+		{
+			return "variables_and_secrets_write";
+		}
+	
+	
+		/**
+		 * Workflows read permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_WORKFLOWS_READ()
+		{
+			return "workflows_read";
+		}
+	
+	
+		/**
+		 * Workflows write permission.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get PERMISSION_WORKFLOWS_WRITE()
+		{
+			return "workflows_write";
 		}
 	
 	
@@ -2764,6 +3693,20 @@ module.exports =
 	
 	
 		/**
+		 * Resource type network_equipment_controller.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get RESOURCE_TYPE_NETWORK_EQUIPMENT_CONTROLLER()
+		{
+			return "network_equipment_controllers";
+		}
+	
+	
+		/**
 		 * Resource type server.
 		 * Visibility: private.
 		 *
@@ -2844,6 +3787,135 @@ module.exports =
 		static get RESOURCE_UTILIZATION_TYPE_RESERVATION()
 		{
 			return "reservation";
+		}
+	
+	
+		/**
+		 * Samba server hostname.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SAMBA_SERVER_HOSTNAME()
+		{
+			return "samba_server_hostname";
+		}
+	
+	
+		/**
+		 * Samba server ip.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SAMBA_SERVER_IP()
+		{
+			return "samba_server_ip";
+		}
+	
+	
+		/**
+		 * Samba server password.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SAMBA_SERVER_PASSWORD()
+		{
+			return "samba_server_password";
+		}
+	
+	
+		/**
+		 * Samba server username.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SAMBA_SERVER_USERNAME()
+		{
+			return "samba_server_username";
+		}
+	
+	
+		/**
+		 * Samba server Windows kit share name.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SAMBA_SERVER_WINDOWS_KIT_SHARE_NAME()
+		{
+			return "samba_server_windows_kit_share_name";
+		}
+	
+	
+		/**
+		 * SDN provisioner LAN range.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in SDN provisioning that contains two
+		 * numbers separated by '-'.
+		 *
+		 * @returns {string}
+		 */
+		static get SDN_LAN_RANGE()
+		{
+			return "LANVLANRange";
+		}
+	
+	
+		/**
+		 * SDN provisioner VLAN quarantine ID.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in SDN provisioning.
+		 *
+		 * @returns {string}
+		 */
+		static get SDN_QUARANTINE_VLAN_ID()
+		{
+			return "quarantineVLANID";
+		}
+	
+	
+		/**
+		 * SDN provisioner SAN range.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in SDN provisioning that contains two
+		 * numbers separated by '-'.
+		 *
+		 * @returns {string}
+		 */
+		static get SDN_SAN_RANGE()
+		{
+			return "SANVLANRange";
+		}
+	
+	
+		/**
+		 * SDN provisioner WAN range.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in SDN provisioning that contains two
+		 * numbers separated by '-'.
+		 *
+		 * @returns {string}
+		 */
+		static get SDN_WAN_RANGE()
+		{
+			return "WANVLANRange";
 		}
 	
 	
@@ -3675,6 +4747,20 @@ module.exports =
 	
 	
 		/**
+		 * SQL_KEYWORD_NULL.
+		 * Visibility: public.
+		 *
+		 * This constant allows the search API to query for NULL/NOT NULL columns.
+		 *
+		 * @returns {string}
+		 */
+		static get SQL_KEYWORD_NULL()
+		{
+			return "SQL_KEYWORD_NULL";
+		}
+	
+	
+		/**
 		 * DSA algorithm.
 		 * Visibility: public.
 		 *
@@ -3787,6 +4873,49 @@ module.exports =
 	
 	
 		/**
+		 * API call stage definition.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get STAGE_DEFINITION_TYPE_API_CALL()
+		{
+			return "APICall";
+		}
+	
+	
+		/**
+		 * Copy operation.
+		 * Visibility: public.
+		 *
+		 * The copy operation has to have a source and a destination. Multiple resource
+		 * types are supported (HTTP request or SCP location as source, etc.).
+		 *
+		 * @returns {string}
+		 */
+		static get STAGE_DEFINITION_TYPE_COPY()
+		{
+			return "Copy";
+		}
+	
+	
+		/**
+		 * SSH exec command.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get STAGE_DEFINITION_TYPE_EXEC_SSH()
+		{
+			return "SSHExec";
+		}
+	
+	
+		/**
 		 * HTTP request stage definition.
 		 * Visibility: public.
 		 *
@@ -3797,6 +4926,34 @@ module.exports =
 		static get STAGE_DEFINITION_TYPE_HTTP_REQUEST()
 		{
 			return "HTTPRequest";
+		}
+	
+	
+		/**
+		 * JavaScript stage definition.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get STAGE_DEFINITION_TYPE_JAVASCRIPT()
+		{
+			return "JavaScript";
+		}
+	
+	
+		/**
+		 * Workflow stage definition type.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get STAGE_DEFINITION_TYPE_WORKFLOW_REFERENCE()
+		{
+			return "WorkflowReference";
 		}
 	
 	
@@ -4095,6 +5252,34 @@ module.exports =
 	
 	
 		/**
+		 * Switch device Cisco ACI 5.1.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_DRIVER_CISCO_ACI_51()
+		{
+			return "cisco_aci51";
+		}
+	
+	
+		/**
+		 * Switch device driver Cumulus Linux 42.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_DRIVER_CUMULUS_LINUX_42()
+		{
+			return "cumulus42";
+		}
+	
+	
+		/**
 		 * Leaf switch type in topology.
 		 * Visibility: private.
 		 *
@@ -4109,6 +5294,62 @@ module.exports =
 	
 	
 		/**
+		 * Switch device mLAG link backup IP.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_LINK_MLAG_BACKUP_IP()
+		{
+			return "backupIp";
+		}
+	
+	
+		/**
+		 * Switch device mLAG link MAC address.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_LINK_MLAG_MAC_ADDRESS()
+		{
+			return "MACAddress";
+		}
+	
+	
+		/**
+		 * Switch device mLAG link physical interfaces.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_LINK_MLAG_PHYSICAL_INTERFACES()
+		{
+			return "physicalInterfaces";
+		}
+	
+	
+		/**
+		 * Switch device mLAG link.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_LINK_TYPE_MLAG()
+		{
+			return "mlag";
+		}
+	
+	
+		/**
 		 * North switch device.
 		 * Visibility: private.
 		 *
@@ -4119,6 +5360,286 @@ module.exports =
 		static get SWITCH_DEVICE_NORTH()
 		{
 			return "north";
+		}
+	
+	
+		/**
+		 * Other switch device.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_OTHER()
+		{
+			return "other";
+		}
+	
+	
+		/**
+		 * Switch device LAN provisioner.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_PROVISIONER_LAN()
+		{
+			return "lan";
+		}
+	
+	
+		/**
+		 * Switch device SDN provisioner.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_PROVISIONER_SDN()
+		{
+			return "sdn";
+		}
+	
+	
+		/**
+		 * Switch device VLAN provisioner.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_PROVISIONER_VLAN()
+		{
+			return "vlan";
+		}
+	
+	
+		/**
+		 * Switch device VPLS provisioner.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_PROVISIONER_VPLS()
+		{
+			return "vpls";
+		}
+	
+	
+		/**
+		 * Switch device VXLAN provisioner.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_PROVISIONER_VXLAN()
+		{
+			return "vxlan";
+		}
+	
+	
+		/**
+		 * Application Profile object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_APPLICATION_PROFILE()
+		{
+			return "ApplicationProfile";
+		}
+	
+	
+		/**
+		 * Bridge Domain object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_BRIDGE_DOMAIN()
+		{
+			return "BridgeDomain";
+		}
+	
+	
+		/**
+		 * Contract object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_CONTRACT()
+		{
+			return "Contract";
+		}
+	
+	
+		/**
+		 * Contract filter object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_CONTRACT_FILTER()
+		{
+			return "ContractFilter";
+		}
+	
+	
+		/**
+		 * Contract Subject object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_CONTRACT_SUBJECT()
+		{
+			return "ContractSubject";
+		}
+	
+	
+		/**
+		 * DHCP Relay Policy object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_DHCP_RELAY_POLICY()
+		{
+			return "DHCPRelayPolicy";
+		}
+	
+	
+		/**
+		 * DHCP Relay Provider object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_DHCP_RELAY_PROVIDER()
+		{
+			return "DHCPRelayProvider";
+		}
+	
+	
+		/**
+		 * EPG object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_EPG()
+		{
+			return "EPG";
+		}
+	
+	
+		/**
+		 * Imported contract object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_IMPORTED_CONTRACT()
+		{
+			return "ImportedContract";
+		}
+	
+	
+		/**
+		 * Physical Domain object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_PHYSICAL_DOMAIN()
+		{
+			return "PhysicalDomain";
+		}
+	
+	
+		/**
+		 * Subnet object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_SUBNET()
+		{
+			return "Subnet";
+		}
+	
+	
+		/**
+		 * Tenant object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_TENANT()
+		{
+			return "Tenant";
+		}
+	
+	
+		/**
+		 * VLAN Pool object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_VLAN_POOL()
+		{
+			return "VLANPool";
+		}
+	
+	
+		/**
+		 * VRF object for SDN switches.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SWITCH_DEVICE_SDN_VRF()
+		{
+			return "VRF";
 		}
 	
 	
@@ -4165,100 +5686,86 @@ module.exports =
 	
 	
 		/**
-		 * User access level - customer.
-		 * Visibility: public.
-		 *
-		 *
-		 *
-		 * @returns {string}
-		 */
-		static get USER_ACCESS_LEVEL_CUSTOMER()
-		{
-			return "customer";
-		}
-	
-	
-		/**
-		 * User access level - developer.
+		 * User access level - basic admin.
 		 * Visibility: private.
 		 *
 		 *
 		 *
 		 * @returns {string}
 		 */
-		static get USER_ACCESS_LEVEL_DEVELOPER()
+		static get USER_ACCESS_LEVEL_BASIC_ADMIN()
 		{
-			return "developer";
+			return "basic_admin";
 		}
 	
 	
 		/**
-		 * User access level - god.
+		 * User access level - full admin.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get USER_ACCESS_LEVEL_FULL_ADMIN()
+		{
+			return "full_admin";
+		}
+	
+	
+		/**
+		 * User access level - root.
 		 * Visibility: private.
 		 *
 		 * Maximum powers, and may change the user access level of other users!
 		 *
 		 * @returns {string}
 		 */
-		static get USER_ACCESS_LEVEL_GOD()
+		static get USER_ACCESS_LEVEL_ROOT()
 		{
-			return "god";
+			return "root";
 		}
 	
 	
 		/**
-		 * User access level - intern.
+		 * User access level - sales admin.
 		 * Visibility: private.
 		 *
 		 *
 		 *
 		 * @returns {string}
 		 */
-		static get USER_ACCESS_LEVEL_INTERN()
+		static get USER_ACCESS_LEVEL_SALES_ADMIN()
 		{
-			return "intern";
+			return "sales_admin";
 		}
 	
 	
 		/**
-		 * User access level - sales.
+		 * User access level - support admin.
 		 * Visibility: private.
 		 *
 		 *
 		 *
 		 * @returns {string}
 		 */
-		static get USER_ACCESS_LEVEL_SALES()
+		static get USER_ACCESS_LEVEL_SUPPORT_ADMIN()
 		{
-			return "sales";
+			return "support_admin";
 		}
 	
 	
 		/**
-		 * User access level - support.
-		 * Visibility: private.
+		 * User access level - user.
+		 * Visibility: public.
 		 *
 		 *
 		 *
 		 * @returns {string}
 		 */
-		static get USER_ACCESS_LEVEL_SUPPORT()
+		static get USER_ACCESS_LEVEL_USER()
 		{
-			return "support";
-		}
-	
-	
-		/**
-		 * User access level - tester.
-		 * Visibility: private.
-		 *
-		 *
-		 *
-		 * @returns {string}
-		 */
-		static get USER_ACCESS_LEVEL_TESTER()
-		{
-			return "tester";
+			return "user";
 		}
 	
 	
@@ -4445,6 +5952,50 @@ module.exports =
 	
 	
 		/**
+		 * VLAN provisioner LAN range.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in VLAN provisioning that contains two
+		 * numbers separated by '-'.
+		 *
+		 * @returns {string}
+		 */
+		static get VLAN_LAN_RANGE()
+		{
+			return "LANVLANRange";
+		}
+	
+	
+		/**
+		 * VLAN provisioner VLAN quarantine ID.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in VLAN provisioning.
+		 *
+		 * @returns {string}
+		 */
+		static get VLAN_QUARANTINE_VLAN_ID()
+		{
+			return "quarantineVLANID";
+		}
+	
+	
+		/**
+		 * VLAN provisioner WAN range.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in VLAN provisioning that contains two
+		 * numbers separated by '-'.
+		 *
+		 * @returns {string}
+		 */
+		static get VLAN_WAN_RANGE()
+		{
+			return "WANVLANRange";
+		}
+	
+	
+		/**
 		 * Volume template ansible bundle OS boot post install.
 		 * Visibility: public.
 		 *
@@ -4613,6 +6164,76 @@ module.exports =
 	
 	
 		/**
+		 * Volume template os bootstrap function provisioner_os_cloudinit_prepare_centos.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get VOLUME_TEMPLATE_OS_BOOTSTRAP_FUNCTION_NAME_PROVISIONER_OS_CLOUDINIT_PREPARE_CENTOS()
+		{
+			return "provisioner_os_cloudinit_prepare_centos";
+		}
+	
+	
+		/**
+		 * Volume template os bootstrap function provisioner_os_cloudinit_prepare_generic_unix.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get VOLUME_TEMPLATE_OS_BOOTSTRAP_FUNCTION_NAME_PROVISIONER_OS_CLOUDINIT_PREPARE_GENERIC_UNIX()
+		{
+			return "provisioner_os_cloudinit_prepare_generic_unix";
+		}
+	
+	
+		/**
+		 * Volume template os bootstrap function provisioner_os_cloudinit_prepare_rhel.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get VOLUME_TEMPLATE_OS_BOOTSTRAP_FUNCTION_NAME_PROVISIONER_OS_CLOUDINIT_PREPARE_RHEL()
+		{
+			return "provisioner_os_cloudinit_prepare_rhel";
+		}
+	
+	
+		/**
+		 * Volume template os bootstrap function provisioner_os_cloudinit_prepare_ubuntu.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get VOLUME_TEMPLATE_OS_BOOTSTRAP_FUNCTION_NAME_PROVISIONER_OS_CLOUDINIT_PREPARE_UBUNTU()
+		{
+			return "provisioner_os_cloudinit_prepare_ubuntu";
+		}
+	
+	
+		/**
+		 * Volume template os bootstrap function provisioner_os_cloudinit_prepare_windows.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get VOLUME_TEMPLATE_OS_BOOTSTRAP_FUNCTION_NAME_PROVISIONER_OS_CLOUDINIT_PREPARE_WINDOWS()
+		{
+			return "provisioner_os_cloudinit_prepare_windows";
+		}
+	
+	
+		/**
 		 * Active status volume template.
 		 * Visibility: public.
 		 *
@@ -4637,6 +6258,193 @@ module.exports =
 		static get VOLUME_TEMPLATE_STATUS_DELETED()
 		{
 			return "deleted";
+		}
+	
+	
+		/**
+		 * The default value for volume_template_version.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get VOLUME_TEMPLATE_VERSION_DEFAULT()
+		{
+			return "0.0.0";
+		}
+	
+	
+		/**
+		 * VPLS provisioner ACL SAN.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in VPLS provisioning.
+		 *
+		 * @returns {string}
+		 */
+		static get VPLS_ACL_SAN()
+		{
+			return "ACLSAN";
+		}
+	
+	
+		/**
+		 * VPLS provisioner ACL WAN.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in VPLS provisioning.
+		 *
+		 * @returns {string}
+		 */
+		static get VPLS_ACL_WAN()
+		{
+			return "ACLWAN";
+		}
+	
+	
+		/**
+		 * VPLS provisioner North WAN VLAN range.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in VPLS provisioning that contains two
+		 * numbers separated by '-'.
+		 *
+		 * @returns {string}
+		 */
+		static get VPLS_NORTH_WAN_VLAN_RANGE()
+		{
+			return "NorthWANVLANRange";
+		}
+	
+	
+		/**
+		 * VPLS provisioner VLAN quarantine ID.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in VPLS provisioning.
+		 *
+		 * @returns {string}
+		 */
+		static get VPLS_QUARANTINE_VLAN_ID()
+		{
+			return "quarantineVLANID";
+		}
+	
+	
+		/**
+		 * VPLS provisioner SAN ACL RANGE.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in VPLS provisioning that contains two
+		 * numbers separated by '-'.
+		 *
+		 * @returns {string}
+		 */
+		static get VPLS_SAN_ACL_RANGE()
+		{
+			return "SANACLRange";
+		}
+	
+	
+		/**
+		 * VPLS provisioner ToR LAN VLAN range.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in VPLS provisioning that contains two
+		 * numbers separated by '-'.
+		 *
+		 * @returns {string}
+		 */
+		static get VPLS_TOR_LAN_VLAN_RANGE()
+		{
+			return "ToRLANVLANRange";
+		}
+	
+	
+		/**
+		 * VPLS provisioner ToR SAN VLAN range.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in VPLS provisioning that contains two
+		 * numbers separated by '-'.
+		 *
+		 * @returns {string}
+		 */
+		static get VPLS_TOR_SAN_VLAN_RANGE()
+		{
+			return "ToRSANVLANRange";
+		}
+	
+	
+		/**
+		 * VPLS provisioner ToR WAN VLAN range.
+		 * Visibility: private.
+		 *
+		 * Datacenter config constant used in VPLS provisioning that contains two
+		 * numbers separated by '-'.
+		 *
+		 * @returns {string}
+		 */
+		static get VPLS_TOR_WAN_VLAN_RANGE()
+		{
+			return "ToRWANVLANRange";
+		}
+	
+	
+		/**
+		 * Web proxy password.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get WEB_PROXY_PASSWORD()
+		{
+			return "web_proxy_password";
+		}
+	
+	
+		/**
+		 * Web proxy server IP.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get WEB_PROXY_SERVER_IP()
+		{
+			return "web_proxy_server_ip";
+		}
+	
+	
+		/**
+		 * Web proxy port.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get WEB_PROXY_SERVER_PORT()
+		{
+			return "web_proxy_server_port";
+		}
+	
+	
+		/**
+		 * Web proxy username.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get WEB_PROXY_USERNAME()
+		{
+			return "web_proxy_username";
 		}
 	};
 	

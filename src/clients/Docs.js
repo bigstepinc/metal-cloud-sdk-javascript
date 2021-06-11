@@ -2,7 +2,7 @@ const JSONRPC = require("jsonrpc-bidirectional");
 
 const ClientBase = {};
 ClientBase.Plugins = require("./plugins");
-ClientBase.Objects = require("../objects");
+ClientBase.Objects = require("../Objects");
 ClientBase.Utils = require("../Utils");
 
 /**

@@ -2,7 +2,7 @@ const JSONRPC = require("jsonrpc-bidirectional");
 
 const ClientBase = {};
 ClientBase.Plugins = require("./plugins");
-ClientBase.Objects = require("../objects");
+ClientBase.Objects = require("../Objects");
 ClientBase.Utils = require("../Utils");
 
 /**
@@ -48,7 +48,7 @@ class Guest extends JSONRPC.Client
 	}
 
 	
-	// 271 functions available on endpoint.
+	// 276 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1403,6 +1403,31 @@ class Guest extends JSONRPC.Client
 	async threshold_delete(nThresholdID)
 	{
 		return await this.rpc("threshold_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_tags_add(strDriveArrayID, arrDriveArrayTagsNames)
+	{
+		return await this.rpc("drive_array_tags_add", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_tags_set(strDriveArrayID, arrDriveArrayTagsNames)
+	{
+		return await this.rpc("drive_array_tags_set", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_tags(strDriveArrayID)
+	{
+		return await this.rpc("drive_array_tags", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_tags_remove(strDriveArrayID, arrDriveArrayTagsNames)
+	{
+		return await this.rpc("drive_array_tags_remove", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_monitoring_agent_data_get(nInstanceID, nGranularityMinutes = 1, strTimestampStart = null, strTimestampEnd = null)
+	{
+		return await this.rpc("instance_monitoring_agent_data_get", Array.prototype.slice.call(arguments));
 	}
 
 

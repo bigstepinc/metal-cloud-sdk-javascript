@@ -2,7 +2,7 @@ const JSONRPC = require("jsonrpc-bidirectional");
 
 const ClientBase = {};
 ClientBase.Plugins = require("./plugins");
-ClientBase.Objects = require("../objects");
+ClientBase.Objects = require("../Objects");
 ClientBase.Utils = require("../Utils");
 
 /**
@@ -48,7 +48,7 @@ class API extends JSONRPC.Client
 	}
 
 	
-	// 314 functions available on endpoint.
+	// 364 functions available on endpoint.
 
 	async cluster_create(strInfrastructureID, objCluster)
 	{
@@ -1250,7 +1250,7 @@ class API extends JSONRPC.Client
 		return await this.rpc("instance_rows", Array.prototype.slice.call(arguments));
 	}
 
-	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], strISCSIStorageType = "none", nISCSIStorageSizeMBytes = 0, strVolumeTemplateID = null)
+	async independent_instance_create(strUserIDOwner, strLabel, strDatacenterName, strServerTypeID, arrFirewallRules = [], objIndependentInstanceBootDriveConfig = null, arrIndependentInstanceExtraDrivesConfig = null)
 	{
 		return await this.rpc("independent_instance_create", Array.prototype.slice.call(arguments));
 	}
@@ -1373,6 +1373,56 @@ class API extends JSONRPC.Client
 	async secret_delete(nSecretID)
 	{
 		return await this.rpc("secret_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_refresh_usage_stats(strInfrastructureID)
+	{
+		return await this.rpc("infrastructure_refresh_usage_stats", Array.prototype.slice.call(arguments));
+	}
+
+	async os_template_os_assets(nOSTemplateID)
+	{
+		return await this.rpc("os_template_os_assets", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructures_statistics()
+	{
+		return await this.rpc("infrastructures_statistics", Array.prototype.slice.call(arguments));
+	}
+
+	async subnet_pools_statistics()
+	{
+		return await this.rpc("subnet_pools_statistics", Array.prototype.slice.call(arguments));
+	}
+
+	async os_asset_create(strUserID, objOSAsset)
+	{
+		return await this.rpc("os_asset_create", Array.prototype.slice.call(arguments));
+	}
+
+	async os_assets(strUserID, strUserIDOwner = null)
+	{
+		return await this.rpc("os_assets", Array.prototype.slice.call(arguments));
+	}
+
+	async os_asset_get(nOSAssetID)
+	{
+		return await this.rpc("os_asset_get", Array.prototype.slice.call(arguments));
+	}
+
+	async os_asset_update(nOSAssetID, objOSAsset)
+	{
+		return await this.rpc("os_asset_update", Array.prototype.slice.call(arguments));
+	}
+
+	async os_asset_delete(nOSAssetID)
+	{
+		return await this.rpc("os_asset_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async os_asset_get_stored_content(nOSAssetID)
+	{
+		return await this.rpc("os_asset_get_stored_content", Array.prototype.slice.call(arguments));
 	}
 
 	async os_template_create(strUserID, objOSTemplate)
@@ -1505,7 +1555,7 @@ class API extends JSONRPC.Client
 		return await this.rpc("variable_delete", Array.prototype.slice.call(arguments));
 	}
 
-	async os_template_add_os_asset(nOSTemplateID, nOSAssetID, strOSAssetFilePath)
+	async os_template_add_os_asset(nOSTemplateID, nOSAssetID, strOSAssetFilePath, strVolumeTemplateOSAssetVariablesJSON = null)
 	{
 		return await this.rpc("os_template_add_os_asset", Array.prototype.slice.call(arguments));
 	}
@@ -1525,7 +1575,7 @@ class API extends JSONRPC.Client
 		return await this.rpc("os_template_has_os_asset", Array.prototype.slice.call(arguments));
 	}
 
-	async infrastructure_deploy_custom_stages(strInfrastructureID, strStageDefinitionType)
+	async infrastructure_deploy_custom_stages(strInfrastructureID, strStageRunGroup)
 	{
 		return await this.rpc("infrastructure_deploy_custom_stages", Array.prototype.slice.call(arguments));
 	}
@@ -1535,7 +1585,7 @@ class API extends JSONRPC.Client
 		return await this.rpc("infrastructure_deploy_custom_stage_add_into_runlevel", Array.prototype.slice.call(arguments));
 	}
 
-	async infrastructure_deploy_custom_stage_move_into_runlevel(strInfrastructureID, nStageDefinitionID, strStageRunGroup, nSourceRunLevel, nDestinationRunLevel)
+	async infrastructure_deploy_custom_stage_move_into_runlevel(nInfrastructureCustomDeployStageID, nDestinationRunLevel)
 	{
 		return await this.rpc("infrastructure_deploy_custom_stage_move_into_runlevel", Array.prototype.slice.call(arguments));
 	}
@@ -1543,6 +1593,11 @@ class API extends JSONRPC.Client
 	async infrastructure_deploy_custom_stage_delete_from_runlevel(strInfrastructureID, nStageDefinitionID, nRunLevel, strStageRunGroup)
 	{
 		return await this.rpc("infrastructure_deploy_custom_stage_delete_from_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_deploy_custom_stage_delete(nInfrastructureCustomDeployStageID)
+	{
+		return await this.rpc("infrastructure_deploy_custom_stage_delete", Array.prototype.slice.call(arguments));
 	}
 
 	async stage_definitions(strUserID)
@@ -1575,31 +1630,6 @@ class API extends JSONRPC.Client
 		return await this.rpc("stage_definition_delete", Array.prototype.slice.call(arguments));
 	}
 
-	async server_efibootmgr_cleanup(nServerID)
-	{
-		return await this.rpc("server_efibootmgr_cleanup", Array.prototype.slice.call(arguments));
-	}
-
-	async server_ipmi_users_and_networking_cleanup(nServerID)
-	{
-		return await this.rpc("server_ipmi_users_and_networking_cleanup", Array.prototype.slice.call(arguments));
-	}
-
-	async server_interfaces_cleanup(nServerID)
-	{
-		return await this.rpc("server_interfaces_cleanup", Array.prototype.slice.call(arguments));
-	}
-
-	async server_networking_intel_cleanup(nServerID)
-	{
-		return await this.rpc("server_networking_intel_cleanup", Array.prototype.slice.call(arguments));
-	}
-
-	async server_disks_cleanup(nServerID)
-	{
-		return await this.rpc("server_disks_cleanup", Array.prototype.slice.call(arguments));
-	}
-
 	async os_asset_tags_add(nOSAssetID, arrOSAssetTagsNames)
 	{
 		return await this.rpc("os_asset_tags_add", Array.prototype.slice.call(arguments));
@@ -1618,6 +1648,226 @@ class API extends JSONRPC.Client
 	async os_asset_tags_remove(nOSAssetID, arrOSAssetTagsNames)
 	{
 		return await this.rpc("os_asset_tags_remove", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_create(strUserID, objWorkflow)
+	{
+		return await this.rpc("workflow_create", Array.prototype.slice.call(arguments));
+	}
+
+	async workflows(strUserID, strUsage = null, strUserIDOwner = null)
+	{
+		return await this.rpc("workflows", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_get(strWorkflowID)
+	{
+		return await this.rpc("workflow_get", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_update(strWorkflowID, objWorkflow)
+	{
+		return await this.rpc("workflow_update", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_delete(strWorkflowID)
+	{
+		return await this.rpc("workflow_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_deploy_custom_stage_variables_update(nInfrastructureCustomDeployStageID, objVariables)
+	{
+		return await this.rpc("infrastructure_deploy_custom_stage_variables_update", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_deploy_custom_stage_update(nInfrastructureCustomDeployStageID, objInfrastructureCustomDeployStage)
+	{
+		return await this.rpc("infrastructure_deploy_custom_stage_update", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_deploy_custom_stage_add_as_new_runlevel(strInfrastructureID, nStageDefinitionID, strStageRunGroup, nDestinationRunLevel)
+	{
+		return await this.rpc("infrastructure_deploy_custom_stage_add_as_new_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_deploy_custom_stage_move_as_new_runlevel(nInfrastructureCustomDeployStageID, nDestinationRunLevel)
+	{
+		return await this.rpc("infrastructure_deploy_custom_stage_move_as_new_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_deploy_custom_stage_get(nInfrastructureCustomDeployStageID)
+	{
+		return await this.rpc("infrastructure_deploy_custom_stage_get", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_stop(strInstanceID, bKeepDetachingDrives)
+	{
+		return await this.rpc("instance_stop", Array.prototype.slice.call(arguments));
+	}
+
+	async instance_start(strInstanceID)
+	{
+		return await this.rpc("instance_start", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_exec_on_infrastructure(strWorkflowID, strInfrastructureID, objExtraVariables = [])
+	{
+		return await this.rpc("workflow_exec_on_infrastructure", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_exec_on_instance(strWorkflowID, strInstanceID, objExtraVariables = [])
+	{
+		return await this.rpc("workflow_exec_on_instance", Array.prototype.slice.call(arguments));
+	}
+
+	async infrastructure_workflow_stage_exec(strInfrastructureID, nWorkflowStageID, objExtraVariables = [])
+	{
+		return await this.rpc("infrastructure_workflow_stage_exec", Array.prototype.slice.call(arguments));
+	}
+
+	async stage_definition_exec_on_infrastructure(strStageDefinitionID, strInfrastructureID, objExtraVariables = [])
+	{
+		return await this.rpc("stage_definition_exec_on_infrastructure", Array.prototype.slice.call(arguments));
+	}
+
+	async stage_definition_exec_on_instance(strStageDefinitionID, strInstanceID, objExtraVariables = [])
+	{
+		return await this.rpc("stage_definition_exec_on_instance", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_stages(strWorkflowID)
+	{
+		return await this.rpc("workflow_stages", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_stage_update(nWorkflowStageID, objWorkflowStage)
+	{
+		return await this.rpc("workflow_stage_update", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_stage_variables_update(nWorkflowStageID, objVariables)
+	{
+		return await this.rpc("workflow_stage_variables_update", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_stage_move_into_runlevel(nWorkflowStageID, nDestinationRunLevel)
+	{
+		return await this.rpc("workflow_stage_move_into_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_stage_add_as_new_runlevel(strWorkflowID, nStageDefinitionID, nDestinationRunLevel)
+	{
+		return await this.rpc("workflow_stage_add_as_new_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_stage_move_as_new_runlevel(nWorkflowStageID, nDestinationRunLevel)
+	{
+		return await this.rpc("workflow_stage_move_as_new_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_stage_get(nWorkflowStageID)
+	{
+		return await this.rpc("workflow_stage_get", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_stage_add_into_runlevel(strWorkflowID, nStageDefinitionID, nRunLevel)
+	{
+		return await this.rpc("workflow_stage_add_into_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_stage_delete_from_runlevel(strWorkflowID, nStageDefinitionID, nRunLevel)
+	{
+		return await this.rpc("workflow_stage_delete_from_runlevel", Array.prototype.slice.call(arguments));
+	}
+
+	async workflow_stage_delete(nWorkflowStageID)
+	{
+		return await this.rpc("workflow_stage_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_tags_add(strDriveArrayID, arrDriveArrayTagsNames)
+	{
+		return await this.rpc("drive_array_tags_add", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_tags_set(strDriveArrayID, arrDriveArrayTagsNames)
+	{
+		return await this.rpc("drive_array_tags_set", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_tags(strDriveArrayID)
+	{
+		return await this.rpc("drive_array_tags", Array.prototype.slice.call(arguments));
+	}
+
+	async drive_array_tags_remove(strDriveArrayID, arrDriveArrayTagsNames)
+	{
+		return await this.rpc("drive_array_tags_remove", Array.prototype.slice.call(arguments));
+	}
+
+	async os_template_update_os_asset_variables(nOSTemplateID, nOSAssetID, strVolumeTemplateOSAssetVariablesJSON)
+	{
+		return await this.rpc("os_template_update_os_asset_variables", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_label_is_available_assert(strUserIDOwner, strInstanceLabel)
+	{
+		return await this.rpc("independent_instance_label_is_available_assert", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_drive_label_is_available_assert(strInstanceID, strDriveLabel)
+	{
+		return await this.rpc("independent_instance_drive_label_is_available_assert", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_get(strInstanceID)
+	{
+		return await this.rpc("independent_instance_get", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instances(strUserIDOwner)
+	{
+		return await this.rpc("independent_instances", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_boot_drive_replace(strInstanceID, objIndependentInstanceBootDriveConfig)
+	{
+		return await this.rpc("independent_instance_boot_drive_replace", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_secondary_drive_create(strInstanceID, objIndependentInstanceSecondaryDriveConfig)
+	{
+		return await this.rpc("independent_instance_secondary_drive_create", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_secondary_drive_delete(strDriveID)
+	{
+		return await this.rpc("independent_instance_secondary_drive_delete", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_secondary_drive_replace(strDriveID, objIndependentInstanceBootDriveConfig)
+	{
+		return await this.rpc("independent_instance_secondary_drive_replace", Array.prototype.slice.call(arguments));
+	}
+
+	async independent_instance_drive_storage_expand(strDriveID, nISCSIStorageSizeMBytes)
+	{
+		return await this.rpc("independent_instance_drive_storage_expand", Array.prototype.slice.call(arguments));
+	}
+
+	async subnet_pools_forced_only(strDatacenterName, nUserID, nInfrastructureID)
+	{
+		return await this.rpc("subnet_pools_forced_only", Array.prototype.slice.call(arguments));
+	}
+
+	async user_get_by_email(userEmail)
+	{
+		return await this.rpc("user_get_by_email", Array.prototype.slice.call(arguments));
+	}
+
+	async subnet_ips(strSubnetID)
+	{
+		return await this.rpc("subnet_ips", Array.prototype.slice.call(arguments));
 	}
 
 

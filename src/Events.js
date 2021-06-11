@@ -840,6 +840,189 @@ class EventTypes
 	}
 
 	/**
+	 * Blocked datacenter diagnostics AFCs cleaned up.
+	 * Severity: info.
+	 *
+	 * Cleanup blocked AFCS as a result of running the datacenter_diagnostics function.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_BLOCKED_AFC_CLEANED_UP()
+	{
+		return 429;
+	}
+
+	/**
+	 * Datacenter diagnostics agent to server.
+	 * Severity: info.
+	 *
+	 * Check that the datacenter agents are able to reach a provisioned server.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_DC_AGENT_TO_SERVER_CONNECTION_CHECKED()
+	{
+		return 438;
+	}
+
+	/**
+	 * Datacenter diagnostics l3 SAN interfaces.
+	 * Severity: info.
+	 *
+	 * Check that the datacenter agents are able to reach a server's L3 SAN interfaces.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_L3_SAN_INTERFACES_CHECKED()
+	{
+		return 434;
+	}
+
+	/**
+	 * Datacenter diagnostics quarantine server to dc agents.
+	 * Severity: info.
+	 *
+	 * Check that a server can reach the datacenter agents from the quarantine network.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_QUARANTINE_SERVER_TO_AGENT_CONNECTION_CHECKED()
+	{
+		return 437;
+	}
+
+	/**
+	 * Datacenter diagnostics agents can reach the quarantine L3 interface.
+	 * Severity: info.
+	 *
+	 * Check that the datacenter agents machine is able to reach the quarantine L3 interface.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_REACH_L3_INTERFACE_CHECKED()
+	{
+		return 431;
+	}
+
+	/**
+	 * Datacenter diagnostics agents can reach OOB network.
+	 * Severity: info.
+	 *
+	 * Check that the datacenter agents machine is able to reach the OOB network.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_REACH_OOB_NETWORK_CHECKED()
+	{
+		return 430;
+	}
+
+	/**
+	 * Datacenter diagnostics repository DNS record overridden.
+	 * Severity: info.
+	 *
+	 * Check that repository DNS record is overridden by the DNS agent.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_REPO_DNS_RECORD_CHECKED()
+	{
+		return 440;
+	}
+
+	/**
+	 * Datacenter diagnostics resolve repository hostname.
+	 * Severity: info.
+	 *
+	 * Check that the datacenter agents machine is able to resolve the repository
+	 * hostname using one of the DNS servers configured in the datacenter configuration.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_RESOLVE_REPO_CHECKED()
+	{
+		return 433;
+	}
+
+	/**
+	 * Datacenter diagnostics storage SAN interface.
+	 * Severity: info.
+	 *
+	 * Check that the datacenter agents machine is able to reach the storage's SAN interface.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_SAN_ARRAY_INTERFACE_CHECKED()
+	{
+		return 435;
+	}
+
+	/**
+	 * Datacenter diagnostics deploy server.
+	 * Severity: info.
+	 *
+	 * Deploy a server with a SAN network.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_SAN_SERVER_DEPLOYED()
+	{
+		return 442;
+	}
+
+	/**
+	 * Datacenter diagnostics internet connection.
+	 * Severity: info.
+	 *
+	 * Check that a provisioned server is able to reach the internet from the WAN network.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_SERVER_INTERNET_CONNECTION_CHECKED()
+	{
+		return 439;
+	}
+
+	/**
+	 * Datacenter diagnostics static routes.
+	 * Severity: info.
+	 *
+	 * Check that a SAN booted server receives static routes.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_STATIC_ROUTES_CHECKED()
+	{
+		return 441;
+	}
+
+	/**
+	 * Datacenter diagnostics switch configured.
+	 * Severity: info.
+	 *
+	 * Check that the datacenter has at least one switch configured.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_SWITCH_CONFIGURED_CHECKED()
+	{
+		return 432;
+	}
+
+	/**
+	 * Datacenter diagnostics switch interfaces.
+	 * Severity: info.
+	 *
+	 * Check that the datacenter agents machine is able to reach all in-band interfaces.
+	 *
+	 * @returns {number}
+	 */
+	static get DATACENTER_DIAGNOSTICS_SWITCH_INTERFACES_CHECKED()
+	{
+		return 436;
+	}
+
+	/**
 	 * DriveArray created.
 	 * Severity: info.
 	 *
