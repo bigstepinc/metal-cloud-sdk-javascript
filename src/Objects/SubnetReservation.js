@@ -60,6 +60,38 @@ class SubnetReservation extends ObjectBase
 					"default": null,
 					"readonly": true
 				},
+				"resource_reservation_current_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Is an ISO 8601 timestamp using UTC time. Example format: 2013-11-29T13:00:01Z.",
+					"default": null
+				},
+				"resource_reservation_installment_last_active_end_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Is an ISO 8601 timestamp using UTC time. Example format: 2013-11-29T13:00:01Z.",
+					"default": null
+				},
+				"resource_reservation_next_timestamp": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Is an ISO 8601 timestamp using UTC time. Example format: 2013-11-29T13:00:01Z.",
+					"default": null
+				},
+				"subnet_ip_count": {
+					"type": [
+						"number",
+						"null"
+					],
+					"description": "The cost of the reserved resource for a 30-day period.",
+					"default": null
+				},
 				"resource_reservation_price": {
 					"type": [
 						"number",
