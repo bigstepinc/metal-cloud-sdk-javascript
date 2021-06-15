@@ -43,12 +43,34 @@ class Workflow extends ObjectBase
 					"default": null,
 					"readonly": true
 				},
+				"icon_asset_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "",
+					"required": false,
+					"default": null,
+					"readonly": true
+				},
 				"workflow_label": {
 					"type": [
 						"null",
 						"string"
 					],
 					"description": "A label which is unique per owner.",
+					"minLength": 1,
+					"maxLength": 63,
+					"required": false,
+					"pattern": "^[a-zA-Z]{1,1}[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]{1,1}|[a-zA-Z]{1,1}$",
+					"default": null
+				},
+				"workflow_label_unique": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "",
 					"minLength": 1,
 					"maxLength": 63,
 					"required": false,

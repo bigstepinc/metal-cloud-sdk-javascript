@@ -139,6 +139,79 @@ class User extends ObjectBase
 					"default": "customer",
 					"readonly": true
 				},
+				"user_external_ids_json": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "",
+					"readonly": true
+				},
+				"user_limits_json": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "",
+					"readonly": true
+				},
+				"user_permissions_json": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "",
+					"readonly": true
+				},
+				"user_custom_prices_json": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "",
+					"readonly": true
+				},
+				"user_is_testing_mode": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "",
+					"readonly": true
+				},
+				"user_plan_type": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "",
+					"readonly": true
+				},
+				"user_last_login_type": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "",
+					"readonly": true
+				},
+				"user_history_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "",
+					"readonly": true
+				},
+				"user_external_ids": {
+					"type": "array",
+					"description": "",
+					"items": {
+						"description": "User external ids",
+						"type": "integer"
+					},
+					"readonly": true
+				},
 				"user_is_billable": {
 					"type": [
 						"boolean",
