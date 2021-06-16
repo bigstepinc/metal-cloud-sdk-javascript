@@ -195,14 +195,6 @@ class User extends ObjectBase
 					"description": "",
 					"readonly": true
 				},
-				"user_history_id": {
-					"type": [
-						"integer",
-						"null"
-					],
-					"description": "",
-					"readonly": true
-				},
 				"user_external_ids": {
 					"type": "array",
 					"description": "",

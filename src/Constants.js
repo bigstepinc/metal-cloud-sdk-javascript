@@ -6234,6 +6234,20 @@ module.exports =
 	
 	
 		/**
+		 * Volume template os bootstrap function provisioner_os_bootstrap_generic_non_cloudinit.
+		 * Visibility: public.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get VOLUME_TEMPLATE_OS_BOOTSTRAP_FUNCTION_NAME_PROVISIONER_OS_PREPARE_GENERIC_NON_CLOUDINIT()
+		{
+			return "provisioner_os_bootstrap_generic_non_cloudinit";
+		}
+	
+	
+		/**
 		 * Active status volume template.
 		 * Visibility: public.
 		 *
