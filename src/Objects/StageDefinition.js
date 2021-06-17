@@ -166,7 +166,8 @@ class StageDefinition extends ObjectBase
 					],
 					"description": "Stage definition json.",
 					"default": "",
-					"readonly": true
+					"readonly": true,
+					"required": false
 				}
 			}
 		};
