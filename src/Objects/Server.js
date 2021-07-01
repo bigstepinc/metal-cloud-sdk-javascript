@@ -162,6 +162,42 @@ class Server extends ObjectBase
 					],
 					"required": false
 				},
+				"server_rack_name": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Name of the rack",
+					"default": null,
+					"required": false
+				},
+				"server_rack_position_lower_unit": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "Server rack position lower unit",
+					"default": null,
+					"required": false
+				},
+				"server_rack_position_upper_unit": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "Server rack position upper unit",
+					"default": null,
+					"required": false
+				},
+				"server_inventory_id": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Server inventory id",
+					"default": null,
+					"required": false
+				},
 				"type": {
 					"type": "string",
 					"description": "The schema type",

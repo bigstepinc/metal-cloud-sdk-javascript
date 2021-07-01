@@ -4113,6 +4113,20 @@ module.exports =
 	
 	
 		/**
+		 * Server edit type inventory change.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SERVER_EDIT_TYPE_INVENTORY()
+		{
+			return "inventory";
+		}
+	
+	
+		/**
 		 * Server edit type IPMI.
 		 * Visibility: private.
 		 *
@@ -4123,6 +4137,20 @@ module.exports =
 		static get SERVER_EDIT_TYPE_IPMI()
 		{
 			return "ipmi";
+		}
+	
+	
+		/**
+		 * Server edit type rack change.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SERVER_EDIT_TYPE_RACK()
+		{
+			return "rack";
 		}
 	
 	
