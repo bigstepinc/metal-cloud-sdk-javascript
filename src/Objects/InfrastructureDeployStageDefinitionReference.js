@@ -42,6 +42,12 @@ class InfrastructureDeployStageDefinitionReference extends ObjectBase
 					"minimum": 1,
 					"required": true
 				},
+				"drive_array_id": {
+					"type": "integer",
+					"description": "Drive Array ID.",
+					"required": false,
+					"default": null
+				},
 				"infrastructure_deploy_custom_stage_type": {
 					"type": "string",
 					"description": "pre_deploy stages run before anything else in a deploy and are destined to be used for preparing for stopping various resource such as stopping or deleting instances, removing storage, etc.",

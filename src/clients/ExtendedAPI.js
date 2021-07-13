@@ -1925,7 +1925,7 @@ class ExtendedAPI extends JSONRPC.Client
 		return await this.rpc("stage_definition_exec_on_instance", Array.prototype.slice.call(arguments));
 	}
 
-	async volume_template_create(strDriveID, strNewVolumeTemplateLabel, strDescription, strVolumeTemplateDisplayName, strVolumeTemplateBootType = "legacy_only", strVolumeTemplateDeprecationStatus = "not_deprecated", strVolumeTemplateBootMethodsSupported = "pxe_iscsi", arrVolumeTemplateTags = [])
+	async volume_template_create(strDriveID, strNewVolumeTemplateLabel, strDescription, strVolumeTemplateDisplayName, strVolumeTemplateBootType = "legacy_only", strVolumeTemplateDeprecationStatus = "not_deprecated", strVolumeTemplateBootMethodsSupported = "pxe_iscsi", arrVolumeTemplateTags = [], strVolumeTemplateOsBootstrapFunctionName = null, strVolumeTemplateVersion)
 	{
 		return await this.rpc("volume_template_create", Array.prototype.slice.call(arguments));
 	}

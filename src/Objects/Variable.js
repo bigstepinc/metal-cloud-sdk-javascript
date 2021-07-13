@@ -51,6 +51,11 @@ class Variable extends ObjectBase
 					"required": true,
 					"pattern": "^[a-z]{1,1}[a-z0-9_]{0,61}[a-z0-9]{1,1}|[a-z]{1,1}$"
 				},
+				"variable_name_unique": {
+					"type": "string",
+					"description": "Auto generated label for the variable. If the variable is generated in some user's scope, then this field will be the concatenation of variable_name and user id owner fields.",
+					"required": true
+				},
 				"variable_usage": {
 					"type": [
 						"string",

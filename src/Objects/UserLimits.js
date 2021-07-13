@@ -389,6 +389,20 @@ class UserLimits extends ObjectBase
 					"description": "The maximum number of thresholds.",
 					"minimum": 0
 				},
+				"show_legacy_pages": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see some legacy pages in the user interface or not."
+				},
+				"show_experimental_pages": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see some experimental pages in the user interface or not."
+				},
 				"type": {
 					"type": "string",
 					"description": "The schema type",

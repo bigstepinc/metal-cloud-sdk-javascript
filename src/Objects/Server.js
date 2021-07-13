@@ -169,6 +169,8 @@ class Server extends ObjectBase
 					],
 					"description": "Name of the rack",
 					"default": null,
+					"minLength": 1,
+					"maxLength": 45,
 					"required": false
 				},
 				"server_rack_position_lower_unit": {
@@ -196,6 +198,8 @@ class Server extends ObjectBase
 					],
 					"description": "Server inventory id",
 					"default": null,
+					"minLength": 1,
+					"maxLength": 45,
 					"required": false
 				},
 				"type": {
