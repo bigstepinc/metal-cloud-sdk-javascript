@@ -54,6 +54,23 @@ class UserSuspendReason extends ObjectBase
 						"UserSuspendReason"
 					],
 					"readonly": true
+				},
+				"user_suspend_reason_private_comment": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "Suspend reason private comment.",
+					"required": true
+				},
+				"user_suspend_reason_type": {
+					"type": "string",
+					"description": "The suspend reason type",
+					"enum": [
+						"custom",
+						"unpaid"
+					],
+					"required": true
 				}
 			}
 		};

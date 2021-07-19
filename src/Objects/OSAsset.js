@@ -135,6 +135,15 @@ class OSAsset extends ObjectBase
 						"OSAsset"
 					],
 					"readonly": true
+				},
+				"os_asset_blob_id": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "OSAsset blob id.",
+					"required": false,
+					"default": null
 				}
 			}
 		};
