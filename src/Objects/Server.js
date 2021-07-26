@@ -170,7 +170,7 @@ class Server extends ObjectBase
 					"description": "Name of the rack",
 					"default": null,
 					"minLength": 1,
-					"maxLength": 45,
+					"maxLength": 255,
 					"required": false
 				},
 				"server_rack_position_lower_unit": {
@@ -180,7 +180,9 @@ class Server extends ObjectBase
 					],
 					"description": "Server rack position lower unit",
 					"default": null,
-					"required": false
+					"required": false,
+					"minimum": 0,
+					"maximum": 4294967295
 				},
 				"server_rack_position_upper_unit": {
 					"type": [
@@ -189,7 +191,9 @@ class Server extends ObjectBase
 					],
 					"description": "Server rack position upper unit",
 					"default": null,
-					"required": false
+					"required": false,
+					"minimum": 0,
+					"maximum": 4294967295
 				},
 				"server_inventory_id": {
 					"type": [
@@ -199,7 +203,7 @@ class Server extends ObjectBase
 					"description": "Server inventory id",
 					"default": null,
 					"minLength": 1,
-					"maxLength": 45,
+					"maxLength": 255,
 					"required": false
 				},
 				"server_dhcp_status": {

@@ -44,10 +44,10 @@ class HardwareConfiguration extends ObjectBase
 					"description": "The minimum cores of a CPU."
 				},
 				"instance_array_total_mhz": {
-					"default": 0,
 					"type": "integer",
 					"minimum": 0,
-					"description": "The minumim of total MHz of the instance."
+					"description": "The minumim of total MHz of the instance.",
+					"required": false
 				},
 				"instance_array_instance_count": {
 					"type": "integer",

@@ -43,7 +43,10 @@ class InfrastructureDeployStageDefinitionReference extends ObjectBase
 					"required": true
 				},
 				"drive_array_id": {
-					"type": "integer",
+					"type": [
+						"integer",
+						"null"
+					],
 					"description": "Drive Array ID.",
 					"required": false,
 					"default": null

@@ -52,9 +52,13 @@ class Secret extends ObjectBase
 					"pattern": "^[a-z]{1,1}[a-z0-9_]{0,61}[a-z0-9]{1,1}|[a-z]{1,1}$"
 				},
 				"secret_name_unique": {
-					"type": "string",
+					"type": [
+						"string",
+						"null"
+					],
 					"description": "Auto generated label for the secret. If the secret is generated in some user's scope, then this field will be the concatenation of secret_name and user id owner fields.",
-					"required": true
+					"required": false,
+					"default": null
 				},
 				"secret_usage": {
 					"type": [
