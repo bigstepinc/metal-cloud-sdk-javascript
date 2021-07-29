@@ -4502,6 +4502,20 @@ module.exports =
 	
 	
 		/**
+		 * Server is used for datacenter diagnostics.
+		 * Visibility: private.
+		 *
+		 *
+		 *
+		 * @returns {string}
+		 */
+		static get SERVER_STATUS_USED_DIAGNOSTICS()
+		{
+			return "used_diagnostics";
+		}
+	
+	
+		/**
 		 * Server status used registering.
 		 * Visibility: private.
 		 *

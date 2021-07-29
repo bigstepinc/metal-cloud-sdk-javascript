@@ -961,11 +961,11 @@ class EventTypes
 	 * Datacenter diagnostics deploy server.
 	 * Severity: info.
 	 *
-	 * Deploy a server with a SAN network.
+	 * Deploy a server with a SAN network if there is an active storage in the datacenter.
 	 *
 	 * @returns {number}
 	 */
-	static get DATACENTER_DIAGNOSTICS_SAN_SERVER_DEPLOYED()
+	static get DATACENTER_DIAGNOSTICS_SERVER_DEPLOYED()
 	{
 		return 442;
 	}
