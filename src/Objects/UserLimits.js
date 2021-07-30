@@ -403,6 +403,104 @@ class UserLimits extends ObjectBase
 					],
 					"description": "Specifies whether the user should see some experimental pages in the user interface or not."
 				},
+				"show_diagram_apps_global": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the app pop-over button in the diagram."
+				},
+				"show_diagram_app_cluster_type_cloudera": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the Cloudera app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_couchbase": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the Couchbase app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_datameer": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the Datameer app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_datastax": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the Datastax app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_elasticsearch": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the ElasticSearch app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_exasol": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the Exasol app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_hortonworks": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the HortonWorks app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_kubernetes": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the Kubernetes app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_mapr": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the Mapr app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_mesos": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the Mesos app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_mysql_percona": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the MySQL Percona app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_splunk": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the splunk app in the app pop-over (diagram)."
+				},
+				"show_diagram_app_cluster_type_vmware_vsphere": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Specifies whether the user should see the VMWARE vSphere app in the app pop-over (diagram)."
+				},
 				"type": {
 					"type": "string",
 					"description": "The schema type",
