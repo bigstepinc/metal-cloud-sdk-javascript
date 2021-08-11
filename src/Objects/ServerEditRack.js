@@ -27,25 +27,25 @@ class ServerEditRack extends ObjectBase
 				},
 				"server_rack_position_lower_unit": {
 					"type": [
-						"integer",
+						"string",
 						"null"
 					],
 					"description": "Server rack position lower unit",
 					"default": null,
-					"required": false,
-					"minimum": 0,
-					"maximum": 4294967295
+					"minLength": 1,
+					"maxLength": 45,
+					"required": false
 				},
 				"server_rack_position_upper_unit": {
 					"type": [
-						"integer",
+						"string",
 						"null"
 					],
 					"description": "Server rack position upper unit",
 					"default": null,
-					"required": false,
-					"minimum": 0,
-					"maximum": 4294967295
+					"minLength": 1,
+					"maxLength": 45,
+					"required": false
 				},
 				"type": {
 					"type": "string",

@@ -143,6 +143,148 @@ class InstanceInterface extends ObjectBase
 					"description": "This value helps check against edit requests on expired objects.",
 					"default": null,
 					"required": true
+				},
+				"instance_interface_acl_identifier": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"description": "Instance interface acl identifier",
+					"default": null
+				},
+				"instance_interface_gui_settings_json": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "instance_interface_gui_settings_json",
+					"default": null
+				},
+				"instance_interface_updated_timestamp": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "instance_interface_updated_timestamp",
+					"default": null
+				},
+				"instance_interface_san_ip_human_readable": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "instance_interface_san_ip_human_readable",
+					"default": null
+				},
+				"dns_subdomain_permanent_id": {
+					"type": [
+						"null",
+						"integer"
+					],
+					"description": "dns_subdomain_permanent_id",
+					"default": null
+				},
+				"infrastructure_id": {
+					"type": [
+						"null",
+						"integer"
+					],
+					"description": "infrastructure_id",
+					"default": null
+				},
+				"instance_interface_san_netmask_human_readable": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "instance_interface_san_netmask_human_readable",
+					"default": null
+				},
+				"instance_interface_force_quarantine_during_deploy": {
+					"type": "boolean",
+					"description": "instance_interface_force_quarantine_during_deploy",
+					"default": false,
+					"required": false
+				},
+				"instance_interface_dirty_bit": {
+					"type": "boolean",
+					"description": "instance_interface_dirty_bit",
+					"default": false,
+					"required": false
+				},
+				"instance_interface_is_api_private": {
+					"type": "boolean",
+					"description": "instance_interface_is_api_private",
+					"default": false,
+					"required": false
+				},
+				"instance_interface_subdomain_permanent": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "instance_interface_subdomain_permanent",
+					"default": null,
+					"required": false
+				},
+				"server_interface_id": {
+					"type": [
+						"null",
+						"integer"
+					],
+					"description": "server_interface_id",
+					"default": null,
+					"required": false
+				},
+				"instance_interface_san_gateway_human_readable": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "instance_interface_san_gateway_human_readable",
+					"default": null,
+					"required": false
+				},
+				"network_equipment_subnet_pool_san_id": {
+					"type": [
+						"null",
+						"integer"
+					],
+					"description": "network_equipment_subnet_pool_san_id",
+					"default": null,
+					"required": false
+				},
+				"instance_interface_created_timestamp": {
+					"type": "string",
+					"description": "instance_interface_created_timestamp",
+					"default": null
+				},
+				"instance_interface_vlan_identifier": {
+					"type": [
+						"null",
+						"integer"
+					],
+					"description": "instance_interface_vlan_identifier",
+					"default": null,
+					"required": false
+				},
+				"dns_subdomain_id": {
+					"type": [
+						"null",
+						"integer"
+					],
+					"description": "dns_subdomain_id",
+					"default": null,
+					"required": false
+				},
+				"instance_interface_subnet_pool_san_index": {
+					"type": [
+						"null",
+						"integer"
+					],
+					"description": "instance_interface_subnet_pool_san_index",
+					"default": null,
+					"required": false
 				}
 			}
 		};

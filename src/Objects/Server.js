@@ -175,25 +175,25 @@ class Server extends ObjectBase
 				},
 				"server_rack_position_lower_unit": {
 					"type": [
-						"integer",
+						"string",
 						"null"
 					],
 					"description": "Server rack position lower unit",
 					"default": null,
-					"required": false,
-					"minimum": 0,
-					"maximum": 4294967295
+					"minLength": 1,
+					"maxLength": 255,
+					"required": false
 				},
 				"server_rack_position_upper_unit": {
 					"type": [
-						"integer",
+						"string",
 						"null"
 					],
 					"description": "Server rack position upper unit",
 					"default": null,
-					"required": false,
-					"minimum": 0,
-					"maximum": 4294967295
+					"minLength": 1,
+					"maxLength": 255,
+					"required": false
 				},
 				"server_inventory_id": {
 					"type": [
@@ -232,7 +232,8 @@ class Server extends ObjectBase
 						"defective",
 						"removed_from_rack",
 						"decommissioned",
-						"updating_firmware"
+						"updating_firmware",
+						"used_diagnostics"
 					],
 					"type": [
 						"string"
@@ -656,6 +657,18 @@ class Server extends ObjectBase
 					],
 					"description": "Server metrics metadata in JSON format",
 					"default": null,
+					"required": false
+				},
+				"server_is_in_diagnostics": {
+					"type": "boolean",
+					"description": "Server is currently used for diagnostics",
+					"default": false,
+					"required": false
+				},
+				"server_supports_sol": {
+					"type": "boolean",
+					"description": "Server has SOL support through Redfish",
+					"default": true,
 					"required": false
 				},
 				"type": {

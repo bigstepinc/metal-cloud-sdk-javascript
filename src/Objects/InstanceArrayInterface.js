@@ -137,6 +137,54 @@ class InstanceArrayInterface extends ObjectBase
 					"description": "This property helps ensure that edit operations don\u2019t overwrite other, more recent changes made to the same object. It gets updated automatically after each successful edit operation.",
 					"default": null,
 					"required": true
+				},
+				"dns_subdomain_id": {
+					"type": [
+						"null",
+						"integer"
+					],
+					"description": "dns_subdomain_id",
+					"default": null,
+					"required": false
+				},
+				"dns_subdomain_permanent_id": {
+					"type": [
+						"null",
+						"integer"
+					],
+					"description": "dns_subdomain_permanent_id",
+					"default": null
+				},
+				"instance_array_interface_is_api_private": {
+					"type": "boolean",
+					"description": "instance_array_interface_is_api_private",
+					"default": false,
+					"required": false
+				},
+				"infrastructure_id": {
+					"type": [
+						"null",
+						"integer"
+					],
+					"description": "infrastructure_id",
+					"default": null
+				},
+				"instance_array_interface_subdomain_permanent": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "instance_array_interface_subdomain_permanent",
+					"default": null,
+					"required": false
+				},
+				"instance_array_interface_gui_settings_json": {
+					"type": [
+						"null",
+						"string"
+					],
+					"description": "instance_array_interface_gui_settings_json",
+					"default": null
 				}
 			}
 		};
